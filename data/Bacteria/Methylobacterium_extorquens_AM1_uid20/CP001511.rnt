@@ -1,0 +1,9 @@
+Methylobacterium extorquens AM1 megaplasmid, complete sequence. - 1..1261460
+6 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+590631..590707	-	77	240011718	-	MexAM1_META2ptRNA6	-	-	Arg tRNA
+765793..765868	-	76	240011718	-	MexAM1_META2ptRNA5	-	-	Ala tRNA
+765966..766040	-	75	240011718	-	MexAM1_META2ptRNA4	-	-	Val tRNA
+766236..766311	-	76	240011718	-	MexAM1_META2ptRNA3	-	-	Ala tRNA
+1013193..1013282	+	90	240011718	-	MexAM1_META2ptRNA1	-	-	Ser tRNA
+1162482..1162555	+	74	240011718	-	MexAM1_META2ptRNA2	-	-	Gln tRNA

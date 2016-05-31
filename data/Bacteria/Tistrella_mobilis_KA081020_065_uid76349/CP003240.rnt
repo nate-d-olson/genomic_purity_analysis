@@ -1,0 +1,9 @@
+Tistrella mobilis KA081020-065 plasmid pTM4, complete sequence. - 1..83885
+6 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+78446..79934	+	1489	388532359	-	TMO_rd01	-	-	16S ribosomal RNA
+79994..80070	+	77	388532359	-	TMO_rd02	-	-	Ile tRNA
+80371..83113	+	2743	388532359	-	TMO_rd03	-	-	23S ribosomal RNA
+83244..83357	+	114	388532359	-	TMO_rd04	-	-	5S ribosomal RNA
+83445..83521	+	77	388532359	-	TMO_rd05	-	-	Met tRNA
+83584..83660	+	77	388532359	-	TMO_rd06	-	-	Met tRNA

@@ -1,0 +1,56 @@
+
+2015-06-30 __main__
+ 15:49:43 - 
+ 15:49:43 - ________________________________________
+ 15:49:43 - Tasks which are up-to-date:
+ 15:49:43 - 
+ 15:49:43 - 
+ 15:49:43 - Task = "sipp::mkdir(['Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505'])   before ngs_simulate_commands.get_genome_fasta "  
+ 15:49:43 -     "Make missing directories [[/genomic_purity/results/simdir/Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505]]"
+ 15:49:43 - 
+ 15:49:43 - Task = "sipp::mkdir(['Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/logs/']) #2   before ngs_simulate_commands.get_genome_fasta "  
+ 15:49:43 -     "Make missing directories [[/genomic_purity/results/simdir/Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/logs]]"
+ 15:49:43 - 
+ 15:49:43 - Task = "sipp::mkdir(['Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/tmp/']) #3   before ngs_simulate_commands.get_genome_fasta "  
+ 15:49:43 -     "Make missing directories [[/genomic_purity/results/simdir/Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/tmp]]"
+ 15:49:43 - 
+ 15:49:43 - Task = 'sipp::task_originate'  
+ 15:49:43 -     "Makes new files"
+ 15:49:43 - 
+ 15:49:43 - ________________________________________
+ 15:49:43 - 
+ 15:49:43 - 
+ 15:49:43 - 
+ 15:49:43 - ________________________________________
+ 15:49:43 - Tasks which will be run:
+ 15:49:43 - 
+ 15:49:43 - 
+ 15:49:43 - Task enters queue = 'sipp::ngs_simulate_commands.get_genome_fasta' 
+ 15:49:43 -     Job  = [Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505 -> Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/30505_.fasta, .../Bacteria/] 
+  Input files:
+   * 30 Jun 2015 13:03:56.81: Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505
+  Output files:
+   * 27 Jun 2015 15:33:43.86: Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/30505_.fasta
+ 
+ 15:49:43 -     Job  = [Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505 -> Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/30505_.fasta, .../Bacteria/] completed
+ 15:49:44 - Completed Task = 'sipp::ngs_simulate_commands.get_genome_fasta' 
+ 15:49:44 - Task enters queue = 'sipp::ngs_simulate_commands.simulate_miseq' 
+ 15:49:44 -     Job  = [Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/30505_.fasta -> [Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/30505_1.fq, Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/30505_2.fq]] 
+  Input files:
+   * 30 Jun 2015 15:49:43.85: Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/30505_.fasta
+  Output files:
+   * 27 Jun 2015 15:36:08.16: Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/30505_1.fq
+   * 27 Jun 2015 15:36:08.16: Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/30505_2.fq
+ 
+ 15:49:57 -     Job  = [Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/30505_.fasta -> [Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/30505_1.fq, Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/30505_2.fq]] completed
+ 15:49:58 - Completed Task = 'sipp::ngs_simulate_commands.simulate_miseq' 
+ 15:49:58 - Task enters queue = 'sipp::pathoscope_commands.pathomap_command' 
+ 15:49:58 -     Job  = [[Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/30505_1.fq, Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/30505_2.fq] -> Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/pathomap-appendAlign.sam] 
+ 19:03:25 -     Job  = [[Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/30505_1.fq, Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/30505_2.fq] -> Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 19:03:25 - Completed Task = 'sipp::pathoscope_commands.pathomap_command' 
+ 19:03:25 - Task enters queue = 'sipp::pathoscope_commands.pathoid_command' 
+ 19:03:25 -     Job  = [Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/pathomap-appendAlign.sam -> Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/pathomap-sam-report.tsv] ...
+        Missing file [Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/pathomap-sam-report.tsv] 
+ 19:23:41 -     Job  = [Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/pathomap-appendAlign.sam -> Yersinia_pestis_biovar_Medievalis_Harbin_35_uid30505/pathomap-sam-report.tsv] completed
+ 19:23:41 - Completed Task = 'sipp::pathoscope_commands.pathoid_command' 

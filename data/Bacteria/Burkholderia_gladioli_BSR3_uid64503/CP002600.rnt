@@ -1,0 +1,18 @@
+Burkholderia gladioli BSR3 chromosome 2, complete sequence. - 1..3700833
+15 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+258993..259066	+	74	327371128	-	bgla_g2t01	-	-	Cys tRNA
+586974..588209	+	1236	327371128	-	bgla_2gr01	-	-	16S ribosomal RNA
+588572..588648	+	77	327371128	-	bgla_2gt02	-	-	Ile tRNA
+588685..588760	+	76	327371128	-	bgla_2gt03	-	-	Ala tRNA
+589113..591993	+	2881	327371128	-	bgla_2gr02	-	-	23S ribosomal RNA
+592177..592292	+	116	327371128	-	bgla_2gr03	-	-	5S ribosomal RNA
+720470..721705	+	1236	327371128	-	bgla_2gr04	-	-	16S ribosomal RNA
+722068..722144	+	77	327371128	-	bgla_2gt04	-	-	Ile tRNA
+722181..722256	+	76	327371128	-	bgla_2gt05	-	-	Ala tRNA
+722609..725489	+	2881	327371128	-	bgla_2gr05	-	-	23S ribosomal RNA
+725673..725788	+	116	327371128	-	bgla_2gr06	-	-	5S ribosomal RNA
+2676133..2676208	-	76	327371128	-	bgla_2gt06	-	-	Met tRNA
+2871559..2871635	+	77	327371128	-	bgla_2gt07	-	-	Val tRNA
+2871778..2871854	+	77	327371128	-	bgla_2gt08	-	-	Val tRNA
+2871957..2872033	+	77	327371128	-	bgla_2gt09	-	-	Val tRNA

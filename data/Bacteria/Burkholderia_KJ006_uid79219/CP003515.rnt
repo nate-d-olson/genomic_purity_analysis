@@ -1,0 +1,10 @@
+Burkholderia sp. KJ006 chromosome 2, complete sequence. - 1..2356985
+7 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+51222..51303	+	82	387578572	-	MYA_t0060	-	-	Leu tRNA
+266883..267000	-	118	387578572	-	MYA_r0013	-	-	5S ribosomal RNA
+267150..270032	-	2883	387578572	-	MYA_r0014	-	-	23S ribosomal RNA
+270320..270392	-	73	387578572	-	MYA_t0061	-	-	Ala tRNA
+270434..270507	-	74	387578572	-	MYA_t0062	-	-	Ile tRNA
+270522..272046	-	1525	387578572	-	MYA_r0015	-	-	16S ribosomal RNA
+1169112..1169187	+	76	387578572	-	MYA_t0063	-	-	Met tRNA

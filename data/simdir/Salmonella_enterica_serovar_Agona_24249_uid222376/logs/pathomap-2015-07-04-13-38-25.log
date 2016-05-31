@@ -1,0 +1,52 @@
+Running without mySQLdb library
+Checking whether the file: /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa needs to be split
+Creating bowtie2 index for: /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_0.fa
+Bowtie2 index already exist for: /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_0.1.bt2
+Creating bowtie2 index for: /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_1.fa
+Bowtie2 index already exist for: /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_1.1.bt2
+Creating bowtie2 index for: /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_2.fa
+Bowtie2 index already exist for: /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_2.1.bt2
+Creating bowtie2 index for: /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_3.fa
+Bowtie2 index already exist for: /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_3.1.bt2
+Creating bowtie2 index for: /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_4.fa
+Bowtie2 index already exist for: /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_4.1.bt2
+Creating bowtie2 index for: /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_5.fa
+Bowtie2 index already exist for: /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_5.1.bt2
+Creating bowtie2 index for: /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_6.fa
+Bowtie2 index already exist for: /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_6.1.bt2
+Creating bowtie2 index for: /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_7.fa
+Bowtie2 index already exist for: /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_7.1.bt2
+Creating bowtie2 index for: /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_8.fa
+Bowtie2 index already exist for: /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_8.1.bt2
+Creating bowtie2 index for: /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_9.fa
+Bowtie2 index already exist for: /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_9.1.bt2
+Creating bowtie2 index for: /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_10.fa
+Bowtie2 index already exist for: /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_10.1.bt2
+Creating bowtie2 index for: /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_11.fa
+Bowtie2 index already exist for: /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_11.1.bt2
+Creating bowtie2 alignment: pathomap-micro_rm_patho_db_ti_0.sam
+bowtie2 -x /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_0 -1 Salmonella_enterica_serovar_Agona_24249_uid222376/222376_1.fq -2 Salmonella_enterica_serovar_Agona_24249_uid222376/222376_2.fq -p 8 --very-sensitive-local -k 100 --score-min L,20,1.0 -S Salmonella_enterica_serovar_Agona_24249_uid222376/pathomap-micro_rm_patho_db_ti_0.sam
+Creating bowtie2 alignment: pathomap-micro_rm_patho_db_ti_1.sam
+bowtie2 -x /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_1 -1 Salmonella_enterica_serovar_Agona_24249_uid222376/222376_1.fq -2 Salmonella_enterica_serovar_Agona_24249_uid222376/222376_2.fq -p 8 --very-sensitive-local -k 100 --score-min L,20,1.0 -S Salmonella_enterica_serovar_Agona_24249_uid222376/pathomap-micro_rm_patho_db_ti_1.sam
+Creating bowtie2 alignment: pathomap-micro_rm_patho_db_ti_2.sam
+bowtie2 -x /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_2 -1 Salmonella_enterica_serovar_Agona_24249_uid222376/222376_1.fq -2 Salmonella_enterica_serovar_Agona_24249_uid222376/222376_2.fq -p 8 --very-sensitive-local -k 100 --score-min L,20,1.0 -S Salmonella_enterica_serovar_Agona_24249_uid222376/pathomap-micro_rm_patho_db_ti_2.sam
+Creating bowtie2 alignment: pathomap-micro_rm_patho_db_ti_3.sam
+bowtie2 -x /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_3 -1 Salmonella_enterica_serovar_Agona_24249_uid222376/222376_1.fq -2 Salmonella_enterica_serovar_Agona_24249_uid222376/222376_2.fq -p 8 --very-sensitive-local -k 100 --score-min L,20,1.0 -S Salmonella_enterica_serovar_Agona_24249_uid222376/pathomap-micro_rm_patho_db_ti_3.sam
+Creating bowtie2 alignment: pathomap-micro_rm_patho_db_ti_4.sam
+bowtie2 -x /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_4 -1 Salmonella_enterica_serovar_Agona_24249_uid222376/222376_1.fq -2 Salmonella_enterica_serovar_Agona_24249_uid222376/222376_2.fq -p 8 --very-sensitive-local -k 100 --score-min L,20,1.0 -S Salmonella_enterica_serovar_Agona_24249_uid222376/pathomap-micro_rm_patho_db_ti_4.sam
+Creating bowtie2 alignment: pathomap-micro_rm_patho_db_ti_5.sam
+bowtie2 -x /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_5 -1 Salmonella_enterica_serovar_Agona_24249_uid222376/222376_1.fq -2 Salmonella_enterica_serovar_Agona_24249_uid222376/222376_2.fq -p 8 --very-sensitive-local -k 100 --score-min L,20,1.0 -S Salmonella_enterica_serovar_Agona_24249_uid222376/pathomap-micro_rm_patho_db_ti_5.sam
+Creating bowtie2 alignment: pathomap-micro_rm_patho_db_ti_6.sam
+bowtie2 -x /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_6 -1 Salmonella_enterica_serovar_Agona_24249_uid222376/222376_1.fq -2 Salmonella_enterica_serovar_Agona_24249_uid222376/222376_2.fq -p 8 --very-sensitive-local -k 100 --score-min L,20,1.0 -S Salmonella_enterica_serovar_Agona_24249_uid222376/pathomap-micro_rm_patho_db_ti_6.sam
+Creating bowtie2 alignment: pathomap-micro_rm_patho_db_ti_7.sam
+bowtie2 -x /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_7 -1 Salmonella_enterica_serovar_Agona_24249_uid222376/222376_1.fq -2 Salmonella_enterica_serovar_Agona_24249_uid222376/222376_2.fq -p 8 --very-sensitive-local -k 100 --score-min L,20,1.0 -S Salmonella_enterica_serovar_Agona_24249_uid222376/pathomap-micro_rm_patho_db_ti_7.sam
+Creating bowtie2 alignment: pathomap-micro_rm_patho_db_ti_8.sam
+bowtie2 -x /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_8 -1 Salmonella_enterica_serovar_Agona_24249_uid222376/222376_1.fq -2 Salmonella_enterica_serovar_Agona_24249_uid222376/222376_2.fq -p 8 --very-sensitive-local -k 100 --score-min L,20,1.0 -S Salmonella_enterica_serovar_Agona_24249_uid222376/pathomap-micro_rm_patho_db_ti_8.sam
+Creating bowtie2 alignment: pathomap-micro_rm_patho_db_ti_9.sam
+bowtie2 -x /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_9 -1 Salmonella_enterica_serovar_Agona_24249_uid222376/222376_1.fq -2 Salmonella_enterica_serovar_Agona_24249_uid222376/222376_2.fq -p 8 --very-sensitive-local -k 100 --score-min L,20,1.0 -S Salmonella_enterica_serovar_Agona_24249_uid222376/pathomap-micro_rm_patho_db_ti_9.sam
+Creating bowtie2 alignment: pathomap-micro_rm_patho_db_ti_10.sam
+bowtie2 -x /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_10 -1 Salmonella_enterica_serovar_Agona_24249_uid222376/222376_1.fq -2 Salmonella_enterica_serovar_Agona_24249_uid222376/222376_2.fq -p 8 --very-sensitive-local -k 100 --score-min L,20,1.0 -S Salmonella_enterica_serovar_Agona_24249_uid222376/pathomap-micro_rm_patho_db_ti_10.sam
+Creating bowtie2 alignment: pathomap-micro_rm_patho_db_ti_11.sam
+bowtie2 -x /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_11 -1 Salmonella_enterica_serovar_Agona_24249_uid222376/222376_1.fq -2 Salmonella_enterica_serovar_Agona_24249_uid222376/222376_2.fq -p 8 --very-sensitive-local -k 100 --score-min L,20,1.0 -S Salmonella_enterica_serovar_Agona_24249_uid222376/pathomap-micro_rm_patho_db_ti_11.sam
+Appending alignment files to: Salmonella_enterica_serovar_Agona_24249_uid222376/pathomap-appendAlign.sam
+Filtering and creating the alignment: Salmonella_enterica_serovar_Agona_24249_uid222376//genomic_purity/results/simdir/Salmonella_enterica_serovar_Agona_24249_uid222376/pathomap-appendAlign.sam

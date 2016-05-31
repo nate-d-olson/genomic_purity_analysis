@@ -1,0 +1,90 @@
+---
+title: "Single Org Results Summary"
+author: "Nate Olson"
+date: "May 30, 2016"
+output: html_document
+---
+```{r echo=FALSE, message=FALSE}
+library(ProjectTemplate)
+wd <- getwd()
+setwd("../")
+load.project()
+setwd(wd)
+```
+
+## Match level by genus
+```{r fig.height = 8}
+singleOrgMatchResults %>%
+      mutate(lca_rank = ifelse(lca_rank %in% 
+                                     c("species group", 
+                                       "species subgroup", 
+                                       "subspecies"), 
+                               "species", lca_rank),
+             lca_rank = factor(lca_rank, 
+                               levels = c("species", "genus", 
+                                          "family", "order", 
+                                          "class","phylum",
+                                          "superkingdom"))) %>% 
+      group_by(Query, lca_rank) %>% 
+      mutate(total_prop = sum(`Final Guess`)) %>% 
+      ggplot() + geom_boxplot(aes(x = lca_rank, y = total_prop)) +
+      geom_line(aes(x = lca_rank, y = total_prop, 
+                               group = Query)) +
+      facet_wrap(~query_genus, ncol = 4)  + 
+      theme_bw() + theme(axis.text.x = element_text(angle = 90)) +
+      labs(x = "Taxonomic Level", y = "Match Proportion")
+```
+
+### Observations  
+* A number of unexpected genus, e.g. not _Bacillus_, _Clostridium_, _Escherichia_, _Francisella_, _Listeria_, _Pseudonomas_, _Salmonella_, _Shigella_, _Staphylococcus_, and _Yersinia_.  
+* Some genus have high levels of family and higher matches. For _Shigella_ most likely due to matches with _Escherichia_. Will need to look into more....
+
+
+
+## Looking at unexpected genus
+```{r}
+singleOrgMatchResults %>% 
+      group_by(Query, query_genus) %>% 
+      summarise(count = n()) %>% 
+      group_by(query_genus) %>% 
+      summarise(count = n()) %>% kable()
+```
+
+* Krypidia was formally part of the Bacillus genus  
+* Gottshalkia was formally in the Clostridium genus  
+
+## Excluding unexpected genus
+```{r}
+single_org_cum <- singleOrgMatchResults %>%
+      filter(query_genus %in% c("Bacillus","Clostridium","Escherichia","Francisela","Listeria",
+                                  "Pseudomonas","Salmonella","Shigella","Staphylococcus","Yersinia")) %>% 
+      mutate(lca_rank = ifelse(lca_rank %in% 
+                                     c("species group", 
+                                       "species subgroup", 
+                                       "subspecies"), 
+                               "species", lca_rank),
+             lca_rank = factor(lca_rank, 
+                               levels = c("species", "genus", 
+                                          "family", "order", 
+                                          "class","phylum",
+                                          "superkingdom"))) %>% 
+      group_by(Query, lca_rank, query_genus) %>% 
+      summarise(total_prop = sum(`Final Guess`)) %>% 
+      group_by(Query) %>% 
+      mutate(cum_prop = cumsum(total_prop))
+```
+
+## Cumulative match by query
+```{r}
+ggplot(single_org_cum) + 
+      geom_path(aes(x = lca_rank, y = cum_prop, 
+                               group = Query)) +
+      # geom_boxplot(aes(x = lca_rank, y = cum_prop)) +
+      facet_wrap(~query_genus) + 
+      theme_bw() + theme(axis.text.x = element_text(angle = 90)) +
+      labs(x = "Taxonomic Level", y = "Cumulative Proportion")
+```
+
+### Observations  
+* Overall high proportions of matches at species and genus level.  
+* Not sure about _Staphylococcus_ genomes with match proportions that do not increase with taxonomic level, might be due to exclusion of unclassified and unknown matches from match level analysis.  

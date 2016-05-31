@@ -1,0 +1,8 @@
+Escherichia coli str. UMN026 plasmid p1ESCUM, complete genome. - 1..122301
+5 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+40285..40354	-	70	218349957	RNAout	p1ECUMN_misc_rna40285R	-	-	-
+51965..52054	+	90	218349957	inc	p1ECUMN_misc_rna51965D	-	-	-
+90455..90530	+	76	218349957	finP	p1ECUMN_misc_rna90455D	-	-	-
+94616..94716	+	101	218349957	flmB	p1ECUMN_misc_rna94616D	-	-	-
+119669..119764	+	96	218349957	uptR	p1ECUMN_misc_rna119669D	-	-	-

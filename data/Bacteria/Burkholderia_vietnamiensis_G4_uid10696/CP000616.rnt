@@ -1,0 +1,8 @@
+Burkholderia vietnamiensis G4 chromosome 3, complete sequence. - 1..1241007
+5 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+53235..54760	+	1526	134134073	-	Bcep1808_R0084	-	-	16S ribosomal RNA
+54824..54900	+	77	134134073	-	Bcep1808_R0085	-	-	Ile tRNA
+54939..55014	+	76	134134073	-	Bcep1808_R0086	-	-	Ala tRNA
+55291..58172	+	2882	134134073	-	Bcep1808_R0087	-	-	23S ribosomal RNA
+58330..58441	+	112	134134073	-	Bcep1808_R0088	-	-	5S ribosomal RNA

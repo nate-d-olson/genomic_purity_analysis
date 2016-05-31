@@ -1,0 +1,8 @@
+Vibrio furnissii NCTC 11218 chromosome 2, complete sequence. - 1..1621862
+5 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+34770..34860	-	91	315181343	-	vfu_BtRNA01	-	-	Ser tRNA
+140986..141060	+	75	315181343	-	vfu_BtRNA02	-	-	Gly tRNA
+464788..464861	-	74	315181343	-	vfu_BtRNA03	-	-	Cys tRNA
+464884..464970	-	87	315181343	-	vfu_BtRNA04	-	-	Leu tRNA
+1484321..1484394	+	74	315181343	-	vfu_BtRNA05	-	-	Cys tRNA

@@ -1,0 +1,202 @@
+
+2015-08-03 __main__
+ 20:05:29 - 
+ 20:05:29 - ________________________________________
+ 20:05:29 - Tasks which will be run:
+ 20:05:29 - 
+ 20:05:29 - 
+ 20:05:29 - Task enters queue = 'sipp::task_originate' 
+ 20:05:29 -     Makes new files
+ 20:05:29 -     Job  = [None -> Salmonella_enterica_serovar_Typhimurium_uid40625] ...
+        Missing file [Salmonella_enterica_serovar_Typhimurium_uid40625] 
+ 20:05:29 -     Job  = [None -> Escherichia_coli_O157_H7_EC4115_uid27739] ...
+        Missing file [Escherichia_coli_O157_H7_EC4115_uid27739] 
+ 20:05:29 -     Job  = [None -> Pseudomonas_aeruginosa_uid331] ...
+        Missing file [Pseudomonas_aeruginosa_uid331] 
+ 20:05:29 -     Job  = [None -> Yersinia_pestis_CO92_uid34] ...
+        Missing file [Yersinia_pestis_CO92_uid34] 
+ 20:05:29 -     Job  = [None -> Staphylococcus_aureus_ED133_uid41277] ...
+        Missing file [Staphylococcus_aureus_ED133_uid41277] 
+ 20:05:29 -     Job  = [None -> Bacillus_anthracis_Ames_uid309] ...
+        Missing file [Bacillus_anthracis_Ames_uid309] 
+ 20:05:29 -     Job  = [None -> Francisella_tularensis_tularensis_uid9] ...
+        Missing file [Francisella_tularensis_tularensis_uid9] 
+ 20:05:29 -     Job  = [None -> Clostridium_botulinum_A_Hall_uid19521] ...
+        Missing file [Clostridium_botulinum_A_Hall_uid19521] 
+ 20:05:29 - Task enters queue = "sipp::mkdir(['Salmonella_enterica_serovar_Typhimurium_uid40625',   'Escherichia_coli_O157_H7_EC4115_uid27739',   'Pseudomonas_aeruginosa_uid331',   'Yersinia_pestis_CO92_uid34',   'Staphylococcus_aureus_ED133_uid41277',   'Bacillus_anthracis_Ames_uid309',   'Francisella_tularensis_tularensis_uid9',   'Clostridium_botulinum_A_Hall_uid19521'])   before ngs_simulate_commands.get_genome_fasta " 
+ 20:05:29 -     Make missing directories [[/genomic_purity_study/results/sim_contam/Salmonella_enterica_serovar_Typhimurium_uid40625, /genomic_purity_study/results/sim_contam/Escherichia_coli_O157_H7_EC4115_uid27739, /genomic_purity_study/results/sim_contam/Pseudomonas_aeruginosa_uid331, /genomic_purity_study/results/sim_contam/Yersinia_pestis_CO92_uid34, /genomic_purity_study/results/sim_contam/Staphylococcus_aureus_ED133_uid41277, /genomic_purity_study/results/sim_contam/Bacillus_anthracis_Ames_uid309, /genomic_purity_study/results/sim_contam/Francisella_tularensis_tularensis_uid9, /genomic_purity_study/results/sim_contam/Clostridium_botulinum_A_Hall_uid19521]]
+ 20:05:29 -     Make directories [Bacillus_anthracis_Ames_uid309, Clostridium_botulinum_A_Hall_uid19521, Escherichia_coli_O157_H7_EC4115_uid27739, Francisella_tularensis_tularensis_uid9, Pseudomonas_aeruginosa_uid331, Salmonella_enterica_serovar_Typhimurium_uid40625, Staphylococcus_aureus_ED133_uid41277, Yersinia_pestis_CO92_uid34] : Directories 'Bacillus_anthracis_Ames_uid309, Clostridium_botulinum_A_Hall_uid19521, Escherichia_coli_O157_H7_EC4115_uid27739, Francisella_tularensis_tularensis_uid9, Pseudomonas_aeruginosa_uid331, Salmonella_enterica_serovar_Typhimurium_uid40625, Staphylococcus_aureus_ED133_uid41277, Yersinia_pestis_CO92_uid34' are missing 
+ 20:05:29 -     Job  = [None -> Salmonella_enterica_serovar_Typhimurium_uid40625] completed
+ 20:05:29 - Task enters queue = "sipp::mkdir(['Salmonella_enterica_serovar_Typhimurium_uid40625/logs/',   'Escherichia_coli_O157_H7_EC4115_uid27739/logs/',   'Pseudomonas_aeruginosa_uid331/logs/',   'Yersinia_pestis_CO92_uid34/logs/',   'Staphylococcus_aureus_ED133_uid41277/logs/',   'Bacillus_anthracis_Ames_uid309/logs/',   'Francisella_tularensis_tularensis_uid9/logs/',   'Clostridium_botulinum_A_Hall_uid19521/logs/']) #2   before ngs_simulate_commands.get_genome_fasta " 
+ 20:05:29 -     Make missing directories [[/genomic_purity_study/results/sim_contam/Salmonella_enterica_serovar_Typhimurium_uid40625/logs, /genomic_purity_study/results/sim_contam/Escherichia_coli_O157_H7_EC4115_uid27739/logs, /genomic_purity_study/results/sim_contam/Pseudomonas_aeruginosa_uid331/logs, /genomic_purity_study/results/sim_contam/Yersinia_pestis_CO92_uid34/logs, /genomic_purity_study/results/sim_contam/Staphylococcus_aureus_ED133_uid41277/logs, /genomic_purity_study/results/sim_contam/Bacillus_anthracis_Ames_uid309/logs, /genomic_purity_study/results/sim_contam/Francisella_tularensis_tularensis_uid9/logs, /genomic_purity_study/results/sim_contam/Clostridium_botulinum_A_Hall_uid19521/logs]]
+ 20:05:29 -     Make directories [Bacillus_anthracis_Ames_uid309/logs, Clostridium_botulinum_A_Hall_uid19521/logs, Escherichia_coli_O157_H7_EC4115_uid27739/logs, Francisella_tularensis_tularensis_uid9/logs, Pseudomonas_aeruginosa_uid331/logs, Salmonella_enterica_serovar_Typhimurium_uid40625/logs, Staphylococcus_aureus_ED133_uid41277/logs, Yersinia_pestis_CO92_uid34/logs] : Directories 'Bacillus_anthracis_Ames_uid309/logs/, Clostridium_botulinum_A_Hall_uid19521/logs/, Escherichia_coli_O157_H7_EC4115_uid27739/logs/, Francisella_tularensis_tularensis_uid9/logs/, Pseudomonas_aeruginosa_uid331/logs/, Salmonella_enterica_serovar_Typhimurium_uid40625/logs/, Staphylococcus_aureus_ED133_uid41277/logs/, Yersinia_pestis_CO92_uid34/logs/' are missing 
+ 20:05:29 - Task enters queue = "sipp::mkdir(['Salmonella_enterica_serovar_Typhimurium_uid40625/tmp/',   'Escherichia_coli_O157_H7_EC4115_uid27739/tmp/',   'Pseudomonas_aeruginosa_uid331/tmp/',   'Yersinia_pestis_CO92_uid34/tmp/',   'Staphylococcus_aureus_ED133_uid41277/tmp/',   'Bacillus_anthracis_Ames_uid309/tmp/',   'Francisella_tularensis_tularensis_uid9/tmp/',   'Clostridium_botulinum_A_Hall_uid19521/tmp/']) #3   before ngs_simulate_commands.get_genome_fasta " 
+ 20:05:29 -     Make missing directories [[/genomic_purity_study/results/sim_contam/Salmonella_enterica_serovar_Typhimurium_uid40625/tmp, /genomic_purity_study/results/sim_contam/Escherichia_coli_O157_H7_EC4115_uid27739/tmp, /genomic_purity_study/results/sim_contam/Pseudomonas_aeruginosa_uid331/tmp, /genomic_purity_study/results/sim_contam/Yersinia_pestis_CO92_uid34/tmp, /genomic_purity_study/results/sim_contam/Staphylococcus_aureus_ED133_uid41277/tmp, /genomic_purity_study/results/sim_contam/Bacillus_anthracis_Ames_uid309/tmp, /genomic_purity_study/results/sim_contam/Francisella_tularensis_tularensis_uid9/tmp, /genomic_purity_study/results/sim_contam/Clostridium_botulinum_A_Hall_uid19521/tmp]]
+ 20:05:29 -     Make directories [Bacillus_anthracis_Ames_uid309/tmp, Clostridium_botulinum_A_Hall_uid19521/tmp, Escherichia_coli_O157_H7_EC4115_uid27739/tmp, Francisella_tularensis_tularensis_uid9/tmp, Pseudomonas_aeruginosa_uid331/tmp, Salmonella_enterica_serovar_Typhimurium_uid40625/tmp, Staphylococcus_aureus_ED133_uid41277/tmp, Yersinia_pestis_CO92_uid34/tmp] : Directories 'Bacillus_anthracis_Ames_uid309/tmp/, Clostridium_botulinum_A_Hall_uid19521/tmp/, Escherichia_coli_O157_H7_EC4115_uid27739/tmp/, Francisella_tularensis_tularensis_uid9/tmp/, Pseudomonas_aeruginosa_uid331/tmp/, Salmonella_enterica_serovar_Typhimurium_uid40625/tmp/, Staphylococcus_aureus_ED133_uid41277/tmp/, Yersinia_pestis_CO92_uid34/tmp/' are missing 
+ 20:05:30 -     Job  = [None -> Escherichia_coli_O157_H7_EC4115_uid27739] completed
+ 20:05:30 -     Job  = [None -> Pseudomonas_aeruginosa_uid331] completed
+ 20:05:30 -     Job  = [None -> Yersinia_pestis_CO92_uid34] completed
+ 20:05:30 -     Job  = [None -> Staphylococcus_aureus_ED133_uid41277] completed
+ 20:05:30 -     Job  = [None -> Bacillus_anthracis_Ames_uid309] completed
+ 20:05:30 -     Job  = [None -> Francisella_tularensis_tularensis_uid9] completed
+ 20:05:30 -     Job  = [None -> Clostridium_botulinum_A_Hall_uid19521] completed
+ 20:05:30 - Completed Task = 'sipp::task_originate' 
+ 20:05:30 -     Make directories [Bacillus_anthracis_Ames_uid309, Clostridium_botulinum_A_Hall_uid19521, Escherichia_coli_O157_H7_EC4115_uid27739, Francisella_tularensis_tularensis_uid9, Pseudomonas_aeruginosa_uid331, Salmonella_enterica_serovar_Typhimurium_uid40625, Staphylococcus_aureus_ED133_uid41277, Yersinia_pestis_CO92_uid34] completed
+ 20:05:30 - Completed Task = "sipp::mkdir(['Salmonella_enterica_serovar_Typhimurium_uid40625',   'Escherichia_coli_O157_H7_EC4115_uid27739',   'Pseudomonas_aeruginosa_uid331',   'Yersinia_pestis_CO92_uid34',   'Staphylococcus_aureus_ED133_uid41277',   'Bacillus_anthracis_Ames_uid309',   'Francisella_tularensis_tularensis_uid9',   'Clostridium_botulinum_A_Hall_uid19521'])   before ngs_simulate_commands.get_genome_fasta " 
+ 20:05:30 -     Make directories [Bacillus_anthracis_Ames_uid309/logs, Clostridium_botulinum_A_Hall_uid19521/logs, Escherichia_coli_O157_H7_EC4115_uid27739/logs, Francisella_tularensis_tularensis_uid9/logs, Pseudomonas_aeruginosa_uid331/logs, Salmonella_enterica_serovar_Typhimurium_uid40625/logs, Staphylococcus_aureus_ED133_uid41277/logs, Yersinia_pestis_CO92_uid34/logs] completed
+ 20:05:30 - Completed Task = "sipp::mkdir(['Salmonella_enterica_serovar_Typhimurium_uid40625/logs/',   'Escherichia_coli_O157_H7_EC4115_uid27739/logs/',   'Pseudomonas_aeruginosa_uid331/logs/',   'Yersinia_pestis_CO92_uid34/logs/',   'Staphylococcus_aureus_ED133_uid41277/logs/',   'Bacillus_anthracis_Ames_uid309/logs/',   'Francisella_tularensis_tularensis_uid9/logs/',   'Clostridium_botulinum_A_Hall_uid19521/logs/']) #2   before ngs_simulate_commands.get_genome_fasta " 
+ 20:05:30 -     Make directories [Bacillus_anthracis_Ames_uid309/tmp, Clostridium_botulinum_A_Hall_uid19521/tmp, Escherichia_coli_O157_H7_EC4115_uid27739/tmp, Francisella_tularensis_tularensis_uid9/tmp, Pseudomonas_aeruginosa_uid331/tmp, Salmonella_enterica_serovar_Typhimurium_uid40625/tmp, Staphylococcus_aureus_ED133_uid41277/tmp, Yersinia_pestis_CO92_uid34/tmp] completed
+ 20:05:30 - Completed Task = "sipp::mkdir(['Salmonella_enterica_serovar_Typhimurium_uid40625/tmp/',   'Escherichia_coli_O157_H7_EC4115_uid27739/tmp/',   'Pseudomonas_aeruginosa_uid331/tmp/',   'Yersinia_pestis_CO92_uid34/tmp/',   'Staphylococcus_aureus_ED133_uid41277/tmp/',   'Bacillus_anthracis_Ames_uid309/tmp/',   'Francisella_tularensis_tularensis_uid9/tmp/',   'Clostridium_botulinum_A_Hall_uid19521/tmp/']) #3   before ngs_simulate_commands.get_genome_fasta " 
+ 20:05:30 - Task enters queue = 'sipp::ngs_simulate_commands.get_genome_fasta' 
+ 20:05:30 -     Job  = [Bacillus_anthracis_Ames_uid309 -> Bacillus_anthracis_Ames_uid309/309_.fasta, .../Bacteria/] ...
+        Missing file [Bacillus_anthracis_Ames_uid309/309_.fasta] 
+ 20:05:30 -     Job  = [Clostridium_botulinum_A_Hall_uid19521 -> Clostridium_botulinum_A_Hall_uid19521/19521_.fasta, .../Bacteria/] ...
+        Missing file [Clostridium_botulinum_A_Hall_uid19521/19521_.fasta] 
+ 20:05:30 -     Job  = [Escherichia_coli_O157_H7_EC4115_uid27739 -> Escherichia_coli_O157_H7_EC4115_uid27739/27739_.fasta, .../Bacteria/] ...
+        Missing file [Escherichia_coli_O157_H7_EC4115_uid27739/27739_.fasta] 
+ 20:05:30 -     Job  = [Francisella_tularensis_tularensis_uid9 -> Francisella_tularensis_tularensis_uid9/9_.fasta, .../Bacteria/] ...
+        Missing file [Francisella_tularensis_tularensis_uid9/9_.fasta] 
+ 20:05:30 -     Job  = [Pseudomonas_aeruginosa_uid331 -> Pseudomonas_aeruginosa_uid331/331_.fasta, .../Bacteria/] ...
+        Missing file [Pseudomonas_aeruginosa_uid331/331_.fasta] 
+ 20:05:30 -     Job  = [Salmonella_enterica_serovar_Typhimurium_uid40625 -> Salmonella_enterica_serovar_Typhimurium_uid40625/40625_.fasta, .../Bacteria/] ...
+        Missing file [Salmonella_enterica_serovar_Typhimurium_uid40625/40625_.fasta] 
+ 20:05:30 -     Job  = [Staphylococcus_aureus_ED133_uid41277 -> Staphylococcus_aureus_ED133_uid41277/41277_.fasta, .../Bacteria/] ...
+        Missing file [Staphylococcus_aureus_ED133_uid41277/41277_.fasta] 
+ 20:05:30 -     Job  = [Yersinia_pestis_CO92_uid34 -> Yersinia_pestis_CO92_uid34/34_.fasta, .../Bacteria/] ...
+        Missing file [Yersinia_pestis_CO92_uid34/34_.fasta] 
+ 20:05:30 -     Job  = [Bacillus_anthracis_Ames_uid309 -> Bacillus_anthracis_Ames_uid309/309_.fasta, .../Bacteria/] completed
+ 20:05:31 -     Job  = [Salmonella_enterica_serovar_Typhimurium_uid40625 -> Salmonella_enterica_serovar_Typhimurium_uid40625/40625_.fasta, .../Bacteria/] completed
+ 20:05:31 -     Job  = [Staphylococcus_aureus_ED133_uid41277 -> Staphylococcus_aureus_ED133_uid41277/41277_.fasta, .../Bacteria/] completed
+ 20:05:31 -     Job  = [Francisella_tularensis_tularensis_uid9 -> Francisella_tularensis_tularensis_uid9/9_.fasta, .../Bacteria/] completed
+ 20:05:31 -     Job  = [Escherichia_coli_O157_H7_EC4115_uid27739 -> Escherichia_coli_O157_H7_EC4115_uid27739/27739_.fasta, .../Bacteria/] completed
+ 20:05:31 -     Job  = [Yersinia_pestis_CO92_uid34 -> Yersinia_pestis_CO92_uid34/34_.fasta, .../Bacteria/] completed
+ 20:05:31 -     Job  = [Pseudomonas_aeruginosa_uid331 -> Pseudomonas_aeruginosa_uid331/331_.fasta, .../Bacteria/] completed
+ 20:05:31 -     Job  = [Clostridium_botulinum_A_Hall_uid19521 -> Clostridium_botulinum_A_Hall_uid19521/19521_.fasta, .../Bacteria/] completed
+ 20:05:32 - Completed Task = 'sipp::ngs_simulate_commands.get_genome_fasta' 
+ 20:05:32 - Task enters queue = 'sipp::ngs_simulate_commands.simulate_miseq' 
+ 20:05:32 -     Job  = [Bacillus_anthracis_Ames_uid309/309_.fasta -> [Bacillus_anthracis_Ames_uid309/309_1.fq, Bacillus_anthracis_Ames_uid309/309_2.fq]] ...
+        Missing files [Bacillus_anthracis_Ames_uid309/309_1.fq, Bacillus_anthracis_Ames_uid309/309_2.fq] 
+ 20:05:32 -     Job  = [Clostridium_botulinum_A_Hall_uid19521/19521_.fasta -> [Clostridium_botulinum_A_Hall_uid19521/19521_1.fq, Clostridium_botulinum_A_Hall_uid19521/19521_2.fq]] ...
+        Missing files [Clostridium_botulinum_A_Hall_uid19521/19521_1.fq, Clostridium_botulinum_A_Hall_uid19521/19521_2.fq] 
+ 20:05:32 -     Job  = [Escherichia_coli_O157_H7_EC4115_uid27739/27739_.fasta -> [Escherichia_coli_O157_H7_EC4115_uid27739/27739_1.fq, Escherichia_coli_O157_H7_EC4115_uid27739/27739_2.fq]] ...
+        Missing files [Escherichia_coli_O157_H7_EC4115_uid27739/27739_1.fq, Escherichia_coli_O157_H7_EC4115_uid27739/27739_2.fq] 
+ 20:05:32 -     Job  = [Francisella_tularensis_tularensis_uid9/9_.fasta -> [Francisella_tularensis_tularensis_uid9/9_1.fq, Francisella_tularensis_tularensis_uid9/9_2.fq]] ...
+        Missing files [Francisella_tularensis_tularensis_uid9/9_1.fq, Francisella_tularensis_tularensis_uid9/9_2.fq] 
+ 20:05:32 -     Job  = [Pseudomonas_aeruginosa_uid331/331_.fasta -> [Pseudomonas_aeruginosa_uid331/331_1.fq, Pseudomonas_aeruginosa_uid331/331_2.fq]] ...
+        Missing files [Pseudomonas_aeruginosa_uid331/331_1.fq, Pseudomonas_aeruginosa_uid331/331_2.fq] 
+ 20:05:32 -     Job  = [Salmonella_enterica_serovar_Typhimurium_uid40625/40625_.fasta -> [Salmonella_enterica_serovar_Typhimurium_uid40625/40625_1.fq, Salmonella_enterica_serovar_Typhimurium_uid40625/40625_2.fq]] ...
+        Missing files [Salmonella_enterica_serovar_Typhimurium_uid40625/40625_1.fq, Salmonella_enterica_serovar_Typhimurium_uid40625/40625_2.fq] 
+ 20:05:32 -     Job  = [Staphylococcus_aureus_ED133_uid41277/41277_.fasta -> [Staphylococcus_aureus_ED133_uid41277/41277_1.fq, Staphylococcus_aureus_ED133_uid41277/41277_2.fq]] ...
+        Missing files [Staphylococcus_aureus_ED133_uid41277/41277_1.fq, Staphylococcus_aureus_ED133_uid41277/41277_2.fq] 
+ 20:05:32 -     Job  = [Yersinia_pestis_CO92_uid34/34_.fasta -> [Yersinia_pestis_CO92_uid34/34_1.fq, Yersinia_pestis_CO92_uid34/34_2.fq]] ...
+        Missing files [Yersinia_pestis_CO92_uid34/34_1.fq, Yersinia_pestis_CO92_uid34/34_2.fq] 
+ 20:05:37 -     Job  = [Francisella_tularensis_tularensis_uid9/9_.fasta -> [Francisella_tularensis_tularensis_uid9/9_1.fq, Francisella_tularensis_tularensis_uid9/9_2.fq]] completed
+ 20:05:41 -     Job  = [Staphylococcus_aureus_ED133_uid41277/41277_.fasta -> [Staphylococcus_aureus_ED133_uid41277/41277_1.fq, Staphylococcus_aureus_ED133_uid41277/41277_2.fq]] completed
+ 20:05:46 -     Job  = [Clostridium_botulinum_A_Hall_uid19521/19521_.fasta -> [Clostridium_botulinum_A_Hall_uid19521/19521_1.fq, Clostridium_botulinum_A_Hall_uid19521/19521_2.fq]] completed
+ 20:05:47 -     Job  = [Bacillus_anthracis_Ames_uid309/309_.fasta -> [Bacillus_anthracis_Ames_uid309/309_1.fq, Bacillus_anthracis_Ames_uid309/309_2.fq]] completed
+ 20:05:48 -     Job  = [Salmonella_enterica_serovar_Typhimurium_uid40625/40625_.fasta -> [Salmonella_enterica_serovar_Typhimurium_uid40625/40625_1.fq, Salmonella_enterica_serovar_Typhimurium_uid40625/40625_2.fq]] completed
+ 20:05:50 -     Job  = [Escherichia_coli_O157_H7_EC4115_uid27739/27739_.fasta -> [Escherichia_coli_O157_H7_EC4115_uid27739/27739_1.fq, Escherichia_coli_O157_H7_EC4115_uid27739/27739_2.fq]] completed
+ 20:05:51 -     Job  = [Pseudomonas_aeruginosa_uid331/331_.fasta -> [Pseudomonas_aeruginosa_uid331/331_1.fq, Pseudomonas_aeruginosa_uid331/331_2.fq]] completed
+ 20:05:53 -     Job  = [Yersinia_pestis_CO92_uid34/34_.fasta -> [Yersinia_pestis_CO92_uid34/34_1.fq, Yersinia_pestis_CO92_uid34/34_2.fq]] completed
+ 20:05:53 - Completed Task = 'sipp::ngs_simulate_commands.simulate_miseq' 
+ 20:05:53 - Task enters queue = 'sipp::pathoscope_commands.pathomap_command' 
+ 20:05:53 -     Job  = [[Bacillus_anthracis_Ames_uid309/309_1.fq, Bacillus_anthracis_Ames_uid309/309_2.fq] -> Bacillus_anthracis_Ames_uid309/pathomap-appendAlign.sam, {'index_dir': '/databases/micro_rm_patho_db', 'ref': '/databases/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Bacillus_anthracis_Ames_uid309/pathomap-appendAlign.sam] 
+ 20:05:53 -     Job  = [[Clostridium_botulinum_A_Hall_uid19521/19521_1.fq, Clostridium_botulinum_A_Hall_uid19521/19521_2.fq] -> Clostridium_botulinum_A_Hall_uid19521/pathomap-appendAlign.sam, {'index_dir': '/databases/micro_rm_patho_db', 'ref': '/databases/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Clostridium_botulinum_A_Hall_uid19521/pathomap-appendAlign.sam] 
+ 20:05:53 -     Job  = [[Escherichia_coli_O157_H7_EC4115_uid27739/27739_1.fq, Escherichia_coli_O157_H7_EC4115_uid27739/27739_2.fq] -> Escherichia_coli_O157_H7_EC4115_uid27739/pathomap-appendAlign.sam, {'index_dir': '/databases/micro_rm_patho_db', 'ref': '/databases/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_O157_H7_EC4115_uid27739/pathomap-appendAlign.sam] 
+ 20:05:53 -     Job  = [[Francisella_tularensis_tularensis_uid9/9_1.fq, Francisella_tularensis_tularensis_uid9/9_2.fq] -> Francisella_tularensis_tularensis_uid9/pathomap-appendAlign.sam, {'index_dir': '/databases/micro_rm_patho_db', 'ref': '/databases/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Francisella_tularensis_tularensis_uid9/pathomap-appendAlign.sam] 
+ 20:05:53 -     Job  = [[Pseudomonas_aeruginosa_uid331/331_1.fq, Pseudomonas_aeruginosa_uid331/331_2.fq] -> Pseudomonas_aeruginosa_uid331/pathomap-appendAlign.sam, {'index_dir': '/databases/micro_rm_patho_db', 'ref': '/databases/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Pseudomonas_aeruginosa_uid331/pathomap-appendAlign.sam] 
+ 20:05:53 -     Job  = [[Salmonella_enterica_serovar_Typhimurium_uid40625/40625_1.fq, Salmonella_enterica_serovar_Typhimurium_uid40625/40625_2.fq] -> Salmonella_enterica_serovar_Typhimurium_uid40625/pathomap-appendAlign.sam, {'index_dir': '/databases/micro_rm_patho_db', 'ref': '/databases/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Salmonella_enterica_serovar_Typhimurium_uid40625/pathomap-appendAlign.sam] 
+ 20:05:53 -     Job  = [[Staphylococcus_aureus_ED133_uid41277/41277_1.fq, Staphylococcus_aureus_ED133_uid41277/41277_2.fq] -> Staphylococcus_aureus_ED133_uid41277/pathomap-appendAlign.sam, {'index_dir': '/databases/micro_rm_patho_db', 'ref': '/databases/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Staphylococcus_aureus_ED133_uid41277/pathomap-appendAlign.sam] 
+ 20:05:53 -     Job  = [[Yersinia_pestis_CO92_uid34/34_1.fq, Yersinia_pestis_CO92_uid34/34_2.fq] -> Yersinia_pestis_CO92_uid34/pathomap-appendAlign.sam, {'index_dir': '/databases/micro_rm_patho_db', 'ref': '/databases/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Yersinia_pestis_CO92_uid34/pathomap-appendAlign.sam] 
+
+2015-08-03 __main__
+ 21:25:32 - 
+ 21:25:32 - ________________________________________
+ 21:25:32 - Tasks which will be run:
+ 21:25:32 - 
+ 21:25:32 - 
+ 21:25:32 - Task enters queue = 'sipp::task_originate' 
+ 21:25:32 -     Makes new files
+ 21:25:32 -     Job  = [None -> Salmonella_enterica_serovar_Typhimurium_uid40625]
+ 21:25:33 - Task enters queue = 'sipp::ngs_simulate_commands.get_genome_fasta' 
+ 21:25:33 -     Job  = [Bacillus_anthracis_Ames_uid309 -> Bacillus_anthracis_Ames_uid309/309_.fasta, .../Bacteria/]
+ 21:25:33 -     Job  = [Clostridium_botulinum_A_Hall_uid19521 -> Clostridium_botulinum_A_Hall_uid19521/19521_.fasta, .../Bacteria/]
+ 21:25:33 -     Job  = [Escherichia_coli_O157_H7_EC4115_uid27739 -> Escherichia_coli_O157_H7_EC4115_uid27739/27739_.fasta, .../Bacteria/]
+ 21:25:33 -     Job  = [Francisella_tularensis_tularensis_uid9 -> Francisella_tularensis_tularensis_uid9/9_.fasta, .../Bacteria/]
+ 21:25:33 -     Job  = [Pseudomonas_aeruginosa_uid331 -> Pseudomonas_aeruginosa_uid331/331_.fasta, .../Bacteria/]
+ 21:25:33 -     Job  = [Salmonella_enterica_serovar_Typhimurium_uid40625 -> Salmonella_enterica_serovar_Typhimurium_uid40625/40625_.fasta, .../Bacteria/]
+ 21:25:33 -     Job  = [Staphylococcus_aureus_ED133_uid41277 -> Staphylococcus_aureus_ED133_uid41277/41277_.fasta, .../Bacteria/]
+ 21:25:33 -     Job  = [Yersinia_pestis_CO92_uid34 -> Yersinia_pestis_CO92_uid34/34_.fasta, .../Bacteria/]
+ 21:25:33 -     Job  = [None -> Salmonella_enterica_serovar_Typhimurium_uid40625] completed
+ 21:25:33 -     Job  = [Francisella_tularensis_tularensis_uid9 -> Francisella_tularensis_tularensis_uid9/9_.fasta, .../Bacteria/] completed
+ 21:25:34 - Completed Task = 'sipp::task_originate' 
+ 21:25:34 -     Job  = [Clostridium_botulinum_A_Hall_uid19521 -> Clostridium_botulinum_A_Hall_uid19521/19521_.fasta, .../Bacteria/] completed
+ 21:25:34 -     Job  = [Staphylococcus_aureus_ED133_uid41277 -> Staphylococcus_aureus_ED133_uid41277/41277_.fasta, .../Bacteria/] completed
+ 21:25:34 -     Job  = [Salmonella_enterica_serovar_Typhimurium_uid40625 -> Salmonella_enterica_serovar_Typhimurium_uid40625/40625_.fasta, .../Bacteria/] completed
+ 21:25:34 -     Job  = [Pseudomonas_aeruginosa_uid331 -> Pseudomonas_aeruginosa_uid331/331_.fasta, .../Bacteria/] completed
+ 21:25:34 -     Job  = [Bacillus_anthracis_Ames_uid309 -> Bacillus_anthracis_Ames_uid309/309_.fasta, .../Bacteria/] completed
+ 21:25:34 -     Job  = [Escherichia_coli_O157_H7_EC4115_uid27739 -> Escherichia_coli_O157_H7_EC4115_uid27739/27739_.fasta, .../Bacteria/] completed
+ 21:25:34 -     Job  = [Yersinia_pestis_CO92_uid34 -> Yersinia_pestis_CO92_uid34/34_.fasta, .../Bacteria/] completed
+ 21:25:34 - Completed Task = 'sipp::ngs_simulate_commands.get_genome_fasta' 
+ 21:25:34 - Task enters queue = 'sipp::ngs_simulate_commands.simulate_miseq' 
+ 21:25:34 -     Job  = [Bacillus_anthracis_Ames_uid309/309_.fasta -> [Bacillus_anthracis_Ames_uid309/309_1.fq, Bacillus_anthracis_Ames_uid309/309_2.fq]]
+ 21:25:34 -     Job  = [Clostridium_botulinum_A_Hall_uid19521/19521_.fasta -> [Clostridium_botulinum_A_Hall_uid19521/19521_1.fq, Clostridium_botulinum_A_Hall_uid19521/19521_2.fq]]
+ 21:25:34 -     Job  = [Escherichia_coli_O157_H7_EC4115_uid27739/27739_.fasta -> [Escherichia_coli_O157_H7_EC4115_uid27739/27739_1.fq, Escherichia_coli_O157_H7_EC4115_uid27739/27739_2.fq]]
+ 21:25:34 -     Job  = [Francisella_tularensis_tularensis_uid9/9_.fasta -> [Francisella_tularensis_tularensis_uid9/9_1.fq, Francisella_tularensis_tularensis_uid9/9_2.fq]]
+ 21:25:34 -     Job  = [Pseudomonas_aeruginosa_uid331/331_.fasta -> [Pseudomonas_aeruginosa_uid331/331_1.fq, Pseudomonas_aeruginosa_uid331/331_2.fq]]
+ 21:25:34 -     Job  = [Salmonella_enterica_serovar_Typhimurium_uid40625/40625_.fasta -> [Salmonella_enterica_serovar_Typhimurium_uid40625/40625_1.fq, Salmonella_enterica_serovar_Typhimurium_uid40625/40625_2.fq]]
+ 21:25:34 -     Job  = [Staphylococcus_aureus_ED133_uid41277/41277_.fasta -> [Staphylococcus_aureus_ED133_uid41277/41277_1.fq, Staphylococcus_aureus_ED133_uid41277/41277_2.fq]]
+ 21:25:34 -     Job  = [Yersinia_pestis_CO92_uid34/34_.fasta -> [Yersinia_pestis_CO92_uid34/34_1.fq, Yersinia_pestis_CO92_uid34/34_2.fq]]
+ 21:25:40 -     Job  = [Francisella_tularensis_tularensis_uid9/9_.fasta -> [Francisella_tularensis_tularensis_uid9/9_1.fq, Francisella_tularensis_tularensis_uid9/9_2.fq]] completed
+ 21:25:44 -     Job  = [Staphylococcus_aureus_ED133_uid41277/41277_.fasta -> [Staphylococcus_aureus_ED133_uid41277/41277_1.fq, Staphylococcus_aureus_ED133_uid41277/41277_2.fq]] completed
+ 21:25:46 -     Job  = [Clostridium_botulinum_A_Hall_uid19521/19521_.fasta -> [Clostridium_botulinum_A_Hall_uid19521/19521_1.fq, Clostridium_botulinum_A_Hall_uid19521/19521_2.fq]] completed
+ 21:25:50 -     Job  = [Salmonella_enterica_serovar_Typhimurium_uid40625/40625_.fasta -> [Salmonella_enterica_serovar_Typhimurium_uid40625/40625_1.fq, Salmonella_enterica_serovar_Typhimurium_uid40625/40625_2.fq]] completed
+ 21:25:59 -     Job  = [Bacillus_anthracis_Ames_uid309/309_.fasta -> [Bacillus_anthracis_Ames_uid309/309_1.fq, Bacillus_anthracis_Ames_uid309/309_2.fq]] completed
+ 21:25:59 -     Job  = [Escherichia_coli_O157_H7_EC4115_uid27739/27739_.fasta -> [Escherichia_coli_O157_H7_EC4115_uid27739/27739_1.fq, Escherichia_coli_O157_H7_EC4115_uid27739/27739_2.fq]] completed
+ 21:26:00 -     Job  = [Pseudomonas_aeruginosa_uid331/331_.fasta -> [Pseudomonas_aeruginosa_uid331/331_1.fq, Pseudomonas_aeruginosa_uid331/331_2.fq]] completed
+ 21:26:00 -     Job  = [Yersinia_pestis_CO92_uid34/34_.fasta -> [Yersinia_pestis_CO92_uid34/34_1.fq, Yersinia_pestis_CO92_uid34/34_2.fq]] completed
+ 21:26:00 - Completed Task = 'sipp::ngs_simulate_commands.simulate_miseq' 
+ 21:26:00 - Task enters queue = 'sipp::pathoscope_commands.pathomap_command' 
+ 21:26:00 -     Job  = [[Bacillus_anthracis_Ames_uid309/309_1.fq, Bacillus_anthracis_Ames_uid309/309_2.fq] -> Bacillus_anthracis_Ames_uid309/pathomap-appendAlign.sam, {'index_dir': '/databases/micro_rm_patho_db', 'ref': '/databases/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}]
+ 21:26:00 -     Job  = [[Clostridium_botulinum_A_Hall_uid19521/19521_1.fq, Clostridium_botulinum_A_Hall_uid19521/19521_2.fq] -> Clostridium_botulinum_A_Hall_uid19521/pathomap-appendAlign.sam, {'index_dir': '/databases/micro_rm_patho_db', 'ref': '/databases/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}]
+ 21:26:00 -     Job  = [[Escherichia_coli_O157_H7_EC4115_uid27739/27739_1.fq, Escherichia_coli_O157_H7_EC4115_uid27739/27739_2.fq] -> Escherichia_coli_O157_H7_EC4115_uid27739/pathomap-appendAlign.sam, {'index_dir': '/databases/micro_rm_patho_db', 'ref': '/databases/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}]
+ 21:26:00 -     Job  = [[Francisella_tularensis_tularensis_uid9/9_1.fq, Francisella_tularensis_tularensis_uid9/9_2.fq] -> Francisella_tularensis_tularensis_uid9/pathomap-appendAlign.sam, {'index_dir': '/databases/micro_rm_patho_db', 'ref': '/databases/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}]
+ 21:26:00 -     Job  = [[Pseudomonas_aeruginosa_uid331/331_1.fq, Pseudomonas_aeruginosa_uid331/331_2.fq] -> Pseudomonas_aeruginosa_uid331/pathomap-appendAlign.sam, {'index_dir': '/databases/micro_rm_patho_db', 'ref': '/databases/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}]
+ 21:26:00 -     Job  = [[Salmonella_enterica_serovar_Typhimurium_uid40625/40625_1.fq, Salmonella_enterica_serovar_Typhimurium_uid40625/40625_2.fq] -> Salmonella_enterica_serovar_Typhimurium_uid40625/pathomap-appendAlign.sam, {'index_dir': '/databases/micro_rm_patho_db', 'ref': '/databases/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}]
+ 21:26:00 -     Job  = [[Staphylococcus_aureus_ED133_uid41277/41277_1.fq, Staphylococcus_aureus_ED133_uid41277/41277_2.fq] -> Staphylococcus_aureus_ED133_uid41277/pathomap-appendAlign.sam, {'index_dir': '/databases/micro_rm_patho_db', 'ref': '/databases/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}]
+ 21:26:00 -     Job  = [[Yersinia_pestis_CO92_uid34/34_1.fq, Yersinia_pestis_CO92_uid34/34_2.fq] -> Yersinia_pestis_CO92_uid34/pathomap-appendAlign.sam, {'index_dir': '/databases/micro_rm_patho_db', 'ref': '/databases/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}]
+ 22:49:41 -     Job  = [[Francisella_tularensis_tularensis_uid9/9_1.fq, Francisella_tularensis_tularensis_uid9/9_2.fq] -> Francisella_tularensis_tularensis_uid9/pathomap-appendAlign.sam, {'index_dir': '/databases/micro_rm_patho_db', 'ref': '/databases/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 22:52:07 -     Job  = [[Clostridium_botulinum_A_Hall_uid19521/19521_1.fq, Clostridium_botulinum_A_Hall_uid19521/19521_2.fq] -> Clostridium_botulinum_A_Hall_uid19521/pathomap-appendAlign.sam, {'index_dir': '/databases/micro_rm_patho_db', 'ref': '/databases/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 22:52:32 -     Job  = [[Pseudomonas_aeruginosa_uid331/331_1.fq, Pseudomonas_aeruginosa_uid331/331_2.fq] -> Pseudomonas_aeruginosa_uid331/pathomap-appendAlign.sam, {'index_dir': '/databases/micro_rm_patho_db', 'ref': '/databases/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 22:57:09 -     Job  = [[Staphylococcus_aureus_ED133_uid41277/41277_1.fq, Staphylococcus_aureus_ED133_uid41277/41277_2.fq] -> Staphylococcus_aureus_ED133_uid41277/pathomap-appendAlign.sam, {'index_dir': '/databases/micro_rm_patho_db', 'ref': '/databases/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 23:07:34 -     Job  = [[Bacillus_anthracis_Ames_uid309/309_1.fq, Bacillus_anthracis_Ames_uid309/309_2.fq] -> Bacillus_anthracis_Ames_uid309/pathomap-appendAlign.sam, {'index_dir': '/databases/micro_rm_patho_db', 'ref': '/databases/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 23:13:19 -     Job  = [[Salmonella_enterica_serovar_Typhimurium_uid40625/40625_1.fq, Salmonella_enterica_serovar_Typhimurium_uid40625/40625_2.fq] -> Salmonella_enterica_serovar_Typhimurium_uid40625/pathomap-appendAlign.sam, {'index_dir': '/databases/micro_rm_patho_db', 'ref': '/databases/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 00:42:28 -     Job  = [[Yersinia_pestis_CO92_uid34/34_1.fq, Yersinia_pestis_CO92_uid34/34_2.fq] -> Yersinia_pestis_CO92_uid34/pathomap-appendAlign.sam, {'index_dir': '/databases/micro_rm_patho_db', 'ref': '/databases/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 01:09:49 -     Job  = [[Escherichia_coli_O157_H7_EC4115_uid27739/27739_1.fq, Escherichia_coli_O157_H7_EC4115_uid27739/27739_2.fq] -> Escherichia_coli_O157_H7_EC4115_uid27739/pathomap-appendAlign.sam, {'index_dir': '/databases/micro_rm_patho_db', 'ref': '/databases/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 01:09:50 - Completed Task = 'sipp::pathoscope_commands.pathomap_command' 
+ 01:09:50 - Task enters queue = 'sipp::pathoscope_commands.pathoid_command' 
+ 01:09:50 -     Job  = [Bacillus_anthracis_Ames_uid309/pathomap-appendAlign.sam -> Bacillus_anthracis_Ames_uid309/pathomap-sam-report.tsv]
+ 01:09:50 -     Job  = [Clostridium_botulinum_A_Hall_uid19521/pathomap-appendAlign.sam -> Clostridium_botulinum_A_Hall_uid19521/pathomap-sam-report.tsv]
+ 01:09:50 -     Job  = [Escherichia_coli_O157_H7_EC4115_uid27739/pathomap-appendAlign.sam -> Escherichia_coli_O157_H7_EC4115_uid27739/pathomap-sam-report.tsv]
+ 01:09:50 -     Job  = [Francisella_tularensis_tularensis_uid9/pathomap-appendAlign.sam -> Francisella_tularensis_tularensis_uid9/pathomap-sam-report.tsv]
+ 01:09:50 -     Job  = [Pseudomonas_aeruginosa_uid331/pathomap-appendAlign.sam -> Pseudomonas_aeruginosa_uid331/pathomap-sam-report.tsv]
+ 01:09:50 -     Job  = [Salmonella_enterica_serovar_Typhimurium_uid40625/pathomap-appendAlign.sam -> Salmonella_enterica_serovar_Typhimurium_uid40625/pathomap-sam-report.tsv]
+ 01:09:50 -     Job  = [Staphylococcus_aureus_ED133_uid41277/pathomap-appendAlign.sam -> Staphylococcus_aureus_ED133_uid41277/pathomap-sam-report.tsv]
+ 01:09:50 -     Job  = [Yersinia_pestis_CO92_uid34/pathomap-appendAlign.sam -> Yersinia_pestis_CO92_uid34/pathomap-sam-report.tsv]
+ 01:21:22 -     Job  = [Salmonella_enterica_serovar_Typhimurium_uid40625/pathomap-appendAlign.sam -> Salmonella_enterica_serovar_Typhimurium_uid40625/pathomap-sam-report.tsv] completed
+ 01:22:04 -     Job  = [Staphylococcus_aureus_ED133_uid41277/pathomap-appendAlign.sam -> Staphylococcus_aureus_ED133_uid41277/pathomap-sam-report.tsv] completed
+ 01:25:34 -     Job  = [Clostridium_botulinum_A_Hall_uid19521/pathomap-appendAlign.sam -> Clostridium_botulinum_A_Hall_uid19521/pathomap-sam-report.tsv] completed
+ 01:27:02 -     Job  = [Francisella_tularensis_tularensis_uid9/pathomap-appendAlign.sam -> Francisella_tularensis_tularensis_uid9/pathomap-sam-report.tsv] completed
+ 02:03:41 -     Job  = [Pseudomonas_aeruginosa_uid331/pathomap-appendAlign.sam -> Pseudomonas_aeruginosa_uid331/pathomap-sam-report.tsv] completed
+ 02:38:11 -     Job  = [Bacillus_anthracis_Ames_uid309/pathomap-appendAlign.sam -> Bacillus_anthracis_Ames_uid309/pathomap-sam-report.tsv] completed
+ 02:40:04 -     Job  = [Yersinia_pestis_CO92_uid34/pathomap-appendAlign.sam -> Yersinia_pestis_CO92_uid34/pathomap-sam-report.tsv] completed
+ 02:56:41 -     Job  = [Escherichia_coli_O157_H7_EC4115_uid27739/pathomap-appendAlign.sam -> Escherichia_coli_O157_H7_EC4115_uid27739/pathomap-sam-report.tsv] completed
+ 02:56:41 - Completed Task = 'sipp::pathoscope_commands.pathoid_command' 

@@ -1,0 +1,7 @@
+Ralstonia solanacearum CFBP2957 plasmid RCFBPv3_mp, complete genome - 1..2163376
+4 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+314997..315081	-	85	299073288	-	RCFBP_mptRNA2	-	-	Leu tRNA
+737309..737386	-	78	299073288	-	RCFBP_mptRNA1	-	-	Lys tRNA
+778734..778913	-	180	299073288	-	RCFBP_mpmisc_RNA_10	-	-	-
+1579303..1579458	-	156	299073288	-	RCFBP_mpmisc_RNA_9	-	-	-

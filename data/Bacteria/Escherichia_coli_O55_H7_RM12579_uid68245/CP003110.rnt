@@ -1,0 +1,6 @@
+Escherichia coli O55:H7 str. RM12579 plasmid p12579_1, complete sequence. - 1..94015
+3 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+65384..65459	+	76	374361841	-	ECO55CA74_t25905	-	-	Asn tRNA
+65462..65537	+	76	374361841	-	ECO55CA74_t25907	-	-	Thr tRNA
+67538..67613	+	76	374361841	-	ECO55CA74_t25909	-	-	Met tRNA

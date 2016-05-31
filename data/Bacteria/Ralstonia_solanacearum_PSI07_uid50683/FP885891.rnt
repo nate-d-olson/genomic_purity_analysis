@@ -1,0 +1,6 @@
+Ralstonia solanacearum PSI07 megaplasmid mpPSI07, complete sequence - 1..2085000
+3 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+302591..302675	-	85	299075079	-	RPSI07_mptRNA1	-	-	Leu tRNA
+663126..663305	-	180	299075079	-	RPSI07_mpmisc_RNA_2	-	-	-
+1492357..1492513	-	157	299075079	-	RPSI07_mpmisc_RNA_1	-	-	-

@@ -1,0 +1,7 @@
+Vibrio cholerae O395 chromosome 1, complete genome. - 1..1108250
+4 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+547465..547539	+	75	146313784	-	VC0395_0490	-	-	Gly tRNA
+757929..758002	-	74	146313784	-	VC0395_0693	-	-	Cys tRNA
+758027..758113	-	87	146313784	-	VC0395_0694	-	-	Leu tRNA
+763149..763222	-	74	146313784	-	VC0395_0702	-	-	Cys tRNA

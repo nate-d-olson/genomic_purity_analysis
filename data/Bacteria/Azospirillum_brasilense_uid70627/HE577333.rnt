@@ -1,0 +1,5 @@
+Azospirillum brasilense Sp245 plasmid AZOBR_p6 complete genome - 1..167364
+2 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+85227..85304	-	78	356882917	-	AZOBR_p6misc_RNA_1	-	-	-
+89870..89944	+	75	356882917	-	AZOBR_p6tRNA1	-	-	Gly tRNA

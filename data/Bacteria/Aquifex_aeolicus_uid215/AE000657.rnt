@@ -1,0 +1,54 @@
+Aquifex aeolicus VF5, complete genome. - 1..1551335
+51 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+168875..168963	+	89	6626248	-	aq_t01	-	-	Anticodon: GGA
+215844..215928	+	85	6626248	-	aq_t02	-	-	Anticodon: GAG
+217784..217855	+	72	6626248	-	aq_t03	-	-	Anticodon: GCC
+217867..217938	+	72	6626248	-	aq_t04	-	-	Anticodon: GCA
+296990..297061	-	72	6626248	-	aq_t05	-	-	Anticodon: CCC
+383315..383386	-	72	6626248	-	aq_t06	-	-	Anticodon: CGT
+403089..403162	+	74	6626248	-	aq_t07	-	-	Ile tRNA
+443927..444000	-	74	6626248	-	aq_t08	-	-	Anticodon: CCT
+450408..450480	-	73	6626248	-	aq_t09	-	-	Anticodon: GAA
+552612..552684	+	73	6626248	-	aq_t10	-	-	Anticodon: GGG
+567770..567889	-	120	6626248	-	aq_r01	-	-	5S ribosomal RNA
+567929..570884	-	2956	6626248	-	aq_r02	-	-	23S ribosomal RNA
+570932..571004	-	73	6626248	-	aq_t11	-	-	Anticodon: TGC
+571021..571094	-	74	6626248	-	aq_t12	-	-	Anticodon: GAT
+571199..572785	-	1587	6626248	-	aq_r03	-	-	16S ribosomal RNA
+601711..601801	-	91	6626248	-	aq_t13	-	-	Anticodon: TAA
+619914..619987	-	74	6626248	-	aq_t14	-	-	Anticodon: CCG
+643595..643683	-	89	6626248	-	aq_t15	-	-	Anticodon: GCT
+727371..727465	+	95	6626248	-	aq_t16	-	-	Anticodon: TCA
+730604..730676	-	73	6626248	-	aq_t17	-	-	Anticodon: GAC
+844146..844230	-	85	6626248	-	aq_t18	-	-	Anticodon: CAA
+861906..861978	-	73	6626248	-	aq_t19	-	-	Anticodon: CAT
+898302..898385	-	84	6626248	-	aq_t20	-	-	Anticodon: CAG
+955412..955495	-	84	6626248	-	aq_t21	-	-	Anticodon: TAG
+970381..970454	+	74	6626248	-	aq_t22	-	-	Anticodon: CAT
+972005..972094	+	90	6626248	-	aq_t23	-	-	Anticodon: CGA
+1050475..1050547	+	73	6626248	-	aq_t24	-	-	Anticodon: GTT
+1147765..1147837	-	73	6626248	-	aq_t25	-	-	Anticodon: TTG
+1153498..1153844	-	347	6626248	-	aq_s01	-	-	-
+1174311..1174383	-	73	6626248	-	aq_t26	-	-	Anticodon: CGG
+1192069..1193655	+	1587	6626248	-	aq_r04	-	-	16S ribosomal RNA
+1193760..1193833	+	74	6626248	-	aq_t27	-	-	Anticodon: GAT
+1193850..1193922	+	73	6626248	-	aq_t28	-	-	Anticodon: TGC
+1193970..1196925	+	2956	6626248	-	aq_r05	-	-	23S ribosomal RNA
+1196965..1197084	+	120	6626248	-	aq_r06	-	-	5S ribosomal RNA
+1197109..1197182	+	74	6626248	-	aq_t29	-	-	Anticodon: TCT
+1231223..1231312	-	90	6626248	-	aq_t30	-	-	Anticodon: TGA
+1242836..1242908	-	73	6626248	-	aq_t31	-	-	Anticodon: CTT
+1242937..1243010	-	74	6626248	-	aq_t32	-	-	Anticodon: ACG
+1245134..1245206	+	73	6626248	-	aq_t33	-	-	Anticodon: GTG
+1356480..1356552	+	73	6626248	-	aq_t34	-	-	Anticodon: TGT
+1356575..1356659	+	85	6626248	-	aq_t35	-	-	Anticodon: GTA
+1356669..1356741	+	73	6626248	-	aq_t36	-	-	Anticodon: TCC
+1356774..1356846	+	73	6626248	-	aq_t37	-	-	Anticodon: GGT
+1358326..1358398	+	73	6626248	-	aq_t38	-	-	Anticodon: CCA
+1376005..1376079	-	75	6626248	-	aq_t39	-	-	Anticodon: GTC
+1452941..1453013	-	73	6626248	-	aq_t40	-	-	Anticodon: TAC
+1453038..1453112	-	75	6626248	-	aq_t41	-	-	Anticodon: TTC
+1515350..1515422	-	73	6626248	-	aq_t42	-	-	Anticodon: TTT
+1515439..1515511	-	73	6626248	-	aq_t43	-	-	Anticodon: GGC
+1531052..1531124	-	73	6626248	-	aq_t44	-	-	Anticodon: TGG

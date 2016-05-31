@@ -1,0 +1,6 @@
+Escherichia coli 0127:H6 E2348/69 plasmid pMAR2, strain E2348/69 - 1..97978
+3 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+32050..32141	+	92	215267788	-	E2348_P1_mR_1	-	-	-
+67669..67744	+	76	215267788	finP	E2348_P1_mR_2	-	-	-
+67670..67777	-	108	215267788	-	E2348_P1_mR_3	-	-	-

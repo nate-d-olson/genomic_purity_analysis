@@ -1,0 +1,70 @@
+Corynebacterium aurimucosum ATCC 700975, complete genome. - 1..2790189
+67 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+11906..11982	+	77	227452846	-	cauri_t01	-	-	Anticodon: GAT
+11992..12064	+	73	227452846	-	cauri_t02	-	-	Anticodon: TGC
+15339..15411	+	73	227452846	-	cauri_t03	-	-	Anticodon: CGC
+38712..38796	+	85	227452846	-	cauri_t04	-	-	Anticodon: CAG
+118155..118242	+	88	227452846	-	cauri_t05	-	-	Anticodon: TGA
+130941..131032	+	92	227452846	-	cauri_t06	-	-	Anticodon: GCT
+146991..147066	+	76	227452846	-	cauri_t07	-	-	Anticodon: ACG
+152946..153036	+	91	227452846	-	cauri_t08	-	-	Anticodon: CGA
+180347..180435	-	89	227452846	-	cauri_t09	-	-	Anticodon: GGA
+220664..220740	-	77	227452846	-	cauri_t10	-	-	Anticodon: CGG
+257532..257607	+	76	227452846	-	cauri_t11	-	-	Anticodon: CGT
+386685..386769	+	85	227452846	-	cauri_t12	-	-	Anticodon: GTA
+388227..388302	+	76	227452846	-	cauri_t13	-	-	Anticodon: GGT
+388337..388411	+	75	227452846	-	cauri_t14	-	-	Anticodon: CAT
+388536..388611	+	76	227452846	-	cauri_t15	-	-	Anticodon: CCA
+777714..777790	+	77	227452846	-	cauri_t16	-	-	Anticodon: CAT
+805077..805454	+	378	227452846	-	cauri_g1	-	-	-
+815440..816848	+	1409	227452846	-	cauri_r01	-	-	16S ribosomal RNA
+817347..820443	+	3097	227452846	-	cauri_r02	-	-	23S ribosomal RNA
+820535..820656	+	122	227452846	-	cauri_r03	-	-	5S RNA
+864909..864981	-	73	227452846	-	cauri_t17	-	-	Anticodon: CCT
+999854..999928	-	75	227452846	-	cauri_t18	-	-	Anticodon: TTG
+1012253..1012329	+	77	227452846	-	cauri_t19	-	-	Anticodon: TAA
+1067362..1067452	+	91	227452846	-	cauri_t20	-	-	Anticodon: TCA
+1156618..1156691	-	74	227452846	-	cauri_t21	-	-	Anticodon: CCG
+1276239..1276310	+	72	227452846	-	cauri_t22	-	-	Anticodon: CTG
+1276367..1276442	+	76	227452846	-	cauri_t23	-	-	Anticodon: CTC
+1279533..1279608	+	76	227452846	-	cauri_t24	-	-	Anticodon: CTC
+1382457..1382542	-	86	227452846	-	cauri_t25	-	-	Anticodon: GAG
+1452068..1452141	+	74	227452846	-	cauri_t26	-	-	Anticodon: GGG
+1481109..1481228	-	120	227452846	-	cauri_r04	-	-	5S RNA
+1481442..1485602	-	4161	227452846	-	cauri_r05	-	-	23S ribosomal RNA
+1486280..1487590	-	1311	227452846	-	cauri_r06	-	-	16S ribosomal RNA
+1533966..1534042	+	77	227452846	-	cauri_t27	-	-	Anticodon: CAA
+1595911..1595986	-	76	227452846	-	cauri_t28	-	-	Anticodon: GCC
+1596028..1596102	-	75	227452846	-	cauri_t29	-	-	Anticodon: GAC
+1596132..1596205	-	74	227452846	-	cauri_t30	-	-	Anticodon: GCA
+1596237..1596312	-	76	227452846	-	cauri_t31	-	-	Anticodon: GCC
+1596348..1596422	-	75	227452846	-	cauri_t32	-	-	Anticodon: GAC
+1596481..1596556	-	76	227452846	-	cauri_t33	-	-	Anticodon: GCC
+1596899..1596973	+	75	227452846	-	cauri_t34	-	-	Anticodon: CAC
+1933909..1933984	-	76	227452846	-	cauri_t35	-	-	Anticodon: TAC
+1946821..1946894	-	74	227452846	-	cauri_t36	-	-	Anticodon: CAT
+1985091..1985166	+	76	227452846	-	cauri_t37	-	-	Anticodon: GTT
+2103709..2103782	-	74	227452846	-	cauri_t38	-	-	Anticodon: TGG
+2104926..2105000	+	75	227452846	-	cauri_t39	-	-	Anticodon: TCC
+2134996..2135079	-	84	227452846	-	cauri_t40	-	-	Anticodon: TAG
+2135081..2135151	-	71	227452846	-	cauri_t41	-	-	Anticodon: TTG
+2236705..2236778	+	74	227452846	-	cauri_t42	-	-	Anticodon: TCT
+2241173..2241248	+	76	227452846	-	cauri_t43	-	-	Anticodon: GTG
+2246743..2246815	+	73	227452846	-	cauri_t44	-	-	Anticodon: CTT
+2285735..2285816	+	82	227452846	-	cauri_t45	-	-	Anticodon: TAG
+2309061..2309136	-	76	227452846	-	cauri_t46	-	-	Anticodon: GGC
+2309159..2309231	-	73	227452846	-	cauri_t47	-	-	Anticodon: GGC
+2328320..2328439	-	120	227452846	-	cauri_r07	-	-	5S RNA
+2328653..2331507	-	2855	227452846	-	cauri_r08	-	-	23S ribosomal RNA
+2332185..2333477	-	1293	227452846	-	cauri_r09	-	-	16S ribosomal RNA
+2338548..2338623	-	76	227452846	-	cauri_t48	-	-	Anticodon: GAA
+2338641..2338717	-	77	227452846	-	cauri_t49	-	-	Anticodon: GTC
+2338961..2339037	-	77	227452846	-	cauri_t50	-	-	Anticodon: GTC
+2339071..2339146	-	76	227452846	-	cauri_t51	-	-	Anticodon: TTC
+2339638..2339713	-	76	227452846	-	cauri_t52	-	-	Anticodon: TTT
+2396876..2396951	-	76	227452846	-	cauri_t53	-	-	Anticodon: TGT
+2568064..2568137	+	74	227452846	-	cauri_t54	-	-	Anticodon: CCC
+2659454..2659573	-	120	227452846	-	cauri_r10	-	-	5S RNA
+2659787..2662641	-	2855	227452846	-	cauri_r11	-	-	23S ribosomal RNA
+2663319..2664611	-	1293	227452846	-	cauri_r12	-	-	16S ribosomal RNA

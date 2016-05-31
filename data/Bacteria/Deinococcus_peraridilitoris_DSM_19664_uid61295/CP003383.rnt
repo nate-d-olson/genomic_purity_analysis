@@ -1,0 +1,6 @@
+Deinococcus peraridilitoris DSM 19664 plasmid pDEIPE01, complete sequence. - 1..556630
+3 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+444482..444599	-	118	429132235	-	Deipe_4275	-	-	5S ribosomal RNA
+444656..447536	-	2881	429132235	-	Deipe_4276	-	-	23S ribosomal RNA
+448275..449670	-	1396	429132235	-	Deipe_4277	-	-	16S ribosomal RNA

@@ -1,0 +1,10 @@
+Azospirillum brasilense Sp245 plasmid AZOBR_p2 complete genome - 1..912449
+7 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+272620..272695	+	76	356880388	-	AZOBR_p2tRNA1	-	-	Trp tRNA
+450811..452284	+	1474	356880388	-	AZOBR_p2_16s_rRNA_1	-	-	ribosomal RNA 16s ribosomal RNA
+453771..453885	+	115	356880388	-	AZOBR_p2_5s_rRNA_1	-	-	ribosomal RNA 5s ribosomal RNA
+453986..454062	+	77	356880388	-	AZOBR_p2tRNA2	-	-	Met tRNA
+489073..489324	+	252	356880388	-	AZOBR_p2misc_RNA_2	-	-	-
+495474..495722	+	249	356880388	-	AZOBR_p2misc_RNA_1	-	-	-
+814484..814626	-	143	356880388	-	AZOBR_p2misc_RNA_3	-	-	-

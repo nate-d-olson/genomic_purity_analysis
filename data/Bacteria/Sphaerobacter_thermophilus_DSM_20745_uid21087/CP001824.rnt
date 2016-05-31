@@ -1,0 +1,9 @@
+Sphaerobacter thermophilus DSM 20745 chromosome 2, complete sequence. - 1..1252731
+6 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+362348..362422	-	75	269787736	-	Sthe_R0055	-	-	Lys tRNA
+451335..451410	+	76	269787736	-	Sthe_R0056	-	-	Lys tRNA
+550741..550815	-	75	269787736	-	Sthe_R0057	-	-	Met tRNA
+550875..550991	-	117	269787736	-	Sthe_R0058	-	-	5S ribosomal RNA
+551116..554089	-	2974	269787736	-	Sthe_R0059	-	-	23S ribosomal RNA
+554481..555976	-	1496	269787736	-	Sthe_R0060	-	-	16S ribosomal RNA

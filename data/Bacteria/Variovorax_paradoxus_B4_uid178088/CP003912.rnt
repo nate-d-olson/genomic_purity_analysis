@@ -1,0 +1,5 @@
+Variovorax paradoxus B4 chromosome 2, complete sequence. - 1..1353255
+2 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+1123298..1123371	-	74	537388193	trnH	VAPA_2c11020	-	-	His tRNA
+1123418..1123494	-	77	537388193	trnR	VAPA_2c11030	-	-	Arg tRNA

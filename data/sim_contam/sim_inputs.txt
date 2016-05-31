@@ -1,0 +1,8 @@
+Bacillus_anthracis_Ames_uid309/pathomap-appendAlign.sam
+Clostridium_botulinum_A_Hall_uid19521/pathomap-appendAlign.sam
+Escherichia_coli_O157_H7_EC4115_uid27739/pathomap-appendAlign.sam
+Francisella_tularensis_tularensis_uid9/pathomap-appendAlign.sam
+Pseudomonas_aeruginosa_uid331/pathomap-appendAlign.sam
+Salmonella_enterica_serovar_Typhimurium_uid40625/pathomap-appendAlign.sam
+Staphylococcus_aureus_ED133_uid41277/pathomap-appendAlign.sam
+Yersinia_pestis_CO92_uid34/pathomap-appendAlign.sam

@@ -1,0 +1,10 @@
+Burkholderia cenocepacia J2315 chromosome 3, complete genome - 1..875977
+7 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+299253..299374	-	122	190714218	BCASr0269A	-	-	-	-
+299806..299938	+	133	190714218	BCASr0269B	-	-	-	-
+817980..818094	-	115	190714218	-	-	-	-	-
+818252..821128	-	2877	190714218	-	-	-	-	-
+821417..821492	-	76	190714218	BCASr0743c	-	-	-	Ala tRNA
+821583..821659	-	77	190714218	BCASr0743d	-	-	-	Ile tRNA
+821724..823255	-	1532	190714218	-	-	-	-	-

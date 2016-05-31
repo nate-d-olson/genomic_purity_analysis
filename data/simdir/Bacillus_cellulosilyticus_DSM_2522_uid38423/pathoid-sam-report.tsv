@@ -1,0 +1,3 @@
+Total Number of Aligned Reads:	203550	Total Number of Mapped Genomes:	15986
+Genome	Final Guess	Final Best Hit	Final Best Hit Read Numbers	Final High Confidence Hits	Final Low Confidence Hits	Initial Guess	Initial Best Hit	Initial Best Hit Read Numbers	Initial High Confidence Hits	Initial Low Confidence Hits
+ti|649639|org|Bacillus_cellulosilyticus_DSM_2522	0.9999999999999956	1.0	203550.0	1.0	0.0	0.9997692604221068	0.9979659915265167	203135.97757522247	0.9945369688037338	0.004087447801522967

@@ -1,0 +1,5 @@
+Methylobacterium nodulans ORS 2060 plasmid pMNOD01, complete sequence. - 1..487734
+2 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+158604..158695	-	92	219952017	-	Mnod_R0095	-	-	Phe tRNA
+482837..482913	+	77	219952017	-	Mnod_R0096	-	-	Arg tRNA

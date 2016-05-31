@@ -1,0 +1,6 @@
+Salmonella enterica subsp. enterica serovar Weltevreden str. 2007-60-3289-1 complete genome, contig 5 - 1..85076
+3 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+223..299	+	77	320084503	-	SENTW_t001	-	-	Anticodon: GTC
+9663..9739	+	77	320084503	-	SENTW_t002	-	-	Anticodon: GTC
+82018..82093	+	76	320084503	-	SENTW_t003	-	-	Anticodon: CGT

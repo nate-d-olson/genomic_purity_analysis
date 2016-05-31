@@ -1,0 +1,7 @@
+Sinorhizobium fredii NGR234 plasmid pNGR234a, complete sequence. - 1..536165
+4 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+2363..2409	-	47	227337254	-	NGR_a00030	-	-	-
+2450..2518	-	69	227337254	-	NGR_a00040	-	-	-
+18382..18424	-	43	227337254	-	NGR_a00140	-	-	-
+399458..399536	-	79	227337254	trnM6	NGR_a03100	-	-	Met tRNA

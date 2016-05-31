@@ -1,0 +1,5 @@
+Bacillus pseudofirmus OF4 plasmid pBpOF4-02, complete sequence. - 1..105029
+2 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+43856..43930	+	75	288548401	-	BpOF4_t22051	-	-	Glu tRNA
+43973..44044	+	72	288548401	-	BpOF4_t22053	-	-	Arg tRNA

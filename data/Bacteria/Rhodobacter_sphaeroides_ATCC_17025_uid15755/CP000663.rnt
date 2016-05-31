@@ -1,0 +1,9 @@
+Rhodobacter sphaeroides ATCC 17025 plasmid pRSPA02, complete sequence. - 1..289489
+6 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+54252..55711	+	1460	145558214	-	Rsph17025_R0063	-	-	16S ribosomal RNA
+55932..56008	+	77	145558214	-	Rsph17025_R0064	-	-	Ile tRNA
+56095..56170	+	76	145558214	-	Rsph17025_R0065	-	-	Ala tRNA
+56415..59333	+	2919	145558214	-	Rsph17025_R0066	-	-	23S ribosomal RNA
+59435..59548	+	114	145558214	-	Rsph17025_R0067	-	-	5S ribosomal RNA
+59618..59694	+	77	145558214	-	Rsph17025_R0068	-	-	Met tRNA

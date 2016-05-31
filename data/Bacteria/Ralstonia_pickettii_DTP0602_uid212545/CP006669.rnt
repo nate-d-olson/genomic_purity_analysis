@@ -1,0 +1,8 @@
+Ralstonia pickettii DTP0602 chromosome 3, complete sequence. - 1..737115
+5 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+252056..252131	+	76	546342964	-	N234_35565	-	-	Xaa tRNA
+258051..259687	+	1637	546342964	-	N234_35595	-	-	16S ribosomal RNA
+259973..262864	+	2892	546342964	-	N234_35600	-	-	23S ribosomal RNA
+262987..263100	+	114	546342964	-	N234_35605	-	-	5S ribosomal RNA
+408855..408939	+	85	546342964	-	N234_36295	-	-	Anticodon: GAG

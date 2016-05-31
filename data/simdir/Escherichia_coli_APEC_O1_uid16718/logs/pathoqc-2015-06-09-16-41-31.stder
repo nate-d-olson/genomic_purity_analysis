@@ -1,0 +1,4 @@
+cat: Escherichia_coli_APEC_O1_uid16718/tmp-16718_1/*_bad_1.fastq: No such file or directory
+cat: Escherichia_coli_APEC_O1_uid16718/tmp-16718_1/*_bad_2.fastq: No such file or directory
+gzip: Escherichia_coli_APEC_O1_uid16718/16718_1_qc.fq: No such file or directory
+gzip: Escherichia_coli_APEC_O1_uid16718/16718_2_qc.fq: No such file or directory

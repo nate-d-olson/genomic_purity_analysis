@@ -1,0 +1,5 @@
+Rhodococcus jostii RHA1 plasmid pRHL1, complete sequence. - 1..1123075
+2 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+233587..233663	-	77	110823764	trnM	RHA1_ro08241	-	-	Met tRNA
+1053854..1053930	+	77	110823764	trnM	RHA1_ro09097	-	-	Met tRNA

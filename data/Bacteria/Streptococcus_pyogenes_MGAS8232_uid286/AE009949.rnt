@@ -1,0 +1,15 @@
+Streptococcus pyogenes MGAS8232, complete genome. - 1..1895017
+12 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+17138..18472	+	1335	19913450	-	spyM18_r01	-	-	16S ribosomal RNA
+19005..21905	+	2901	19913450	-	spyM18_r02	-	-	23S ribosomal RNA
+23139..24473	+	1335	19913450	-	spyM18_r03	-	-	16S ribosomal RNA
+25006..27906	+	2901	19913450	-	spyM18_r04	-	-	23S ribosomal RNA
+80041..81375	+	1335	19913450	-	spyM18_r05	-	-	16S ribosomal RNA
+81908..84808	+	2901	19913450	-	spyM18_r06	-	-	23S ribosomal RNA
+258098..259432	+	1335	19913450	-	spyM18_r07	-	-	16S ribosomal RNA
+259965..262865	+	2901	19913450	-	spyM18_r08	-	-	23S ribosomal RNA
+1344326..1347226	-	2901	19913450	-	spyM18_r09	-	-	23S ribosomal RNA
+1347759..1349093	-	1335	19913450	-	spyM18_r10	-	-	16S ribosomal RNA
+1633950..1636850	-	2901	19913450	-	spyM18_r11	-	-	23S ribosomal RNA
+1637383..1638717	-	1335	19913450	-	spyM18_r12	-	-	16S ribosomal RNA

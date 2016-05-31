@@ -1,0 +1,6 @@
+Selenomonas ruminantium subsp. lactilytica TAM6421 plasmid pSRC4 DNA, complete genome. - 1..72893
+3 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+63131..63207	+	77	381367825	-	SELR_pSRC4t0010	-	-	Gln tRNA
+63253..63424	+	172	381367825	-	SELR_pSRC4t0020	-	-	Leu tRNA
+63427..63510	+	84	381367825	-	SELR_pSRC4t0030	-	-	Tyr tRNA

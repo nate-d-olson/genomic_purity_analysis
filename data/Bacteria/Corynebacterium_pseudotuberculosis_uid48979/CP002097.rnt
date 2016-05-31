@@ -1,0 +1,64 @@
+Corynebacterium pseudotuberculosis FRC41, complete genome. - 1..2337913
+61 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+12175..12251	+	77	300684871	-	cpfrc_t001	-	-	Anticodon: GAT
+12260..12332	+	73	300684871	-	cpfrc_t002	-	-	Anticodon: TGC
+14287..14359	+	73	300684871	-	cpfrc_t003	-	-	Anticodon: TGC
+39350..39436	+	87	300684871	-	cpfrc_t004	-	-	Anticodon: CAG
+119691..119778	+	88	300684871	-	cpfrc_t005	-	-	Anticodon: TGA
+120963..121051	+	89	300684871	-	cpfrc_t006	-	-	Anticodon: GCT
+121099..121174	+	76	300684871	-	cpfrc_t007	-	-	Anticodon: ACG
+129914..129989	+	76	300684871	-	cpfrc_t008	-	-	Anticodon: ACG
+136019..136109	+	91	300684871	-	cpfrc_t009	-	-	Anticodon: CGA
+144929..145017	-	89	300684871	-	cpfrc_t010	-	-	Anticodon: GGA
+210560..210636	-	77	300684871	-	cpfrc_t011	-	-	Anticodon: CGG
+241136..241211	+	76	300684871	-	cpfrc_t012	-	-	Anticodon: CGT
+321086..321170	+	85	300684871	-	cpfrc_t013	-	-	Anticodon: GTA
+321475..321547	+	73	300684871	-	cpfrc_t014	-	-	Anticodon: GGT
+321586..321660	+	75	300684871	-	cpfrc_t015	-	-	Anticodon: CAT
+321785..321860	+	76	300684871	-	cpfrc_t016	-	-	Anticodon: CCA
+575585..575661	+	77	300684871	-	cpfrc_t017	-	-	Anticodon: CAT
+619101..620608	+	1508	300684871	-	cpfrc_r001	-	-	16S ribosomal RNA
+620985..624066	+	3082	300684871	-	cpfrc_r002	-	-	23S ribosomal RNA
+624181..624296	+	116	300684871	-	cpfrc_r003	-	-	5S ribosomal RNA
+666446..666518	-	73	300684871	-	cpfrc_t018	-	-	Anticodon: CCT
+749620..749694	+	75	300684871	-	cpfrc_t019	-	-	Anticodon: TTG
+761634..761707	+	74	300684871	-	cpfrc_t020	-	-	Anticodon: TAA
+876529..876601	-	73	300684871	-	cpfrc_t021	-	-	Anticodon: CCG
+966392..966463	+	72	300684871	-	cpfrc_t022	-	-	Anticodon: CTG
+966495..966570	+	76	300684871	-	cpfrc_t023	-	-	Anticodon: CTC
+968930..969005	+	76	300684871	-	cpfrc_t024	-	-	Anticodon: CTC
+991227..991303	-	77	300684871	-	cpfrc_t025	-	-	Anticodon: CAA
+1030134..1031641	+	1508	300684871	-	cpfrc_r004	-	-	16S ribosomal RNA
+1032018..1035100	+	3083	300684871	-	cpfrc_r005	-	-	23S ribosomal RNA
+1035215..1035330	+	116	300684871	-	cpfrc_r006	-	-	5S ribosomal RNA
+1078703..1078779	-	77	300684871	-	cpfrc_t026	-	-	Anticodon: GGG
+1154790..1154878	+	89	300684871	-	cpfrc_t027	-	-	Anticodon: GAG
+1304890..1304961	-	72	300684871	-	cpfrc_t028	-	-	Anticodon: CAC
+1305285..1305357	+	73	300684871	-	cpfrc_t029	-	-	Anticodon: GCC
+1305391..1305461	+	71	300684871	-	cpfrc_t030	-	-	Anticodon: GCA
+1305470..1305544	+	75	300684871	-	cpfrc_t031	-	-	Anticodon: GAC
+1305582..1305654	+	73	300684871	-	cpfrc_t032	-	-	Anticodon: GCC
+1642989..1643064	-	76	300684871	-	cpfrc_t033	-	-	Anticodon: TAC
+1651085..1651158	-	74	300684871	-	cpfrc_t034	-	-	Anticodon: CAT
+1651385..1651460	+	76	300684871	-	cpfrc_t035	-	-	Anticodon: GTT
+1755839..1755912	-	74	300684871	-	cpfrc_t036	-	-	Anticodon: TGG
+1756207..1756281	-	75	300684871	-	cpfrc_t037	-	-	Anticodon: TCC
+1787810..1787883	+	74	300684871	-	cpfrc_t038	-	-	Anticodon: TCT
+1792837..1792912	+	76	300684871	-	cpfrc_t039	-	-	Anticodon: GTG
+1795440..1795515	+	76	300684871	-	cpfrc_t040	-	-	Anticodon: CTT
+1815203..1815287	-	85	300684871	-	cpfrc_t041	-	-	Anticodon: TAG
+1847466..1847538	-	73	300684871	-	cpfrc_t042	-	-	Anticodon: GGC
+1855282..1855397	-	116	300684871	-	cpfrc_r007	-	-	5S ribosomal RNA
+1855512..1858593	-	3082	300684871	-	cpfrc_r008	-	-	23S ribosomal RNA
+1858970..1860477	-	1508	300684871	-	cpfrc_r009	-	-	16S ribosomal RNA
+1866959..1867034	-	76	300684871	-	cpfrc_t043	-	-	Anticodon: GAA
+1867056..1867129	-	74	300684871	-	cpfrc_t044	-	-	Anticodon: GTC
+1868483..1868559	-	77	300684871	-	cpfrc_t045	-	-	Anticodon: GTC
+1868585..1868660	-	76	300684871	-	cpfrc_t046	-	-	Anticodon: TTC
+1868857..1868932	-	76	300684871	-	cpfrc_t047	-	-	Anticodon: TTT
+1922280..1922355	-	76	300684871	-	cpfrc_t048	-	-	Anticodon: TGT
+2124449..2124522	+	74	300684871	-	cpfrc_t049	-	-	Anticodon: CCC
+2228484..2228599	-	116	300684871	-	cpfrc_r010	-	-	5S ribosomal RNA
+2228714..2231795	-	3082	300684871	-	cpfrc_r011	-	-	23S ribosomal RNA
+2232172..2233679	-	1508	300684871	-	cpfrc_r012	-	-	16S ribosomal RNA

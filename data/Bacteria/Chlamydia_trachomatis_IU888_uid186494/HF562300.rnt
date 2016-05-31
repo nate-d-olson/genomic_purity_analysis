@@ -1,0 +1,9 @@
+Chlamydia trachomatis IU888 complete genome - 1..1043022
+6 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+855025..856565	+	1541	464094046	16S rRNA	BN442_7492	-	-	16S small subunit ribosomal RNA
+856821..859755	+	2935	464094046	23S rRNA	BN442_7493	-	-	23S large subunit ribosomal RNA
+860093..860206	+	114	464094046	5S rRNA	BN442_7494	-	-	5S ribosomal RNA
+877076..878616	+	1541	464094046	16S rRNA	BN442_7592	-	-	16S small subunit ribosomal RNA
+878872..881806	+	2935	464094046	23S rRNA	BN442_7593	-	-	23S large subunit robosomal RNA
+882144..882257	+	114	464094046	5S rRNA	BN442_7594	-	-	5S ribosomal RNA

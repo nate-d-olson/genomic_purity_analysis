@@ -1,0 +1,9 @@
+Burkholderia sp. YI23 chromosome 3, complete sequence. - 1..1569570
+6 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+2..1521	+	1520	357938589	-	BYI23_CrRNA0010	-	-	16S ribosomal RNA
+1589..1665	+	77	357938589	-	BYI23_CtRNA0010	-	-	Ile tRNA
+1712..1787	+	76	357938589	-	BYI23_CtRNA0020	-	-	Ala tRNA
+2070..4949	+	2880	357938589	-	BYI23_CrRNA0020	-	-	23S ribosomal RNA
+5119..5230	+	112	357938589	-	BYI23_CrRNA0030	-	-	5S ribosomal RNA
+1091993..1092077	+	85	357938589	-	BYI23_CtRNA0030	-	-	Leu tRNA

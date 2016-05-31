@@ -1,0 +1,58 @@
+Corynebacterium kroppenstedtii DSM 44385, complete genome. - 1..2446804
+55 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+26240..26312	-	73	237757549	-	ckrop_t0001	-	-	Anticodon: TGC
+26354..26430	-	77	237757549	-	ckrop_t0002	-	-	Anticodon: GAT
+112976..114476	+	1501	237757549	-	ckrop_r01	-	-	16S ribosomal RNA
+114890..117984	+	3095	237757549	-	ckrop_r02	-	-	23S ribosomal RNA
+118068..118187	+	120	237757549	-	ckrop_r03	-	-	5S ribosomal RNA
+174972..175058	+	87	237757549	-	ckrop_t0003	-	-	Anticodon: CAG
+193948..194036	-	89	237757549	-	ckrop_t0004	-	-	Anticodon: GGA
+243262..243349	+	88	237757549	-	ckrop_t0005	-	-	Anticodon: GCT
+243538..243613	+	76	237757549	-	ckrop_t0006	-	-	Anticodon: ACG
+251317..251404	+	88	237757549	-	ckrop_t0007	-	-	Anticodon: CGA
+332575..332648	-	74	237757549	-	ckrop_t0008	-	-	Anticodon: CCC
+437304..437379	+	76	237757549	-	ckrop_t0009	-	-	Anticodon: TGT
+498317..498392	+	76	237757549	-	ckrop_t0010	-	-	Anticodon: TTT
+501932..502004	+	73	237757549	-	ckrop_t0011	-	-	Anticodon: TTC
+505977..506050	+	74	237757549	-	ckrop_t0012	-	-	Anticodon: GTC
+509605..509677	+	73	237757549	-	ckrop_t0013	-	-	Anticodon: GAA
+518883..520383	+	1501	237757549	-	ckrop_r04	-	-	16S ribosomal RNA
+520797..523891	+	3095	237757549	-	ckrop_r05	-	-	23S ribosomal RNA
+523975..524094	+	120	237757549	-	ckrop_r06	-	-	5S ribosomal RNA
+556740..556815	+	76	237757549	-	ckrop_t0014	-	-	Anticodon: CCT
+599611..599686	-	76	237757549	-	ckrop_t0015	-	-	Anticodon: CGC
+654157..654231	-	75	237757549	-	ckrop_t0016	-	-	Anticodon: TTG
+665429..665502	+	74	237757549	-	ckrop_t0017	-	-	Anticodon: TAA
+788654..788726	+	73	237757549	-	ckrop_t0018	-	-	Anticodon: GTT
+788875..788948	+	74	237757549	-	ckrop_t0019	-	-	Anticodon: CAT
+795088..795163	+	76	237757549	-	ckrop_t0020	-	-	Anticodon: TAC
+958064..958140	+	77	237757549	-	ckrop_t0021	-	-	Anticodon: CAA
+1003200..1004700	+	1501	237757549	-	ckrop_r07	-	-	16S ribosomal RNA
+1005114..1008208	+	3095	237757549	-	ckrop_r08	-	-	23S ribosomal RNA
+1008292..1008411	+	120	237757549	-	ckrop_r09	-	-	5S ribosomal RNA
+1029890..1029963	-	74	237757549	-	ckrop_t0022	-	-	Anticodon: GGG
+1102823..1102908	+	86	237757549	-	ckrop_t0023	-	-	Anticodon: GAG
+1239159..1239230	-	72	237757549	-	ckrop_t0024	-	-	Anticodon: CAC
+1239492..1239567	+	76	237757549	-	ckrop_t0025	-	-	Anticodon: GCC
+1239647..1239721	+	75	237757549	-	ckrop_t0026	-	-	Anticodon: GAC
+1239778..1239853	+	76	237757549	-	ckrop_t0027	-	-	Anticodon: GCC
+1239946..1240019	+	74	237757549	-	ckrop_t0028	-	-	Anticodon: GCA
+1456252..1456327	-	76	237757549	-	ckrop_t0029	-	-	Anticodon: CTC
+1456348..1456422	-	75	237757549	-	ckrop_t0030	-	-	Anticodon: CTG
+1543400..1543472	+	73	237757549	-	ckrop_t0031	-	-	Anticodon: CCG
+1636786..1636862	-	77	237757549	-	ckrop_t0032	-	-	Anticodon: TGG
+1637549..1637623	-	75	237757549	-	ckrop_t0033	-	-	Anticodon: TCC
+1651867..1651943	+	77	237757549	-	ckrop_t0034	-	-	Anticodon: TCT
+1660408..1660483	-	76	237757549	-	ckrop_t0035	-	-	Anticodon: CTT
+1664175..1664250	+	76	237757549	-	ckrop_t0036	-	-	Anticodon: GTG
+1667800..1667884	-	85	237757549	-	ckrop_t0037	-	-	Anticodon: TAG
+1695881..1695956	+	76	237757549	-	ckrop_t0038	-	-	Anticodon: GGC
+1734824..1734900	-	77	237757549	-	ckrop_t0039	-	-	Anticodon: CAT
+2191180..2191255	-	76	237757549	-	ckrop_t0040	-	-	Anticodon: CCA
+2191464..2191537	-	74	237757549	-	ckrop_t0041	-	-	Anticodon: CAT
+2191604..2191679	-	76	237757549	-	ckrop_t0042	-	-	Anticodon: GGT
+2191906..2191990	-	85	237757549	-	ckrop_t0043	-	-	Anticodon: GTA
+2296857..2296932	-	76	237757549	-	ckrop_t0044	-	-	Anticodon: CGT
+2341680..2341756	+	77	237757549	-	ckrop_t0045	-	-	Anticodon: CGG
+2360822..2360910	-	89	237757549	-	ckrop_t0046	-	-	Anticodon: TGA

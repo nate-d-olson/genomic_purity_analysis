@@ -1,0 +1,6 @@
+Escherichia coli str. S88 plasmid pECOS88, complete genome. - 1..133853
+3 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+45983..46077	-	95	218349681	flmB	pECS88_misc_rna45983R	-	-	-
+50138..50216	-	79	218349681	finP	pECS88_misc_RNA50138R	-	-	-
+82540..82632	-	93	218349681	copA	pECS88_misc_RNA82540R	-	-	-

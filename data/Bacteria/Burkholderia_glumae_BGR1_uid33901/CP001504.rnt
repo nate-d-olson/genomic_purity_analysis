@@ -1,0 +1,17 @@
+Burkholderia glumae BGR1 chromosome 2, complete sequence. - 1..2827333
+14 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+370575..371810	+	1236	339305140	-	bglu_2gr01	-	-	16S ribosomal RNA
+372173..372249	+	77	339305140	-	bglu_2gt01	-	-	Ile tRNA
+372290..372365	+	76	339305140	-	bglu_2gt02	-	-	Ala tRNA
+372670..375551	+	2882	339305140	-	bglu_2gr02	-	-	23S ribosomal RNA
+375689..375804	+	116	339305140	-	bglu_2gr03	-	-	5S ribosomal RNA
+468308..469543	+	1236	339305140	-	bglu_2gr04	-	-	16S ribosomal RNA
+469906..469982	+	77	339305140	-	bglu_2gt03	-	-	Ile tRNA
+470023..470098	+	76	339305140	-	bglu_2gt04	-	-	Ala tRNA
+470403..473283	+	2881	339305140	-	bglu_2gr05	-	-	23S ribosomal RNA
+473421..473536	+	116	339305140	-	bglu_2gr06	-	-	5S ribosomal RNA
+1057226..1057320	+	95	339305140	-	bglu_2gt05	-	-	Sec tRNA
+2004482..2004557	-	76	339305140	-	bglu_2gt06	-	-	Met tRNA
+2191193..2191269	+	77	339305140	-	bglu_2gt07	-	-	Val tRNA
+2191379..2191455	+	77	339305140	-	bglu_2gt08	-	-	Val tRNA

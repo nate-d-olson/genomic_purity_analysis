@@ -1,0 +1,9 @@
+Ketogulonigenium vulgarum WSH-001 plasmid 1, complete sequence. - 1..267986
+6 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+262692..264158	+	1467	343464001	-	KVU_PAr0001	-	-	16S ribosomal RNA
+264312..264388	+	77	343464001	-	KVU_PAt0002	-	-	Ala tRNA
+264391..264468	+	78	343464001	-	KVU_PAt0003	-	-	Ile tRNA
+264832..267689	+	2858	343464001	-	KVU_PAr0002	-	-	23S ribosomal RNA
+267747..267861	+	115	343464001	-	KVU_PAr0003	-	-	5S ribosomal RNA
+267909..267986	+	78	343464001	-	KVU_PAt0001	-	-	Met tRNA

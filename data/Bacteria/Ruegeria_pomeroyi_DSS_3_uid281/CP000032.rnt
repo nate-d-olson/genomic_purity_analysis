@@ -1,0 +1,5 @@
+Ruegeria pomeroyi DSS-3 megaplasmid, complete sequence. - 1..491611
+2 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+75805..75879	+	75	56680476	-	SPOA_tRNA-Phe-1	-	-	Phe tRNA
+147302..147376	-	75	56680476	-	SPOA_tRNA-Thr-1	-	-	Thr tRNA

@@ -1,0 +1,8 @@
+Burkholderia ambifaria MC40-6 chromosome 3, complete sequence. - 1..1127947
+5 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+242560..242672	-	113	171997042	-	BamMC406_R0086	-	-	5S ribosomal RNA
+242828..245709	-	2882	171997042	-	BamMC406_R0087	-	-	23S ribosomal RNA
+245993..246068	-	76	171997042	-	BamMC406_R0088	-	-	Ala tRNA
+246165..246241	-	77	171997042	-	BamMC406_R0089	-	-	Ile tRNA
+246305..247830	-	1526	171997042	-	BamMC406_R0090	-	-	16S ribosomal RNA

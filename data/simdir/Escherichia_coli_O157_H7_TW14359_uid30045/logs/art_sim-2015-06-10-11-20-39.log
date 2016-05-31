@@ -1,0 +1,30 @@
+=======================================ART======================================
+                            ART_Illumina (2008-2015)                            
+                            Q Version 2.3.7 (Mar 19, 2015)                      
+                     Contact: Weichun Huang at whduke@gmail.com                 
+================================================================================
+
+                          Paired-end sequencing simulation
+
+Total CPU time used: 20.38
+
+The random seed for the run: 59913
+
+Parameters used during run
+	Read Length:	230
+	Genome masking 'N' cutoff frequency: 	1 in 230
+	Fold Coverage:            20X
+	Mean Fragment Length:     690
+	Standard Deviation:       10
+	Profile Type:             Combined
+	ID Tag:                   
+
+Quality Profile(s)
+	First Read:   MiSeq Length 250 R1 (built-in profile) 
+	First Read:   MiSeq Length 250 R2 (built-in profile) 
+Output files
+
+  FASTQ Sequence Files:
+	 the 1st reads: Escherichia_coli_O157_H7_TW14359_uid30045/30045_1.fq
+	 the 2nd reads: Escherichia_coli_O157_H7_TW14359_uid30045/30045_2.fq
+

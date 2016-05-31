@@ -1,0 +1,7 @@
+bowtie2-align died with signal 9 (KILL) 
+bowtie2-align died with signal 2 (INT) 
+Out of memory allocating the ebwt[] array for the Bowtie index.  Please try
+again on a computer with more memory.
+Error: Encountered internal Bowtie 2 exception (#1)
+Command: /usr/bin/bowtie2-align --wrapper basic-0 -x /genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti_2 -p 8 --very-sensitive-local -k 100 --score-min L,20,1.0 -S Escherichia_coli_BL21_DE3__uid20713/pathomap-micro_rm_patho_db_ti_2.sam -1 Escherichia_coli_BL21_DE3__uid20713/20713_1.fq -2 Escherichia_coli_BL21_DE3__uid20713/20713_2.fq 
+bowtie2-align exited with value 1

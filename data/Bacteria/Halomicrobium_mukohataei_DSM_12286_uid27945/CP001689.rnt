@@ -1,0 +1,7 @@
+Halomicrobium mukohataei DSM 12286 plasmid pHmuk01, complete sequence. - 1..221862
+4 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+12512..12632	-	121	257167632	-	Hmuk_R0057	-	-	5S ribosomal RNA
+12513..12634	-	122	257167632	-	Hmuk_R0058	-	-	5S ribosomal RNA
+12745..15650	-	2906	257167632	-	Hmuk_R0059	-	-	23S ribosomal RNA
+16033..17504	-	1472	257167632	-	Hmuk_R0060	-	-	16S ribosomal RNA

@@ -1,0 +1,7 @@
+Anabaena sp. 90 chromosome chANA02, complete sequence. - 1..819965
+4 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+178712..178783	-	72	413972376	-	ANA_C2R001	-	-	Lys tRNA
+340580..340667	+	88	413972376	-	ANA_C2R002	-	-	Ser tRNA
+509871..509942	+	72	413972376	-	ANA_C2R003	-	-	Thr tRNA
+710080..710164	-	85	413972376	-	ANA_C2R004	-	-	Ser tRNA

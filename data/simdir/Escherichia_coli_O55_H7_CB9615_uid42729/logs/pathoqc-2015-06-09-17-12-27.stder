@@ -1,0 +1,201 @@
+-p destination: Broken pipe
+-p destination: Broken pipe
+-p destination: Broken pipe
+-p destination: Broken pipe
+-p destination: Broken pipe
+-p destination: Broken pipe
+-p destination: Broken pipe
+-p destination: Broken pipe
+-p destination: Broken pipe
+-p destination: Broken pipe
+-p destination: Broken pipe
+-p destination: Broken pipe
+-p destination: Broken pipe
+-p destination: Broken pipe
+-p destination: Broken pipe
+-p destination: Broken pipe
+-p destination: Broken pipe
+-p destination: Broken pipe
+-p destination: Broken pipe
+-p destination: Broken pipe
+-p destination: Broken pipe
+-p destination: Broken pipe
+-p destination: Broken pipe
+Input and filter stats:
+	Input sequences (file 1): 29,630
+	Input bases (file 1): 6,814,900
+	Input mean length (file 1): 230.00
+	Input sequences (file 2): 29,630
+	Input bases (file 2): 6,814,900
+	Input mean length (file 2): 230.00
+	Good sequences (pairs): 29,630
+	Good bases (pairs): 13,629,800
+	Good mean length (pairs): 460.00
+	Good sequences (singletons file 1): 0 (0.00%)
+	Good sequences (singletons file 2): 0 (0.00%)
+	Bad sequences (file 1): 0 (0.00%)
+	Bad sequences (file 2): 0 (0.00%)
+	Sequences filtered by specified parameters:
+	none
+Input and filter stats:
+	Input sequences (file 1): 29,630
+	Input bases (file 1): 6,814,900
+	Input mean length (file 1): 230.00
+	Input sequences (file 2): 29,630
+	Input bases (file 2): 6,814,900
+	Input mean length (file 2): 230.00
+	Good sequences (pairs): 29,630
+	Good bases (pairs): 13,629,800
+	Good mean length (pairs): 460.00
+	Good sequences (singletons file 1): 0 (0.00%)
+	Good sequences (singletons file 2): 0 (0.00%)
+	Bad sequences (file 1): 0 (0.00%)
+	Bad sequences (file 2): 0 (0.00%)
+	Sequences filtered by specified parameters:
+	none
+Input and filter stats:
+	Input sequences (file 1): 29,630
+	Input bases (file 1): 6,814,900
+	Input mean length (file 1): 230.00
+	Input sequences (file 2): 29,630
+	Input bases (file 2): 6,814,900
+	Input mean length (file 2): 230.00
+	Good sequences (pairs): 29,630
+	Good bases (pairs): 13,629,800
+	Good mean length (pairs): 460.00
+	Good sequences (singletons file 1): 0 (0.00%)
+	Good sequences (singletons file 2): 0 (0.00%)
+	Bad sequences (file 1): 0 (0.00%)
+	Bad sequences (file 2): 0 (0.00%)
+	Sequences filtered by specified parameters:
+	none
+Input and filter stats:
+	Input sequences (file 1): 29,630
+	Input bases (file 1): 6,814,900
+	Input mean length (file 1): 230.00
+	Input sequences (file 2): 29,630
+	Input bases (file 2): 6,814,900
+	Input mean length (file 2): 230.00
+	Good sequences (pairs): 29,630
+	Good bases (pairs): 13,629,800
+	Good mean length (pairs): 460.00
+	Good sequences (singletons file 1): 0 (0.00%)
+	Good sequences (singletons file 2): 0 (0.00%)
+	Bad sequences (file 1): 0 (0.00%)
+	Bad sequences (file 2): 0 (0.00%)
+	Sequences filtered by specified parameters:
+	none
+Input and filter stats:
+	Input sequences (file 1): 29,630
+	Input bases (file 1): 6,814,900
+	Input mean length (file 1): 230.00
+	Input sequences (file 2): 29,630
+	Input bases (file 2): 6,814,900
+	Input mean length (file 2): 230.00
+	Good sequences (pairs): 29,630
+	Good bases (pairs): 13,629,800
+	Good mean length (pairs): 460.00
+	Good sequences (singletons file 1): 0 (0.00%)
+	Good sequences (singletons file 2): 0 (0.00%)
+	Bad sequences (file 1): 0 (0.00%)
+	Bad sequences (file 2): 0 (0.00%)
+	Sequences filtered by specified parameters:
+	none
+Input and filter stats:
+	Input sequences (file 1): 29,630
+	Input bases (file 1): 6,814,900
+	Input mean length (file 1): 230.00
+	Input sequences (file 2): 29,630
+	Input bases (file 2): 6,814,900
+	Input mean length (file 2): 230.00
+	Good sequences (pairs): 29,630
+	Good bases (pairs): 13,629,800
+	Good mean length (pairs): 460.00
+	Good sequences (singletons file 1): 0 (0.00%)
+	Good sequences (singletons file 2): 0 (0.00%)
+	Bad sequences (file 1): 0 (0.00%)
+	Bad sequences (file 2): 0 (0.00%)
+	Sequences filtered by specified parameters:
+	none
+Input and filter stats:
+	Input sequences (file 1): 29,630
+	Input bases (file 1): 6,814,900
+	Input mean length (file 1): 230.00
+	Input sequences (file 2): 29,630
+	Input bases (file 2): 6,814,900
+	Input mean length (file 2): 230.00
+	Good sequences (pairs): 29,630
+	Good bases (pairs): 13,629,800
+	Good mean length (pairs): 460.00
+	Good sequences (singletons file 1): 0 (0.00%)
+	Good sequences (singletons file 2): 0 (0.00%)
+	Bad sequences (file 1): 0 (0.00%)
+	Bad sequences (file 2): 0 (0.00%)
+	Sequences filtered by specified parameters:
+	none
+Input and filter stats:
+	Input sequences (file 1): 29,630
+	Input bases (file 1): 6,814,900
+	Input mean length (file 1): 230.00
+	Input sequences (file 2): 29,630
+	Input bases (file 2): 6,814,900
+	Input mean length (file 2): 230.00
+	Good sequences (pairs): 29,630
+	Good bases (pairs): 13,629,800
+	Good mean length (pairs): 460.00
+	Good sequences (singletons file 1): 0 (0.00%)
+	Good sequences (singletons file 2): 0 (0.00%)
+	Bad sequences (file 1): 0 (0.00%)
+	Bad sequences (file 2): 0 (0.00%)
+	Sequences filtered by specified parameters:
+	none
+cat: Escherichia_coli_O55_H7_CB9615_uid42729/tmp-42729_1/*_bad_1.fastq: No such file or directory
+cat: Escherichia_coli_O55_H7_CB9615_uid42729/tmp-42729_1/*_bad_2.fastq: No such file or directory
+3631+1 records in
+3631+1 records out
+14874260 bytes (15 MB) copied, 0.0141561 s, 1.1 GB/s
+3631+1 records in
+3631+1 records out
+14874260 bytes (15 MB) copied, 0.0191906 s, 775 MB/s
+3631+1 records in
+3631+1 records out
+14874260 bytes (15 MB) copied, 0.0189742 s, 784 MB/s
+3631+1 records in
+3631+1 records out
+14874260 bytes (15 MB) copied, 0.0193131 s, 770 MB/s
+3631+1 records in
+3631+1 records out
+14874260 bytes (15 MB) copied, 0.019055 s, 781 MB/s
+3631+1 records in
+3631+1 records out
+14874260 bytes (15 MB) copied, 0.0193508 s, 769 MB/s
+3625+1 records in
+3625+1 records out
+14851031 bytes (15 MB) copied, 0.0192694 s, 771 MB/s
+3621+1 records in
+3621+1 records out
+14835667 bytes (15 MB) copied, 0.0193809 s, 765 MB/s
+3631+1 records in
+3631+1 records out
+14874260 bytes (15 MB) copied, 0.013701 s, 1.1 GB/s
+3631+1 records in
+3631+1 records out
+14874260 bytes (15 MB) copied, 0.0185998 s, 800 MB/s
+3631+1 records in
+3631+1 records out
+14874260 bytes (15 MB) copied, 0.0184961 s, 804 MB/s
+3631+1 records in
+3631+1 records out
+14874260 bytes (15 MB) copied, 0.0187933 s, 791 MB/s
+3631+1 records in
+3631+1 records out
+14874260 bytes (15 MB) copied, 0.0186436 s, 798 MB/s
+3631+1 records in
+3631+1 records out
+14874260 bytes (15 MB) copied, 0.0187591 s, 793 MB/s
+3625+1 records in
+3625+1 records out
+14851031 bytes (15 MB) copied, 0.0188268 s, 789 MB/s
+3621+1 records in
+3621+1 records out
+14835667 bytes (15 MB) copied, 0.0184899 s, 802 MB/s

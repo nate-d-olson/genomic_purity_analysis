@@ -1,0 +1,10 @@
+Burkholderia vietnamiensis G4 chromosome 2, complete sequence. - 1..2411759
+7 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+49820..49904	+	85	134135188	-	Bcep1808_R0077	-	-	Leu tRNA
+266501..266612	-	112	134135188	-	Bcep1808_R0078	-	-	5S ribosomal RNA
+266769..269650	-	2882	134135188	-	Bcep1808_R0079	-	-	23S ribosomal RNA
+269935..270010	-	76	134135188	-	Bcep1808_R0080	-	-	Ala tRNA
+270049..270125	-	77	134135188	-	Bcep1808_R0081	-	-	Ile tRNA
+270190..271715	-	1526	134135188	-	Bcep1808_R0082	-	-	16S ribosomal RNA
+1078641..1078719	+	79	134135188	-	Bcep1808_R0083	-	-	Met tRNA

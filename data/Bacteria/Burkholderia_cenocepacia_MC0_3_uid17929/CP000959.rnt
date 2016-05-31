@@ -1,0 +1,11 @@
+Burkholderia cenocepacia MC0-3 chromosome 2, complete sequence. - 1..3213911
+8 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+540363..540441	-	79	169817759	-	Bcenmc03_R0077	-	-	Met tRNA
+743492..743562	+	71	169817759	-	Bcenmc03_R0078	-	-	Xaa tRNA
+2010517..2012042	+	1526	169817759	-	Bcenmc03_R0079	-	-	16S ribosomal RNA
+2012106..2012182	+	77	169817759	-	Bcenmc03_R0080	-	-	Ile tRNA
+2012221..2012296	+	76	169817759	-	Bcenmc03_R0081	-	-	Ala tRNA
+2012567..2015448	+	2882	169817759	-	Bcenmc03_R0082	-	-	23S ribosomal RNA
+2015634..2015745	+	112	169817759	-	Bcenmc03_R0083	-	-	5S ribosomal RNA
+2414573..2414657	-	85	169817759	-	Bcenmc03_R0084	-	-	Leu tRNA

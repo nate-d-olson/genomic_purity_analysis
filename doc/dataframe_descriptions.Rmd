@@ -1,0 +1,189 @@
+---
+title: "Single Org Data QC"
+author: "Nate Olson"
+date: "May 29, 2016"
+output: html_document
+---
+
+```{r echo=FALSE, message=FALSE}
+library(ProjectTemplate)
+wd <- getwd()
+setwd("../")
+load.project()
+setwd(wd)
+```
+
+## Data sets
+The following is provided for each dataset; 
+
+1. brief description  
+1. source data (requirements)  
+1. scripts used to generate file  
+1. variable description  
+
+### queryMeta
+Query genome metadata parsed from `rpt` files. See `queryMeta_check.html` for information for QC.
+
+#### Input files
+`rpt` files in `data/Bacteria` directory.
+
+#### Script
+`data/queryMeta.R` used to parse `rpt` files
+
+#### Data Description
+* Query - strain name and uid  
+* Accession - genkbank accession for genome and plasmid sequences  
+* DNA length - sequence size in bp  
+* GI - genbank genome identifier  
+* Taxid - ncbi taxonomic id  
+* Taxname - strain name
+
+```{r }
+glimpse(queryMeta)
+```
+
+### queryIdTbl
+Table with Query name, taxid, and uid.
+
+#### Input files
+`singleOrgResults` and `queryMeta`
+
+#### Script
+Information extracted from `singleOrgResults` and `queryMeta` using `munge/queryIdTbl.R`  
+
+#### Data Description
+* Query - strain name and uid 
+* query_taxid - ncbi taxonomic id
+* query_uid - uid parsed from Query
+
+```{r }
+glimpse(queryIdTbl)
+```
+
+
+### singleOrgArt
+Data frame with parsed output from ART read simulation run.
+
+#### Input files
+`singleOrgArt.csv` files in `data` results directory. 
+
+#### Script
+`single_org_metadata.py` script in `genomic_purity_pipeline` directory used to combine files into a single data frame. 
+
+#### Data Description 
+* org - genome folder name from NCBI Genbank bacteria download 
+* rand - random number used to generate dataset
+
+```{r}
+glimpse(singleOrgArt)
+```
+
+### singleOrgFq
+#### Input files
+`singleOrgFq.csv` files in `data` results directory. 
+
+#### Script
+`single_org_metadata.py` script in `genomic_purity_pipeline` directory used to combine files into a single data frame. 
+
+#### Data Description 
+* file - simulated results fastq file name  
+* read_count - number of reads in fastq file  
+
+```{r}
+glimpse(singleOrgFq)
+```
+
+
+#### TODO
+* need to get actual read counts, issue with gzipped file
+
+### singleOrgRef
+List of reference fasta files used to generate simulated sequence data.
+
+#### Input files
+`singleOrgRef.csv` files in `data` results directory. 
+
+#### Script
+`single_org_metadata.py` script in `genomic_purity_pipeline` directory used to combine files into a single data frame. 
+
+#### Data Description
+* file - fasta sequence filename
+* seq_id - fasta sequence header
+
+```{r }
+glimpse(singleOrgRef)
+```
+
+### singleOrgResults
+Combined pathoscope results for single org simulations.  
+
+#### Input files
+`pathoid-sam-report.tsv` files in `data/simdir` results directory. 
+
+#### Script
+`data/singleOrgResults.R` script used to combine files into a single data frame. 
+
+#### Data Description  
+* org - genome folder name from NCBI Genbank bacteria download
+* Genome - pathoscope match id, from pathoscope database
+* Final Guess - proportion of org dataset matching Genome  
+* Final Best Hit - proportion of reads? 
+* Final Best HIt Read Numbers - number of reads in dataset assigned to org
+* Final High Confidence Hits -   
+* Final Low Confidence Hits -  
+* Inital Guess - 
+* Initial Best Hit -  
+* Inital Best Hit Read Numbers -  
+* Initial Hight Confidence Hits -  
+* Initial Low Confidence Hits -  
+* Initial Low Confidence Hits -  
+
+
+```{r }
+glimpse(singleOrgResults)
+```
+
+### singleOrgMatch
+#### Input files
+`singleOrgResults`, `queryIdTbl` data frames and `taxidClassification`. 
+
+#### Script
+`single_org_match_class.R` script in `src` directory used to determine match level for query and match. 
+
+#### Data Description 
+* lca_name - lowest common ancestor taxnomic name
+* lca_rank - lowest common ancestor taxnomic rank 
+* lca_id - lowest common ancestor ncbi taxonomic id
+* query_taxid - query genome ncbi taxonomic id
+* query_genus - query genome genus
+* match_taxid - pathoscope match taxid
+
+```{r}
+glimpse(singleOrgMatch)
+```
+
+
+### singleOrgMatchResults
+`singleOrgMatch` along with `Final Guess` from `singleOrgResults`
+
+#### Input files
+`singleOrMatch` and `singleOrgResults` data frames along with `taxidClassification`. 
+
+#### Script
+`single_org_match_class.R` script in `src` directory used to determine match level for query and match. 
+
+#### Data Description 
+* lca_name - lowest common ancestor taxnomic name
+* lca_rank - lowest common ancestor taxnomic rank 
+* lca_id - lowest common ancestor ncbi taxonomic id
+* query_taxid - query genome ncbi taxonomic id
+* query_genus - query genome genus
+* match_taxid - pathoscope match taxid  
+* Final Guess - proportion of org dataset matching Genome  
+
+```{r}
+glimpse(singleOrgMatchResults)
+```
+
+
+

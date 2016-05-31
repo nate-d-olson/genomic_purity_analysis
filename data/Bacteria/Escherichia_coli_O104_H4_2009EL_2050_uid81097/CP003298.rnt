@@ -1,0 +1,7 @@
+Escherichia coli O104:H4 str. 2009EL-2050 plasmid p09EL50, complete sequence. - 1..109274
+4 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+82766..82852	-	87	406780272	-	O3M_t26131	-	-	Xaa tRNA
+83343..83418	-	76	406780272	-	O3M_t26133	-	-	Thr tRNA
+83423..83509	-	87	406780272	-	O3M_t26135	-	-	Tyr tRNA
+83515..83589	-	75	406780272	-	O3M_t26137	-	-	Asn tRNA

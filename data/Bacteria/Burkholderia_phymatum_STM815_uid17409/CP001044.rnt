@@ -1,0 +1,12 @@
+Burkholderia phymatum STM815 chromosome 2, complete sequence. - 1..2697374
+9 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+599527..599603	+	77	184194305	-	Bphy_R0076	-	-	Val tRNA
+707934..710815	-	2882	184194305	-	Bphy_R0016	-	-	23S ribosomal RNA
+711163..711238	-	76	184194305	-	Bphy_R0077	-	-	Ala tRNA
+711285..711361	-	77	184194305	-	Bphy_R0078	-	-	Ile tRNA
+711429..712952	-	1524	184194305	-	Bphy_R0017	-	-	16S ribosomal RNA
+2171566..2173089	+	1524	184194305	-	Bphy_R0018	-	-	16S ribosomal RNA
+2173157..2173233	+	77	184194305	-	Bphy_R0079	-	-	Ile tRNA
+2173280..2173355	+	76	184194305	-	Bphy_R0080	-	-	Ala tRNA
+2173703..2176584	+	2882	184194305	-	Bphy_R0019	-	-	23S ribosomal RNA

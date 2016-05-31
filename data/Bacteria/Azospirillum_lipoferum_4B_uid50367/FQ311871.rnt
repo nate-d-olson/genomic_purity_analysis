@@ -1,0 +1,9 @@
+Azospirillum lipoferum 4B plasmid AZO_p3 complete genome - 1..648491
+6 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+981..1095	+	115	357426922	-	AZOLI_p3_5s_rRNA_1	-	-	ribosomal RNA 5S ribosomal RNA
+412185..412261	+	77	357426922	-	AZOLI_p3misc_RNA_1	-	-	-
+644507..645980	+	1474	357426922	-	AZOLI_p3_16s_rRNA_1	-	-	ribosomal RNA 16S ribosomal RNA
+646096..646172	+	77	357426922	-	AZOLI_p3tRNA1	-	-	Ile tRNA
+646201..646276	+	76	357426922	-	AZOLI_p3tRNA2	-	-	Ala tRNA
+646586..648491	+	1906	357426922	-	AZOLI_p3_23s_rRNA_1	-	-	ribosomal RNA 23S ribosomal RNA

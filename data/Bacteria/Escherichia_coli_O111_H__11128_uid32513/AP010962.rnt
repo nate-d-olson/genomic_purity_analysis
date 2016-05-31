@@ -1,0 +1,6 @@
+Escherichia coli O111:H- str. 11128 plasmid pO111_2 DNA, complete sequence. - 1..97897
+3 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+61992..62066	+	75	257767705	trnA	ECO111_p2-tRNA1	-	-	Asn tRNA
+62163..62238	+	76	257767705	trnT	ECO111_p2-tRNA2	-	-	Thr tRNA
+64184..64259	+	76	257767705	trnI	ECO111_p2-tRNA3	-	-	Ile tRNA

@@ -1,0 +1,6 @@
+Deinococcus deserti VCD115 plasmid 1, complete sequence. - 1..324711
+3 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+14128..15634	+	1507	226319394	rrsA	Deide_1p00103	-	-	16S ribosomal RNA
+15953..18833	+	2881	226319394	rrlA	Deide_1p00104	-	-	23S ribosomal RNA
+18936..19059	+	124	226319394	rrfA	Deide_1p00105	-	-	5S ribosomal RNA

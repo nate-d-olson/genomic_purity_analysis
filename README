@@ -1,0 +1,12 @@
+Results from simulation run
+* simdir - single organism simulation results
+      * logbook files have ruffus run log information
+* sim_contam - simulated contamination results
+
+Parsing ouput
+* single_org_metadata.py - extracts info about read simulation ref genome id and number of reads in fastq
+
+ID system
+* single org name with uid
+* contam uid sets
+* results - db id

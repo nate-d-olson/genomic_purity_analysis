@@ -1,0 +1,7 @@
+Candidatus Chloracidobacterium thermophilum B chromosome 2, complete sequence. - 1..1012010
+4 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+235100..235176	-	77	347588479	-	Cabther_B0185	-	-	Pro tRNA
+255573..255648	-	76	347588479	-	Cabther_B0207	-	-	Phe tRNA
+476416..476492	+	77	347588479	-	Cabther_B0387	-	-	Pro tRNA
+545035..545107	+	73	347588479	-	Cabther_B0450	-	-	Arg tRNA

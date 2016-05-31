@@ -1,0 +1,10 @@
+Natrialba magadii ATCC 43099 plasmid pNMAG01, complete sequence. - 1..378348
+7 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+111066..113983	+	2918	289532809	-	Nmag_R0054	-	-	23S ribosomal RNA
+114114..114231	+	118	289532809	-	Nmag_R0055	-	-	5S ribosomal RNA
+369285..369404	-	120	289532809	-	Nmag_R0056	-	-	5S ribosomal RNA
+369477..369594	-	118	289532809	-	Nmag_R0057	-	-	5S ribosomal RNA
+369725..372643	-	2919	289532809	-	Nmag_R0058	-	-	23S ribosomal RNA
+372842..372913	-	72	289532809	-	Nmag_R0059	-	-	Ala tRNA
+373056..374522	-	1467	289532809	-	Nmag_R0060	-	-	16S ribosomal RNA

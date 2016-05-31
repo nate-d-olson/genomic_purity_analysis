@@ -1,0 +1,5 @@
+Sinorhizobium meliloti AK83 chromosome 3, complete sequence. - 1..1312480
+2 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+209967..210058	-	92	334098883	-	Sinme_R0068	-	-	Sec tRNA
+340339..340415	+	77	334098883	-	Sinme_R0069	-	-	Xaa tRNA

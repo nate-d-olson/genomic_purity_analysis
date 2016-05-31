@@ -1,0 +1,6 @@
+Chlamydophila caviae GPIC, complete genome - 1..1173390
+3 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+1020575..1020691	-	117	29835126	-	CCA_r01	-	-	5S ribosomal RNA
+1020808..1023753	-	2946	29835126	-	CCA_r02	-	-	23S ribosomal RNA
+1023978..1025525	-	1548	29835126	-	CCA_r03	-	-	16S ribosomal RNA

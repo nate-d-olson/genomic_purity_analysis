@@ -1,0 +1,181 @@
+---
+title: "Using Taxize"
+author: "Nate Olson"
+date: "May 18, 2016"
+output: html_document
+---
+TODO - clean-up, fix samples missing classifications or taxid, add genus to org info
+```{r}
+library(ProjectTemplate)
+load.project()
+```
+
+```{r}
+single_org_uid <- singleOrgRef$uid
+single_org_gi <- singleOrgRef$gi
+## creating a lookup table
+names(single_org_gi) <- single_org_uid
+```
+
+```{r}
+library(taxize)
+```
+
+## Two Taxid Comparison Example
+```{r}
+taxid <- genbank2uid(id = single_org_gi[1])[[1]]
+tax_class <- classification(taxid, db = "ncbi")
+taxid2 <- genbank2uid(id = single_org_gi[50])[[1]]
+tax_class2 <- classification(taxid2, db = "ncbi")
+```
+
+Tax Rank comparison
+Need to extract last row
+```{r}
+inner_join(tax_class$`1415630`, tax_class2$`1048689`) %>% tail(1)
+```
+
+## Analyzing Full Single Org Dataset
+### Generating Query ID Table
+Table used to convert ids between uid, gi, and taxid.
+
+* uid - used in single_org_dat table to identify query  
+* gi - used to obtain taxid with `genbank2uid`  
+* taxid - used to obtain classifications  
+
+```{r}
+query_id_tbl <- singleOrgRef %>% select(uid, gi)
+query_gi <- query_id_tbl$gi %>% unique()
+
+## getting taxid
+query_taxid <- query_gi %>% map(~genbank2uid(id = . )) %>% map(1) %>% flatten_chr()
+
+## joining all three
+
+query_id_tbl <- data_frame(gi = query_gi, taxid = query_taxid) %>% 
+      left_join(query_id_tbl, .)
+query_uid_taxid <- query_id_tbl %>% select(uid, taxid) %>% unique()
+```
+
+### Taxonomic Classification
+List of taxize taxonomic classifications for all query and match taxids
+```{r}
+query_taxid_classification <- query_id_tbl$taxid %>% unique() %>% 
+      classification(db = 'ncbi')
+```
+
+This step is rather slow due to the api call and required timeout. 
+Saving object to rds to prevent having to rerun.  
+```{r}
+saveRDS(query_taxid_classification, "../data/query_taxid_class.rds")
+```
+
+Retrieving match taxid classification, excluding query taxids
+```{r}
+match_taxid <- single_org_dat$match_taxid[
+      !(single_org_dat$match_taxid %in% query_id_tbl$taxid)] %>% unique()
+
+## error with 12908 will need to look into
+bad_taxid <- c("12908","0")
+match_taxid <- match_taxid[!(match_taxid %in% c(bad_taxid))]
+
+match_taxid_classification <- list()
+for(i in match_taxid){
+      if(!(i %in% bad_taxid)){
+          match_taxid_classification[i] <- classification(i, db = 'ncbi')    
+      }
+}
+```
+
+Finishing Incomplete Run
+```{r}
+complete_taxid <- names(match_taxid_classification)
+
+match_taxid <- match_taxid[!(match_taxid %in% c(bad_taxid, complete_taxid))]
+
+for(i in match_taxid){
+    match_taxid_classification[i] <- classification(i, db = 'ncbi')    
+}
+```
+
+```{r}
+saveRDS(match_taxid_classification, "../data/single_org_match_taxid_class.rds")
+```
+
+Combined Taxonomic Classificaitons
+```{r}
+taxid_classification <- c(match_taxid_classification, query_taxid_classification)
+```
+
+
+
+### Appending Query IDs
+Adding query ids to single org analysis results
+```{r}
+id_tbl <- query_uid_taxid %>% 
+      mutate(uid = as.character(uid),
+             taxid = as.character(taxid)) %>% 
+      rename(query_uid = uid, query_taxid = taxid)
+             
+single_org_match_taxid <- single_org_dat %>% select(match_taxid, query_uid) %>% 
+      left_join(id_tbl) %>% select(match_taxid, query_taxid) %>% unique() %>% 
+      filter(!(match_taxid %in% bad_taxid),
+             !is.na(query_taxid))
+```
+
+__NEED TO CHECK__ Not sure why more columns in `single_org_dat` and `single_org_match_taxid`
+
+### Finding Lowest Common Match Level
+```{r}
+match_class_df <- data_frame()
+for(i in 1:nrow(single_org_match_taxid)){
+      match_taxid <- single_org_match_taxid$match_taxid[i]
+      match_class <- taxid_classification[[match_taxid]]
+      query_taxid <- single_org_match_taxid$query_taxid[i]
+      query_class <- taxid_classification[[query_taxid]]
+      match_class_df <- inner_join(match_class, query_class) %>% 
+            filter(rank != "no rank") %>% tail(1) %>%
+            mutate(query_taxid = query_taxid, match_taxid = match_taxid) %>% 
+            bind_rows(match_class_df, .)
+}
+```
+
+```{r}
+write_csv(match_class_df,"../data/match_class_results.csv")
+```
+
+## Distribution of Taxa Level Matches
+```{r}
+ggplot(match_class_df) + geom_bar(aes(x = rank)) + 
+      theme(axis.text.x = element_text(angle = 90))
+```
+
+## Combining Species
+```{r}
+match_df <- match_class_df %>% 
+      mutate(rank = ifelse(rank %in% c("species", "species group",
+                                       "species subgroup", "subspecies"), 
+                           "species", rank))
+```
+
+## Distribution of Taxa Level Matches
+```{r}
+ggplot(match_df) + geom_bar(aes(x = rank)) + 
+      theme(axis.text.x = element_text(angle = 90))
+```
+
+## Adding Match Results
+```{r}
+single_org_match_dat <- single_org_dat %>% left_join(id_tbl) %>% left_join(match_df)
+```
+
+
+```{r}
+single_org_match_dat %>% group_by(org, rank) %>% 
+      summarise(total_guess = sum(`Final Guess`)) %>% 
+      mutate(rank = factor(rank, levels = c("species","genus","family","order",
+                                            "class","phylum","superkingdom"))) %>% 
+      ggplot() +
+            geom_jitter(aes(x = rank, y = total_guess))
+```
+

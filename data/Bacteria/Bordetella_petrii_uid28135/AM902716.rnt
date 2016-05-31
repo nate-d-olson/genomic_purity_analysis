@@ -1,0 +1,63 @@
+Bordetella petrii strain DSM 12804, complete genome - 1..5287950
+60 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+132412..132487	-	76	163258032	b_petrii_trna_01	Bpettrna_01	-	-	Anticodon: TGT
+408729..408803	+	75	163258032	b_petrii_trna_02	Bpettrna_02	-	-	Anticodon: CCG
+693100..693190	+	91	163258032	b_petrii_trna_03	Bpettrna_03	-	-	Anticodon: GGA
+709197..709271	+	75	163258032	b_petrii_trna_04	Bpettrna_04	-	-	Anticodon: CAC
+754894..756379	+	1486	163258032	16S rRNA	Bpetrrna_01	-	-	16S ribosomal RNA
+756538..756614	+	77	163258032	b_petrii_trna_05	Bpettrna_05	-	-	Anticodon: GAT
+756674..756749	+	76	163258032	b_petrii_trna_06	Bpettrna_06	-	-	Anticodon: TGC
+757041..759943	+	2903	163258032	23S rRNA	Bpetrrna_02	-	-	23S ribosomal RNA
+760088..760203	+	116	163258032	5S rRNA gene	Bpetrrna_03	-	-	5S ribosomal RNA
+807691..807766	+	76	163258032	b_petrii_trna_07	Bpettrna_07	-	-	Anticodon: TTT
+827924..827999	+	76	163258032	b_petrii_trna_08	Bpettrna_08	-	-	Anticodon: CTT
+1083703..1083776	-	74	163258032	b_petrii_trna_09	Bpettrna_09	-	-	Anticodon: GCA
+1339485..1339560	-	76	163258032	b_petrii_trna_10	Bpettrna_10	-	-	Anticodon: GCC
+1595651..1595726	-	76	163258032	b_petrii_trna_11	Bpettrna_11	-	-	Anticodon: GCC
+1650621..1650711	-	91	163258032	b_petrii_trna_12	Bpettrna_12	-	-	Anticodon: CGA
+1678705..1678789	-	85	163258032	b_petrii_trna_13	Bpettrna_13	-	-	Anticodon: TAA
+1678801..1678890	-	90	163258032	b_petrii_trna_14	Bpettrna_14	-	-	Anticodon: TGA
+1682300..1682384	+	85	163258032	b_petrii_trna_15	Bpettrna_15	-	-	Anticodon: GAG
+2128328..2128406	+	79	163258032	b_petrii_trna_16	Bpettrna_16	-	-	Anticodon: CAT
+2136748..2136824	+	77	163258032	b_petrii_trna_17	Bpettrna_17	-	-	Anticodon: CAT
+2760308..2760384	-	77	163258032	b_petrii_trna_18	Bpettrna_18	-	-	Anticodon: GGG
+2835246..2835321	+	76	163258032	b_petrii_trna_19	Bpettrna_19	-	-	Anticodon: TAC
+2841854..2841938	+	85	163258032	b_petrii_trna_20	Bpettrna_20	-	-	Anticodon: CAG
+2842818..2842902	+	85	163258032	b_petrii_trna_21	Bpettrna_21	-	-	Anticodon: CAG
+2852194..2852270	+	77	163258032	b_petrii_trna_22	Bpettrna_22	-	-	Anticodon: CAT
+2940059..2940145	-	87	163258032	b_petrii_trna_23	Bpettrna_23	-	-	Anticodon: TAG
+2984951..2985027	-	77	163258032	b_petrii_trna_24	Bpettrna_24	-	-	Anticodon: GAC
+3038531..3038606	+	76	163258032	b_petrii_trna_25	Bpettrna_25	-	-	Anticodon: CGC
+3255612..3255727	-	116	163258032	5S rRNA	Bpetrrna_04	-	-	5S ribosomal RNA
+3255875..3258771	-	2897	163258032	23S rRNA	Bpetrrna_05	-	-	23S ribosomal RNA
+3259066..3259141	-	76	163258032	b_petrii_trna_26	Bpettrna_26	-	-	Anticodon: TGC
+3259201..3259277	-	77	163258032	b_petrii_trna_27	Bpettrna_27	-	-	Anticodon: GAT
+3259436..3260921	-	1486	163258032	16S rRNA	Bpetrrna_06	-	-	16S ribosomal RNA
+3299748..3299824	+	77	163258032	b_petrii_trna_28	Bpettrna_28	-	-	Anticodon: CAT
+3305568..3305643	-	76	163258032	b_petrii_trna_29	Bpettrna_29	-	-	Anticodon: CGT
+3305850..3305925	+	76	163258032	b_petrii_trna_30	Bpettrna_30	-	-	Anticodon: GTT
+3498628..3498743	-	116	163258032	5S rRNA	Bpetrrna_07	-	-	5S ribosomal RNA
+3498891..3501787	-	2897	163258032	23S rRNA	Bpetrrna_08	-	-	23S ribosomal RNA
+3502082..3502157	-	76	163258032	b_petrii_trna_31	Bpettrna_31	-	-	Anticodon: TGC
+3502217..3502293	-	77	163258032	b_petrii_trna_32	Bpettrna_32	-	-	Anticodon: GAT
+3502452..3503937	-	1486	163258032	16S rRNA	Bpetrrna_09	-	-	16S ribosomal RNA
+3614952..3615028	-	77	163258032	b_petrii_trna_33	Bpettrna_33	-	-	Anticodon: ACG
+3631666..3631742	-	77	163258032	b_petrii_trna_34	Bpettrna_34	-	-	Anticodon: ACG
+3639616..3639708	-	93	163258032	b_petrii_trna_35	Bpettrna_35	-	-	Anticodon: GCT
+3680187..3680262	-	76	163258032	b_petrii_trna_36	Bpettrna_36	-	-	Anticodon: GTG
+3683481..3683557	-	77	163258032	b_petrii_trna_37	Bpettrna_37	-	-	Anticodon: TCT
+3709600..3709676	+	77	163258032	b_petrii_trna_38	Bpettrna_38	-	-	Anticodon: TGG
+3764504..3764578	+	75	163258032	b_petrii_trna_39	Bpettrna_39	-	-	Anticodon: CCT
+3870651..3870726	+	76	163258032	b_petrii_trna_40	Bpettrna_40	-	-	Anticodon: GGC
+3870768..3870843	+	76	163258032	b_petrii_trna_41	Bpettrna_41	-	-	Anticodon: TTC
+3870881..3870957	+	77	163258032	b_petrii_trna_42	Bpettrna_42	-	-	Anticodon: GTC
+4226940..4227016	-	77	163258032	b_petrii_trna_43	Bpettrna_43	-	-	Anticodon: TTG
+4576839..4576912	-	74	163258032	b_petrii_trna_44	Bpettrna_44	-	-	Anticodon: CCC
+4605440..4605524	+	85	163258032	b_petrii_trna_45	Bpettrna_45	-	-	Anticodon: CAA
+4804399..4804474	+	76	163258032	b_petrii_trna_46	Bpettrna_46	-	-	Anticodon: GAA
+4932434..4932510	-	77	163258032	b_petrii_trna_47	Bpettrna_47	-	-	Anticodon: CGG
+5236595..5236670	-	76	163258032	b_petrii_trna_48	Bpettrna_48	-	-	Anticodon: CCA
+5238030..5238104	-	75	163258032	b_petrii_trna_49	Bpettrna_49	-	-	Anticodon: GGT
+5238111..5238184	-	74	163258032	b_petrii_trna_50	Bpettrna_50	-	-	Anticodon: TCC
+5238308..5238394	-	87	163258032	b_petrii_trna_51	Bpettrna_51	-	-	Anticodon: GTA

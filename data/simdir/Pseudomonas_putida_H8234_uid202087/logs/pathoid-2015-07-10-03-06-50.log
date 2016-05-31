@@ -1,0 +1,22 @@
+Running without mySQLdb library
+parsing sam file/likelihood score/reads and mapped genomes...
+EM iteration...
+(Genomes,Reads)=16956x298730
+Delta Change:
+writing initial alignment ...
+[0]1.99675
+[1]0.0139445
+[2]0.000125452
+[3]8.17103e-05
+[4]4.69387e-05
+[5]2.23316e-05
+[6]1.03976e-05
+[7]5.15913e-06
+[8]2.68184e-06
+[9]1.42271e-06
+[10]7.60042e-07
+[11]4.0675e-07
+[12]2.17688e-07
+[13]1.16459e-07
+[14]6.22792e-08
+Total Elapsed Time: 2541

@@ -1,0 +1,7 @@
+Vibrio cholerae IEC224 chromosome II, complete sequence. - 1..1072136
+4 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+494703..494777	+	75	378796054	-	O3Y_t18700	-	-	Gly tRNA
+699385..699458	-	74	378796054	-	O3Y_t18702	-	-	Cys tRNA
+699483..699569	-	87	378796054	-	O3Y_t18704	-	-	Leu tRNA
+704605..704678	-	74	378796054	-	O3Y_t18706	-	-	Cys tRNA

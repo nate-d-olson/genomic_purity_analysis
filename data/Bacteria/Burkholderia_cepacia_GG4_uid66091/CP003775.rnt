@@ -1,0 +1,8 @@
+Burkholderia cepacia GG4 chromosome 2, complete sequence. - 1..3003666
+5 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+113..224	+	112	402249129	-	GEM_3189	-	-	5S ribosomal RNA
+286715..286799	-	85	402249129	-	GEM_3440	-	-	Leu tRNA
+1770205..1770296	-	92	402249129	-	GEM_4772	-	-	Sec tRNA
+1882951..1883029	-	79	402249129	-	GEM_4863	-	-	Met tRNA
+2103257..2103330	+	74	402249129	-	GEM_5068	-	-	Xaa tRNA

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/PathoScope/pathoscope/pathoscope.py", line 251, in <module>
+    PathoID.pathoscope_reassign(pathoIdOptions)
+  File "/PathoScope/pathoscope/pathoid/PathoID.py", line 228, in pathoscope_reassign
+    reAlignfile = rewrite_align(U, NU, ali_file, scoreCutoff, aliFormat, outdir)
+  File "/PathoScope/pathoscope/pathoid/PathoID.py", line 354, in rewrite_align
+    with open(aliDfile,'r') as in1:
+IOError: [Errno 2] No such file or directory: '331-9/331-9_0.99999999/331-9_0.99999999.sam'

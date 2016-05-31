@@ -1,0 +1,11 @@
+Ralstonia solanacearum CMR15 plasmid CMR15_mp, complete genome - 1..1959334
+8 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+290575..290659	-	85	299068436	-	CMR15_mptRNA4	-	-	Leu tRNA
+605175..605252	+	78	299068436	-	CMR15_mptRNA1	-	-	Lys tRNA
+651687..651849	-	163	299068436	-	CMR15_mpmisc_RNA_1	-	-	-
+1119605..1119716	-	112	299068436	-	CMR15_mp_5s_rRNA_1	-	-	ribosomal RNA 5s ribosomal RNA
+1119839..1122715	-	2877	299068436	-	CMR15_mp_23s_rRNA_1	-	-	ribosomal RNA 23s ribosomal RNA
+1122975..1123050	-	76	299068436	-	CMR15_mptRNA3	-	-	Ala tRNA
+1123087..1123163	-	77	299068436	-	CMR15_mptRNA2	-	-	Ile tRNA
+1123228..1124751	-	1524	299068436	-	CMR15_mp_16s_rRNA_1	-	-	ribosomal RNA 16s ribosomal RNA

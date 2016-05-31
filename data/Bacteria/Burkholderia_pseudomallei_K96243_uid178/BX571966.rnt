@@ -1,0 +1,15 @@
+Burkholderia pseudomallei strain K96243, chromosome 2, complete sequence. - 1..3173005
+12 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+485360..486852	+	1493	52211453	-	-	-	-	16S ribosomal RNA
+486946..487022	+	77	52211453	-	-	-	-	Ile tRNA
+487057..487132	+	76	52211453	-	-	-	-	Ala tRNA
+487486..490367	+	2882	52211453	-	-	-	-	23S ribosomal RNA
+490549..490664	+	116	52211453	-	-	-	-	5S ribosomal RNA
+518898..518987	+	90	52211453	-	-	-	-	Ser tRNA
+1040382..1040466	-	85	52211453	-	-	-	-	Leu tRNA
+1324168..1324241	+	74	52211453	-	-	-	-	Cys tRNA
+1490479..1490584	-	106	52211453	-	-	-	-	-
+2282349..2282443	-	95	52211453	-	-	-	-	Sec tRNA
+2406685..2406760	-	76	52211453	-	-	-	-	Met tRNA
+2727212..2727288	-	77	52211453	-	-	-	-	Val tRNA

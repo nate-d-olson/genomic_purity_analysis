@@ -1,0 +1,4 @@
+Total Number of Aligned Reads:	200590	Total Number of Mapped Genomes:	5082
+Genome	Final Guess	Final Best Hit	Final Best Hit Read Numbers	Final High Confidence Hits	Final Low Confidence Hits	Initial Guess	Initial Best Hit	Initial Best Hit Read Numbers	Initial High Confidence Hits	Initial Low Confidence Hits
+ti|755731|org|Clostridium_sp._BNL1100	0.999999983036709	0.999855426491849	200561.0	0.999855426491849	0.0	0.9999606856186447	0.9965678167189781	199901.5383556598	0.9944713096365722	0.003305249513933895
+ti|536232|org|Clostridium_botulinum_A2_str._Kyoto	1.6963056476490085e-08	0.0001445735081509547	29.0	0.0001445735081509547	0.0	1.6997219595383767e-08	0.0002492646692257839	50.0	0.0002492646692257839	0.0

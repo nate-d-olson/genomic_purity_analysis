@@ -1,0 +1,9 @@
+Ralstonia solanacearum FQY_4 megaplasmid, partial sequence. - 1..2089828
+6 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+301478..301559	-	82	469775917	-	F504_rna57	-	-	Leu tRNA
+992403..993874	+	1472	469775917	-	F504_rna58	-	-	small subunit ribosomal RNA
+993973..994046	+	74	469775917	-	F504_rna59	-	-	Ile tRNA
+994086..994158	+	73	469775917	-	F504_rna60	-	-	Ala tRNA
+994416..997233	+	2818	469775917	-	F504_rna61	-	-	small subunit ribosomal RNA
+997413..997528	+	116	469775917	-	F504_rna62	-	-	5S ribosomal RNA

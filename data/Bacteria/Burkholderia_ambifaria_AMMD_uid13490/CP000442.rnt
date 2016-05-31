@@ -1,0 +1,8 @@
+Burkholderia ambifaria AMMD chromosome 3, complete sequence. - 1..1281472
+5 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+511798..511910	-	113	115285645	-	Bamb_R0086	-	-	5S ribosomal RNA
+512138..515019	-	2882	115285645	-	Bamb_R0087	-	-	23S ribosomal RNA
+515309..515384	-	76	115285645	-	Bamb_R0088	-	-	Ala tRNA
+515470..515546	-	77	115285645	-	Bamb_R0089	-	-	Ile tRNA
+515609..517134	-	1526	115285645	-	Bamb_R0090	-	-	16S ribosomal RNA

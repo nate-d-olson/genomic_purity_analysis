@@ -1,0 +1,20 @@
+Nanoarchaeum equitans Kin4-M, complete genome. - 1..490885
+17 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+35318..35366	-	49	40068520	-	NEQrRNA007	-	-	small subunit ribosomal RNA
+120718..120767	-	50	40068520	-	NEQrRNA006	-	-	small subunit ribosomal RNA
+259229..259278	-	50	40068520	-	NEQrRNA009	-	-	small subunit ribosomal RNA
+393996..394106	+	111	40068520	-	NEQrRNA005	-	-	small subunit ribosomal RNA
+394002..394106	+	105	40068520	-	NEQrRNA014	-	-	large subunit ribosomal RNA
+394144..394224	+	81	40068520	-	NEQrRNA016	-	-	large subunit ribosomal RNA
+395071..395124	+	54	40068520	-	NEQrRNA015	-	-	large subunit ribosomal RNA
+395291..395535	+	245	40068520	-	NEQrRNA017	-	-	large subunit ribosomal RNA
+395699..395833	+	135	40068520	-	NEQrRNA013	-	-	large subunit ribosomal RNA
+395853..396093	+	241	40068520	-	NEQrRNA012	-	-	large subunit ribosomal RNA
+396300..396428	+	129	40068520	-	NEQrRNA010	-	-	large subunit ribosomal RNA
+396557..396667	+	111	40068520	-	NEQrRNA011	-	-	large subunit ribosomal RNA
+432414..432489	+	76	40068520	-	NEQrRNA004	-	-	small subunit ribosomal RNA
+432547..432728	+	182	40068520	-	NEQrRNA002	-	-	small subunit ribosomal RNA
+432757..433419	+	663	40068520	-	NEQrRNA001	-	-	small subunit ribosomal RNA
+433435..433710	+	276	40068520	-	NEQrRNA003	-	-	small subunit ribosomal RNA
+433767..433826	+	60	40068520	-	NEQrRNA008	-	-	small subunit ribosomal RNA

@@ -1,0 +1,7 @@
+Vibrio cholerae O1 biovar eltor str. N16961 chromosome II, complete sequence - 1..1072315
+4 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+494884..494958	+	75	12057213	-	VC_At1	-	-	Gly tRNA
+699563..699636	-	74	12057213	-	VC_At2	-	-	Cys tRNA
+699661..699747	-	87	12057213	-	VC_At3	-	-	Leu tRNA
+704783..704856	-	74	12057213	-	VC_At4	-	-	Cys tRNA

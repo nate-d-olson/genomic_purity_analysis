@@ -1,0 +1,8 @@
+Burkholderia multivorans ATCC 17616 chromosome 3, complete sequence. - 1..919806
+5 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+20986..22511	+	1526	160345909	-	Bmul_R0079	-	-	16S ribosomal RNA
+22573..22649	+	77	160345909	-	Bmul_R0080	-	-	Ile tRNA
+22741..22816	+	76	160345909	-	Bmul_R0081	-	-	Ala tRNA
+23167..26047	+	2881	160345909	-	Bmul_R0082	-	-	23S ribosomal RNA
+26185..26273	+	89	160345909	-	Bmul_R0083	-	-	5S ribosomal RNA

@@ -1,0 +1,7 @@
+Vibrio cholerae O1 str. 2010EL-1786 chromosome 2, complete sequence. - 1..1046365
+4 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+195424..195498	+	75	356648368	trnaG	Vch1786_II0245	-	-	Gly tRNA
+400104..400177	-	74	356648368	trnaC	Vch1786_II0441	-	-	Cys tRNA
+400202..400288	-	87	356648368	trnaL	Vch1786_II0442	-	-	Leu tRNA
+405324..405397	-	74	356648368	trnaC	Vch1786_II0449	-	-	Cys tRNA

@@ -1,0 +1,5 @@
+Vibrio anguillarum 775 chromosome II, complete sequence. - 1..988135
+2 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+41574..41648	-	75	335343122	-	VAA_t083	-	-	Gly tRNA
+923771..923861	-	91	335343122	-	VAA_t086	-	-	Ser tRNA

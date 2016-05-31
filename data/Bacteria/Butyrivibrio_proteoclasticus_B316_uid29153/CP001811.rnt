@@ -1,0 +1,11 @@
+Butyrivibrio proteoclasticus B316 chromosome 2, complete sequence. - 1..302358
+8 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+63988..65466	+	1479	302396787	-	bpr_III258	-	-	16S ribosomal RNA
+65565..65683	+	119	302396787	-	bpr_III259	-	-	5S ribosomal RNA
+65892..68802	+	2911	302396787	-	bpr_III260	-	-	23S ribosomal RNA
+68914..68990	+	77	302396787	-	bpr_III256	-	-	Asp tRNA
+69014..69089	+	76	302396787	-	bpr_III257	-	-	Thr tRNA
+73395..74873	+	1479	302396787	-	bpr_III261	-	-	16S ribosomal RNA
+74972..75090	+	119	302396787	-	bpr_III262	-	-	5S ribosomal RNA
+75299..78209	+	2911	302396787	-	bpr_III263	-	-	23S ribosomal RNA

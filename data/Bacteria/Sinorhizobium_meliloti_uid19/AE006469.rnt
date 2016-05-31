@@ -1,0 +1,6 @@
+Sinorhizobium meliloti 1021 plasmid pSymA, complete sequence. - 1..1354226
+3 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+15716..15807	+	92	25168258	selC	SMa0022	-	-	Anticodon: TCA
+1222024..1222096	+	73	25168258	-	SMa2168	-	-	Anticodon: CAT
+1351266..1351448	+	183	25168258	incA	SMa5039	-	-	-

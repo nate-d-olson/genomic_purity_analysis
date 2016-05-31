@@ -1,0 +1,9 @@
+Ketogulonicigenium vulgare Y25 plasmid pYP1, complete sequence. - 1..268675
+6 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+229966..231416	+	1451	308752797	-	EIO_3093	-	-	16S ribosomal RNA
+231578..231653	+	76	308752797	-	EIO_3094	-	-	Ala tRNA
+231657..231733	+	77	308752797	-	EIO_3095	-	-	Ile tRNA
+232092..234937	+	2846	308752797	-	EIO_3096	-	-	23S ribosomal RNA
+235034..235127	+	94	308752797	-	EIO_3097	-	-	5S ribosomal RNA
+235175..235251	+	77	308752797	-	EIO_3098	-	-	Met tRNA

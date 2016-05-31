@@ -1,0 +1,17 @@
+Azospirillum lipoferum 4B plasmid AZO_p2 complete genome - 1..750123
+14 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+249..2992	+	2744	357426311	-	AZOLI_p2_23s_rRNA_1	-	-	ribosomal RNA 23S ribosomal RNA
+3134..3248	+	115	357426311	-	AZOLI_p2_5s_rRNA_1	-	-	ribosomal RNA 5S ribosomal RNA
+11103..12576	+	1474	357426311	-	AZOLI_p2_16s_rRNA_1	-	-	ribosomal RNA 16S ribosomal RNA
+12692..12768	+	77	357426311	-	AZOLI_p2tRNA1	-	-	Ile tRNA
+12797..12872	+	76	357426311	-	AZOLI_p2tRNA2	-	-	Ala tRNA
+13185..16381	+	3197	357426311	-	AZOLI_p2_23s_rRNA_2	-	-	ribosomal RNA 23S ribosomal RNA
+16524..16638	+	115	357426311	-	AZOLI_p2_5s_rRNA_2	-	-	ribosomal RNA 5S ribosomal RNA
+16719..16795	+	77	357426311	-	AZOLI_p2tRNA3	-	-	Met tRNA
+129482..129552	+	71	357426311	-	AZOLI_p2misc_RNA_2	-	-	-
+208283..208417	+	135	357426311	-	AZOLI_p2misc_RNA_3	-	-	-
+614193..614412	+	220	357426311	-	AZOLI_p2misc_RNA_1	-	-	-
+748293..749766	+	1474	357426311	-	AZOLI_p2_16s_rRNA_2	-	-	ribosomal RNA 16S ribosomal RNA
+749882..749958	+	77	357426311	-	AZOLI_p2tRNA4	-	-	Ile tRNA
+749987..750062	+	76	357426311	-	AZOLI_p2tRNA5	-	-	Ala tRNA

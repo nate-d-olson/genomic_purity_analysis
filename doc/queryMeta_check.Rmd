@@ -1,0 +1,30 @@
+---
+title: "Query Meta Check"
+author: "Nate Olson"
+date: "May 30, 2016"
+output: html_document
+---
+```{r echo=FALSE, message=FALSE}
+library(ProjectTemplate)
+wd <- getwd()
+setwd("../")
+load.project()
+setwd(wd)
+```
+
+
+## Cleaning up queryMeta
+Entries with Multiple Taxid
+```{r}
+queryMeta %>% select(Query, Taxid) %>% unique() %>% 
+      right_join(singleOrgResults) %>% select(Query, Taxid) %>% unique() %>% 
+      group_by(Query) %>% mutate(count = n()) %>% filter(count > 1) %>% kable()
+```
+
+searched Genbank Taxid
+1639 is the L. monocytogenes species and 932919 is the strain
+396359 is a Clostridium phage and 289380 is the strain
+
+
+
+

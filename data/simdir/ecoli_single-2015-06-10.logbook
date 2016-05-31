@@ -1,0 +1,507 @@
+
+2015-06-10 __main__
+ 11:34:39 - 
+ 11:34:39 - ________________________________________
+ 11:34:39 - Tasks which will be run:
+ 11:34:39 - 
+ 11:34:39 - 
+ 11:34:39 - Task enters queue = 'sipp::ngs_simulate_commands.get_genome_fasta' 
+ 11:34:39 -     Job  = [Escherichia_coli_0127_H6_E2348_69_uid32571 -> Escherichia_coli_0127_H6_E2348_69_uid32571/32571_.fasta, .../Bacteria/] 
+  Input files:
+   * 10 Jun 2015 11:26:38.36: Escherichia_coli_0127_H6_E2348_69_uid32571
+  Output files:
+   * 10 Jun 2015 11:18:18.15: Escherichia_coli_0127_H6_E2348_69_uid32571/32571_.fasta
+ 
+ 11:34:39 -     Job  = [Escherichia_coli_042_uid40647 -> Escherichia_coli_042_uid40647/40647_.fasta, .../Bacteria/] 
+  Input files:
+   * 10 Jun 2015 11:26:38.25: Escherichia_coli_042_uid40647
+  Output files:
+   * 10 Jun 2015 11:18:19.75: Escherichia_coli_042_uid40647/40647_.fasta
+ 
+ 11:34:39 -     Job  = [Escherichia_coli_536_uid16235 -> Escherichia_coli_536_uid16235/16235_.fasta, .../Bacteria/] 
+  Input files:
+   * 10 Jun 2015 11:26:37.48: Escherichia_coli_536_uid16235
+  Output files:
+   * 10 Jun 2015 11:18:19.75: Escherichia_coli_536_uid16235/16235_.fasta
+ 
+ 11:34:39 -     Job  = [Escherichia_coli_55989_uid33413 -> Escherichia_coli_55989_uid33413/33413_.fasta, .../Bacteria/] 
+  Input files:
+   * 10 Jun 2015 11:26:38.28: Escherichia_coli_55989_uid33413
+  Output files:
+   * 10 Jun 2015 11:18:19.18: Escherichia_coli_55989_uid33413/33413_.fasta
+ 
+ 11:34:39 -     Job  = [Escherichia_coli_ABU_83972_uid38725 -> Escherichia_coli_ABU_83972_uid38725/38725_.fasta, .../Bacteria/] 
+  Input files:
+   * 10 Jun 2015 11:26:37.48: Escherichia_coli_ABU_83972_uid38725
+  Output files:
+   * 10 Jun 2015 11:18:20.34: Escherichia_coli_ABU_83972_uid38725/38725_.fasta
+ 
+ 11:34:39 -     Job  = [Escherichia_coli_APEC_O1_uid16718 -> Escherichia_coli_APEC_O1_uid16718/16718_.fasta, .../Bacteria/] 
+  Input files:
+   * 10 Jun 2015 11:26:38.26: Escherichia_coli_APEC_O1_uid16718
+  Output files:
+   * 10 Jun 2015 11:18:21.10: Escherichia_coli_APEC_O1_uid16718/16718_.fasta
+ 
+ 11:34:40 -     Job  = [Escherichia_coli_042_uid40647 -> Escherichia_coli_042_uid40647/40647_.fasta, .../Bacteria/] completed
+ 11:34:41 -     Job  = [Escherichia_coli_APEC_O78_uid184588 -> Escherichia_coli_APEC_O78_uid184588/184588_.fasta, .../Bacteria/] 
+  Input files:
+   * 10 Jun 2015 11:26:38.26: Escherichia_coli_APEC_O78_uid184588
+  Output files:
+   * 10 Jun 2015 11:18:20.10: Escherichia_coli_APEC_O78_uid184588/184588_.fasta
+ 
+ 11:34:41 -     Job  = [Escherichia_coli_BL21_DE3__uid20713 -> Escherichia_coli_BL21_DE3__uid20713/20713_.fasta, .../Bacteria/] 
+  Input files:
+   * 10 Jun 2015 11:26:37.48: Escherichia_coli_BL21_DE3__uid20713
+  Output files:
+   * 10 Jun 2015 11:18:20.16: Escherichia_coli_BL21_DE3__uid20713/20713_.fasta
+ 
+ 11:34:41 -     Job  = [Escherichia_coli_536_uid16235 -> Escherichia_coli_536_uid16235/16235_.fasta, .../Bacteria/] completed
+ 11:34:41 -     Job  = [Escherichia_coli_55989_uid33413 -> Escherichia_coli_55989_uid33413/33413_.fasta, .../Bacteria/] completed
+ 11:34:42 -     Job  = [Escherichia_coli_0127_H6_E2348_69_uid32571 -> Escherichia_coli_0127_H6_E2348_69_uid32571/32571_.fasta, .../Bacteria/] completed
+ 11:34:42 -     Job  = [Escherichia_coli_ABU_83972_uid38725 -> Escherichia_coli_ABU_83972_uid38725/38725_.fasta, .../Bacteria/] completed
+ 11:34:42 -     Job  = [Escherichia_coli_APEC_O1_uid16718 -> Escherichia_coli_APEC_O1_uid16718/16718_.fasta, .../Bacteria/] completed
+ 11:34:42 -     Job  = [Escherichia_coli_APEC_O78_uid184588 -> Escherichia_coli_APEC_O78_uid184588/184588_.fasta, .../Bacteria/] completed
+ 11:34:42 -     Job  = [Escherichia_coli_BL21_DE3__uid20713 -> Escherichia_coli_BL21_DE3__uid20713/20713_.fasta, .../Bacteria/] completed
+ 11:34:42 - Completed Task = 'sipp::ngs_simulate_commands.get_genome_fasta' 
+ 11:34:42 - Task enters queue = 'sipp::ngs_simulate_commands.simulate_miseq' 
+ 11:34:42 -     Job  = [Escherichia_coli_0127_H6_E2348_69_uid32571/32571_.fasta -> [Escherichia_coli_0127_H6_E2348_69_uid32571/32571_1.fq, Escherichia_coli_0127_H6_E2348_69_uid32571/32571_2.fq]] 
+  Input files:
+   * 10 Jun 2015 11:34:40.86: Escherichia_coli_0127_H6_E2348_69_uid32571/32571_.fasta
+  Output files:
+   * 10 Jun 2015 11:19:00.28: Escherichia_coli_0127_H6_E2348_69_uid32571/32571_1.fq
+   * 10 Jun 2015 11:19:00.28: Escherichia_coli_0127_H6_E2348_69_uid32571/32571_2.fq
+ 
+ 11:34:42 -     Job  = [Escherichia_coli_042_uid40647/40647_.fasta -> [Escherichia_coli_042_uid40647/40647_1.fq, Escherichia_coli_042_uid40647/40647_2.fq]] 
+  Input files:
+   * 10 Jun 2015 11:34:40.41: Escherichia_coli_042_uid40647/40647_.fasta
+  Output files:
+   * 10 Jun 2015 11:19:01.99: Escherichia_coli_042_uid40647/40647_1.fq
+   * 10 Jun 2015 11:19:01.99: Escherichia_coli_042_uid40647/40647_2.fq
+ 
+ 11:34:42 -     Job  = [Escherichia_coli_536_uid16235/16235_.fasta -> [Escherichia_coli_536_uid16235/16235_1.fq, Escherichia_coli_536_uid16235/16235_2.fq]] 
+  Input files:
+   * 10 Jun 2015 11:34:41.08: Escherichia_coli_536_uid16235/16235_.fasta
+  Output files:
+   * 10 Jun 2015 11:18:59.80: Escherichia_coli_536_uid16235/16235_1.fq
+   * 10 Jun 2015 11:18:59.80: Escherichia_coli_536_uid16235/16235_2.fq
+ 
+ 11:34:42 -     Job  = [Escherichia_coli_55989_uid33413/33413_.fasta -> [Escherichia_coli_55989_uid33413/33413_1.fq, Escherichia_coli_55989_uid33413/33413_2.fq]] 
+  Input files:
+   * 10 Jun 2015 11:34:41.61: Escherichia_coli_55989_uid33413/33413_.fasta
+  Output files:
+   * 10 Jun 2015 11:19:00.57: Escherichia_coli_55989_uid33413/33413_1.fq
+   * 10 Jun 2015 11:19:00.57: Escherichia_coli_55989_uid33413/33413_2.fq
+ 
+ 11:34:42 -     Job  = [Escherichia_coli_ABU_83972_uid38725/38725_.fasta -> [Escherichia_coli_ABU_83972_uid38725/38725_1.fq, Escherichia_coli_ABU_83972_uid38725/38725_2.fq]] 
+  Input files:
+   * 10 Jun 2015 11:34:42.51: Escherichia_coli_ABU_83972_uid38725/38725_.fasta
+  Output files:
+   * 10 Jun 2015 11:19:00.56: Escherichia_coli_ABU_83972_uid38725/38725_1.fq
+   * 10 Jun 2015 11:19:00.56: Escherichia_coli_ABU_83972_uid38725/38725_2.fq
+ 
+ 11:34:42 -     Job  = [Escherichia_coli_APEC_O1_uid16718/16718_.fasta -> [Escherichia_coli_APEC_O1_uid16718/16718_1.fq, Escherichia_coli_APEC_O1_uid16718/16718_2.fq]] 
+  Input files:
+   * 10 Jun 2015 11:34:42.54: Escherichia_coli_APEC_O1_uid16718/16718_.fasta
+  Output files:
+   * 10 Jun 2015 11:19:02.14: Escherichia_coli_APEC_O1_uid16718/16718_1.fq
+   * 10 Jun 2015 11:19:02.14: Escherichia_coli_APEC_O1_uid16718/16718_2.fq
+ 
+ 11:34:42 -     Job  = [Escherichia_coli_APEC_O78_uid184588/184588_.fasta -> [Escherichia_coli_APEC_O78_uid184588/184588_1.fq, Escherichia_coli_APEC_O78_uid184588/184588_2.fq]] 
+  Input files:
+   * 10 Jun 2015 11:34:42.58: Escherichia_coli_APEC_O78_uid184588/184588_.fasta
+  Output files:
+   * 10 Jun 2015 11:18:59.48: Escherichia_coli_APEC_O78_uid184588/184588_1.fq
+   * 10 Jun 2015 11:18:59.48: Escherichia_coli_APEC_O78_uid184588/184588_2.fq
+ 
+ 11:34:56 -     Job  = [Escherichia_coli_0127_H6_E2348_69_uid32571/32571_.fasta -> [Escherichia_coli_0127_H6_E2348_69_uid32571/32571_1.fq, Escherichia_coli_0127_H6_E2348_69_uid32571/32571_2.fq]] completed
+ 11:34:58 -     Job  = [Escherichia_coli_BL21_DE3__uid20713/20713_.fasta -> [Escherichia_coli_BL21_DE3__uid20713/20713_1.fq, Escherichia_coli_BL21_DE3__uid20713/20713_2.fq]] 
+  Input files:
+   * 10 Jun 2015 11:34:42.62: Escherichia_coli_BL21_DE3__uid20713/20713_.fasta
+  Output files:
+   * 10 Jun 2015 11:18:58.52: Escherichia_coli_BL21_DE3__uid20713/20713_2.fq
+   * 10 Jun 2015 11:18:59.51: Escherichia_coli_BL21_DE3__uid20713/20713_1.fq
+ 
+ 11:34:58 -     Job  = [Escherichia_coli_042_uid40647/40647_.fasta -> [Escherichia_coli_042_uid40647/40647_1.fq, Escherichia_coli_042_uid40647/40647_2.fq]] completed
+ 11:35:02 -     Job  = [Escherichia_coli_536_uid16235/16235_.fasta -> [Escherichia_coli_536_uid16235/16235_1.fq, Escherichia_coli_536_uid16235/16235_2.fq]] completed
+ 11:35:03 -     Job  = [Escherichia_coli_55989_uid33413/33413_.fasta -> [Escherichia_coli_55989_uid33413/33413_1.fq, Escherichia_coli_55989_uid33413/33413_2.fq]] completed
+ 11:35:11 -     Job  = [Escherichia_coli_ABU_83972_uid38725/38725_.fasta -> [Escherichia_coli_ABU_83972_uid38725/38725_1.fq, Escherichia_coli_ABU_83972_uid38725/38725_2.fq]] completed
+ 11:35:17 -     Job  = [Escherichia_coli_BL21_DE3__uid20713/20713_.fasta -> [Escherichia_coli_BL21_DE3__uid20713/20713_1.fq, Escherichia_coli_BL21_DE3__uid20713/20713_2.fq]] completed
+ 11:35:21 -     Job  = [Escherichia_coli_APEC_O1_uid16718/16718_.fasta -> [Escherichia_coli_APEC_O1_uid16718/16718_1.fq, Escherichia_coli_APEC_O1_uid16718/16718_2.fq]] completed
+ 11:35:21 -     Job  = [Escherichia_coli_APEC_O78_uid184588/184588_.fasta -> [Escherichia_coli_APEC_O78_uid184588/184588_1.fq, Escherichia_coli_APEC_O78_uid184588/184588_2.fq]] completed
+ 11:35:21 - Completed Task = 'sipp::ngs_simulate_commands.simulate_miseq' 
+ 11:35:21 - Task enters queue = 'sipp::pathoscope_commands.pathomap_command' 
+ 11:35:21 -     Job  = [[Escherichia_coli_0127_H6_E2348_69_uid32571/32571_1.fq, Escherichia_coli_0127_H6_E2348_69_uid32571/32571_2.fq] -> Escherichia_coli_0127_H6_E2348_69_uid32571/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_0127_H6_E2348_69_uid32571/pathomap-appendAlign.sam] 
+ 11:35:21 -     Job  = [[Escherichia_coli_042_uid40647/40647_1.fq, Escherichia_coli_042_uid40647/40647_2.fq] -> Escherichia_coli_042_uid40647/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_042_uid40647/pathomap-appendAlign.sam] 
+ 11:35:21 -     Job  = [[Escherichia_coli_536_uid16235/16235_1.fq, Escherichia_coli_536_uid16235/16235_2.fq] -> Escherichia_coli_536_uid16235/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_536_uid16235/pathomap-appendAlign.sam] 
+ 11:35:21 -     Job  = [[Escherichia_coli_55989_uid33413/33413_1.fq, Escherichia_coli_55989_uid33413/33413_2.fq] -> Escherichia_coli_55989_uid33413/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_55989_uid33413/pathomap-appendAlign.sam] 
+ 11:35:21 -     Job  = [[Escherichia_coli_ABU_83972_uid38725/38725_1.fq, Escherichia_coli_ABU_83972_uid38725/38725_2.fq] -> Escherichia_coli_ABU_83972_uid38725/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_ABU_83972_uid38725/pathomap-appendAlign.sam] 
+ 11:35:21 -     Job  = [[Escherichia_coli_APEC_O1_uid16718/16718_1.fq, Escherichia_coli_APEC_O1_uid16718/16718_2.fq] -> Escherichia_coli_APEC_O1_uid16718/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_APEC_O1_uid16718/pathomap-appendAlign.sam] 
+ 11:35:21 -     Job  = [[Escherichia_coli_APEC_O78_uid184588/184588_1.fq, Escherichia_coli_APEC_O78_uid184588/184588_2.fq] -> Escherichia_coli_APEC_O78_uid184588/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_APEC_O78_uid184588/pathomap-appendAlign.sam] 
+ 21:20:39 -     Job  = [[Escherichia_coli_536_uid16235/16235_1.fq, Escherichia_coli_536_uid16235/16235_2.fq] -> Escherichia_coli_536_uid16235/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 21:20:47 -     Job  = [[Escherichia_coli_BL21_DE3__uid20713/20713_1.fq, Escherichia_coli_BL21_DE3__uid20713/20713_2.fq] -> Escherichia_coli_BL21_DE3__uid20713/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_BL21_DE3__uid20713/pathomap-appendAlign.sam] 
+ 21:20:47 -     Job  = [[Escherichia_coli_BL21_DE3__uid28965/28965_1.fq, Escherichia_coli_BL21_DE3__uid28965/28965_2.fq] -> Escherichia_coli_BL21_DE3__uid28965/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_BL21_DE3__uid28965/pathomap-appendAlign.sam] 
+ 21:20:47 -     Job  = [[Escherichia_coli_BW2952_uid33775/33775_1.fq, Escherichia_coli_BW2952_uid33775/33775_2.fq] -> Escherichia_coli_BW2952_uid33775/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_BW2952_uid33775/pathomap-appendAlign.sam] 
+ 21:20:47 -     Job  = [[Escherichia_coli_B_REL606_uid18281/18281_1.fq, Escherichia_coli_B_REL606_uid18281/18281_2.fq] -> Escherichia_coli_B_REL606_uid18281/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_B_REL606_uid18281/pathomap-appendAlign.sam] 
+ 21:20:47 -     Job  = [[Escherichia_coli_CFT073_uid313/313_1.fq, Escherichia_coli_CFT073_uid313/313_2.fq] -> Escherichia_coli_CFT073_uid313/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_CFT073_uid313/pathomap-appendAlign.sam] 
+ 21:20:47 -     Job  = [[Escherichia_coli_C_ATCC_8739_uid18083/18083_1.fq, Escherichia_coli_C_ATCC_8739_uid18083/18083_2.fq] -> Escherichia_coli_C_ATCC_8739_uid18083/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_C_ATCC_8739_uid18083/pathomap-appendAlign.sam] 
+ 21:20:47 -     Job  = [[Escherichia_coli_DH1_uid30031/30031_1.fq, Escherichia_coli_DH1_uid30031/30031_2.fq] -> Escherichia_coli_DH1_uid30031/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_DH1_uid30031/pathomap-appendAlign.sam] 
+ 21:23:55 -     Job  = [[Escherichia_coli_0127_H6_E2348_69_uid32571/32571_1.fq, Escherichia_coli_0127_H6_E2348_69_uid32571/32571_2.fq] -> Escherichia_coli_0127_H6_E2348_69_uid32571/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 21:23:56 -     Job  = [[Escherichia_coli_DH1_uid52077/52077_1.fq, Escherichia_coli_DH1_uid52077/52077_2.fq] -> Escherichia_coli_DH1_uid52077/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_DH1_uid52077/pathomap-appendAlign.sam] 
+ 21:23:56 -     Job  = [[Escherichia_coli_E24377A_uid13960/13960_1.fq, Escherichia_coli_E24377A_uid13960/13960_2.fq] -> Escherichia_coli_E24377A_uid13960/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_E24377A_uid13960/pathomap-appendAlign.sam] 
+ 21:23:56 -     Job  = [[Escherichia_coli_ED1a_uid33409/33409_1.fq, Escherichia_coli_ED1a_uid33409/33409_2.fq] -> Escherichia_coli_ED1a_uid33409/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_ED1a_uid33409/pathomap-appendAlign.sam] 
+ 21:23:56 -     Job  = [[Escherichia_coli_ETEC_H10407_uid42749/42749_1.fq, Escherichia_coli_ETEC_H10407_uid42749/42749_2.fq] -> Escherichia_coli_ETEC_H10407_uid42749/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_ETEC_H10407_uid42749/pathomap-appendAlign.sam] 
+ 21:23:56 -     Job  = [[Escherichia_coli_HS_uid13959/13959_1.fq, Escherichia_coli_HS_uid13959/13959_2.fq] -> Escherichia_coli_HS_uid13959/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_HS_uid13959/pathomap-appendAlign.sam] 
+ 21:23:56 -     Job  = [[Escherichia_coli_IAI1_uid33373/33373_1.fq, Escherichia_coli_IAI1_uid33373/33373_2.fq] -> Escherichia_coli_IAI1_uid33373/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_IAI1_uid33373/pathomap-appendAlign.sam] 
+ 21:23:56 -     Job  = [[Escherichia_coli_IAI39_uid33411/33411_1.fq, Escherichia_coli_IAI39_uid33411/33411_2.fq] -> Escherichia_coli_IAI39_uid33411/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_IAI39_uid33411/pathomap-appendAlign.sam] 
+ 21:56:22 -     Job  = [[Escherichia_coli_042_uid40647/40647_1.fq, Escherichia_coli_042_uid40647/40647_2.fq] -> Escherichia_coli_042_uid40647/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 21:56:32 -     Job  = [[Escherichia_coli_IHE3034_uid43693/43693_1.fq, Escherichia_coli_IHE3034_uid43693/43693_2.fq] -> Escherichia_coli_IHE3034_uid43693/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_IHE3034_uid43693/pathomap-appendAlign.sam] 
+ 21:56:32 -     Job  = [[Escherichia_coli_JJ1886_uid218163/218163_1.fq, Escherichia_coli_JJ1886_uid218163/218163_2.fq] -> Escherichia_coli_JJ1886_uid218163/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_JJ1886_uid218163/pathomap-appendAlign.sam] 
+ 21:56:32 -     Job  = [[Escherichia_coli_KO11FL_uid33875/33875_1.fq, Escherichia_coli_KO11FL_uid33875/33875_2.fq] -> Escherichia_coli_KO11FL_uid33875/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_KO11FL_uid33875/pathomap-appendAlign.sam] 
+ 21:56:32 -     Job  = [[Escherichia_coli_KO11FL_uid62299/62299_1.fq, Escherichia_coli_KO11FL_uid62299/62299_2.fq] -> Escherichia_coli_KO11FL_uid62299/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_KO11FL_uid62299/pathomap-appendAlign.sam] 
+ 21:56:32 -     Job  = [[Escherichia_coli_K_12_substr__DH10B_uid20079/20079_1.fq, Escherichia_coli_K_12_substr__DH10B_uid20079/20079_2.fq] -> Escherichia_coli_K_12_substr__DH10B_uid20079/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_K_12_substr__DH10B_uid20079/pathomap-appendAlign.sam] 
+ 21:56:32 -     Job  = [[Escherichia_coli_K_12_substr__MDS42_uid78215/78215_1.fq, Escherichia_coli_K_12_substr__MDS42_uid78215/78215_2.fq] -> Escherichia_coli_K_12_substr__MDS42_uid78215/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_K_12_substr__MDS42_uid78215/pathomap-appendAlign.sam] 
+ 21:56:32 -     Job  = [[Escherichia_coli_K_12_substr__MG1655_uid225/225_1.fq, Escherichia_coli_K_12_substr__MG1655_uid225/225_2.fq] -> Escherichia_coli_K_12_substr__MG1655_uid225/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_K_12_substr__MG1655_uid225/pathomap-appendAlign.sam] 
+ 21:57:58 -     Job  = [[Escherichia_coli_55989_uid33413/33413_1.fq, Escherichia_coli_55989_uid33413/33413_2.fq] -> Escherichia_coli_55989_uid33413/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 21:57:59 -     Job  = [[Escherichia_coli_K_12_substr__W3110_uid16351/16351_1.fq, Escherichia_coli_K_12_substr__W3110_uid16351/16351_2.fq] -> Escherichia_coli_K_12_substr__W3110_uid16351/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_K_12_substr__W3110_uid16351/pathomap-appendAlign.sam] 
+ 21:57:59 -     Job  = [[Escherichia_coli_LF82_uid33825/33825_1.fq, Escherichia_coli_LF82_uid33825/33825_2.fq] -> Escherichia_coli_LF82_uid33825/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_LF82_uid33825/pathomap-appendAlign.sam] 
+ 21:57:59 -     Job  = [[Escherichia_coli_LY180_uid203308/203308_1.fq, Escherichia_coli_LY180_uid203308/203308_2.fq] -> Escherichia_coli_LY180_uid203308/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_LY180_uid203308/pathomap-appendAlign.sam] 
+ 21:57:59 -     Job  = [[Escherichia_coli_NA114_uid66975/66975_1.fq, Escherichia_coli_NA114_uid66975/66975_2.fq] -> Escherichia_coli_NA114_uid66975/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_NA114_uid66975/pathomap-appendAlign.sam] 
+ 21:57:59 -     Job  = [[Escherichia_coli_O103_H2_12009_uid32511/32511_1.fq, Escherichia_coli_O103_H2_12009_uid32511/32511_2.fq] -> Escherichia_coli_O103_H2_12009_uid32511/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_O103_H2_12009_uid32511/pathomap-appendAlign.sam] 
+ 21:57:59 -     Job  = [[Escherichia_coli_O104_H4_2009EL_2050_uid81097/81097_1.fq, Escherichia_coli_O104_H4_2009EL_2050_uid81097/81097_2.fq] -> Escherichia_coli_O104_H4_2009EL_2050_uid81097/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_O104_H4_2009EL_2050_uid81097/pathomap-appendAlign.sam] 
+ 21:57:59 -     Job  = [[Escherichia_coli_O104_H4_2009EL_2071_uid81099/81099_1.fq, Escherichia_coli_O104_H4_2009EL_2071_uid81099/81099_2.fq] -> Escherichia_coli_O104_H4_2009EL_2071_uid81099/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_O104_H4_2009EL_2071_uid81099/pathomap-appendAlign.sam] 
+ 06:55:35 -     Job  = [[Escherichia_coli_ABU_83972_uid38725/38725_1.fq, Escherichia_coli_ABU_83972_uid38725/38725_2.fq] -> Escherichia_coli_ABU_83972_uid38725/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 06:55:39 -     Job  = [[Escherichia_coli_O104_H4_2011C_3493_uid81095/81095_1.fq, Escherichia_coli_O104_H4_2011C_3493_uid81095/81095_2.fq] -> Escherichia_coli_O104_H4_2011C_3493_uid81095/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_O104_H4_2011C_3493_uid81095/pathomap-appendAlign.sam] 
+ 06:55:39 -     Job  = [[Escherichia_coli_O111_H__11128_uid32513/32513_1.fq, Escherichia_coli_O111_H__11128_uid32513/32513_2.fq] -> Escherichia_coli_O111_H__11128_uid32513/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_O111_H__11128_uid32513/pathomap-appendAlign.sam] 
+ 06:55:39 -     Job  = [[Escherichia_coli_O157H7_EDL933_uid259/259_1.fq, Escherichia_coli_O157H7_EDL933_uid259/259_2.fq] -> Escherichia_coli_O157H7_EDL933_uid259/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_O157H7_EDL933_uid259/pathomap-appendAlign.sam] 
+ 06:55:39 -     Job  = [[Escherichia_coli_O157H7_uid226/226_1.fq, Escherichia_coli_O157H7_uid226/226_2.fq] -> Escherichia_coli_O157H7_uid226/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_O157H7_uid226/pathomap-appendAlign.sam] 
+ 06:55:39 -     Job  = [[Escherichia_coli_O157_H7_EC4115_uid27739/27739_1.fq, Escherichia_coli_O157_H7_EC4115_uid27739/27739_2.fq] -> Escherichia_coli_O157_H7_EC4115_uid27739/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_O157_H7_EC4115_uid27739/pathomap-appendAlign.sam] 
+ 06:55:39 -     Job  = [[Escherichia_coli_O157_H7_TW14359_uid30045/30045_1.fq, Escherichia_coli_O157_H7_TW14359_uid30045/30045_2.fq] -> Escherichia_coli_O157_H7_TW14359_uid30045/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_O157_H7_TW14359_uid30045/pathomap-appendAlign.sam] 
+ 06:55:39 -     Job  = [[Escherichia_coli_O26_H11_11368_uid32509/32509_1.fq, Escherichia_coli_O26_H11_11368_uid32509/32509_2.fq] -> Escherichia_coli_O26_H11_11368_uid32509/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_O26_H11_11368_uid32509/pathomap-appendAlign.sam] 
+ 07:03:07 -     Job  = [[Escherichia_coli_APEC_O1_uid16718/16718_1.fq, Escherichia_coli_APEC_O1_uid16718/16718_2.fq] -> Escherichia_coli_APEC_O1_uid16718/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 07:03:09 -     Job  = [[Escherichia_coli_O55_H7_CB9615_uid42729/42729_1.fq, Escherichia_coli_O55_H7_CB9615_uid42729/42729_2.fq] -> Escherichia_coli_O55_H7_CB9615_uid42729/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_O55_H7_CB9615_uid42729/pathomap-appendAlign.sam] 
+ 07:03:09 -     Job  = [[Escherichia_coli_O55_H7_RM12579_uid68245/68245_1.fq, Escherichia_coli_O55_H7_RM12579_uid68245/68245_2.fq] -> Escherichia_coli_O55_H7_RM12579_uid68245/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_O55_H7_RM12579_uid68245/pathomap-appendAlign.sam] 
+ 07:03:09 -     Job  = [[Escherichia_coli_O7_K1_CE10_uid63597/63597_1.fq, Escherichia_coli_O7_K1_CE10_uid63597/63597_2.fq] -> Escherichia_coli_O7_K1_CE10_uid63597/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_O7_K1_CE10_uid63597/pathomap-appendAlign.sam] 
+ 07:03:09 -     Job  = [[Escherichia_coli_O83_H1_NRG_857C_uid41221/41221_1.fq, Escherichia_coli_O83_H1_NRG_857C_uid41221/41221_2.fq] -> Escherichia_coli_O83_H1_NRG_857C_uid41221/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_O83_H1_NRG_857C_uid41221/pathomap-appendAlign.sam] 
+ 07:03:09 -     Job  = [[Escherichia_coli_P12b_uid59455/59455_1.fq, Escherichia_coli_P12b_uid59455/59455_2.fq] -> Escherichia_coli_P12b_uid59455/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_P12b_uid59455/pathomap-appendAlign.sam] 
+ 07:03:09 -     Job  = [[Escherichia_coli_S88_uid33375/33375_1.fq, Escherichia_coli_S88_uid33375/33375_2.fq] -> Escherichia_coli_S88_uid33375/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_S88_uid33375/pathomap-appendAlign.sam] 
+ 07:03:09 -     Job  = [[Escherichia_coli_SE11_uid18057/18057_1.fq, Escherichia_coli_SE11_uid18057/18057_2.fq] -> Escherichia_coli_SE11_uid18057/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_SE11_uid18057/pathomap-appendAlign.sam] 
+ 07:35:51 -     Job  = [[Escherichia_coli_APEC_O78_uid184588/184588_1.fq, Escherichia_coli_APEC_O78_uid184588/184588_2.fq] -> Escherichia_coli_APEC_O78_uid184588/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 07:35:51 -     Job  = [[Escherichia_coli_SE15_uid19053/19053_1.fq, Escherichia_coli_SE15_uid19053/19053_2.fq] -> Escherichia_coli_SE15_uid19053/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_SE15_uid19053/pathomap-appendAlign.sam] 
+ 07:35:51 -     Job  = [[Escherichia_coli_SMS_3_5_uid19469/19469_1.fq, Escherichia_coli_SMS_3_5_uid19469/19469_2.fq] -> Escherichia_coli_SMS_3_5_uid19469/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_SMS_3_5_uid19469/pathomap-appendAlign.sam] 
+ 07:35:51 -     Job  = [[Escherichia_coli_UM146_uid50883/50883_1.fq, Escherichia_coli_UM146_uid50883/50883_2.fq] -> Escherichia_coli_UM146_uid50883/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_UM146_uid50883/pathomap-appendAlign.sam] 
+ 07:35:51 -     Job  = [[Escherichia_coli_UMN026_uid33415/33415_1.fq, Escherichia_coli_UMN026_uid33415/33415_2.fq] -> Escherichia_coli_UMN026_uid33415/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_UMN026_uid33415/pathomap-appendAlign.sam] 
+ 07:35:51 -     Job  = [[Escherichia_coli_UMNK88_uid42137/42137_1.fq, Escherichia_coli_UMNK88_uid42137/42137_2.fq] -> Escherichia_coli_UMNK88_uid42137/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_UMNK88_uid42137/pathomap-appendAlign.sam] 
+ 07:35:51 -     Job  = [[Escherichia_coli_UTI89_uid16259/16259_1.fq, Escherichia_coli_UTI89_uid16259/16259_2.fq] -> Escherichia_coli_UTI89_uid16259/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_UTI89_uid16259/pathomap-appendAlign.sam] 
+ 07:35:51 -     Job  = [[Escherichia_coli_W_uid48011/48011_1.fq, Escherichia_coli_W_uid48011/48011_2.fq] -> Escherichia_coli_W_uid48011/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_W_uid48011/pathomap-appendAlign.sam] 
+ 07:38:53 -     Job  = [[Escherichia_coli_BL21_DE3__uid20713/20713_1.fq, Escherichia_coli_BL21_DE3__uid20713/20713_2.fq] -> Escherichia_coli_BL21_DE3__uid20713/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 07:38:53 -     Job  = [[Escherichia_coli_W_uid62301/62301_1.fq, Escherichia_coli_W_uid62301/62301_2.fq] -> Escherichia_coli_W_uid62301/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_W_uid62301/pathomap-appendAlign.sam] 
+ 07:38:53 -     Job  = [[Escherichia_coli_Xuzhou21_uid45823/45823_1.fq, Escherichia_coli_Xuzhou21_uid45823/45823_2.fq] -> Escherichia_coli_Xuzhou21_uid45823/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_Xuzhou21_uid45823/pathomap-appendAlign.sam] 
+ 07:38:53 -     Job  = [[Escherichia_coli__BL21_Gold_DE3_pLysS_AG__uid30681/30681_1.fq, Escherichia_coli__BL21_Gold_DE3_pLysS_AG__uid30681/30681_2.fq] -> Escherichia_coli__BL21_Gold_DE3_pLysS_AG__uid30681/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli__BL21_Gold_DE3_pLysS_AG__uid30681/pathomap-appendAlign.sam] 
+ 07:38:53 -     Job  = [[Escherichia_coli__clone_D_i14__uid52023/52023_1.fq, Escherichia_coli__clone_D_i14__uid52023/52023_2.fq] -> Escherichia_coli__clone_D_i14__uid52023/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli__clone_D_i14__uid52023/pathomap-appendAlign.sam] 
+ 07:38:53 -     Job  = [[Escherichia_coli__clone_D_i2__uid52021/52021_1.fq, Escherichia_coli__clone_D_i2__uid52021/52021_2.fq] -> Escherichia_coli__clone_D_i2__uid52021/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli__clone_D_i2__uid52021/pathomap-appendAlign.sam] 
+ 07:38:53 -     Job  = [[Escherichia_coli_c321D_uid215084/215084_1.fq, Escherichia_coli_c321D_uid215084/215084_2.fq] -> Escherichia_coli_c321D_uid215084/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] ...
+        Missing file [Escherichia_coli_c321D_uid215084/pathomap-appendAlign.sam] 
+ 16:23:40 -     Job  = [[Escherichia_coli_BW2952_uid33775/33775_1.fq, Escherichia_coli_BW2952_uid33775/33775_2.fq] -> Escherichia_coli_BW2952_uid33775/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 16:41:46 -     Job  = [[Escherichia_coli_BL21_DE3__uid28965/28965_1.fq, Escherichia_coli_BL21_DE3__uid28965/28965_2.fq] -> Escherichia_coli_BL21_DE3__uid28965/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 16:53:10 -     Job  = [[Escherichia_coli_CFT073_uid313/313_1.fq, Escherichia_coli_CFT073_uid313/313_2.fq] -> Escherichia_coli_CFT073_uid313/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 17:11:47 -     Job  = [[Escherichia_coli_B_REL606_uid18281/18281_1.fq, Escherichia_coli_B_REL606_uid18281/18281_2.fq] -> Escherichia_coli_B_REL606_uid18281/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 01:51:26 -     Job  = [[Escherichia_coli_C_ATCC_8739_uid18083/18083_1.fq, Escherichia_coli_C_ATCC_8739_uid18083/18083_2.fq] -> Escherichia_coli_C_ATCC_8739_uid18083/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 02:13:23 -     Job  = [[Escherichia_coli_DH1_uid30031/30031_1.fq, Escherichia_coli_DH1_uid30031/30031_2.fq] -> Escherichia_coli_DH1_uid30031/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 02:25:14 -     Job  = [[Escherichia_coli_DH1_uid52077/52077_1.fq, Escherichia_coli_DH1_uid52077/52077_2.fq] -> Escherichia_coli_DH1_uid52077/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 02:48:19 -     Job  = [[Escherichia_coli_E24377A_uid13960/13960_1.fq, Escherichia_coli_E24377A_uid13960/13960_2.fq] -> Escherichia_coli_E24377A_uid13960/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 11:42:44 -     Job  = [[Escherichia_coli_ED1a_uid33409/33409_1.fq, Escherichia_coli_ED1a_uid33409/33409_2.fq] -> Escherichia_coli_ED1a_uid33409/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 12:30:06 -     Job  = [[Escherichia_coli_HS_uid13959/13959_1.fq, Escherichia_coli_HS_uid13959/13959_2.fq] -> Escherichia_coli_HS_uid13959/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 12:44:18 -     Job  = [[Escherichia_coli_IAI1_uid33373/33373_1.fq, Escherichia_coli_IAI1_uid33373/33373_2.fq] -> Escherichia_coli_IAI1_uid33373/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 12:58:37 -     Job  = [[Escherichia_coli_ETEC_H10407_uid42749/42749_1.fq, Escherichia_coli_ETEC_H10407_uid42749/42749_2.fq] -> Escherichia_coli_ETEC_H10407_uid42749/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 20:52:26 -     Job  = [[Escherichia_coli_IAI39_uid33411/33411_1.fq, Escherichia_coli_IAI39_uid33411/33411_2.fq] -> Escherichia_coli_IAI39_uid33411/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 21:34:56 -     Job  = [[Escherichia_coli_IHE3034_uid43693/43693_1.fq, Escherichia_coli_IHE3034_uid43693/43693_2.fq] -> Escherichia_coli_IHE3034_uid43693/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 21:55:40 -     Job  = [[Escherichia_coli_JJ1886_uid218163/218163_1.fq, Escherichia_coli_JJ1886_uid218163/218163_2.fq] -> Escherichia_coli_JJ1886_uid218163/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 22:18:40 -     Job  = [[Escherichia_coli_KO11FL_uid33875/33875_1.fq, Escherichia_coli_KO11FL_uid33875/33875_2.fq] -> Escherichia_coli_KO11FL_uid33875/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 06:52:05 -     Job  = [[Escherichia_coli_K_12_substr__MDS42_uid78215/78215_1.fq, Escherichia_coli_K_12_substr__MDS42_uid78215/78215_2.fq] -> Escherichia_coli_K_12_substr__MDS42_uid78215/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 07:09:21 -     Job  = [[Escherichia_coli_KO11FL_uid62299/62299_1.fq, Escherichia_coli_KO11FL_uid62299/62299_2.fq] -> Escherichia_coli_KO11FL_uid62299/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 07:32:26 -     Job  = [[Escherichia_coli_K_12_substr__DH10B_uid20079/20079_1.fq, Escherichia_coli_K_12_substr__DH10B_uid20079/20079_2.fq] -> Escherichia_coli_K_12_substr__DH10B_uid20079/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 07:47:12 -     Job  = [[Escherichia_coli_K_12_substr__MG1655_uid225/225_1.fq, Escherichia_coli_K_12_substr__MG1655_uid225/225_2.fq] -> Escherichia_coli_K_12_substr__MG1655_uid225/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 15:49:54 -     Job  = [[Escherichia_coli_K_12_substr__W3110_uid16351/16351_1.fq, Escherichia_coli_K_12_substr__W3110_uid16351/16351_2.fq] -> Escherichia_coli_K_12_substr__W3110_uid16351/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 16:01:02 -     Job  = [[Escherichia_coli_LF82_uid33825/33825_1.fq, Escherichia_coli_LF82_uid33825/33825_2.fq] -> Escherichia_coli_LF82_uid33825/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 17:00:31 -     Job  = [[Escherichia_coli_NA114_uid66975/66975_1.fq, Escherichia_coli_NA114_uid66975/66975_2.fq] -> Escherichia_coli_NA114_uid66975/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 17:01:23 -     Job  = [[Escherichia_coli_LY180_uid203308/203308_1.fq, Escherichia_coli_LY180_uid203308/203308_2.fq] -> Escherichia_coli_LY180_uid203308/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 02:36:39 -     Job  = [[Escherichia_coli_O103_H2_12009_uid32511/32511_1.fq, Escherichia_coli_O103_H2_12009_uid32511/32511_2.fq] -> Escherichia_coli_O103_H2_12009_uid32511/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 02:42:57 -     Job  = [[Escherichia_coli_O104_H4_2009EL_2050_uid81097/81097_1.fq, Escherichia_coli_O104_H4_2009EL_2050_uid81097/81097_2.fq] -> Escherichia_coli_O104_H4_2009EL_2050_uid81097/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 03:20:33 -     Job  = [[Escherichia_coli_O104_H4_2011C_3493_uid81095/81095_1.fq, Escherichia_coli_O104_H4_2011C_3493_uid81095/81095_2.fq] -> Escherichia_coli_O104_H4_2011C_3493_uid81095/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 03:20:42 -     Job  = [[Escherichia_coli_O104_H4_2009EL_2071_uid81099/81099_1.fq, Escherichia_coli_O104_H4_2009EL_2071_uid81099/81099_2.fq] -> Escherichia_coli_O104_H4_2009EL_2071_uid81099/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 12:12:55 -     Job  = [[Escherichia_coli_O157H7_EDL933_uid259/259_1.fq, Escherichia_coli_O157H7_EDL933_uid259/259_2.fq] -> Escherichia_coli_O157H7_EDL933_uid259/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 12:58:48 -     Job  = [[Escherichia_coli_O111_H__11128_uid32513/32513_1.fq, Escherichia_coli_O111_H__11128_uid32513/32513_2.fq] -> Escherichia_coli_O111_H__11128_uid32513/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 13:50:46 -     Job  = [[Escherichia_coli_O157H7_uid226/226_1.fq, Escherichia_coli_O157H7_uid226/226_2.fq] -> Escherichia_coli_O157H7_uid226/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 13:50:46 -     Job  = [[Escherichia_coli_O157_H7_EC4115_uid27739/27739_1.fq, Escherichia_coli_O157_H7_EC4115_uid27739/27739_2.fq] -> Escherichia_coli_O157_H7_EC4115_uid27739/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 22:21:54 -     Job  = [[Escherichia_coli_O157_H7_TW14359_uid30045/30045_1.fq, Escherichia_coli_O157_H7_TW14359_uid30045/30045_2.fq] -> Escherichia_coli_O157_H7_TW14359_uid30045/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 22:54:51 -     Job  = [[Escherichia_coli_O26_H11_11368_uid32509/32509_1.fq, Escherichia_coli_O26_H11_11368_uid32509/32509_2.fq] -> Escherichia_coli_O26_H11_11368_uid32509/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 00:18:18 -     Job  = [[Escherichia_coli_O55_H7_CB9615_uid42729/42729_1.fq, Escherichia_coli_O55_H7_CB9615_uid42729/42729_2.fq] -> Escherichia_coli_O55_H7_CB9615_uid42729/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 00:26:30 -     Job  = [[Escherichia_coli_O55_H7_RM12579_uid68245/68245_1.fq, Escherichia_coli_O55_H7_RM12579_uid68245/68245_2.fq] -> Escherichia_coli_O55_H7_RM12579_uid68245/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 08:03:12 -     Job  = [[Escherichia_coli_O83_H1_NRG_857C_uid41221/41221_1.fq, Escherichia_coli_O83_H1_NRG_857C_uid41221/41221_2.fq] -> Escherichia_coli_O83_H1_NRG_857C_uid41221/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 08:28:04 -     Job  = [[Escherichia_coli_O7_K1_CE10_uid63597/63597_1.fq, Escherichia_coli_O7_K1_CE10_uid63597/63597_2.fq] -> Escherichia_coli_O7_K1_CE10_uid63597/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 10:00:41 -     Job  = [[Escherichia_coli_S88_uid33375/33375_1.fq, Escherichia_coli_S88_uid33375/33375_2.fq] -> Escherichia_coli_S88_uid33375/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 10:46:05 -     Job  = [[Escherichia_coli_P12b_uid59455/59455_1.fq, Escherichia_coli_P12b_uid59455/59455_2.fq] -> Escherichia_coli_P12b_uid59455/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 17:42:26 -     Job  = [[Escherichia_coli_SE11_uid18057/18057_1.fq, Escherichia_coli_SE11_uid18057/18057_2.fq] -> Escherichia_coli_SE11_uid18057/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 18:04:29 -     Job  = [[Escherichia_coli_SE15_uid19053/19053_1.fq, Escherichia_coli_SE15_uid19053/19053_2.fq] -> Escherichia_coli_SE15_uid19053/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 20:25:40 -     Job  = [[Escherichia_coli_SMS_3_5_uid19469/19469_1.fq, Escherichia_coli_SMS_3_5_uid19469/19469_2.fq] -> Escherichia_coli_SMS_3_5_uid19469/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 20:39:38 -     Job  = [[Escherichia_coli_UM146_uid50883/50883_1.fq, Escherichia_coli_UM146_uid50883/50883_2.fq] -> Escherichia_coli_UM146_uid50883/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 03:24:44 -     Job  = [[Escherichia_coli_UMN026_uid33415/33415_1.fq, Escherichia_coli_UMN026_uid33415/33415_2.fq] -> Escherichia_coli_UMN026_uid33415/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 03:54:36 -     Job  = [[Escherichia_coli_UMNK88_uid42137/42137_1.fq, Escherichia_coli_UMNK88_uid42137/42137_2.fq] -> Escherichia_coli_UMNK88_uid42137/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 05:57:28 -     Job  = [[Escherichia_coli_UTI89_uid16259/16259_1.fq, Escherichia_coli_UTI89_uid16259/16259_2.fq] -> Escherichia_coli_UTI89_uid16259/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 06:13:03 -     Job  = [[Escherichia_coli_W_uid48011/48011_1.fq, Escherichia_coli_W_uid48011/48011_2.fq] -> Escherichia_coli_W_uid48011/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 12:47:49 -     Job  = [[Escherichia_coli_W_uid62301/62301_1.fq, Escherichia_coli_W_uid62301/62301_2.fq] -> Escherichia_coli_W_uid62301/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 13:57:31 -     Job  = [[Escherichia_coli_Xuzhou21_uid45823/45823_1.fq, Escherichia_coli_Xuzhou21_uid45823/45823_2.fq] -> Escherichia_coli_Xuzhou21_uid45823/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 16:00:29 -     Job  = [[Escherichia_coli__clone_D_i14__uid52023/52023_1.fq, Escherichia_coli__clone_D_i14__uid52023/52023_2.fq] -> Escherichia_coli__clone_D_i14__uid52023/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 16:09:58 -     Job  = [[Escherichia_coli__BL21_Gold_DE3_pLysS_AG__uid30681/30681_1.fq, Escherichia_coli__BL21_Gold_DE3_pLysS_AG__uid30681/30681_2.fq] -> Escherichia_coli__BL21_Gold_DE3_pLysS_AG__uid30681/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 19:19:04 -     Job  = [[Escherichia_coli__clone_D_i2__uid52021/52021_1.fq, Escherichia_coli__clone_D_i2__uid52021/52021_2.fq] -> Escherichia_coli__clone_D_i2__uid52021/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 19:51:09 -     Job  = [[Escherichia_coli_c321D_uid215084/215084_1.fq, Escherichia_coli_c321D_uid215084/215084_2.fq] -> Escherichia_coli_c321D_uid215084/pathomap-appendAlign.sam, {'index_dir': '/genomic_purity/data/micro_rm_patho_db', 'ref': '/genomic_purity/data/micro_rm_patho_db/micro_rm_patho_db_ti.fa', 'ref_root': 'micro_rm_patho_db_ti'}] completed
+ 19:51:09 - Completed Task = 'sipp::pathoscope_commands.pathomap_command' 
+ 19:51:09 - Task enters queue = 'sipp::pathoscope_commands.pathoid_command' 
+ 19:51:09 -     Job  = [Escherichia_coli_0127_H6_E2348_69_uid32571/pathomap-appendAlign.sam -> Escherichia_coli_0127_H6_E2348_69_uid32571/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_0127_H6_E2348_69_uid32571/pathomap-sam-report.tsv] 
+ 19:51:09 -     Job  = [Escherichia_coli_042_uid40647/pathomap-appendAlign.sam -> Escherichia_coli_042_uid40647/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_042_uid40647/pathomap-sam-report.tsv] 
+ 19:51:09 -     Job  = [Escherichia_coli_536_uid16235/pathomap-appendAlign.sam -> Escherichia_coli_536_uid16235/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_536_uid16235/pathomap-sam-report.tsv] 
+ 19:51:09 -     Job  = [Escherichia_coli_55989_uid33413/pathomap-appendAlign.sam -> Escherichia_coli_55989_uid33413/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_55989_uid33413/pathomap-sam-report.tsv] 
+ 19:51:09 -     Job  = [Escherichia_coli_ABU_83972_uid38725/pathomap-appendAlign.sam -> Escherichia_coli_ABU_83972_uid38725/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_ABU_83972_uid38725/pathomap-sam-report.tsv] 
+ 19:51:09 -     Job  = [Escherichia_coli_APEC_O1_uid16718/pathomap-appendAlign.sam -> Escherichia_coli_APEC_O1_uid16718/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_APEC_O1_uid16718/pathomap-sam-report.tsv] 
+ 19:51:09 -     Job  = [Escherichia_coli_APEC_O78_uid184588/pathomap-appendAlign.sam -> Escherichia_coli_APEC_O78_uid184588/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_APEC_O78_uid184588/pathomap-sam-report.tsv] 
+ 20:37:57 -     Job  = [Escherichia_coli_536_uid16235/pathomap-appendAlign.sam -> Escherichia_coli_536_uid16235/pathomap-sam-report.tsv] completed
+ 20:37:57 -     Job  = [Escherichia_coli_BL21_DE3__uid20713/pathomap-appendAlign.sam -> Escherichia_coli_BL21_DE3__uid20713/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_BL21_DE3__uid20713/pathomap-sam-report.tsv] 
+ 20:37:57 -     Job  = [Escherichia_coli_BL21_DE3__uid28965/pathomap-appendAlign.sam -> Escherichia_coli_BL21_DE3__uid28965/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_BL21_DE3__uid28965/pathomap-sam-report.tsv] 
+ 20:37:57 -     Job  = [Escherichia_coli_BW2952_uid33775/pathomap-appendAlign.sam -> Escherichia_coli_BW2952_uid33775/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_BW2952_uid33775/pathomap-sam-report.tsv] 
+ 20:37:57 -     Job  = [Escherichia_coli_B_REL606_uid18281/pathomap-appendAlign.sam -> Escherichia_coli_B_REL606_uid18281/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_B_REL606_uid18281/pathomap-sam-report.tsv] 
+ 20:37:57 -     Job  = [Escherichia_coli_CFT073_uid313/pathomap-appendAlign.sam -> Escherichia_coli_CFT073_uid313/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_CFT073_uid313/pathomap-sam-report.tsv] 
+ 20:37:57 -     Job  = [Escherichia_coli_C_ATCC_8739_uid18083/pathomap-appendAlign.sam -> Escherichia_coli_C_ATCC_8739_uid18083/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_C_ATCC_8739_uid18083/pathomap-sam-report.tsv] 
+ 20:37:57 -     Job  = [Escherichia_coli_DH1_uid30031/pathomap-appendAlign.sam -> Escherichia_coli_DH1_uid30031/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_DH1_uid30031/pathomap-sam-report.tsv] 
+ 20:47:09 -     Job  = [Escherichia_coli_042_uid40647/pathomap-appendAlign.sam -> Escherichia_coli_042_uid40647/pathomap-sam-report.tsv] completed
+ 20:47:09 -     Job  = [Escherichia_coli_DH1_uid52077/pathomap-appendAlign.sam -> Escherichia_coli_DH1_uid52077/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_DH1_uid52077/pathomap-sam-report.tsv] 
+ 20:47:09 -     Job  = [Escherichia_coli_E24377A_uid13960/pathomap-appendAlign.sam -> Escherichia_coli_E24377A_uid13960/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_E24377A_uid13960/pathomap-sam-report.tsv] 
+ 20:47:09 -     Job  = [Escherichia_coli_ED1a_uid33409/pathomap-appendAlign.sam -> Escherichia_coli_ED1a_uid33409/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_ED1a_uid33409/pathomap-sam-report.tsv] 
+ 20:47:09 -     Job  = [Escherichia_coli_ETEC_H10407_uid42749/pathomap-appendAlign.sam -> Escherichia_coli_ETEC_H10407_uid42749/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_ETEC_H10407_uid42749/pathomap-sam-report.tsv] 
+ 20:47:09 -     Job  = [Escherichia_coli_HS_uid13959/pathomap-appendAlign.sam -> Escherichia_coli_HS_uid13959/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_HS_uid13959/pathomap-sam-report.tsv] 
+ 20:47:09 -     Job  = [Escherichia_coli_IAI1_uid33373/pathomap-appendAlign.sam -> Escherichia_coli_IAI1_uid33373/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_IAI1_uid33373/pathomap-sam-report.tsv] 
+ 20:47:09 -     Job  = [Escherichia_coli_IAI39_uid33411/pathomap-appendAlign.sam -> Escherichia_coli_IAI39_uid33411/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_IAI39_uid33411/pathomap-sam-report.tsv] 
+ 20:53:49 -     Job  = [Escherichia_coli_0127_H6_E2348_69_uid32571/pathomap-appendAlign.sam -> Escherichia_coli_0127_H6_E2348_69_uid32571/pathomap-sam-report.tsv] completed
+ 20:53:49 -     Job  = [Escherichia_coli_IHE3034_uid43693/pathomap-appendAlign.sam -> Escherichia_coli_IHE3034_uid43693/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_IHE3034_uid43693/pathomap-sam-report.tsv] 
+ 20:53:49 -     Job  = [Escherichia_coli_JJ1886_uid218163/pathomap-appendAlign.sam -> Escherichia_coli_JJ1886_uid218163/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_JJ1886_uid218163/pathomap-sam-report.tsv] 
+ 20:53:49 -     Job  = [Escherichia_coli_KO11FL_uid33875/pathomap-appendAlign.sam -> Escherichia_coli_KO11FL_uid33875/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_KO11FL_uid33875/pathomap-sam-report.tsv] 
+ 20:53:49 -     Job  = [Escherichia_coli_KO11FL_uid62299/pathomap-appendAlign.sam -> Escherichia_coli_KO11FL_uid62299/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_KO11FL_uid62299/pathomap-sam-report.tsv] 
+ 20:53:49 -     Job  = [Escherichia_coli_K_12_substr__DH10B_uid20079/pathomap-appendAlign.sam -> Escherichia_coli_K_12_substr__DH10B_uid20079/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_K_12_substr__DH10B_uid20079/pathomap-sam-report.tsv] 
+ 20:53:49 -     Job  = [Escherichia_coli_K_12_substr__MDS42_uid78215/pathomap-appendAlign.sam -> Escherichia_coli_K_12_substr__MDS42_uid78215/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_K_12_substr__MDS42_uid78215/pathomap-sam-report.tsv] 
+ 20:53:49 -     Job  = [Escherichia_coli_K_12_substr__MG1655_uid225/pathomap-appendAlign.sam -> Escherichia_coli_K_12_substr__MG1655_uid225/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_K_12_substr__MG1655_uid225/pathomap-sam-report.tsv] 
+ 20:53:51 -     Job  = [Escherichia_coli_55989_uid33413/pathomap-appendAlign.sam -> Escherichia_coli_55989_uid33413/pathomap-sam-report.tsv] completed
+ 20:53:51 -     Job  = [Escherichia_coli_K_12_substr__W3110_uid16351/pathomap-appendAlign.sam -> Escherichia_coli_K_12_substr__W3110_uid16351/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_K_12_substr__W3110_uid16351/pathomap-sam-report.tsv] 
+ 20:53:51 -     Job  = [Escherichia_coli_LF82_uid33825/pathomap-appendAlign.sam -> Escherichia_coli_LF82_uid33825/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_LF82_uid33825/pathomap-sam-report.tsv] 
+ 20:53:51 -     Job  = [Escherichia_coli_LY180_uid203308/pathomap-appendAlign.sam -> Escherichia_coli_LY180_uid203308/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_LY180_uid203308/pathomap-sam-report.tsv] 
+ 20:53:51 -     Job  = [Escherichia_coli_NA114_uid66975/pathomap-appendAlign.sam -> Escherichia_coli_NA114_uid66975/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_NA114_uid66975/pathomap-sam-report.tsv] 
+ 20:53:51 -     Job  = [Escherichia_coli_O103_H2_12009_uid32511/pathomap-appendAlign.sam -> Escherichia_coli_O103_H2_12009_uid32511/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_O103_H2_12009_uid32511/pathomap-sam-report.tsv] 
+ 20:53:51 -     Job  = [Escherichia_coli_O104_H4_2009EL_2050_uid81097/pathomap-appendAlign.sam -> Escherichia_coli_O104_H4_2009EL_2050_uid81097/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_O104_H4_2009EL_2050_uid81097/pathomap-sam-report.tsv] 
+ 20:53:51 -     Job  = [Escherichia_coli_O104_H4_2009EL_2071_uid81099/pathomap-appendAlign.sam -> Escherichia_coli_O104_H4_2009EL_2071_uid81099/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_O104_H4_2009EL_2071_uid81099/pathomap-sam-report.tsv] 
+ 21:20:04 -     Job  = [Escherichia_coli_ABU_83972_uid38725/pathomap-appendAlign.sam -> Escherichia_coli_ABU_83972_uid38725/pathomap-sam-report.tsv] completed
+ 21:20:04 -     Job  = [Escherichia_coli_O104_H4_2011C_3493_uid81095/pathomap-appendAlign.sam -> Escherichia_coli_O104_H4_2011C_3493_uid81095/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_O104_H4_2011C_3493_uid81095/pathomap-sam-report.tsv] 
+ 21:20:04 -     Job  = [Escherichia_coli_O111_H__11128_uid32513/pathomap-appendAlign.sam -> Escherichia_coli_O111_H__11128_uid32513/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_O111_H__11128_uid32513/pathomap-sam-report.tsv] 
+ 21:20:04 -     Job  = [Escherichia_coli_O157H7_EDL933_uid259/pathomap-appendAlign.sam -> Escherichia_coli_O157H7_EDL933_uid259/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_O157H7_EDL933_uid259/pathomap-sam-report.tsv] 
+ 21:20:04 -     Job  = [Escherichia_coli_O157H7_uid226/pathomap-appendAlign.sam -> Escherichia_coli_O157H7_uid226/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_O157H7_uid226/pathomap-sam-report.tsv] 
+ 21:20:04 -     Job  = [Escherichia_coli_O157_H7_EC4115_uid27739/pathomap-appendAlign.sam -> Escherichia_coli_O157_H7_EC4115_uid27739/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_O157_H7_EC4115_uid27739/pathomap-sam-report.tsv] 
+ 21:20:04 -     Job  = [Escherichia_coli_O157_H7_TW14359_uid30045/pathomap-appendAlign.sam -> Escherichia_coli_O157_H7_TW14359_uid30045/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_O157_H7_TW14359_uid30045/pathomap-sam-report.tsv] 
+ 21:20:04 -     Job  = [Escherichia_coli_O26_H11_11368_uid32509/pathomap-appendAlign.sam -> Escherichia_coli_O26_H11_11368_uid32509/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_O26_H11_11368_uid32509/pathomap-sam-report.tsv] 
+ 21:38:06 -     Job  = [Escherichia_coli_APEC_O78_uid184588/pathomap-appendAlign.sam -> Escherichia_coli_APEC_O78_uid184588/pathomap-sam-report.tsv] completed
+ 21:38:06 -     Job  = [Escherichia_coli_O55_H7_CB9615_uid42729/pathomap-appendAlign.sam -> Escherichia_coli_O55_H7_CB9615_uid42729/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_O55_H7_CB9615_uid42729/pathomap-sam-report.tsv] 
+ 21:38:06 -     Job  = [Escherichia_coli_O55_H7_RM12579_uid68245/pathomap-appendAlign.sam -> Escherichia_coli_O55_H7_RM12579_uid68245/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_O55_H7_RM12579_uid68245/pathomap-sam-report.tsv] 
+ 21:38:06 -     Job  = [Escherichia_coli_O7_K1_CE10_uid63597/pathomap-appendAlign.sam -> Escherichia_coli_O7_K1_CE10_uid63597/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_O7_K1_CE10_uid63597/pathomap-sam-report.tsv] 
+ 21:38:06 -     Job  = [Escherichia_coli_O83_H1_NRG_857C_uid41221/pathomap-appendAlign.sam -> Escherichia_coli_O83_H1_NRG_857C_uid41221/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_O83_H1_NRG_857C_uid41221/pathomap-sam-report.tsv] 
+ 21:38:06 -     Job  = [Escherichia_coli_P12b_uid59455/pathomap-appendAlign.sam -> Escherichia_coli_P12b_uid59455/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_P12b_uid59455/pathomap-sam-report.tsv] 
+ 21:38:06 -     Job  = [Escherichia_coli_S88_uid33375/pathomap-appendAlign.sam -> Escherichia_coli_S88_uid33375/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_S88_uid33375/pathomap-sam-report.tsv] 
+ 21:38:06 -     Job  = [Escherichia_coli_SE11_uid18057/pathomap-appendAlign.sam -> Escherichia_coli_SE11_uid18057/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_SE11_uid18057/pathomap-sam-report.tsv] 
+ 21:40:51 -     Job  = [Escherichia_coli_BL21_DE3__uid20713/pathomap-appendAlign.sam -> Escherichia_coli_BL21_DE3__uid20713/pathomap-sam-report.tsv] completed
+ 21:40:51 -     Job  = [Escherichia_coli_SE15_uid19053/pathomap-appendAlign.sam -> Escherichia_coli_SE15_uid19053/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_SE15_uid19053/pathomap-sam-report.tsv] 
+ 21:40:51 -     Job  = [Escherichia_coli_SMS_3_5_uid19469/pathomap-appendAlign.sam -> Escherichia_coli_SMS_3_5_uid19469/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_SMS_3_5_uid19469/pathomap-sam-report.tsv] 
+ 21:40:51 -     Job  = [Escherichia_coli_UM146_uid50883/pathomap-appendAlign.sam -> Escherichia_coli_UM146_uid50883/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_UM146_uid50883/pathomap-sam-report.tsv] 
+ 21:40:51 -     Job  = [Escherichia_coli_UMN026_uid33415/pathomap-appendAlign.sam -> Escherichia_coli_UMN026_uid33415/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_UMN026_uid33415/pathomap-sam-report.tsv] 
+ 21:40:51 -     Job  = [Escherichia_coli_UMNK88_uid42137/pathomap-appendAlign.sam -> Escherichia_coli_UMNK88_uid42137/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_UMNK88_uid42137/pathomap-sam-report.tsv] 
+ 21:40:51 -     Job  = [Escherichia_coli_UTI89_uid16259/pathomap-appendAlign.sam -> Escherichia_coli_UTI89_uid16259/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_UTI89_uid16259/pathomap-sam-report.tsv] 
+ 21:40:51 -     Job  = [Escherichia_coli_W_uid48011/pathomap-appendAlign.sam -> Escherichia_coli_W_uid48011/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_W_uid48011/pathomap-sam-report.tsv] 
+ 21:41:06 -     Job  = [Escherichia_coli_APEC_O1_uid16718/pathomap-appendAlign.sam -> Escherichia_coli_APEC_O1_uid16718/pathomap-sam-report.tsv] completed
+ 21:41:06 -     Job  = [Escherichia_coli_W_uid62301/pathomap-appendAlign.sam -> Escherichia_coli_W_uid62301/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_W_uid62301/pathomap-sam-report.tsv] 
+ 21:41:06 -     Job  = [Escherichia_coli_Xuzhou21_uid45823/pathomap-appendAlign.sam -> Escherichia_coli_Xuzhou21_uid45823/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_Xuzhou21_uid45823/pathomap-sam-report.tsv] 
+ 21:41:06 -     Job  = [Escherichia_coli__BL21_Gold_DE3_pLysS_AG__uid30681/pathomap-appendAlign.sam -> Escherichia_coli__BL21_Gold_DE3_pLysS_AG__uid30681/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli__BL21_Gold_DE3_pLysS_AG__uid30681/pathomap-sam-report.tsv] 
+ 21:41:06 -     Job  = [Escherichia_coli__clone_D_i14__uid52023/pathomap-appendAlign.sam -> Escherichia_coli__clone_D_i14__uid52023/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli__clone_D_i14__uid52023/pathomap-sam-report.tsv] 
+ 21:41:06 -     Job  = [Escherichia_coli__clone_D_i2__uid52021/pathomap-appendAlign.sam -> Escherichia_coli__clone_D_i2__uid52021/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli__clone_D_i2__uid52021/pathomap-sam-report.tsv] 
+ 21:41:06 -     Job  = [Escherichia_coli_c321D_uid215084/pathomap-appendAlign.sam -> Escherichia_coli_c321D_uid215084/pathomap-sam-report.tsv] ...
+        Missing file [Escherichia_coli_c321D_uid215084/pathomap-sam-report.tsv] 
+ 22:04:25 -     Job  = [Escherichia_coli_BL21_DE3__uid28965/pathomap-appendAlign.sam -> Escherichia_coli_BL21_DE3__uid28965/pathomap-sam-report.tsv] completed
+ 22:20:08 -     Job  = [Escherichia_coli_BW2952_uid33775/pathomap-appendAlign.sam -> Escherichia_coli_BW2952_uid33775/pathomap-sam-report.tsv] completed
+ 22:21:42 -     Job  = [Escherichia_coli_CFT073_uid313/pathomap-appendAlign.sam -> Escherichia_coli_CFT073_uid313/pathomap-sam-report.tsv] completed
+ 22:22:04 -     Job  = [Escherichia_coli_B_REL606_uid18281/pathomap-appendAlign.sam -> Escherichia_coli_B_REL606_uid18281/pathomap-sam-report.tsv] completed
+ 22:48:41 -     Job  = [Escherichia_coli_C_ATCC_8739_uid18083/pathomap-appendAlign.sam -> Escherichia_coli_C_ATCC_8739_uid18083/pathomap-sam-report.tsv] completed
+ 23:02:47 -     Job  = [Escherichia_coli_DH1_uid30031/pathomap-appendAlign.sam -> Escherichia_coli_DH1_uid30031/pathomap-sam-report.tsv] completed
+ 23:03:09 -     Job  = [Escherichia_coli_DH1_uid52077/pathomap-appendAlign.sam -> Escherichia_coli_DH1_uid52077/pathomap-sam-report.tsv] completed
+ 23:13:29 -     Job  = [Escherichia_coli_E24377A_uid13960/pathomap-appendAlign.sam -> Escherichia_coli_E24377A_uid13960/pathomap-sam-report.tsv] completed
+ 23:34:49 -     Job  = [Escherichia_coli_ED1a_uid33409/pathomap-appendAlign.sam -> Escherichia_coli_ED1a_uid33409/pathomap-sam-report.tsv] completed
+ 23:47:39 -     Job  = [Escherichia_coli_HS_uid13959/pathomap-appendAlign.sam -> Escherichia_coli_HS_uid13959/pathomap-sam-report.tsv] completed
+ 23:51:19 -     Job  = [Escherichia_coli_ETEC_H10407_uid42749/pathomap-appendAlign.sam -> Escherichia_coli_ETEC_H10407_uid42749/pathomap-sam-report.tsv] completed
+ 00:05:59 -     Job  = [Escherichia_coli_IAI1_uid33373/pathomap-appendAlign.sam -> Escherichia_coli_IAI1_uid33373/pathomap-sam-report.tsv] completed
+ 00:19:42 -     Job  = [Escherichia_coli_IAI39_uid33411/pathomap-appendAlign.sam -> Escherichia_coli_IAI39_uid33411/pathomap-sam-report.tsv] completed
+ 00:26:47 -     Job  = [Escherichia_coli_IHE3034_uid43693/pathomap-appendAlign.sam -> Escherichia_coli_IHE3034_uid43693/pathomap-sam-report.tsv] completed
+ 00:38:55 -     Job  = [Escherichia_coli_JJ1886_uid218163/pathomap-appendAlign.sam -> Escherichia_coli_JJ1886_uid218163/pathomap-sam-report.tsv] completed
+ 00:50:25 -     Job  = [Escherichia_coli_KO11FL_uid33875/pathomap-appendAlign.sam -> Escherichia_coli_KO11FL_uid33875/pathomap-sam-report.tsv] completed
+ 01:09:03 -     Job  = [Escherichia_coli_K_12_substr__DH10B_uid20079/pathomap-appendAlign.sam -> Escherichia_coli_K_12_substr__DH10B_uid20079/pathomap-sam-report.tsv] completed
+ 01:13:30 -     Job  = [Escherichia_coli_KO11FL_uid62299/pathomap-appendAlign.sam -> Escherichia_coli_KO11FL_uid62299/pathomap-sam-report.tsv] completed
+ 01:15:33 -     Job  = [Escherichia_coli_K_12_substr__MDS42_uid78215/pathomap-appendAlign.sam -> Escherichia_coli_K_12_substr__MDS42_uid78215/pathomap-sam-report.tsv] completed
+ 01:34:40 -     Job  = [Escherichia_coli_K_12_substr__MG1655_uid225/pathomap-appendAlign.sam -> Escherichia_coli_K_12_substr__MG1655_uid225/pathomap-sam-report.tsv] completed
+ 01:52:00 -     Job  = [Escherichia_coli_K_12_substr__W3110_uid16351/pathomap-appendAlign.sam -> Escherichia_coli_K_12_substr__W3110_uid16351/pathomap-sam-report.tsv] completed
+ 01:52:54 -     Job  = [Escherichia_coli_LF82_uid33825/pathomap-appendAlign.sam -> Escherichia_coli_LF82_uid33825/pathomap-sam-report.tsv] completed
+ 02:22:25 -     Job  = [Escherichia_coli_LY180_uid203308/pathomap-appendAlign.sam -> Escherichia_coli_LY180_uid203308/pathomap-sam-report.tsv] completed
+ 02:38:00 -     Job  = [Escherichia_coli_NA114_uid66975/pathomap-appendAlign.sam -> Escherichia_coli_NA114_uid66975/pathomap-sam-report.tsv] completed
+ 02:47:26 -     Job  = [Escherichia_coli_O103_H2_12009_uid32511/pathomap-appendAlign.sam -> Escherichia_coli_O103_H2_12009_uid32511/pathomap-sam-report.tsv] completed
+ 02:52:12 -     Job  = [Escherichia_coli_O104_H4_2009EL_2050_uid81097/pathomap-appendAlign.sam -> Escherichia_coli_O104_H4_2009EL_2050_uid81097/pathomap-sam-report.tsv] completed
+ 03:40:53 -     Job  = [Escherichia_coli_O157H7_EDL933_uid259/pathomap-appendAlign.sam -> Escherichia_coli_O157H7_EDL933_uid259/pathomap-sam-report.tsv] completed
+ 03:42:54 -     Job  = [Escherichia_coli_O111_H__11128_uid32513/pathomap-appendAlign.sam -> Escherichia_coli_O111_H__11128_uid32513/pathomap-sam-report.tsv] completed
+ 03:47:02 -     Job  = [Escherichia_coli_O104_H4_2009EL_2071_uid81099/pathomap-appendAlign.sam -> Escherichia_coli_O104_H4_2009EL_2071_uid81099/pathomap-sam-report.tsv] completed
+ 04:09:21 -     Job  = [Escherichia_coli_O104_H4_2011C_3493_uid81095/pathomap-appendAlign.sam -> Escherichia_coli_O104_H4_2011C_3493_uid81095/pathomap-sam-report.tsv] completed
+ 04:35:54 -     Job  = [Escherichia_coli_O157_H7_TW14359_uid30045/pathomap-appendAlign.sam -> Escherichia_coli_O157_H7_TW14359_uid30045/pathomap-sam-report.tsv] completed
+ 04:47:35 -     Job  = [Escherichia_coli_O157H7_uid226/pathomap-appendAlign.sam -> Escherichia_coli_O157H7_uid226/pathomap-sam-report.tsv] completed
+ 04:55:39 -     Job  = [Escherichia_coli_O157_H7_EC4115_uid27739/pathomap-appendAlign.sam -> Escherichia_coli_O157_H7_EC4115_uid27739/pathomap-sam-report.tsv] completed
+ 05:04:21 -     Job  = [Escherichia_coli_O26_H11_11368_uid32509/pathomap-appendAlign.sam -> Escherichia_coli_O26_H11_11368_uid32509/pathomap-sam-report.tsv] completed
+ 05:33:11 -     Job  = [Escherichia_coli_O55_H7_CB9615_uid42729/pathomap-appendAlign.sam -> Escherichia_coli_O55_H7_CB9615_uid42729/pathomap-sam-report.tsv] completed
+ 05:47:48 -     Job  = [Escherichia_coli_O55_H7_RM12579_uid68245/pathomap-appendAlign.sam -> Escherichia_coli_O55_H7_RM12579_uid68245/pathomap-sam-report.tsv] completed
+ 05:51:16 -     Job  = [Escherichia_coli_O83_H1_NRG_857C_uid41221/pathomap-appendAlign.sam -> Escherichia_coli_O83_H1_NRG_857C_uid41221/pathomap-sam-report.tsv] completed
+ 05:51:17 -     Job  = [Escherichia_coli_O7_K1_CE10_uid63597/pathomap-appendAlign.sam -> Escherichia_coli_O7_K1_CE10_uid63597/pathomap-sam-report.tsv] completed
+ 06:23:15 -     Job  = [Escherichia_coli_P12b_uid59455/pathomap-appendAlign.sam -> Escherichia_coli_P12b_uid59455/pathomap-sam-report.tsv] completed
+ 06:44:45 -     Job  = [Escherichia_coli_SE15_uid19053/pathomap-appendAlign.sam -> Escherichia_coli_SE15_uid19053/pathomap-sam-report.tsv] completed
+ 06:46:25 -     Job  = [Escherichia_coli_SE11_uid18057/pathomap-appendAlign.sam -> Escherichia_coli_SE11_uid18057/pathomap-sam-report.tsv] completed
+ 06:47:20 -     Job  = [Escherichia_coli_S88_uid33375/pathomap-appendAlign.sam -> Escherichia_coli_S88_uid33375/pathomap-sam-report.tsv] completed
+ 07:18:38 -     Job  = [Escherichia_coli_SMS_3_5_uid19469/pathomap-appendAlign.sam -> Escherichia_coli_SMS_3_5_uid19469/pathomap-sam-report.tsv] completed
+ 07:38:25 -     Job  = [Escherichia_coli_UM146_uid50883/pathomap-appendAlign.sam -> Escherichia_coli_UM146_uid50883/pathomap-sam-report.tsv] completed
+ 07:45:07 -     Job  = [Escherichia_coli_UMN026_uid33415/pathomap-appendAlign.sam -> Escherichia_coli_UMN026_uid33415/pathomap-sam-report.tsv] completed
+ 07:53:40 -     Job  = [Escherichia_coli_UMNK88_uid42137/pathomap-appendAlign.sam -> Escherichia_coli_UMNK88_uid42137/pathomap-sam-report.tsv] completed
+ 08:15:44 -     Job  = [Escherichia_coli_UTI89_uid16259/pathomap-appendAlign.sam -> Escherichia_coli_UTI89_uid16259/pathomap-sam-report.tsv] completed
+ 08:33:25 -     Job  = [Escherichia_coli_W_uid48011/pathomap-appendAlign.sam -> Escherichia_coli_W_uid48011/pathomap-sam-report.tsv] completed
+ 08:43:56 -     Job  = [Escherichia_coli_Xuzhou21_uid45823/pathomap-appendAlign.sam -> Escherichia_coli_Xuzhou21_uid45823/pathomap-sam-report.tsv] completed
+ 08:50:10 -     Job  = [Escherichia_coli_W_uid62301/pathomap-appendAlign.sam -> Escherichia_coli_W_uid62301/pathomap-sam-report.tsv] completed
+ 09:25:35 -     Job  = [Escherichia_coli__BL21_Gold_DE3_pLysS_AG__uid30681/pathomap-appendAlign.sam -> Escherichia_coli__BL21_Gold_DE3_pLysS_AG__uid30681/pathomap-sam-report.tsv] completed
+ 09:30:18 -     Job  = [Escherichia_coli__clone_D_i2__uid52021/pathomap-appendAlign.sam -> Escherichia_coli__clone_D_i2__uid52021/pathomap-sam-report.tsv] completed
+ 09:34:00 -     Job  = [Escherichia_coli_c321D_uid215084/pathomap-appendAlign.sam -> Escherichia_coli_c321D_uid215084/pathomap-sam-report.tsv] completed
+ 09:35:36 -     Job  = [Escherichia_coli__clone_D_i14__uid52023/pathomap-appendAlign.sam -> Escherichia_coli__clone_D_i14__uid52023/pathomap-sam-report.tsv] completed
+ 09:35:36 - Completed Task = 'sipp::pathoscope_commands.pathoid_command' 

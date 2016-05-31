@@ -1,0 +1,4 @@
+Total Number of Aligned Reads:	204960	Total Number of Mapped Genomes:	6383
+Genome	Final Guess	Final Best Hit	Final Best Hit Read Numbers	Final High Confidence Hits	Final Low Confidence Hits	Initial Guess	Initial Best Hit	Initial Best Hit Read Numbers	Initial High Confidence Hits	Initial Low Confidence Hits
+ti|642492|org|Clostridium_lentocellum_DSM_5427	0.9999999998087269	0.9999951209992194	204959.0	0.9999951209992194	0.0	0.9999999996751937	0.9987542284673478	204704.66666666762	0.9966530054644809	0.0029371584699453552
+ti|536232|org|Clostridium_botulinum_A2_str._Kyoto	1.9127293945023645e-10	4.879000780640125e-06	1.0	4.879000780640125e-06	0.0	3.2164503976490886e-10	7.318501170960187e-05	15.0	7.318501170960187e-05	0.0

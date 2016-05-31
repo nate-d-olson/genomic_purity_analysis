@@ -1,0 +1,7 @@
+Vibrio cholerae O395 chromosome II, complete sequence. - 1..1111222
+4 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+500720..500793	+	74	227014638	-	VC395_AtRNACYS1	-	-	Cys tRNA
+505830..505916	+	87	227014638	-	VC395_AtRNALEU	-	-	Leu tRNA
+505941..506014	+	74	227014638	-	VC395_AtRNACYS2	-	-	Cys tRNA
+716404..716478	-	75	227014638	-	VC395_AtRNAGLY	-	-	Gly tRNA

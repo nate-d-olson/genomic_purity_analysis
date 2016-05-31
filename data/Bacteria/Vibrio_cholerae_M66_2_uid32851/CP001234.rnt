@@ -1,0 +1,7 @@
+Vibrio cholerae M66-2 chromosome II, complete sequence. - 1..1046382
+4 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+468902..468976	+	75	227010776	-	VCM66_AtRNAGLY	-	-	Gly tRNA
+673565..673638	-	74	227010776	-	VCM66_AtRNACYS1	-	-	Cys tRNA
+673662..673748	-	87	227010776	-	VCM66_AtRNALEU	-	-	Leu tRNA
+678784..678857	-	74	227010776	-	VCM66_AtRNACYS2	-	-	Cys tRNA

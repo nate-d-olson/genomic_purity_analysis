@@ -1,0 +1,10 @@
+Methylobacterium radiotolerans JCM 2831 plasmid pMRAD01, complete sequence. - 1..586164
+7 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+146467..147942	+	1476	170658659	-	Mrad2831_R0073	-	-	16S ribosomal RNA
+148576..151215	+	2640	170658659	-	Mrad2831_R0074	-	-	23S ribosomal RNA
+151362..151477	+	116	170658659	-	Mrad2831_R0075	-	-	5S ribosomal RNA
+543611..545086	+	1476	170658659	-	Mrad2831_R0076	-	-	16S ribosomal RNA
+545714..548353	+	2640	170658659	-	Mrad2831_R0077	-	-	23S ribosomal RNA
+548500..548615	+	116	170658659	-	Mrad2831_R0078	-	-	5S ribosomal RNA
+548750..548826	+	77	170658659	-	Mrad2831_R0079	-	-	Met tRNA

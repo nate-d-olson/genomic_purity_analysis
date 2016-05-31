@@ -1,0 +1,8 @@
+Burkholderia cenocepacia HI2424 chromosome 3, complete sequence. - 1..1055417
+5 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+396193..397670	+	1478	116651960	-	Bcen2424_R0082	-	-	16S ribosomal RNA
+397735..397811	+	77	116651960	-	Bcen2424_R0083	-	-	Ile tRNA
+397850..397925	+	76	116651960	-	Bcen2424_R0084	-	-	Ala tRNA
+398202..401082	+	2881	116651960	-	Bcen2424_R0085	-	-	23S ribosomal RNA
+401237..401349	+	113	116651960	-	Bcen2424_R0086	-	-	5S ribosomal RNA

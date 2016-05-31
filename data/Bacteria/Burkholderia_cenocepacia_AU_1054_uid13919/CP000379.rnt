@@ -1,0 +1,11 @@
+Burkholderia cenocepacia AU 1054 chromosome 2, complete sequence. - 1..2788459
+8 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+96796..98321	+	1526	105894717	-	Bcen_R0071	-	-	16S ribosomal RNA
+98385..98461	+	77	105894717	-	Bcen_R0072	-	-	Ile tRNA
+98500..98575	+	76	105894717	-	Bcen_R0073	-	-	Ala tRNA
+98852..101732	+	2881	105894717	-	Bcen_R0074	-	-	23S ribosomal RNA
+101887..101999	+	113	105894717	-	Bcen_R0075	-	-	5S ribosomal RNA
+483401..483485	-	85	105894717	-	Bcen_R0076	-	-	Leu tRNA
+1727663..1727741	-	79	105894717	-	Bcen_R0078	-	-	Met tRNA
+1934312..1934382	+	71	105894717	-	Bcen_R0079	-	-	Xaa tRNA

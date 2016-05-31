@@ -1,0 +1,3 @@
+Total Number of Aligned Reads:	147160	Total Number of Mapped Genomes:	7025
+Genome	Final Guess	Final Best Hit	Final Best Hit Read Numbers	Final High Confidence Hits	Final Low Confidence Hits	Initial Guess	Initial Best Hit	Initial Best Hit Read Numbers	Initial High Confidence Hits	Initial Low Confidence Hits
+ti|562970|org|Kyrpidia_tusciae_DSM_2912	1.0	1.0	147160.0	1.0	0.0	0.9999999999999999	0.9983861103560778	146922.5000000004	0.9973362326719217	0.0015153574340853492

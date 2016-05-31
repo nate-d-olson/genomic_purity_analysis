@@ -1,0 +1,5 @@
+Sinorhizobium meliloti BL225C plasmid pSINMEB01, complete sequence. - 1..1616209
+2 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+193748..193822	-	75	333813699	-	SinmeB_R0066	-	-	Val tRNA
+334841..334932	+	92	333813699	-	SinmeB_R0067	-	-	Sec tRNA

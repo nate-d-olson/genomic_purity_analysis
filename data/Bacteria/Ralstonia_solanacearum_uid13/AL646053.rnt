@@ -1,0 +1,10 @@
+Ralstonia solanacearum GMI1000 megaplasmid complete sequence - 1..2094509
+7 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+354190..354274	-	85	30407128	tRNA-leuQ	-	-	-	Leu tRNA
+1201482..1206955	-	5474	30407128	-	-	-	-	-
+1201574..1201687	-	114	30407128	rRNA-5S	-	-	-	ribosomal RNA-hypothetical 5S
+1201806..1204685	-	2880	30407128	rRNA-23S	-	-	-	ribosomal RNA-hypothetical 23S
+1204940..1205015	-	76	30407128	tRNA-RS05382	-	-	-	Ala tRNA
+1205052..1205128	-	77	30407128	tRNA-ileU	-	-	-	Ile tRNA
+1205189..1206722	-	1534	30407128	rRNA-16S	-	-	-	ribosomal RNA-hypothetical 16S

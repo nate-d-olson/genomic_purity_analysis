@@ -1,0 +1,7 @@
+Listonella anguillarum M3 chromosome 2, complete sequence. - 1..988134
+4 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+41553..41627	-	75	537381797	-	N175_14805	-	-	Anticodon: TCC
+196413..196486	-	74	537381797	-	N175_15475	-	-	Anticodon: GCA
+196524..196610	-	87	537381797	-	N175_15480	-	-	Anticodon: TAA
+923769..923859	-	91	537381797	-	N175_18625	-	-	Anticodon: TGA

@@ -1,0 +1,7 @@
+Haloarcula marismortui ATCC 43049 chromosome II, complete sequence. - 1..288050
+4 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+360..481	-	122	55232799	-	rrlB-2	-	-	5S ribosomal RNA
+621..3542	-	2922	55232799	-	rrlA-2	-	-	23S ribosomal RNA
+3949..5420	-	1472	55232799	-	rrs-2	-	-	16S ribosomal RNA
+95036..95109	+	74	55232799	-	trn49	-	-	Lys tRNA

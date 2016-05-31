@@ -1,0 +1,6 @@
+Haloarcula hispanica N601 chromosome 2, complete sequence - 1..363208
+3 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+8832..10304	+	1473	572924095	-	HISP_15865	-	-	16S ribosomal RNA
+10682..13589	+	2908	572924095	-	HISP_15870	-	-	23S ribosomal RNA
+13739..13861	+	123	572924095	-	HISP_15875	-	-	5S ribosomal RNA

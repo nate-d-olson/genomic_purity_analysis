@@ -1,0 +1,4 @@
+Total Number of Aligned Reads:	210760	Total Number of Mapped Genomes:	6969
+Genome	Final Guess	Final Best Hit	Final Best Hit Read Numbers	Final High Confidence Hits	Final Low Confidence Hits	Initial Guess	Initial Best Hit	Initial Best Hit Read Numbers	Initial High Confidence Hits	Initial Low Confidence Hits
+ti|357809|org|Clostridium_phytofermentans_ISDg	1.0	0.999995255266654	210759.0	0.999995255266654	0.0	0.9999999999978784	0.9990045549440122	210550.2	0.9982634275953691	0.0008160941355095844
+ti|77133|org|uncultured_bacterium	8.29672261542292e-18	4.7447333459859555e-06	1.0	4.7447333459859555e-06	0.0	1.712159868627128e-13	0.000529037768077434	111.5	0.0004602391345606377	0.00016606566710950844

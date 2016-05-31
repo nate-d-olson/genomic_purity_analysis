@@ -1,0 +1,45 @@
+Helicobacter acinonychis str. Sheeba complete genome, strain Sheeba - 1..1553927
+42 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+3014..3089	-	76	109713861	-	Hac_trna_0001	-	-	Anticodon: GAA
+28755..31727	+	2973	109713861	23S rRNA copy I	Hac_0025	-	-	-
+31952..32086	+	135	109713861	5S rRNA copy I	Hac_0026	-	-	-
+151802..153302	+	1501	109713861	16S rRNA copy I	Hac_0178a	-	-	-
+214561..214636	+	76	109713861	-	Hac_trna_0002	-	-	Anticodon: TTT
+214649..214723	+	75	109713861	-	Hac_trna_0003	-	-	Anticodon: TTC
+214760..214835	+	76	109713861	-	Hac_trna_0004	-	-	Anticodon: TAC
+214879..214955	+	77	109713861	-	Hac_trna_0005	-	-	Anticodon: GTC
+215015..215090	+	76	109713861	-	Hac_trna_0006	-	-	Anticodon: TTC
+260710..260784	-	75	109713861	-	Hac_trna_0007	-	-	Anticodon: GTT
+342648..342725	+	78	109713861	-	Hac_trna_0008	-	-	Anticodon: CAT
+357516..357600	-	85	109713861	-	Hac_trna_0009	-	-	Anticodon: TAG
+362398..362474	+	77	109713861	-	Hac_trna_0010	-	-	Anticodon: GAT
+362491..362566	+	76	109713861	-	Hac_trna_0011	-	-	Anticodon: TGC
+417108..417185	+	78	109713861	-	Hac_trna_0012	-	-	Anticodon: TGG
+417248..417324	+	77	109713861	-	Hac_trna_0013	-	-	Anticodon: GTG
+417389..417465	+	77	109713861	-	Hac_trna_0014	-	-	Anticodon: TCG
+417483..417559	+	77	109713861	-	Hac_trna_0015	-	-	Anticodon: TCT
+498579..500079	+	1501	109713861	16S rRNA copy II	Hac_0566	-	-	-
+543239..546211	+	2973	109713861	23S rRNA copy II	Hac_0619	-	-	-
+546436..546570	+	135	109713861	5S rRNA copy II	Hac_0619a	-	-	-
+593076..593152	+	77	109713861	-	Hac_trna_0016	-	-	Anticodon: CAT
+867112..867188	-	77	109713861	-	Hac_trna_0017	-	-	Anticodon: GCG
+964941..965018	+	78	109713861	-	Hac_trna_0018	-	-	Anticodon: GGG
+1020044..1020131	+	88	109713861	-	Hac_trna_0019	-	-	Anticodon: GGA
+1041456..1041532	+	77	109713861	-	Hac_trna_0020	-	-	Anticodon: CCT
+1101362..1101438	-	77	109713861	-	Hac_trna_0021	-	-	Anticodon: CAT
+1101467..1101541	-	75	109713861	-	Hac_trna_0022	-	-	Anticodon: TTG
+1127306..1127393	-	88	109713861	-	Hac_trna_0023	-	-	Anticodon: TGA
+1127425..1127499	-	75	109713861	-	Hac_trna_0024	-	-	Anticodon: GCA
+1127565..1127651	-	87	109713861	-	Hac_trna_0025	-	-	Anticodon: TAA
+1127884..1127958	-	75	109713861	-	Hac_trna_0026	-	-	Anticodon: GCC
+1176672..1176747	+	76	109713861	-	Hac_trna_0027	-	-	Anticodon: GGC
+1316308..1316399	-	92	109713861	-	Hac_trna_0028	-	-	Anticodon: GCT
+1332315..1332390	+	76	109713861	-	Hac_trna_0029	-	-	Anticodon: GAC
+1378107..1378182	-	76	109713861	-	Hac_trna_0030	-	-	Anticodon: CCA
+1379752..1379826	-	75	109713861	-	Hac_trna_0031	-	-	Anticodon: GGT
+1379857..1379933	-	77	109713861	-	Hac_trna_0032	-	-	Anticodon: TCC
+1379950..1380034	-	85	109713861	-	Hac_trna_0033	-	-	Anticodon: GTA
+1380062..1380137	-	76	109713861	-	Hac_trna_0034	-	-	Anticodon: TGT
+1382949..1383035	-	87	109713861	-	Hac_trna_0035	-	-	Anticodon: CAA
+1383089..1383175	-	87	109713861	-	Hac_trna_0036	-	-	Anticodon: GAG

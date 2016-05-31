@@ -1,0 +1,6 @@
+Vibrio cholerae LMA3894-4 chromosome II, complete sequence. - 1..946986
+3 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+391100..391171	+	72	327485244	-	VCLMA_Bt01	-	-	Gly tRNA
+588408..588478	-	71	327485244	-	VCLMA_Bt02	-	-	Cys tRNA
+593578..593648	-	71	327485244	-	VCLMA_Bt03	-	-	Cys tRNA

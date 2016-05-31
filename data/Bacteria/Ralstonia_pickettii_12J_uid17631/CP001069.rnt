@@ -1,0 +1,10 @@
+Ralstonia pickettii 12J chromosome 2, complete sequence. - 1..1302238
+7 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+65778..65862	-	85	187727712	-	Rpic_R0059	-	-	Leu tRNA
+815240..815352	-	113	187727712	-	Rpic_R0060	-	-	5S ribosomal RNA
+815531..818348	-	2818	187727712	-	Rpic_R0061	-	-	23S ribosomal RNA
+818614..818689	-	76	187727712	-	Rpic_R0062	-	-	Ala tRNA
+818726..818802	-	77	187727712	-	Rpic_R0063	-	-	Ile tRNA
+818863..820393	-	1531	187727712	-	Rpic_R0064	-	-	16S ribosomal RNA
+905719..905795	+	77	187727712	-	Rpic_R0065	-	-	Xaa tRNA

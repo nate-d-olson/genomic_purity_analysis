@@ -1,0 +1,20 @@
+Brucella abortus biovar 1 str. 9-941 chromosome II, complete sequence - 1..1162204
+17 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+39224..39298	-	75	62197154	-	BruAb2_trna_0001	-	-	Val tRNA
+338516..338590	-	75	62197154	-	BruAb2_trna_0002	-	-	Gly tRNA
+398807..398882	-	76	62197154	-	BruAb2_trna_0003	-	-	Thr tRNA
+608266..608340	+	75	62197154	-	BruAb2_trna_0004	-	-	Asn tRNA
+612629..612702	-	74	62197154	-	BruAb2_trna_0005	-	-	Cys tRNA
+644584..644659	+	76	62197154	-	BruAb2_trna_0006	-	-	Lys tRNA
+677020..677109	+	90	62197154	-	BruAb2_trna_0007	-	-	Ser tRNA
+866586..866662	+	77	62197154	-	BruAb2_trna_0008	-	-	Asp tRNA
+962978..963052	+	75	62197154	-	BruAb2_trna_0009	-	-	Gly tRNA
+992993..993079	+	87	62197154	-	BruAb2_trna_0010	-	-	Leu tRNA
+1010420..1010509	+	90	62197154	-	BruAb2_trna_0011	-	-	Ser tRNA
+1059065..1059141	-	77	62197154	-	BruAb2_trna_0012	-	-	Met tRNA
+1059246..1059364	-	119	62197154	-	BruAb2_rrna_0001	-	-	5S ribosomal RNA
+1059676..1062484	-	2809	62197154	-	BruAb2_rrna_0002	-	-	23S ribosomal RNA
+1062806..1062881	-	76	62197154	-	BruAb2_trna_0013	-	-	Ala tRNA
+1062895..1062971	-	77	62197154	-	BruAb2_trna_0014	-	-	Ile tRNA
+1063274..1064727	-	1454	62197154	-	BruAb2_rrna_0003	-	-	16S ribosomal RNA

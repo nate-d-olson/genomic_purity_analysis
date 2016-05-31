@@ -1,0 +1,10 @@
+Burkholderia thailandensis MSMB121 chromosome 2, complete sequence. - 1..2763585
+7 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+931894..931983	-	90	484588865	-	BTI_4344	-	-	Ser tRNA
+961277..961386	-	110	484588865	-	BTI_4375	-	-	5S ribosomal RNA
+961575..964451	-	2877	484588865	-	BTI_4376	-	-	23S ribosomal RNA
+964850..964925	-	76	484588865	-	BTI_4377	-	-	Ala tRNA
+964963..965039	-	77	484588865	-	BTI_4378	-	-	Ile tRNA
+965110..966626	-	1517	484588865	-	BTI_4379	-	-	16S ribosomal RNA
+1715639..1715715	+	77	484588865	-	BTI_4978	-	-	Val tRNA

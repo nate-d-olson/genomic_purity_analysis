@@ -1,0 +1,9 @@
+Azospirillum sp. B510 plasmid pAB510d DNA, complete genome. - 1..628837
+6 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+271587..271662	+	76	288914341	-	AZL_rd01	-	-	Asn tRNA
+271667..271743	+	77	288914341	-	AZL_rd02	-	-	Asp tRNA
+419945..420020	+	76	288914341	-	AZL_rd03	-	-	Phe tRNA
+549276..549351	-	76	288914341	-	AZL_rd04	-	-	Glu tRNA
+549396..549471	-	76	288914341	-	AZL_rd05	-	-	Glu tRNA
+549539..549614	-	76	288914341	-	AZL_rd06	-	-	Glu tRNA

@@ -1,0 +1,8 @@
+Burkholderia sp. KJ006 chromosome 3, complete sequence. - 1..1082410
+5 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+43133..44658	+	1526	387580705	-	MYA_r0016	-	-	16S ribosomal RNA
+44673..44746	+	74	387580705	-	MYA_t0064	-	-	Ile tRNA
+44788..44860	+	73	387580705	-	MYA_t0065	-	-	Ala tRNA
+45148..48030	+	2883	387580705	-	MYA_r0017	-	-	23S ribosomal RNA
+48183..48298	+	116	387580705	-	MYA_r0018	-	-	5S ribosomal RNA

@@ -1,0 +1,6 @@
+Deinococcus geothermalis DSM 11300 plasmid pDGEO01, complete sequence. - 1..574127
+3 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+8902..10394	+	1493	110746139	-	Dgeo_R0067	-	-	16S ribosomal RNA
+10632..13516	+	2885	110746139	-	Dgeo_R0066	-	-	23S ribosomal RNA
+13586..13702	+	117	110746139	-	Dgeo_R0065	-	-	5S ribosomal RNA

@@ -1,0 +1,8 @@
+Burkholderia sp. 383 chromosome 3, complete sequence. - 1..1395069
+5 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+139518..140997	+	1480	77964193	-	Bcep18194_CR0084	-	-	16S ribosomal RNA
+141061..141134	+	74	77964193	tRNA-Ile1	Bcep18194_CR0085	-	-	Ile tRNA
+141235..141307	+	73	77964193	tRNA-Ala1	Bcep18194_CR0086	-	-	Ala tRNA
+141598..144479	+	2882	77964193	-	Bcep18194_CR0087	-	-	23S ribosomal RNA
+144611..144723	+	113	77964193	-	Bcep18194_CR0088	-	-	5S ribosomal RNA

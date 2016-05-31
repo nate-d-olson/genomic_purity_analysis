@@ -1,0 +1,7 @@
+Vibrio cholerae MJ-1236 chromosome 2, complete sequence. - 1..1086784
+4 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+640979..641052	+	74	229371548	-	VCD_rna001	-	-	Cys tRNA
+646088..646174	+	87	229371548	-	VCD_rna002	-	-	Leu tRNA
+646199..646272	+	74	229371548	-	VCD_rna003	-	-	Cys tRNA
+872195..872269	-	75	229371548	-	VCD_rna004	-	-	Gly tRNA

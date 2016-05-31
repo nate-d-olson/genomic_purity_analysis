@@ -1,0 +1,6 @@
+Haloarcula hispanica ATCC 33960 chromosome II, complete sequence. - 1..488918
+3 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+8832..10303	+	1472	343784702	rrs-2	HAH_4010	-	-	16S ribosomal RNA
+10679..13600	+	2922	343784702	rrlA-2	HAH_4011	-	-	23S ribosomal RNA
+13739..13860	+	122	343784702	rrlB-2	HAH_4012	-	-	5S ribosomal RNA

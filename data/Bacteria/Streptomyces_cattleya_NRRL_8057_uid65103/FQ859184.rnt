@@ -1,0 +1,6 @@
+Streptomyces cattleya NRRL 8057 plasmid pSCAT, complete genome. - 1..1809491
+3 RNAs
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+265667..265840	+	174	337762320	-	SCAT_pmisc_RNA_3	-	-	-
+1320478..1320651	-	174	337762320	-	SCAT_pmisc_RNA_2	-	-	-
+1543865..1544046	-	182	337762320	-	SCAT_pmisc_RNA_1	-	-	-
