@@ -1,7 +1,7 @@
 ---
 title: "Single Org Results Summary"
 author: "Nate Olson"
-date: "May 30, 2016"
+date: "June 3, 2016"
 output: html_document
 ---
 ```{r echo=FALSE, message=FALSE}
@@ -12,7 +12,23 @@ load.project()
 setwd(wd)
 ```
 
+## Observations  
+1. Overall high proportions of matches at species and genus level.  
+1. The cumulative match proportions do not always reach 1.00, for example _Staphylococcus_ genomes.
+ This might be due to exclusion of unclassified and unknown matches from match level analysis or reads that bowtie (mapping algorithm) was unable to align to any sequece in the reference database.  
+1. A number of unexpected genus, e.g. not _Bacillus_, _Clostridium_, _Escherichia_, _Francisella_, _Listeria_, _Pseudonomas_, _Salmonella_, _Shigella_, _Staphylococcus_, and _Yersinia_. 
+These are strains that were either inadvertantly included in the study or reclassified genus.  
+1. Some genus have high levels of family and higher matches. 
+For _Shigella_ most likely due to matches with _Escherichia_. 
+Will need to verify. Good discussion point highlighting the importance of considering the taxa being evaluated and taxonomic ambiguities.  
+
+
 ## Match level by genus
+Overall proportion of matches by taxonomic level. 
+A number of strains from unexpected genus are present in the dataset. 
+In general most matches are at the species or genus level. 
+Species level matches include taxonomic ranks species group, species subgroup, subspecies, as well as species. 
+
 ```{r fig.height = 8}
 singleOrgMatchResults %>%
       mutate(lca_rank = ifelse(lca_rank %in% 
@@ -35,23 +51,40 @@ singleOrgMatchResults %>%
       labs(x = "Taxonomic Level", y = "Match Proportion")
 ```
 
-### Observations  
-* A number of unexpected genus, e.g. not _Bacillus_, _Clostridium_, _Escherichia_, _Francisella_, _Listeria_, _Pseudonomas_, _Salmonella_, _Shigella_, _Staphylococcus_, and _Yersinia_.  
-* Some genus have high levels of family and higher matches. For _Shigella_ most likely due to matches with _Escherichia_. Will need to look into more....
-
-
 
 ## Looking at unexpected genus
 ```{r}
 singleOrgMatchResults %>% 
+      filter(!(query_genus %in% c("Bacillus", "Clostridium", "Escherichia", 
+                                  "Francisella", "Listeria", "Pseudomonas", 
+                                  "Salmonella", "Shigella", "Staphylococcus", 
+                                  "Yersinia"))) %>% 
       group_by(Query, query_genus) %>% 
       summarise(count = n()) %>% 
       group_by(query_genus) %>% 
       summarise(count = n()) %>% kable()
 ```
 
-* Krypidia was formally part of the Bacillus genus  
-* Gottshalkia was formally in the Clostridium genus  
+### Classifications of unexpected genus 
+The unexpected genus are either reclassificed strains or were unintenially included in the study when grep was used to select genomes based on genus name. 
+Only 23 of the strains are the unexpected genus out of 429 total strains evaluated in the study.  As they are less than 5% of the total strains in the dataset, 
+I am exluding them from the main analysis. 
+
+```{r}
+unexpected_genus_df <- singleOrgMatchResults %>%
+      filter(!(query_genus %in% c("Bacillus", "Clostridium", "Escherichia", 
+                                  "Francisella", "Listeria", "Pseudomonas", 
+                                  "Salmonella", "Shigella", "Staphylococcus", 
+                                  "Yersinia"))) %>% 
+      select(query_taxid, query_genus) %>% distinct()
+unexpected_class <- unexpected_genus_df$query_taxid %>% classification(db = 'ncbi') 
+unexpected_class %>% rbind() %>% filter(rank != "no rank") %>% 
+      select(-id) %>% spread(rank, name) %>% 
+      select(query, superkingdom, phylum, class, order, family, genus, species) %>% 
+      arrange(class, family, genus) %>% kable()
+``` 
+
+
 
 ## Excluding unexpected genus
 ```{r}
@@ -62,29 +95,73 @@ single_org_cum <- singleOrgMatchResults %>%
                                      c("species group", 
                                        "species subgroup", 
                                        "subspecies"), 
-                               "species", lca_rank),
-             lca_rank = factor(lca_rank, 
-                               levels = c("species", "genus", 
-                                          "family", "order", 
-                                          "class","phylum",
-                                          "superkingdom"))) %>% 
+                               "species", lca_rank)) %>% 
       group_by(Query, lca_rank, query_genus) %>% 
       summarise(total_prop = sum(`Final Guess`)) %>% 
-      group_by(Query) %>% 
+      spread(lca_rank, total_prop,fill = 0)  %>% 
+      gather(lca_rank, total_prop, -Query, -query_genus)  %>% 
+     group_by(Query) %>% 
+       mutate(lca_rank = factor(lca_rank, levels = c("species", "genus", 
+                                    "family", "order", 
+                                    "class","phylum",
+                                    "superkingdom"))) %>%
+      arrange(lca_rank) %>% 
       mutate(cum_prop = cumsum(total_prop))
 ```
 
-## Cumulative match by query
+## Single Org Genus Summary Table
+Breakdown of the number of strains per genus analyzed in the study.
 ```{r}
-ggplot(single_org_cum) + 
-      geom_path(aes(x = lca_rank, y = cum_prop, 
-                               group = Query)) +
-      # geom_boxplot(aes(x = lca_rank, y = cum_prop)) +
-      facet_wrap(~query_genus) + 
-      theme_bw() + theme(axis.text.x = element_text(angle = 90)) +
-      labs(x = "Taxonomic Level", y = "Cumulative Proportion")
+singleOrgMatchResults %>% 
+      filter(query_genus %in% c("Bacillus", "Clostridium", "Escherichia", 
+                                  "Francisella", "Listeria", "Pseudomonas", 
+                                  "Salmonella", "Shigella", "Staphylococcus", 
+                                  "Yersinia")) %>% 
+      group_by(Query, query_genus) %>% 
+      summarise(count = n()) %>% 
+      group_by(query_genus) %>% 
+      summarise(count = n()) %>% kable()
 ```
 
-### Observations  
-* Overall high proportions of matches at species and genus level.  
-* Not sure about _Staphylococcus_ genomes with match proportions that do not increase with taxonomic level, might be due to exclusion of unclassified and unknown matches from match level analysis.  
+
+## Cumulative match by query
+The cumulative match proportions are presented in three different ways below. 
+It is interesting that the cumulative match proportions do not always reach 1.00. 
+This is probably due to the proportion of reads that were not mapped, this would require  justification if we include this point in the manuscript.  
+
+### Faceted plots by genus
+```{r}
+ggplot(single_org_cum) + 
+            geom_path(aes(x = lca_rank, y = cum_prop, group = Query)) +
+            facet_wrap(~query_genus) + 
+            theme_bw() + theme(axis.text.x = element_text(angle = 90)) +
+            labs(x = "Taxonomic Level", y = "Cumulative Match Proportion")
+```
+
+### Individual Plots by genus
+```{r}
+plot_tax_cum <- function(df){
+      p <- ggplot(df) + 
+            geom_path(aes(x = lca_rank, y = cum_prop, group = Query)) +
+            facet_wrap(~query_genus) + 
+            theme_bw() + theme(axis.text.x = element_text(angle = 90)) +
+            labs(x = "Taxonomic Level", y = "Cumulative Proportion")
+      print(p)
+}
+unique(single_org_cum$query_genus) %>% as.list() %>% set_names(.) %>% 
+      map(~filter(single_org_cum, query_genus == .)) %>% walk(plot_tax_cum)
+
+```
+
+
+
+
+### Boxplots by genus
+Boxplots to compare distributions of cumulative match proportions by taxa for individual genus.  
+```{r}
+ggplot(single_org_cum) +
+      geom_boxplot(aes(x = query_genus, y = cum_prop, color = query_genus), outlier.size = 0.5) +
+      facet_wrap(~lca_rank, nrow = 1) + 
+      theme_bw() + theme(axis.text.x = element_blank(), legend.position = "bottom") +
+      labs(x = "Genus", color = "", y = "Cumulative Match Proportion")
+```
