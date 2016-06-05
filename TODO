@@ -4,8 +4,14 @@
 * setup github
 
 ### Single Org
-* summary plots
+* seq dataset summaries
 
 ### Contam
-* work out methods for parsing contam data
+* add dataset to data_description
+* single org contam results
+* contam summaries
+* taget vs. contam match evaluation  
+
+## Write up
+* set of final figures and tables
 
