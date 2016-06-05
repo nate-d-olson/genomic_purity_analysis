@@ -1,0 +1,79 @@
+---
+title: "contam_results_summary"
+author: "Nate Olson"
+date: "June 5, 2016"
+output: html_document
+---
+
+```{r echo=FALSE, message=FALSE}
+library(ProjectTemplate)
+wd <- getwd()
+setwd("../")
+load.project()
+setwd(wd)
+```
+
+## Some quick plots
+Need to work out better way to present and do comparisons
+```{r warning=FALSE, fig.height = 8, fig.width = 8}
+dodge_target <- position_dodge(width=-1)
+dodge_contam <- position_dodge(width=1)
+
+contamMixMatchResults %>% 
+      ggplot(aes(x = mix, y = `Final Guess`)) +
+            geom_point(aes(color = lca_target_rank), position = dodge_target) +
+            geom_point(aes(color = lca_contam_rank), position = dodge_contam) + 
+            facet_grid(target_name~contam_name) +
+      theme(axis.text.x = element_text(angle = 90))
+```
+
+## Looking at contam matches
+```{r fig.height = 8}
+contamMixMatchResults %>% mutate(mix = as.numeric(mix), mix_contam = 1 - mix) %>% 
+      filter(lca_contam_rank %in% 
+                   c("genus","species","species group","subspecies")) %>% 
+      mutate(lca_contam_rank = ifelse(lca_contam_rank == "genus", "genus","species")) %>% 
+      group_by(contam_ds, target_name, contam_name, lca_contam_rank, mix_contam) %>%
+      summarise(contam_prop = sum(`Final Guess`)) %>% 
+      ggplot(aes(x = mix_contam, y = contam_prop)) +
+            geom_abline(aes(slope = 1, intercept = 0), linetype = 2, color = "grey60") +
+            geom_point(aes(color = contam_name, shape = lca_contam_rank)) + 
+            facet_wrap(~target_name, scale = "free_y") + scale_x_log10() + scale_y_log10() + 
+            theme_bw() +
+            theme(axis.text.x = element_text(angle = 90), legend.position = "bottom") + 
+            labs(x = "Proportion of Contaminant", y = "Proportion of Matched Reads", 
+                 shape = "Contaminant Match Taxonomic Rank", color = "Contaminant")
+```
+
+```{r fig.height = 8, fig.width = 8}
+contamMixMatchResults %>% mutate(mix = as.numeric(mix), mix_contam = 1 - mix) %>% 
+      filter(lca_contam_rank %in% 
+                   c("genus","species","species group","subspecies")) %>% 
+      mutate(lca_contam_rank = ifelse(lca_contam_rank == "genus", "genus","species")) %>% 
+      group_by(contam_ds, target_name, contam_name, mix_contam) %>%
+      summarise(contam_prop = sum(`Final Guess`)) %>% 
+      ggplot(aes(x = mix_contam, y = contam_prop)) +
+            geom_abline(aes(slope = 1, intercept = 0), linetype = 2, color = "grey60") +
+            geom_path(aes(color = contam_name), alpha = 0.5) + 
+            geom_point(aes(color = contam_name)) + 
+            facet_wrap(~target_name, scale = "free_y", ncol = 2) + scale_x_log10() + scale_y_log10() + 
+            theme_bw() +
+            theme(axis.text.x = element_text(angle = 90), legend.position = "bottom") + 
+            labs(x = "Proportion of Contaminant",
+                 y = "Proportion of Matched Reads", 
+                 color = "Contaminant")
+```
+
+Min contam match levels - lowest proportion of contaminant in the mix that was detected.
+```{r fig.height = 8}
+contamMixMatchResults %>% mutate(mix = as.numeric(mix), mix_contam = 1 - mix) %>% 
+      filter(lca_contam_rank %in% 
+                   c("genus","species","species group","subspecies")) %>% 
+      group_by(contam_name, target_name) %>% summarise(contam_min = min(mix_contam)) %>% 
+      ggplot() + 
+            geom_raster(aes(x = contam_name, y = target_name, fill = log10(contam_min))) +
+            geom_text(aes(x = contam_name, y = target_name, label = round(log10(contam_min),1))) +
+      theme_bw() + labs(x = "Contaminant",y = "Target", fill = "Min Contam Detected") + 
+      theme(axis.text.x = element_text(angle = 90)) 
+```
+
