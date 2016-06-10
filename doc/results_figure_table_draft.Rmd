@@ -1,0 +1,127 @@
+---
+title: "Study Figures and Tables"
+author: "Nate Olson"
+date: "June 9, 2016"
+output: html_document
+---
+
+```{r echo=FALSE, message=FALSE}
+library(ProjectTemplate)
+wd <- getwd()
+setwd("../")
+load.project()
+setwd(wd)
+```
+
+# Single Org
+## Table 1
+Columns: Genus, number of strains, Genome Size, number of plasmids, # of reads
+```{r}
+singleOrgMatchResults %>% 
+      filter(query_genus %in% c("Bacillus", "Clostridium", "Escherichia", 
+                                  "Francisella", "Listeria", "Pseudomonas", 
+                                  "Salmonella", "Shigella", "Staphylococcus", 
+                                  "Yersinia")) %>% 
+      select(query_genus, Query, query_taxid) %>% 
+      rename(Taxid = query_taxid) %>% left_join(queryMeta) %>% 
+      distinct() %>% 
+      group_by(query_genus, Query) %>% 
+      mutate(`DNA  length` = as.numeric(`DNA  length`)) %>% 
+      summarise(genome_size = sum(`DNA  length`)) %>% 
+      group_by(query_genus) %>% 
+      summarise(count = n(), size_median = median(genome_size, na.rm = T)/1e6, 
+               size_min = min(genome_size, na.rm = T)/1e6, 
+               size_max = max(genome_size, na.rm = T)/1e6) %>% 
+      mutate(`Genome Size (Mb)` = paste0(round(size_median,2) ," (", 
+                                         round(size_min,2), "-", 
+                                         round(size_max, 2), ")"),
+             query_genus = paste0("_",query_genus,"_")) %>% 
+      select(-size_min, -size_max, -size_median) %>% 
+      rename(Genus = query_genus, N = count) %>% 
+      kable(digits = 2)
+```
+
+## Figure 1
+Cummulative Match Proportions
+```{r}
+single_org_cum <- singleOrgMatchResults %>%
+      filter(query_genus %in% c("Bacillus","Clostridium","Escherichia","Francisela","Listeria",
+                                  "Pseudomonas","Salmonella","Shigella","Staphylococcus","Yersinia")) %>% 
+      mutate(lca_rank = ifelse(lca_rank %in% 
+                                     c("species group", 
+                                       "species subgroup", 
+                                       "subspecies"), 
+                               "species", lca_rank)) %>% 
+      group_by(Query, lca_rank, query_genus) %>% 
+      summarise(total_prop = sum(`Final Guess`)) %>% 
+      spread(lca_rank, total_prop,fill = 0)  %>% 
+      gather(lca_rank, total_prop, -Query, -query_genus)  %>% 
+     group_by(Query) %>% 
+       mutate(lca_rank = factor(lca_rank, levels = c("species", "genus", 
+                                    "family", "order", 
+                                    "class","phylum",
+                                    "superkingdom"))) %>%
+      arrange(lca_rank) %>% 
+      mutate(cum_prop = cumsum(total_prop))
+```
+
+```{r}
+ggplot(single_org_cum) + 
+            geom_path(aes(x = lca_rank, y = cum_prop, group = Query)) +
+            facet_wrap(~query_genus) + 
+            theme_bw() + theme(axis.text.x = element_text(angle = 90)) +
+            labs(x = "Taxonomic Level", y = "Cumulative Match Proportion")
+```
+
+## Figure 2 
+Boxplot genus level match
+```{r}
+single_org_cum %>% filter(lca_rank == "genus") %>% 
+      ggplot() + 
+            geom_boxplot(aes(x = query_genus, y = cum_prop)) + 
+            geom_hline(aes(yintercept = 0.95), color = "grey60", linetype = 2) + 
+            theme_bw() + theme(axis.text.x = element_text(angle = 90)) +
+            labs(x = "Query Genus", y = "Genus Match Proportion")
+```
+
+
+# Contam
+##Table 2
+Columns: Genus, Genome Size, Plasmids, # Reads, Genus match unmixed
+
+
+## Figure 3
+Contaminant detection at or below genus level
+X - match prop, Y - contam mix, vertical lines min detect, facet by target genus
+```{r fig.height = 10, fig.width = 7}
+contamMixMatchResultsMin <- contamMixMatchResults %>% 
+      mutate(mix = as.numeric(mix), mix_contam = 1 - mix) %>% 
+      filter(lca_contam_rank %in% 
+                   c("genus","species","species group","subspecies")) %>% 
+      group_by(contam_name, target_name) %>% summarise(contam_min = min(mix_contam)) %>% 
+      mutate(contam_label = str_replace_all(contam_name, "_", " "),
+             contam_label = str_replace(contam_label, " uid.*",""))
+
+contamMixMatchResults %>% mutate(mix = as.numeric(mix), mix_contam = 1 - mix) %>% 
+      filter(lca_contam_rank %in% 
+                   c("genus","species","species group","subspecies")) %>% 
+      mutate(lca_contam_rank = ifelse(lca_contam_rank == "genus", "genus","species")) %>% 
+      group_by(contam_ds, target_name, contam_name, mix_contam) %>%
+      summarise(contam_prop = sum(`Final Guess`)) %>% 
+            mutate(contam_label = str_replace_all(contam_name, "_", " "),
+             contam_label = str_replace(contam_label, " uid.*","")) %>% 
+      ggplot(aes(x = mix_contam, y = contam_prop)) +
+            geom_abline(aes(slope = 1, intercept = 0), linetype = 2, color = "grey60") +
+            geom_vline(data = contamMixMatchResultsMin, 
+                       aes(xintercept = contam_min, color = contam_label), linetype = 3) +
+            geom_path(aes(color = contam_label), alpha = 0.5) + 
+            geom_point(aes(color = contam_label)) + 
+            facet_wrap(~target_name, ncol = 2) + scale_x_log10() + scale_y_log10() + 
+            theme_bw() +
+            theme(axis.text.x = element_text(angle = 90), legend.position = "bottom") +
+            guides(color = guide_legend(ncol = 2, title = element_blank())) + 
+            labs(x = "Proportion of Contaminant",
+                 y = "Proportion of Matched Reads", 
+                 color = "Contaminant")
+```
+
