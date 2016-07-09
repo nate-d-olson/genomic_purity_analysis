@@ -89,6 +89,25 @@ single_org_cum %>% filter(lca_rank == "genus") %>%
 ##Table 2
 Columns: Genus, Genome Size, Plasmids, # Reads, Genus match unmixed
 
+```{r}
+species_lvls <- c("species","species group","subspecies")
+contam_tbl <- contamSingleOrgMatchResults %>% 
+      mutate(lca_rank = ifelse(lca_rank %in% species_lvls, "species",lca_rank)) %>% 
+      filter(lca_rank %in% c("species","genus")) %>% 
+      group_by(Query, lca_rank) %>% 
+      summarize(total_prop = sum(`Final Guess`)) %>% 
+      spread(lca_rank,total_prop) %>% 
+      left_join(queryMeta) %>% 
+      mutate(`DNA length` = as.numeric(`DNA  length`),
+             DNA_type = if_else(`DNA length` < 1000000, "plasmid","chromosome")) %>% 
+      select(-GI, -Taxid) %>% 
+      group_by(Taxname, DNA_type, genus, species ) %>% 
+      summarise(Accessions = str_c(Accession, collapse = ", "),
+                bp = sum(`DNA length`),
+                num = n())
+kable(contam_tbl)
+```
+
 
 ## Figure 3
 Contaminant detection at or below genus level
