@@ -48,9 +48,10 @@
 \newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
 
 \usepackage{alltt} % for journal submissions
+\usepackage{hyperref}
 % \documentclass[fleqn,10pt]{wlpeerj} % for preprint submissions
 
-\title{Method for validating test material purity using whole genome sequencing data.}
+\title{Method for evaluating genomic material purity using whole genome sequencing data.}
 
 \author[1]{Nathan D. Olson}
 \author[1]{Justin Zook}
@@ -74,151 +75,177 @@ Dummy abstract text.
 
 
 
+
+
+
+
 \flushbottom
 \maketitle
 \thispagestyle{empty}
 
 \section*{Introduction}
-Rapid, sensitive and accurate assays for detecting bacterial pathogens in food, water, clinical samples, and  suspicious biothreats is critical to public health and safety (REF).  Biodetection assays must be evaluated for assay sensitivity and specificity prior to deployment as well in the hands of the user to instill confidence in the actions made based on the assay results \citep{Ieven2013,International2011,EPA2004,ISO/TS2010,Guide1998,Feldsine2002}.  Test materials are used to validate assay performance.  Test materials can be either purified cultures, genomic DNA or whole cells spiked into a matrix \citep{EPA2004,ISO/TS2010,CLSI2010}.  Before being used to evaluate a biodetection assay the test material itself must be validated in terms of purity and identity to eliminate false positive results due to test material contaminants or false negative due to the test material being the wrong strain \citep{CLSI2010}.  There are a number of potential sources of microbial contaminants  including the stock culture, the preservation medium, as well as airborne and laboratory contaminants \citep{Marron2013,Shrestha2013,Tanner1998}.   
+Rapid, sensitive and accurate assays for detecting bacterial pathogens in food, water, clinical samples, and  suspicious biothreats is critical to public health and safety (REF). 
+Biodetection assays must be evaluated for assay sensitivity and specificity prior to deployment as well in the hands of the user to instill confidence in the actions made based on the assay results \citep{Ieven2013,International2011,EPA2004,ISO/TS2010,Guide1998,Feldsine2002}. 
+Test materials are used to validate assay performance.  Test materials can be either purified cultures, genomic DNA or whole cells spiked into a matrix \citep{EPA2004,ISO/TS2010,CLSI2010}. 
+Before being used to evaluate a biodetection assay the test material itself must be validated in terms of purity and identity to eliminate false positive results due to test material contaminants or false negative due to the test material being the wrong strain \citep{CLSI2010}. 
+There are a number of potential sources of microbial contaminants  including the stock culture, the preservation medium, as well as airborne and laboratory contaminants \citep{Marron2013,Shrestha2013,Tanner1998}.   
  
-Current methods for evaluating test material purity include polymerase chain reaction (PCR) assays, metagenomics, and whole genome sequencing based approaches.  One PCR assay was developed to analyze protist cultures.  This PCR assay uses endpoint PCR for prokaryotes and eukaryotes with template dilutions \citep{Marron2013}.  The benefit to PCR-based approaches is that they can be cost effective and fast if an applicable protocol exists.   However, PCR assays can only target specific contaminants.  While PCR assays can detect contaminants, this approach does not scale effectively for multiple contaminants and test materials. The bioinformatics tools developed to identify contaminants in metagenomic datasets, which include sequencing data from all organisms in a sample, can also be used to evaluate test material purity.  For example DeconSeq \citep{Schmieder2011} and a similar method QC-Chain \citep{Zhou2013} were developed to identify contaminants based on analysis of 16S ribosomal ribonucleic acid (rRNA) gene sequences or comparison of a subset of reads to a reference database using Basic local alignment search tool (BLAST).  Metagonomic-based methods are able to identify contaminants without any prior knowledge or assumptions regarding the identity of the organism(s).  However, methods based on 16S rRNA gene identification have limited resolution, as 16S rRNA sequences can only provide genus level taxonomic resolution at best.  Methods using BLAST-based searches represent a broader scale approach but are limited by the accuracy of the BLAST classification method.   The benefit to using metagenomic tools developed is that prior knowledge of the identity of the contaminant is not required; however this method is unable to identify contaminants to the strain level.   
+Current methods for evaluating test material purity include polymerase chain reaction (PCR) assays, metagenomics, and whole genome sequencing based approaches. 
+One PCR assay was developed to analyze protist cultures. 
+This PCR assay uses endpoint PCR for prokaryotes and eukaryotes with template dilutions \citep{Marron2013}. 
+The benefit to PCR-based approaches is that they can be cost effective and fast if an applicable protocol exists. 
+However, PCR assays can only target specific contaminants.  While PCR assays can detect contaminants, this approach does not scale effectively for multiple contaminants and test materials. 
+The bioinformatics tools developed to identify contaminants in metagenomic datasets, which include sequencing data from all organisms in a sample, can also be used to evaluate test material purity. 
+For example DeconSeq \citep{Schmieder2011} and a similar method QC-Chain \citep{Zhou2013} were developed to identify contaminants based on analysis of 16S ribosomal ribonucleic acid (rRNA) gene sequences or comparison of a subset of reads to a reference database using Basic local alignment search tool (BLAST). 
+Metagonomic-based methods are able to identify contaminants without any prior knowledge or assumptions regarding the identity of the organism(s). 
+However, methods based on 16S rRNA gene identification have limited resolution, as 16S rRNA sequences can only provide genus level taxonomic resolution at best. 
+Methods using BLAST-based searches represent a broader scale approach but are limited by the accuracy of the BLAST classification method. 
+The benefit to using metagenomic tools developed is that prior knowledge of the identity of the contaminant is not required; however this method is unable to identify contaminants to the strain level.   
 
-Another approach to evaluating test material purity is through shotgun whole genome sequencing, sequence all DNA in a single organism sample.  A recently published bioinformatics method, \textit{pathoscope}, was developed to detect pathogens and identify strains using whole genome sequencing data \citep{Francis2013}.  This method benefits from the large sample size obtained using next generation sequencing for higher sensitivity and leverages algorithm advances for whole genome sequence mapping.  Mapping algorithms determine the optimal placement of reads relative to a reference sequence \citep{Schbath2012}.  Reads are either uniquely or ambiguously mapped.  For uniquely mapped reads only a single optimal mapping location is identified, whereas for ambiguously mapped reads multiple optimal mapping locations are identified.  Pathoscope uses the number of reads that uniquely map to different genomes in the reference database to assign ambiguously mapped reads, reads that align equally well to multiple reference sequences.  The primary benefits to shotgun whole genome sequencing and subsequent pathoscope analysis approach are that prior knowledge of the contaminant is not required and it has the potential for higher sensitivity compared to other methods.  However, the main limitation to this method is the size of the reference database, namely that the genome of the contaminant or a closely related organism must be present in the database for the contaminant to be detected.  In this work, we present the results of a proof of concept study to measure the purity of single organism test materials built upon the pathoscope software for pathogen detection.  This method is based on whole genome sequencing and utilizes \textit{pathoscope} with an expanded reference database.  We will first present the specificity of the method using simulated data for single organisms.  Then, evaluate sensitivity of the method using simulated datasets generated to represent contaminated test material.  
+Another approach to evaluating test material purity is through shotgun whole genome sequencing, sequence all DNA in a single organism sample. 
+A recently published bioinformatics method, \textit{pathoscope}, was developed to detect pathogens and identify strains using whole genome sequencing data \citep{Francis2013}. 
+This method benefits from the large sample size obtained using next generation sequencing for higher sensitivity and leverages algorithm advances for whole genome sequence mapping.  Mapping algorithms determine the optimal placement of reads relative to a reference sequence \citep{Schbath2012}. 
+Reads are either uniquely or ambiguously mapped.  For uniquely mapped reads only a single optimal mapping location is identified, whereas for ambiguously mapped reads multiple optimal mapping locations are identified. 
+Pathoscope uses the number of reads that uniquely map to different genomes in the reference database to assign ambiguously mapped reads, reads that align equally well to multiple reference sequences. 
+The primary benefits to shotgun whole genome sequencing and subsequent pathoscope analysis approach are that prior knowledge of the contaminant is not required and it has the potential for higher sensitivity compared to other methods. 
+However, the main limitation to this method is the size of the reference database, namely that the genome of the contaminant or a closely related organism must be present in the database for the contaminant to be detected. 
+In this work, we present the results of a proof of concept study to measure the purity of single organism test materials built upon the pathoscope software for pathogen detection. 
+This method is based on whole genome sequencing and utilizes \textit{pathoscope} with an expanded reference database. 
+We will first present the specificity of the method using simulated data for single organisms. 
+Then, evaluate sensitivity of the method using simulated datasets generated to represent contaminated test material.  
 
 
 \section*{Methods}
 To test the suitability of using whole genome sequence data and metagenomic taxonomic classification methods to evaluate the genomic purity of a test material we first used simulated whole genome sequence data from single genomes and simulated contaminanted datasets. 
 Simulated data from single genomes was used to assess method specificity and simulated contaminant datasets method sensitivity. Simulated datasets were generated using the ART sequencing read simulator \citep{Huang2012}. 
-The datasets were generated using the Illumina MiSeq error models for 300 paired end base pair reads and 20 X mean coverage with an average insert size of 690 base pairs with standard for each of the strains, 
-a seed number for the random number generator was randomly assigned and for each dataset. 
+The datasets were generated using the Illumina MiSeq error models for 230 paired end base pair reads and 20 X mean coverage with an average insert size of 690 base pairs with standard deviation of 10 bp for each strain, 
+the seed number for the random number generator was randomly assigned and recorded for each dataset. 
 
-The taxonomic composition of simulated datasest was assessed using the Pathoscope metagenomic taxonomic classifier  (\citep{Francis2013}). This method uses an expectation maximization algorithm where the sequence data are first mapped to a database comprised on all sequence data in the Genbank nt database, then through an iterative process re-assigns ambiguously mapped reads to based on the proportion of reads mapped unambigously to individual taxa in the database. The PathoScope 2.0 taxonomic read classification pipeline includes an initial read filtering step (PathoQC), followed by mapping reads to a reference database (PathoMap - a wrapper for bowtie2 \citep{Langmead2012}), then an expectation-maximization classification algorithm (PathoID). The annotated Genbank nt database provided by the PathoScope developers was used as the reference database (ftp://pathoscope.bumc.bu.edu/data/nt\_ti.fa.gz). The output from the Pathoscope 2.0 algorithm was parsed and matches were evaluated using the statistical programming language R (REF).
+The taxonomic composition of simulated datasest was assessed using the Pathoscope metagenomic taxonomic classifier \citep{Francis2013}. 
+This method uses an expectation maximization algorithm where the sequence data are first mapped to a database comprised on all sequence data in the Genbank nt database, 
+then through an iterative process re-assigns ambiguously mapped reads to based on the proportion of reads mapped unambigously to individual taxa in the database. 
+The PathoScope 2.0 taxonomic read classification pipeline includes an initial read filtering step (PathoQC), 
+followed by mapping reads to a reference database (PathoMap) - a wrapper for bowtie2 \citep{Langmead2012}), then an expectation-maximization classification algorithm (PathoID). 
+The annotated Genbank nt database provided by the PathoScope developers was used as the reference database (\url{ftp://pathoscope.bumc.bu.edu/data/nt\_ti.fa.gz}).
 
 \subsection*{Specificity} 
-Sequence data was simulated for strains 406, from 9 genus (Table XYZ). 
-The genomes included in the simulation study were limited to the number of closed genomes in the Genbank database (http://www.ncbi.nlm.nih.gov/genbank/, accessed 10/18/2013). 
+Sequence data was simulated for strains 406, from 9 genus (Table \ref{tab:single_org}). 
+We will refer to the genome used to generate the reads as the target genome. 
+The genomes included in the simulation study were limited to the number of closed genomes in the Genbank database (\url{http://www.ncbi.nlm.nih.gov/genbank/}, accessed 10/18/2013). 
 Genomes included in the study were limited to those belonging to the genus \textit{Pseudomonas},
 \textit{Listeria}, \textit{Clostridium}, \textit{Yersinia}, \textit{Francisella}, and \textit{Shigella}. 
-Due to the large number of genomes the follow species were used instead of genus \textit{Bacillus cereus}, \textit{Escherichia coli}, \textit{Salmonella enteria}. 
+Due to the large number of closed genomes the follow species were used instead of genus \textit{Bacillus cereus}, \textit{Escherichia coli}, \textit{Salmonella enteria}. 
+Method specificity was defined as the proportion of reads assigned to a different taxonomy then the taxonomy of the target genome. 
+The taxononomic heirarchy for the target genome and simulated read assignment match levels were determined using the R package \citep{TaxizeArticle,TaxizeManual}. 
 
 \subsection*{Sensitivity}
-To evaluate method sensitivity, simulated contaminanted whole genome datasets were generated. 
-Representative genomes for the 8 of the 9 genus were used to generate the simulated contaminant datasets. 
-For each pairwise combination of representative genomes for the simulated simulated contaminant dataset was subsampled at 0.1 to $10^{-8}$, representing 10 fold dilutions, the target genome dataset was subsamples at 1 - contaminant proportion, resulting in 448 simulated contaminant datasets. 
+We simulated datasets with genomic contaminants to evaluate method sensitivity. 
+Representative genomes for the 8 of the 9 genus were used to generate the simulated contaminant datasets (Table \ref{tab:contam_table}). 
+An \textit{Escherichia coli} strain was selected as a representative of both \textit{Eschericha coli} and \textit{Shigella}. 
+For each pairwise combination of representative genomes for the simulated simulated contaminant dataset was subsampled at 0.1 to $10^{-8}$, representing 10 fold dilutions, the target genome dataset was subsamples at 1 - contaminant proportion, resulting in 512 simulated contaminant datasets. 
 This apporach simulates the proportions of cells in a test material and not the amount of DNA, assuming unbiased DNA extraction. 
-To speed up processing the aligned sequence files were subsampled. 
+To speed up processing the aligned sequence files were subsampled instead of the simulated sequence files. 
 
 \subsection*{Reproducibility}
 To facility reusability and transparency a Docker (www.docker.com) container is available with installed pipeline dependencies (www.registry.hub.docker.com/u/natedolson/docker-pathoscope/). 
-The script used to run the simulations were available at https://github.com/nate-d-olson/genomic\_purity. 
-Pathoscope results were processed using using the statistical programing language R \citep{R} and intermediate analysis and data summaries were organized using ProjectTemplate and archived in a github repository (https://github.com/nate-d-olson/genomic\_purity\_analysis).
+The script used to run the simulations were available at \url{https://github.com/nate-d-olson/genomic_purity}. 
+Pathoscope results were processed using using the statistical programing language R \citep{R} and intermediate analysis and data summaries were organized using ProjectTemplate \citep{ProjectTemplate} and archived in a github repository (\url{https://github.com/nate-d-olson/genomic_purity_analysis}).
 
 \section*{Results and Discussion}
 
 \subsection*{Specificity}
 
 Simulated sequence data from individual isolates was used to assess the specificity of the genomic purity assessment method.  
-We defined specificity as ability of the method to assign reads to taxonomy of the genome the sequencing reads were simulated from. 
-Method specificity was evaluated by characterizing the read assignment results based on the level of agreement between the genome and assigned taxonomy based (Figure SINGLE-ORG-CUM). 
+We defined specificity as ability of the method to assign reads to taxonomy of the genome the sequencing reads were simulated from, the target genome. 
+Method specificity was evaluated by characterizing the read assignment results based on the level of agreement between the genome and assigned taxonomy (Fig. \ref{fig:single_org_cum}). 
 Overall high proportions of matches at species and genus level. 
 The cumulative match proportions do not always reach 1.00, for example \textit{Staphylococcus} genomes. 
 This might be due to exclusion of unclassified and unknown matches from match level analysis or reads that bowtie (mapping algorithm) was unable to align to any sequece in the reference database. 
 Some genus have high levels of family and higher matches. 
 For \textit{Shigella} most likely due to matches with \textit{Escherichia} (NEED TO VARIFY). 
 
- 
-
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{table}
-
-\caption{Breakdown of the number of genomes by genus used to generate single genome simultated datasets. N indicates the number of genomes, and Genome Size is presented as the median and range (minimum to maximum) genome size}
+% latex table generated in R 3.3.0 by xtable 1.8-2 package
+% Sat Jul  9 19:10:25 2016
+\begin{table}[ht]
 \centering
-\begin{tabular}[t]{l|r|l}
-\hline
-Genus & N & Genome Size (Mb)\\
-\hline
-Bacillus & 76 & 5.05 (3.07-7.59)\\
-\hline
-Escherichia & 62 & 5.11 (3.98-5.86)\\
-\hline
-Pseudomonas & 57 & 6.18 (4.17-7.01)\\
-\hline
-Staphylococcus & 49 & 2.82 (2.69-3.08)\\
-\hline
-Salmonella & 44 & 4.88 (4.46-5.27)\\
-\hline
-Listeria & 39 & 2.97 (2.78-3.11)\\
-\hline
-Clostridium & 32 & 4.02 (2.55-6.67)\\
-\hline
-Yersinia & 19 & 4.73 (4.62-4.94)\\
-\hline
-Francisella & 18 & 1.89 (1.85-2.05)\\
-\hline
-Shigella & 10 & 4.74 (4.48-5.22)\\
-\hline
+\begin{tabular}{lrl}
+  \hline
+Genus & N & Genome Size (Mb) \\ 
+  \hline
+\textit{Bacillus} &  76 & 5.05 (3.07-7.59) \\ 
+  \textit{Escherichia} &  62 & 5.11 (3.98-5.86) \\ 
+  \textit{Pseudomonas} &  57 & 6.18 (4.17-7.01) \\ 
+  \textit{Staphylococcus} &  49 & 2.82 (2.69-3.08) \\ 
+  \textit{Salmonella} &  44 & 4.88 (4.46-5.27) \\ 
+  \textit{Listeria} &  39 & 2.97 (2.78-3.11) \\ 
+  \textit{Clostridium} &  32 & 4.02 (2.55-6.67) \\ 
+  \textit{Yersinia} &  19 & 4.73 (4.62-4.94) \\ 
+  \textit{Francisella} &  18 & 1.89 (1.85-2.05) \\ 
+  \textit{Shigella} &  10 & 4.74 (4.48-5.22) \\ 
+   \hline
 \end{tabular}
+\caption{Breakdown of the number of genomes by genus used to generate single genome simultated datasets. N indicates the number of genomes, and Genome Size is presented as the median and range (minimum to maximum) genome size} 
+\label{tab:single_org}
 \end{table}
-
-
-\end{knitrout}
-
-
-
-
-
-
-
 
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}
 
-{\centering \includegraphics[width=\maxwidth]{figure/single_cum_plot-1} 
+{\centering \includegraphics[width=\maxwidth]{figure/single_org_cum-1} 
 
 }
 
-\caption[Cumulative taxonomic match results for genomic purity assements of simulated sequence data from single genomes]{Cumulative taxonomic match results for genomic purity assements of simulated sequence data from single genomes.  Each line represents the cumulative proportion of simulated reads with taxonomic assignments matching at or above the specified taxonomic level. Genomes are grouped by genus.}\label{fig:single_cum_plot}
+\caption[Cumulative taxonomic match results for genomic purity assements of simulated sequence data from single genomes]{Cumulative taxonomic match results for genomic purity assements of simulated sequence data from single genomes.  Each line represents the cumulative proportion of simulated reads with taxonomic assignments matching at or above the specified taxonomic level. Genomes are grouped by genus.}\label{fig:single_org_cum}
 \end{figure}
 
 
 \end{knitrout}
 
 
-Most of the genus had genus level or higher match proportions excluding a few outliers. 
-Escherichia, Shigella, and Staphylococcus are noteable exceptions. 
-As discussed previously the taxonomic ambiguities for
-textit{Shigella} and \textit{Escherichia} are responsible for the overall lower genus level match proportions. 
+Most of the genus had genus level or higher match proportions excluding a few outliers (Fig. \ref{fig:single_genus}). 
+\textit{Escherichia}, \textit{Shigella}, and \textit{Staphylococcus} are noteable exceptions. 
+As discussed previously the taxonomic ambiguities for \textit{Shigella} and \textit{Escherichia} are responsible for the overall lower genus level match proportions. 
 It is important to consider the strain and genome being characterized as taxonomic ambiguities (e.g. \textit{Shigella} and \textit{Escherichia}) can lead to lower than expected specificity and the identification of false positive contaminants.  
 
- 
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}
-
-{\centering \includegraphics[width=\maxwidth]{figure/single_genus_plot-1} 
-
-}
-
-\caption[Distribution of the proportion of reads assigned to the source genome at or above the genus level]{Distribution of the proportion of reads assigned to the source genome at or above the genus level. Horizontal grey line highlights a match proportion of 0.95. Boxplots hinges represent the 25th and 75th percentiles, line through box represent is the median, whiskers are the 95\% confidence interval, and the black dots are outliers.}\label{fig:single_genus_plot}
+\includegraphics[width=\maxwidth]{figure/single_genus-1} \caption[Distribution of the proportion of reads assigned to the source genome at or above the genus level]{Distribution of the proportion of reads assigned to the source genome at or above the genus level. Horizontal grey line highlights a match proportion of 0.95. Boxplots hinges represent the 25th and 75th percentiles, line through box represent is the median, whiskers are the 95\% confidence interval, and the black dots are outliers.}\label{fig:single_genus}
 \end{figure}
 
 
 \end{knitrout}
 
 \subsection*{Sensitivity}
-To evaluate the genomic purity assessment method we generated simulated contaminant datasets as pairwise combinations of representative genomes from 8 of the genus used in the specificity section of the study (did not include Shigella in this component of the study). Due to the overall high proportion of reads matched to the correct genome in the method specificity study the simulated contaminant datasets were evaluated at the genus level.
+To evaluate the genomic purity assessment method we generated simulated contaminant datasets as pairwise combinations of representative genomes from 8 of the genus used in the specificity section of the study (did not include Shigella in this component of the study). Due to the overall high proportion of reads matched to the correct genome in the method specificity study the simulated contaminant datasets were evaluated at the genus level. For all the uncontaminated representative set of target genomes the proportion of simulated reads that matched at species level or higher was 0.98 (Table \ref{tab:contam_table}).
 
+% latex table generated in R 3.3.0 by xtable 1.8-2 package
+% Sat Jul  9 19:10:27 2016
+\begin{table}[ht]
+\centering
+\scalebox{0.65}{
+\begin{tabular}{lrllll}
+  \hline
+Representative Strain & Species & C Mb & C Acc & P Mb & P Acc \\ 
+  \hline
+Bacillus anthracis str. Ames & 1.00 & 5.23 & AE016879.1 &  &  \\ 
+  Clostridium botulinum A str. Hall & 1.00 & 3.76 & CP000727.1 &  &  \\ 
+  Escherichia coli O157:H7 str. EC4115 & 0.98 & 5.57 & CP001164.1 & 0.13 & CP001163.1, CP001165.1 \\ 
+  Francisella tularensis subsp. tularensis SCHU S4 & 1.00 & 1.89 & AJ749949.2 &  &  \\ 
+  Pseudomonas aeruginosa PAO1 & 1.00 & 6.26 & AE004091.2 &  &  \\ 
+  Salmonella enterica subsp. enterica serovar Typhimurium str. D23580 & 1.00 & 4.88 & FN424405.1 &  &  \\ 
+  Staphylococcus aureus subsp. aureus ED133 & 0.98 & 2.83 & CP001996.1 &  &  \\ 
+  Yersinia pestis CO92 & 1.00 & 4.65 & AL590842.1 & 0.18 & AL109969.1, AL117189.1, AL117211.1 \\ 
+   \hline
+\end{tabular}
+}
+\caption{Represenative strains used in simulated contaminant datasets. Species indicates the proportion of simulated reads assigned to the correct taxa at the species level or higher. DNA size (Mb) and Genbank accession numbers (Acc) are indicated for chromosomes (C) and plasmids (P). Escherichia coli O157:H7 str. EC4115 and Yersinia pestis CO92 have two and three plasmids respecitively.} 
+\label{tab:contam_table}
+\end{table}
 
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{verbatim}
-## [1] "Table comming soon to a PDF near you!"
-\end{verbatim}
-\end{kframe}
-\end{knitrout}
+The proportion of reads assigned to the contaminant genus was comparable to the expected proportion (Fig. \ref{fig:contam_min}). 
 
-The proportion of reads assigned to the contaminant genus was comparable to the expected proportion (Figure CONTAM-MIN). 
 The lowest proportion of simulated contaminant detected varied by both contaminant and taget genome. 
 All organisms had comparable minimum contamination levels for which reads were assigned to the contaminat genome. 
 Two notable exceptions are \textit{Escherichia} and \textit{Yersinia}, where \textit{Bacillus}, and \textit{Salmonella} and \textit{Escherichia} were detected at the lowest contaminant levels respectively. 
@@ -226,12 +253,7 @@ As the results are from simulated data and based on proportions of simulated rea
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}
-
-{\centering \includegraphics[width=\maxwidth]{figure/contam_min_plot-1} 
-
-}
-
-\caption[Relationship between the proportion of contaminant reads simulated per dataset and the proportion of reads matched to the contaminant genus]{Relationship between the proportion of contaminant reads simulated per dataset and the proportion of reads matched to the contaminant genus.}\label{fig:contam_min_plot}
+\includegraphics[width=\maxwidth]{figure/contam_min-1} \caption[Relationship between the proportion of contaminant reads simulated per dataset and the proportion of reads matched to the contaminant genus]{Relationship between the proportion of contaminant reads simulated per dataset and the proportion of reads matched to the contaminant genus.}\label{fig:contam_min}
 \end{figure}
 
 
@@ -245,6 +267,7 @@ As the results are from simulated data and based on proportions of simulated rea
       \item Work to further expand the taxonomic database to include genomes from uncultured organism using either metagenome datasets for single cell datasets along with efforts to address issues related to taxnomic ambiguities will help to improve the method applicability. 
 \end{itemize}
 
+\newpage
 
 \section*{Acknowledgments}
 
