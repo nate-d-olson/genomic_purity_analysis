@@ -79,6 +79,44 @@ single_org_cum <- singleOrgMatchResults %>%
       mutate(cum_prop = cumsum(total_prop))
 @
 
+
+<<shigella_ec_cum_munge, echo=FALSE>>=
+shigella_class <- singleOrgMatchResults  %>% 
+      filter(query_genus == "Shigella", lca_name == "Enterobacteriaceae")  %>% 
+      .$match_taxid %>% unique()  %>% classification(db = 'ncbi')
+
+e_coli_matches <- shigella_class  %>%
+      map_df(bind_rows, .id = "query_id") %>% 
+      filter(name == "Escherichia coli")
+
+singleOrgMatchResults_shigella_ecoli <- singleOrgMatchResults  %>% 
+      mutate(lca_name = if_else(match_taxid %in% e_coli_matches$query_id & 
+                                      query_genus == "Shigella", 
+                                "Echerichia coli", lca_name),
+             lca_rank = if_else(match_taxid %in% e_coli_matches$query_id & 
+                                      query_genus == "Shigella", 
+                                "species", lca_rank), 
+             lca_id = if_else(match_taxid %in% e_coli_matches$query_id & 
+                                    query_genus == "Shigella", 
+                              "562", lca_id)) 
+
+species_lvls <- c("species group", "species subgroup", "subspecies")
+single_org_cum_ec <- singleOrgMatchResults_shigella_ecoli %>%
+      filter(query_genus == "Shigella") %>% 
+      mutate(lca_rank = ifelse(lca_rank %in% species_lvls, "species", lca_rank)) %>% 
+      group_by(Query, lca_rank, query_genus) %>% 
+      summarise(total_prop = sum(`Final Guess`)) %>% 
+      spread(lca_rank, total_prop,fill = 0)  %>% 
+      gather(lca_rank, total_prop, -Query, -query_genus)  %>% 
+      group_by(Query) %>% 
+      mutate(lca_rank = factor(lca_rank, levels = c("species", "genus", 
+                                                    "family", "order", 
+                                                    "class","phylum",
+                                                    "superkingdom"))) %>%
+      arrange(lca_rank) %>% 
+      mutate(cum_prop = cumsum(total_prop))
+@
+
 <<contamTable, echo = FALSE, message=FALSE>>=
 ## contam Table munging
 species_lvls <- c("species","species group","subspecies")
@@ -172,7 +210,7 @@ This approach simulates the proportions of cells in a test material and not the 
 To speed up processing the aligned sequence files were subsampled instead of the simulated sequence files. 
 
 \subsection*{Reproducibility}
-To facility reproducibility and transparency a Docker (www.docker.com) container is available with installed pipeline dependencies (www.registry.hub.docker.com/u/natedolson/docker-pathoscope/). 
+To facility reproducibility and transparency a Docker (\url{www.docker.com}) container is available with installed pipeline dependencies (\url{www.registry.hub.docker.com/u/natedolson/docker-pathoscope/}). 
 The script used to run the simulations were available at \url{https://github.com/nate-d-olson/genomic_purity}. 
 Pathoscope results were processed using using the statistical programing language R \citep{R} and intermediate analysis and data summaries were organized using ProjectTemplate \citep{ProjectTemplate} and archived in a github repository (\url{https://github.com/nate-d-olson/genomic_purity_analysis}).
 
@@ -185,9 +223,9 @@ Here we define specificity as the ability of the method to correctly assign read
 Method specificity was evaluated by characterizing the read assignment results based on the level of agreement between the genome and assigned taxonomy (Fig. \ref{fig:single_org_cum}). 
 Overall high proportion of matches at species and genus level. 
 The cumulative match proportions do not always reach 1.00, for example \textit{Staphylococcus} genomes. 
-This might be due to exclusion of unclassified and unknown matches from match level analysis or reads that bowtie (mapping algorithm) was unable to align to any sequece in the reference database. 
+This might be due to exclusion of unclassified and unknown matches (NCBI taxid 12908 and 0 respecitively) from match level analysis. 
 Some genus have high levels of family and higher matches. 
-For \textit{Shigella} most likely due to matches with \textit{Escherichia} (NEED TO VARIFY). 
+For \textit{Shigella} most likely due to matches with \textit{Escherichia} (Fig. \ref{fig:shigella_ec_cum}). 
 
 <<single_org, results='asis', echo=FALSE, message=FALSE>>=
 single_tbl_df %>% xtable(label = "tab:single_org", digits = 2, 
@@ -205,9 +243,17 @@ ggplot(single_org_cum) +
 @
 
 
+<< shigella_ec_cum, echo=FALSE, fig.cap= "Cumulative taxonomic match results for genomic purity assement for \\textit{Shigella} considering matches to \\textit{E. coli} as species level matches.  Each line represents the cumulative proportion of simulated reads with taxonomic assignments matching at or above the specified taxonomic level. Genomes are grouped by genus.", fig.width=6, fig.align='center', fig.lp="fig:">>=
+ggplot(single_org_cum_ec) + 
+      geom_path(aes(x = lca_rank, y = cum_prop, group = Query)) +
+      theme_bw() + theme(axis.text.x = element_text(angle = 90, hjust=1,vjust=0.5), 
+                         strip.text = element_text(face = "italic")) +
+      labs(x = "Taxonomic Level", y = "Cumulative Match Proportion")
+@
+
 Most of the genus had genus level or higher match proportions excluding a few outliers (Fig. \ref{fig:single_genus}). 
 \textit{Escherichia}, \textit{Shigella}, and \textit{Staphylococcus} are noteable exceptions. 
-As discussed previously the taxonomic ambiguities for \textit{Shigella} and \textit{Escherichia} are responsible for the overall lower genus level match proportions. 
+As discussed previously the taxonomic ambiguities for \textit{Shigella} and \textit{Escherichia} are responsible for the overall lower genus level match proportions. Another example of low genus level matches is the \textit{Bacillus} genome with genus match proportion close to zero, \textit{Bacillus infantis} string NRRL B 14911. While the \textit{B. infantis} strain was originally classified as \textit{Bacillus} the species is phylogenetically distinct from other members of the genus \citep{ko2006bacillus}.
 It is important to consider the strain and genome being characterized as taxonomic ambiguities (e.g. \textit{Shigella} and \textit{Escherichia}) can lead to lower than expected specificity and the identification of false positive contaminants.  
 
 

@@ -79,6 +79,9 @@ Dummy abstract text.
 
 
 
+
+
+
 \flushbottom
 \maketitle
 \thispagestyle{empty}
@@ -148,7 +151,7 @@ This approach simulates the proportions of cells in a test material and not the 
 To speed up processing the aligned sequence files were subsampled instead of the simulated sequence files. 
 
 \subsection*{Reproducibility}
-To facility reproducibility and transparency a Docker (www.docker.com) container is available with installed pipeline dependencies (www.registry.hub.docker.com/u/natedolson/docker-pathoscope/). 
+To facility reproducibility and transparency a Docker (\url{www.docker.com}) container is available with installed pipeline dependencies (\url{www.registry.hub.docker.com/u/natedolson/docker-pathoscope/}). 
 The script used to run the simulations were available at \url{https://github.com/nate-d-olson/genomic_purity}. 
 Pathoscope results were processed using using the statistical programing language R \citep{R} and intermediate analysis and data summaries were organized using ProjectTemplate \citep{ProjectTemplate} and archived in a github repository (\url{https://github.com/nate-d-olson/genomic_purity_analysis}).
 
@@ -161,12 +164,12 @@ Here we define specificity as the ability of the method to correctly assign read
 Method specificity was evaluated by characterizing the read assignment results based on the level of agreement between the genome and assigned taxonomy (Fig. \ref{fig:single_org_cum}). 
 Overall high proportion of matches at species and genus level. 
 The cumulative match proportions do not always reach 1.00, for example \textit{Staphylococcus} genomes. 
-This might be due to exclusion of unclassified and unknown matches from match level analysis or reads that bowtie (mapping algorithm) was unable to align to any sequece in the reference database. 
+This might be due to exclusion of unclassified and unknown matches (NCBI taxid 12908 and 0 respecitively) from match level analysis. 
 Some genus have high levels of family and higher matches. 
-For \textit{Shigella} most likely due to matches with \textit{Escherichia} (NEED TO VARIFY). 
+For \textit{Shigella} most likely due to matches with \textit{Escherichia} (Fig. \ref{fig:shigella_ec_cum}). 
 
 % latex table generated in R 3.3.0 by xtable 1.8-2 package
-% Sun Jul 10 18:16:48 2016
+% Mon Jul 11 21:50:18 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{lrl}
@@ -204,9 +207,22 @@ Genus & N & Genome Size (Mb) \\
 \end{knitrout}
 
 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}
+
+{\centering \includegraphics[width=\maxwidth]{figure/shigella_ec_cum-1} 
+
+}
+
+\caption{Cumulative taxonomic match results for genomic purity assement for \textit{Shigella} considering matches to \textit{E. coli} as species level matches.  Each line represents the cumulative proportion of simulated reads with taxonomic assignments matching at or above the specified taxonomic level. Genomes are grouped by genus.}\label{fig:shigella_ec_cum}
+\end{figure}
+
+
+\end{knitrout}
+
 Most of the genus had genus level or higher match proportions excluding a few outliers (Fig. \ref{fig:single_genus}). 
 \textit{Escherichia}, \textit{Shigella}, and \textit{Staphylococcus} are noteable exceptions. 
-As discussed previously the taxonomic ambiguities for \textit{Shigella} and \textit{Escherichia} are responsible for the overall lower genus level match proportions. 
+As discussed previously the taxonomic ambiguities for \textit{Shigella} and \textit{Escherichia} are responsible for the overall lower genus level match proportions. Another example of low genus level matches is the \textit{Bacillus} genome with genus match proportion close to zero, \textit{Bacillus infantis} string NRRL B 14911. While the \textit{B. infantis} strain was originally classified as \textit{Bacillus} the species is phylogenetically distinct from other members of the genus \citep{ko2006bacillus}.
 It is important to consider the strain and genome being characterized as taxonomic ambiguities (e.g. \textit{Shigella} and \textit{Escherichia}) can lead to lower than expected specificity and the identification of false positive contaminants.  
 
 
@@ -222,7 +238,7 @@ It is important to consider the strain and genome being characterized as taxonom
 To evaluate genomic purity assessment methods we generated simulated contaminant datasets as pairwise combinations of representative genomes from 8 of the genus used in the specificity section of the study (Table \ref{tab:contam_table}). Due to the overall high proportion of reads matched to the correct genome in the method specificity study the simulated contaminant datasets were evaluated at the genus level. For all the uncontaminated representative set of target genomes the proportion of simulated reads that matched at species level or higher was 0.98 (Table \ref{tab:contam_table}).
 
 % latex table generated in R 3.3.0 by xtable 1.8-2 package
-% Sun Jul 10 18:16:49 2016
+% Mon Jul 11 21:50:19 2016
 \begin{table}[ht]
 \centering
 \scalebox{0.65}{
