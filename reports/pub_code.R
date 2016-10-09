@@ -109,10 +109,12 @@ ec_st_shig_spec_prop <- single_org_cum %>%
              query_genus %in% c("Shigella","Escherichia","Staphlyococcus")) %>%
       .$cum_prop
 ec_st_shig_spec_0.99 <- sum(ec_st_shig_spec_prop <0.99)
-thresh_summary <- single_org_cum %>% filter(lca_rank == "species") %>% mutate(thresh_0.99 = if_else(cum_prop < 0.99, 1,0),
-                                                                              thresh_0.999 = if_else(cum_prop < 0.999, 1, 0)) %>% 
+thresh_summary <- single_org_cum %>% filter(lca_rank == "species") %>% 
+      mutate(thresh_0.99 = if_else(cum_prop < 0.99, 1,0),
+             thresh_0.999 = if_else(cum_prop < 0.999, 1, 0)) %>% 
       group_by(query_genus) %>% 
-      summarise(N = n(), below_0.99 = sum(thresh_0.99), below_0.999 = sum(thresh_0.999), med_cum_prop = median(cum_prop))
+      summarise(N = n(), below_0.99 = sum(thresh_0.99), below_0.999 = sum(thresh_0.999), 
+                med_cum_prop = median(cum_prop))
 
 non_ec_shig_st_med_spec <- single_org_cum %>% 
       filter(lca_rank %in% c("species"), 
@@ -169,20 +171,42 @@ contamMixMatchResultsMin <- contamMixMatchResults %>%
              contam_label = str_replace(contam_label, " uid.*",""),
              contam_facet = str_sub(contam_name,1,4),
              target_facet = str_sub(target_name,1,4))
-contam_min_df<- contamMixMatchResultsMin %>% ungroup() %>% 
+
+contam_min_df <- contamMixMatchResultsMin %>% ungroup() %>% 
       select(contam_label, target_facet, contam_min) %>% 
       spread(target_facet, contam_min)
 
-contam_plot <-contamMixMatchResultsMin %>% ggplot(aes(x = mix_contam, y = contam_prop)) +
-      geom_abline(aes(slope = 1, intercept = 0), linetype = 2, color = "grey60") +
-      geom_vline(data = contamMixMatchResultsMin,
-                 aes(xintercept = contam_min, color = contam_label), linetype = 3) +
-      geom_path(aes(color = contam_label), alpha = 0.5) +
-      geom_point(aes(color = contam_label)) +
-      facet_grid(contam_facet~target_facet) + scale_x_log10() + scale_y_log10() +
-      theme_bw() +
-      theme(axis.text.x = element_text(angle = 90), legend.position = "bottom") +
-      guides(color = guide_legend(ncol = 2)) +
-      labs(x = "Contaminant Proportion",
-           y = "Proportion of Matched Reads",
-           color = "Contaminant")
+
+contam_prop_df <- contamMixMatchResults %>% mutate(mix = as.numeric(mix), mix_contam = 1 - mix) %>%
+      filter(lca_contam_rank %in%
+                   c("genus","species","species group","subspecies")) %>%
+      mutate(lca_contam_rank = ifelse(lca_contam_rank == "genus", "genus","species")) %>%
+      group_by(contam_ds, target_name, contam_name, mix_contam) %>%
+      summarise(contam_prop = sum(`Final Guess`)) %>%
+      mutate(contam_facet = str_sub(contam_name,1,4),
+             target_facet = str_sub(target_name,1,4),
+             contam_label = str_replace_all(contam_name, "_", " "),
+             contam_label = str_replace(contam_label, " uid.*","")) %>% 
+      ungroup() %>% 
+      select(contam_facet, target_facet, mix_contam, contam_prop)
+
+contam_correlation <- contam_prop_df %>% 
+      group_by(contam_facet, target_facet) %>% 
+      summarise(prop_cor = cor(mix_contam, contam_prop))
+
+contam_corr_quant <- contam_correlation$prop_cor %>% quantile(c(0.025,0.5, 0.975),na.rm = TRUE)
+
+contam_resid <- contam_prop_df %>% 
+      mutate(prop_resid = (contam_prop - mix_contam)/mix_contam) %>% 
+      filter(mix_contam > 10^-5)
+
+contam_resid_summary <- contam_resid %>% 
+      group_by(contam_facet, target_facet) %>% 
+      summarise(prop_resid_med = median(prop_resid), 
+              prop_resid_min = min(prop_resid), 
+              prop_resid_max = max(prop_resid),
+              prop_resid_total = sum(prop_resid))
+
+contam_resid_quant <- contam_resid_summary$prop_resid_total %>% 
+      quantile(c(0.025,0.5, 0.975),na.rm = TRUE)
+
