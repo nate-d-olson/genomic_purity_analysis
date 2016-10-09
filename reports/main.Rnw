@@ -26,129 +26,8 @@
 \begin{document}
 
 <<include=FALSE>>=
-library(knitr)
-library(xtable)
 opts_chunk$set(concordance=TRUE)
-@
-
-<< load_prj, echo = FALSE, warning=FALSE, message=FALSE>>=
-library(ProjectTemplate)
-wd <- getwd()
-setwd("../")
-load.project()
-setwd(wd)
-@
-
-
-<<singleOrgTable, echo = FALSE,  message=FALSE>>=
-## single org specificity data munging
-single_tbl_df <- singleOrgMatchResults %>%
-      filter(query_genus %in% c("Bacillus", "Clostridium", "Escherichia",
-                                  "Francisella", "Listeria", "Pseudomonas",
-                                  "Salmonella", "Shigella", "Staphylococcus",
-                                  "Yersinia")) %>%
-      select(query_genus, Query, query_taxid) %>%
-      rename(Taxid = query_taxid) %>% left_join(queryMeta) %>%
-      distinct() %>%
-      group_by(query_genus, Query) %>%
-      mutate(`DNA  length` = as.numeric(`DNA  length`)) %>%
-      summarise(genome_size = sum(`DNA  length`)) %>%
-      group_by(query_genus) %>%
-      summarise(count = n(), size_median = median(genome_size, na.rm = T)/1e6,
-               size_min = min(genome_size, na.rm = T)/1e6,
-               size_max = max(genome_size, na.rm = T)/1e6) %>%
-      mutate(`Genome Size (Mb)` = paste0(round(size_median,2) ," (",
-                                         round(size_min,2), "-",
-                                         round(size_max, 2), ")"),
-             query_genus = paste0("\\textit{",query_genus,"}")) %>%
-      select(-size_min, -size_max, -size_median) %>%
-      rename(Genus = query_genus, N = count) %>% arrange(desc(N))
-@
-
-<< single_cum_munge, echo=FALSE>>=
-species_lvls <- c("species group", "species subgroup", "subspecies")
-single_org_cum <- singleOrgMatchResults %>%
-      filter(query_genus %in% c("Bacillus","Clostridium","Escherichia",
-                                "Francisela","Listeria","Pseudomonas",
-                                "Salmonella","Shigella","Staphylococcus","Yersinia")) %>%
-      mutate(lca_rank = if_else(lca_rank %in% species_lvls,
-                               "species", lca_rank)) %>%
-      group_by(Query, lca_rank, query_genus) %>%
-      summarise(total_prop = sum(`Final Guess`)) %>%
-      spread(lca_rank, total_prop,fill = 0)  %>%
-      gather(lca_rank, total_prop, -Query, -query_genus)  %>%
-      group_by(Query) %>%
-       mutate(lca_rank = factor(lca_rank, levels = c("species", "genus",
-                                    "family", "order",
-                                    "class","phylum",
-                                    "superkingdom"))) %>%
-      arrange(lca_rank) %>%
-      mutate(cum_prop = cumsum(total_prop))
-@
-
-
-<<shigella_ec_cum_munge, echo=FALSE>>=
-shigella_class <- singleOrgMatchResults  %>%
-      filter(query_genus == "Shigella", lca_name == "Enterobacteriaceae")  %>%
-      .$match_taxid %>% unique()  %>% classification(db = 'ncbi')
-
-e_coli_matches <- shigella_class  %>%
-      map_df(bind_rows, .id = "query_id") %>%
-      filter(name == "Escherichia coli")
-
-singleOrgMatchResults_shigella_ecoli <- singleOrgMatchResults  %>%
-      mutate(lca_name = if_else(match_taxid %in% e_coli_matches$query_id &
-                                      query_genus == "Shigella",
-                                "Echerichia coli", lca_name),
-             lca_rank = if_else(match_taxid %in% e_coli_matches$query_id &
-                                      query_genus == "Shigella",
-                                "species", lca_rank),
-             lca_id = if_else(match_taxid %in% e_coli_matches$query_id &
-                                    query_genus == "Shigella",
-                              "562", lca_id))
-
-species_lvls <- c("species group", "species subgroup", "subspecies")
-single_org_cum_ec <- singleOrgMatchResults_shigella_ecoli %>%
-      filter(query_genus == "Shigella") %>%
-      mutate(lca_rank = if_else(lca_rank %in% species_lvls,
-                                "species", lca_rank)) %>%
-      group_by(Query, lca_rank, query_genus) %>%
-      summarise(total_prop = sum(`Final Guess`)) %>%
-      spread(lca_rank, total_prop,fill = 0)  %>%
-      gather(lca_rank, total_prop, -Query, -query_genus)  %>%
-      group_by(Query) %>%
-      mutate(lca_rank = factor(lca_rank, levels = c("species", "genus",
-                                                    "family", "order",
-                                                    "class","phylum",
-                                                    "superkingdom"))) %>%
-      arrange(lca_rank) %>%
-      mutate(cum_prop = cumsum(total_prop))
-@
-
-<<contamTable, echo = FALSE, message=FALSE>>=
-## contam Table munging
-species_lvls <- c("species","species group","subspecies")
-contam_tbl_df <- contamSingleOrgMatchResults %>%
-      mutate(lca_rank = if_else(lca_rank %in% species_lvls,
-                                "species",lca_rank)) %>%
-      filter(lca_rank %in% c("species","genus")) %>%
-      group_by(Query, lca_rank) %>%
-      summarize(total_prop = sum(`Final Guess`)) %>%
-      spread(lca_rank,total_prop) %>%
-      left_join(queryMeta) %>%
-      mutate(`DNA length` = as.numeric(`DNA  length`),
-             `DNA type` = if_else(`DNA length` < 1000000, "P","C")) %>%
-      select(-GI, -Taxid) %>%
-      group_by(Taxname, `DNA type`, species) %>%
-      summarise(Acc = str_c(Accession, collapse = ", "),
-                Mb = round(sum(`DNA length`)/1e6,digits = 2)) %>%
-      gather("key","value", -Taxname, -`DNA type`, -species) %>%
-      mutate(key = paste(`DNA type`, key)) %>%
-      ungroup() %>% select(-`DNA type`) %>% spread(key,value) %>%
-      rename(`Representative Strain` = Taxname, Species = species) %>%
-      select(`Representative Strain`, Species ,
-             `C Mb`, `C Acc`, `P Mb`, `P Acc`)
-
+source("pub_code.R")
 @
 
 \flushbottom
@@ -156,31 +35,24 @@ contam_tbl_df <- contamSingleOrgMatchResults %>%
 \thispagestyle{empty}
 
 \section*{Introduction}
-Contamination of microbiological materials such as cell cultures and genomic DNA with biological organisms is a common problem in research and diagnostic laboratories (REF).
-Microbiological materials whether whole cell or genomic DNA free of organismal contaminants are needed for research use and validation of detection assays.
-These materials include but are not limited to environmental strains isolated for in lab use, strains obtained from an other laboratory or culture collection, and reference materials.
-Regardless of the material source, it is good practice for the material provider and user to validate the material is suitable for their application. Material validation often requires ensuring that the material is free of organismal contaminants that would interfere with there application.
-Application contaminant requirements may require the material be free of contaminants with varying levels of taxonomic similarity to the material or present below a defined threshold.
+Shotgun metagenomic sequencing is used to characterize environmental samples and detect pathogens in complex samples, the same shogun metagenomic sequencing and data analysis methods can also be used to detect contaminants in microbial material such as cell cultures and genomic DNA from clinical or environmental isolates.
+Microbial materials free of contaminants are needed for biodetection assay validation \citep{Ieven2013,International2011}, culture collections (REF), and basic research using model systems  \citep{Shrestha2013}.
+Current methods for detecting contaminants in microbial materials are use traditional microbiology methods such as culture and microscopy or polymerase chain reaction (PCR) (REF). 
+Culture and microscopy based methods are not appropriate for genomic DNA materials and assumes that the contaminants are phenotypically distinct from the isolate. 
+PCR based methods can be used to detect contaminants in genomic DNA, the method is limited as contaminant detection assays are contaminant specific and therefore not ammenable to highthoughput \citep{heck2016evaluating,Marron2013}. Whereas, shotgun metagenomic methods can be used to detect contaminants in both cell cultures and genomic DNA materials and only require that the contaminant is genotypically differntiable from the material strain. 
 
-Detection of organismal contaminants, assessing a materials genomic purity, is performed using three primary methods; culturing, polymerase chain reaction (PCR), and whole genome sequencing.
-For whole cell material purity is most commonly evaluated using traditional culture based methods (http://www.microbiol.org/resources/monographswhite-papers/usp-microbiological-best-laboratory-practices/??).
-Culture based genomic purity assessment is limited in that it is only able to detect contaminants that are culturable and phenotypically differentiable from the material strain.
-Additionally, culture methods are not suitable for detection of organismal contaminants in genomic material.
-PCR is another commonly used technique to detect organismal contaminants.
-While, PCR is able to detect contaminants in both culture and genomic material the method is limited in the kinds of contaminants it is able to detect and the throughput of the method.
-The type of contaminants and throughput of the method is limited because the each contaminant detection assay must be designed to detect a specific contaminant \citep{heck2016evaluating}\citep{Marron2013}.
-The third type of organismal contamination detection method is whole genome sequencing.
-Whole genome sequencing similar to PCR can be used for both culture and genomic material but is also less restricted in the type of detectable contaminants. Two examples of whole genome sequencing based detection method are DeconSeq \citep{Schmieder2011} and a similar method QC-Chain \citep{Zhou2013}.
-These two method were developed to identify contaminants based on analysis of 16S ribosomal ribonucleic acid (rRNA) gene sequences or comparison of a subset of reads to a reference database using Basic Local Alignment Search Tool (BLAST).
-While DeconSeq and QC-Chain are able to detect prokaryotic contaminants within a culture or genomic material with a single assay, they cannot detect non-prokaryotic contaminants or contaminants with the sample 16S rRNA gene sequence as the material strain.
-As whole genome sequencing data include genomic information from all organisms within a sample including eukaryotic and viral contaminants.
+Shotgun metagenomics consist of two main steps, whole genome sequencing on genomic DNA, and analyzing the resulting sequencing data most commonly using a taxonommic assignment algorithm \citep{Thomas2012}.
+For genomic DNA material, the material itself can be sequenced, whereas the genomic DNA must be extracted from from cell cultures prior to sequencing. 
+After sequencing a taxonomic assignment algorithm is used to taxonomically characterize the sequencing data. 
+There are a number of different types of classification algorithms with varying classification accuracy and computational performance \citep{Bazinet2012,menzel2016fast}.
+All methods require a reference database for classification.
+Inorder for a contaminant to be detectable within a microbial material, the contaminant or an organism more closely related to the contaminant than the material must be present in the database. 
+As taxonomic classification algorithms are constantly improving, reference databases are expanding, and the cost of sequencing drops, shotgun metagenomic sequencing provides an alternative method for detecting contaminants in microbial materials over current methods.
 
-In this work, we present the results of a proof of concept study to measure the purity of single organism test materials using whole genome sequencing data combined with a metagenomic read classification algorithm.
-We choose to use \textit{Pathoscope}, a method that aligns sequences to a database of genome assemblies.
-It was developed to detect pathogens and identify strains using whole genome sequencing data \citep{Francis2013}.
-\textit{Pathoscope} benefits from the large sample size obtained using all sequence data for higher sensitivity (compared to marker gene based methods) and leverages algorithmic advances for whole genome sequence mapping.
-We will first provide a baseline assessment of the method using simulated data for single organisms to characterize the contaminant detection false positive rate.
-Then, we evaluate the methods ability to detect contaminants from genus other then the material strain using simulated contaminated test material datasets.
+In this work, we present the results of a proof of concept study evaluating the suitability of whole genome sequencing data combined with a metagenomic read classification algorithm for detecting organismal contaminants in microbial materials.
+We used \textit{Pathoscope}, a taxonomic classification algorithm orginally developed for strain level pathogen detection. 
+We will first provide a baseline assessment of the method using simulated sequencing data for single organisms to characterize the types of false positive contaminants the method may report.
+Then, we evaluate the methods ability to detect organismal contaminants in microbial material strains using sequence data simulated to replicate microbial materials with different organismal contaminant strains and concentrations.
 
 \section*{Methods}
 Simulated whole genome sequence data was used to evaluate the suitability of using whole genome sequence data and metagenomic taxonomic classification methods for validating test material purity.
@@ -233,159 +105,117 @@ Pathoscope results were processed using the statistical programing language R \c
 \section*{Results}
 
 \subsection*{Single Genome - Baselines Assessment}
-
-Simulated sequence data from individual isolates was used to assess the genomic purity assessment method specificity.
-True negatives (TNs) are reads assigned to the target genome's species, genus, family, ect., depending on the match stringency, and false positives (FPs) are reads incorrectly assigned to a different species, genus, family, ect., and specificity = TN/(FP+TN).
-Here we use specificity as a measure of the ability of the method to correctly assign reads to the taxonomy of the genome the sequencing reads were simulated from, the target genome.
-Method specificity was evaluated by characterizing the read assignment results based on the level of agreement between the genome and assigned taxonomy (Fig. \ref{fig:single_org_cum}).
-Overall high proportion of matches at species and genus level.
-Some genus have low specificity at the species and genus levels.
-For \textit{Shigella} most likely due to matches with \textit{Escherichia} (Fig. \ref{fig:shigella_ec_cum}).
-The cumulative match proportions do not always reach 1.00, for example \textit{Staphylococcus} genomes.
-This might be due to exclusion of unclassified and unknown matches (NCBI taxid 12908 and 0 respectively) from match level analysis.
+We first assessed baseline performance of the method proposed method for characterizing organismal contaminants of microbial materials. 
+Our analysis included taxonomic classification results for sequencing data simulated from \Sexpr{sum(single_tbl_df$N)} genomes, representing 9 different genera (Table \ref{tab:single_org}). 
+For \Sexpr{spec_0.99} out of \Sexpr{length(spec_prop)} genomes, Pathoscope estimated that 99\% of the material was the same species as the genome the sequencing data was simulated from (Fig. \ref{fig:species_prop}). 
+The estimated proportion of the material identified as the correct species varies by genus, with none of the \textit{Shigella} genomes having estimated proportions greater than 99\% and five of the 49 \textit{Staphylococcus} genomes having proportions greater than 99\%. \textit{Shigella} and \textit{Staphlyococcus} along with \textit{Escherichia} represent 87 of the 105 genomes with less than 99\% estimated match proportions at the species level. Excluding \textit{Shigella}, \textit{Escherichia}, and \textit{Staphylococcus} the median estimated proportion matching at the species level or higher is  \Sexpr{non_ec_shig_st_med_spec}. The low species level match proportions were due to false positive contaminants as the input sequencing data were simulated from individual genome sequences.
 
 <<single_org, results='asis', echo=FALSE, message=FALSE>>=
-single_tbl_df %>% xtable(label = "tab:single_org", digits = 2,
-                         caption = "Breakdown of the number of genomes by genus used to generate single genome simulated datasets. N indicates the number of genomes, and Genome Size is presented as the median and range (minimum to maximum) genome size") %>%
-      print(include.rownames=FALSE, sanitize.text.function = identity)
+single_tbl_df %>% xtable::xtable(label = "tab:single_org", digits = 2, caption = "Breakdown of the number of genomes by genus used to generate single genome simulated datasets. N indicates the number of genomes, and Genome Size is presented as the median and range (minimum to maximum) genome size") %>%
+       print(include.rownames=FALSE, sanitize.text.function = identity)
 @
 
-<< single_org_cum, echo=FALSE, fig.cap= "Cumulative taxonomic match results for genomic purity assessments of simulated sequence data from single genomes.  Each line represents the cumulative proportion of simulated reads with taxonomic assignments matching at or above the specified taxonomic level for an individual genome. Genomes are grouped by genus.", fig.width=6, fig.align='center', fig.lp="fig:">>=
-ggplot(single_org_cum) +
-            geom_path(aes(x = lca_rank, y = cum_prop, group = Query)) +
-            facet_wrap(~query_genus) +
-            theme_bw() + theme(axis.text.x = element_text(angle = 90, hjust=1,vjust=0.5),
-                               strip.text = element_text(face = "italic")) +
-            labs(x = "Taxonomic Level", y = "Cumulative Match Proportion")
+<<species_prop, fig.cap = "Species level estimated match proportion varies by material genus. The proportion of the material, simulated sequence data from individual genomes, was estimated by Pathoscope. The estimated match proportion is the total proportion of the material with taxonomic assigment to the genome species, subspecies, strain, or isolate levels. The vertical dashed line indicates the 99\\% match proportion. Orange points are genomes with species level match proportions less than 90\\% and blue points greater than 90\\%", echo=FALSE>>=
+ggplot(single_species_match) + 
+      geom_jitter(aes(x= query_genus_reorder, y = cum_prop,color = match_thresh), 
+                  alpha = 0.5, width = 0.25) + 
+      geom_hline(aes(yintercept = 0.99), linetype = 2) +
+      theme_bw() + theme(axis.text.y = element_text(face = "italic")) + 
+      labs(x = "Material Genus", y = "Estimated Match Proportion") + coord_flip() +
+      scale_color_manual(values = c("darkblue","darkorange"),guide = FALSE)
 @
 
+We characterized the false postive contaminants responsible for the observed low match proportions for the \textit{Shigella}, \textit{Escherichia}, and \textit{Staphylococcus} genus, as well as genomes of other genera with species match proportions less than 90\%. 
+The false positive contmainants were split into three types, taxonomic ambiguities, phage, and \textbf{OTHERS}.  
+Taxonomic ambiguities were defined as contaminants with highly similar genome sequences but taxonomic classified as different species. 
+For example the low match percentage for \textit{Clostridium autoethanogenum} strain DSM10061 was due to  \textit{Clostridium ljungdahlii} strin DSM13528 had the top proportion instead of \textit{C. autoenthanogenum}. 
+Similarly, \textit{Escherichia coli} strain UMNK88 low match, due to two bacteria in the same family as \textit{E. coli}, 
+Enterobacteriaceae, \textit{Providencia stuartii} and \textit{Salmonella enterica} subsp. enterica serovar Heidelberg with estimated proportions of 0.1 and 0.02 respectively. 
+Taxonomic ambiguities can be due to a species being incorrectly assigned to the wrong taxonomic group for example the \textit{Bacillus} genome with species match proportion close to zero, \textit{Bacillus infantis} string NRRL B 14911. 
+While the \textit{B. infantis} strain was originally classified as \textit{Bacillus} the species is phylogenetically distinct from other members of the genus \citep{ko2006bacillus}. 
+Taxonomic ambiguities are at least partially responsible for the low species level match proportions for  \textit{Shigella} and \textit{Escherichia}. 
+When including matches to E. coli as species level matches, the median match proprtions increases from \Sexpr{shig_match_change[1]} to \Sexpr{shig_match_change[2]}. 
+Though considerably higher, this match proportion is still low relative to the other genera. 
+%%\textbf{NOTE Table with median species level match proportions}. 
 
-<< shigella_ec_cum, echo=FALSE, fig.cap= "Cumulative taxonomic match results for genomic purity assessment for \\textit{Shigella} considering matches to \\textit{E. coli} as species level matches.  Each line represents the cumulative proportion of simulated reads with taxonomic assignments matching at or above the specified taxonomic level. Genomes are grouped by genus.", fig.width=6, fig.align='center', fig.lp="fig:">>=
-ggplot(single_org_cum_ec) +
-      geom_path(aes(x = lca_rank, y = cum_prop, group = Query)) +
-      theme_bw() + theme(axis.text.x = element_text(angle = 90, hjust=1,vjust=0.5),
-                         strip.text = element_text(face = "italic")) +
-      labs(x = "Taxonomic Level", y = "Cumulative Match Proportion")
+<<phage_prop, echo=FALSE, message=FALSE, fig.cap="Estimated proportion of phage in the simulated single genome datasets by genera.">>=
+ggplot(phage_total) + 
+      geom_boxplot(aes(x = query_genus, y = total_phage_guess), color = "darkblue") + 
+      labs(x = "Material Genus", y = "Proportion Phage") +
+      theme_bw() + theme(axis.text.y = element_text(face = "italic")) +
+      coord_flip()
 @
 
-Most of the genera had genus level or higher match proportions excluding a few outliers (Fig. \ref{fig:single_genus}).
-\textit{Escherichia}, \textit{Shigella}, and \textit{Staphylococcus} are notable exceptions.
-As discussed previously the taxonomic ambiguities for \textit{Shigella} and \textit{Escherichia} are responsible for the overall lower genus level match proportions. Another example of low genus level matches is the \textit{Bacillus} genome with genus match proportion close to zero, \textit{Bacillus infantis} string NRRL B 14911. While the \textit{B. infantis} strain was originally classified as \textit{Bacillus} the species is phylogenetically distinct from other members of the genus \citep{ko2006bacillus}.
-It is important to consider the strain and genome being characterized, as taxonomic ambiguities (e.g. \textit{Shigella} and \textit{Escherichia}) can lead to lower than expected specificity and the identification of false positive contaminants.
+Phage, the second type of false positive contaminant, were reported by Pathoscope as present at varing proportions for genomes from all 9 genera (Fig. \ref{fig:phage_prop}). 
+Most noteably, low proportions of species level matches for \textit{E. coli} and \textit{Staphylococcus} can partially be attributed to relatively high proportions of matches to phage, compared to the other genera investigated . 
+All of the phage false postive contmaninants were specific to the taxonomy of the genome the sequence data was simulated from. 
+The phage contaminants may represent errors in the database, where sequence data from the host organisms genome is missassembled into the phage genome, or where sequence data is shared between the phage and the host, such as CRISPR, and lysogenic phage (REF).
+
+Method Artifacts
+% - Errors in database, assembly errors - contaminants in genome assmeblies,....
+% - \textit{Bacillus} genome with low species level match proportion is \textit{Bacillus subtilis} BEST7613. Pathoscope reported that 47\% of the material was \textit{Synechocystis} sp. PCC 6803 substr. PCC-P \citep{kanesaki2012identification}. \textit{Synechocystis} is in a different phylum compared to \textit{Bacillus}, cyanobacteria versus firmicutes, therefore the high match proportion is not due to taxonomic ambuguities but rather ....
+%  - Low match Pseudomonas_FGI182_uid173784: Matches to unclassified bacteria - bacterium_142412 and unclassified Pseudomonas species Pseudomonas_sp._HF-1  
+% - low match Pseudomonas_VLB120_uid178195: Final guess matches 2.6x10^-3 matches to Xanthomonas_sp._W17
+% Only ~9kb seq data for strain in genbank https://www.ncbi.nlm.nih.gov/nuccore/710572
+% - low matches Pseudomonas_TKP_uid225946: top hits include Triticum_aestivum (Wheat - http://plants.ensembl.org/Triticum_aestivum/Info/Index, final guess 0.087) Thioalkalivibrio_sulfidophilus_HL-EbGr7 (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3072093/, final guess 0.0648). Genome Publication https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3907731/
 
 
-<<single_genus, echo = FALSE, fig.cap= "Distribution of the proportion of reads assigned to the source genome at or above the genus level. Horizontal grey line highlights a match proportion of 0.95. Boxplots hinges represent the 25th and 75th percentiles, line through box represent is the median, whiskers are the 95\\% confidence interval, and the black dots are outliers.", fig.lp="fig:">>=
-single_org_cum %>% filter(lca_rank == "genus") %>%
-      ggplot() +
-            geom_boxplot(aes(x = query_genus, y = cum_prop)) +
-            geom_hline(aes(yintercept = 0.95), color = "grey60", linetype = 2) +
-            theme_bw() + theme(axis.text.x = element_text(angle = 90,
-                                                          face = "italic", hjust=1,vjust=0.5)) +
-            labs(x = "Query Genus", y = "Genus Match Proportion")
-@
 
 \subsection*{Simulated Contaminants - Detection Assessment}
-To evaluate genomic purity assessment methods we generated simulated contaminant datasets as pairwise combinations of representative genomes from 8 of the genera used in the baseline assessment section of the study (Table \ref{tab:contam_table}).
-Due to the overall high proportion of reads matched to the correct genome in the method specificity study, the simulated contaminant datasets were evaluated at the genus level.
-For all of the genomes selected for the detection assessment study, the proportion of simulated reads that matched at species level or higher was 0.98 (Table \ref{tab:contam_table}).
-
 <<contam_table, results='asis', echo=FALSE, message=FALSE>>=
 contam_tbl_df %>% xtable(label = "tab:contam_table", digits = 2,
-                         caption = "Representative strains used in simulated contaminant datasets. Species indicates the proportion of simulated reads assigned to the correct taxa at the species level or higher. DNA size (Mb) and Genbank accession numbers (Acc) are indicated for chromosomes (C) and plasmids (P). \textit{Escherichia coli} O157:H7 str. EC4115 and \textit{Yersinia pestis} CO92 have two and three plasmids respectively.") %>%
+                         caption = "Representative strains used in simulated contaminant datasets. Species indicates the proportion of simulated reads assigned to the correct taxa at the species level or higher. DNA size (Mb) and Genbank accession numbers (Acc) are indicated for chromosomes (C) and plasmids (P). \\textit{Escherichia coli} O157:H7 str. EC4115 and \\textit{Yersinia pestis} CO92 have two and three plasmids respectively.") %>%
       print(include.rownames=FALSE, sanitize.text.function = identity, scalebox='0.65')
 @
 
-To evaluate the method's ability to detect contaminants, we plot the proportion of reads assigned to the contaminant genus or species versus the proportion of reads simulated from the contaminating genome.
-While the proportion of contaminant reads in the simulated datasets was not equal to the defined contaminant proportion, the proportion of reads assigned to the contaminant genus was comparable to the expected proportion (Fig. \ref{fig:contam_min}).
-This was especially true for datasets containing mixtures of \textit{B. anthracis}, \textit{Y. pestis}, \textit{E. coli}, and \textit{S. enteria} as they had similar sized genomes (Table \ref{tab:contam_table}).
-Three contaminants were detected when spiked in at contaminant proportions of $10^{-8}$, \textit{B. anthracis} in \textit{E. coli} as well \textit{S. enteria} and \textit{E. coli} in \textit{Y. pestis}.
-Interestingly the proportion of assigned reads did not decrease with decreasing contaminant proportions after $10^{-4}$.
+Next we evaluated how well contaminants are detected. 
+Again using simulated sequencing data from individual genomes we generated contaminant datasets by mixing subsets of datasets from two organisms at defined proportions, 
+with the larger proportion representing the microbial material and smaller proportion the contaminant. 
+Simulated contaminant datasets as pairwise combinations of representative genomes from 8 of the genera used in the baseline assessment section of the study (Table \ref{tab:contam_table}). 
+For all of the genomes selected for the detection assessment study, the proportion of simulated reads that matched at species level or higher was 0.98 (Table \ref{tab:contam_table}).
 
-The lowest detectable proportion of simulated contaminant level varied by both contaminant and target genome.
-All organisms had comparable minimum contamination levels for which reads were assigned to the contaminant genome.
-Two notable exceptions are \textit{Escherichia} and \textit{Yersinia}, where \textit{Bacillus}, and \textit{Salmonella} and \textit{Escherichia} were detected at the lowest contaminant levels respectively.
-As the results are from simulated data and based on proportions of simulated reads, these values do not indicate a limit of detection for the method.
-
-<< contam_min, echo = FALSE, message = FALSE, fig.cap = "Relationship between the proportion of contaminant reads simulated per dataset and the proportion of reads matched to the contaminant genus.", fig.lp="fig:">>=
-contamMixMatchResultsMin <- contamMixMatchResults %>%
-      mutate(mix = as.numeric(mix), mix_contam = 1 - mix) %>%
-      filter(lca_contam_rank %in%
-                   c("genus","species","species group","subspecies")) %>%
-      group_by(contam_name, target_name) %>% summarise(contam_min = min(mix_contam)) %>%
-      mutate(contam_label = str_replace_all(contam_name, "_", " "),
-             contam_label = str_replace(contam_label, " uid.*",""),
-             contam_facet = str_sub(contam_name,1,4),
-                   target_facet = str_sub(target_name,1,4))
-
-contamMixMatchResults %>% mutate(mix = as.numeric(mix), mix_contam = 1 - mix) %>%
-      filter(lca_contam_rank %in%
-                   c("genus","species","species group","subspecies")) %>%
-      mutate(lca_contam_rank = ifelse(lca_contam_rank == "genus", "genus","species")) %>%
-      group_by(contam_ds, target_name, contam_name, mix_contam) %>%
-      summarise(contam_prop = sum(`Final Guess`)) %>%
-            mutate(contam_facet = str_sub(contam_name,1,4),
-                   target_facet = str_sub(target_name,1,4),
-                   contam_label = str_replace_all(contam_name, "_", " "),
-                   contam_label = str_replace(contam_label, " uid.*","")) %>%
-      ggplot(aes(x = mix_contam, y = contam_prop)) +
-            geom_abline(aes(slope = 1, intercept = 0), linetype = 2, color = "grey60") +
-            geom_vline(data = contamMixMatchResultsMin,
-                       aes(xintercept = contam_min, color = contam_label), linetype = 3) +
-            geom_path(aes(color = contam_label), alpha = 0.5) +
-            geom_point(aes(color = contam_label)) +
-            facet_grid(contam_facet~target_facet) + scale_x_log10() + scale_y_log10() +
-            theme_bw() +
-            theme(axis.text.x = element_text(angle = 90), legend.position = "bottom") +
-            guides(color = guide_legend(ncol = 2)) +
-            labs(x = "Contaminant Proportion",
-                 y = "Proportion of Matched Reads",
-                 color = "Contaminant")
+<<contam_min_table, results='asis', echo=FALSE, message=FALSE>>=
+contam_min_df %>% xtable(label = "tab:contam_min_table", digits=-1, caption = "Lowest proportion of contaminant in each pairwise combination of representative genomes detected.") %>%
+      print(include.rownames=FALSE, scalebox='0.65')
 @
 
+The minimum proportion of contaminant detected was $10 \times 10^{-3}$ and  $10 \times 10^{-4}$ for most pairwise comparisons except for when \textit{Yersina} was the simulated contaminant (0.1 for all material strains) (Table \ref{contam_min_table}).
+Contaminants were also detected at lower proportions, $10 \times 10^{-8}$, when \textit{Yersinia} was contaminated with \textit{E. coli} as well as when \textit{S. enterica} and \textit{E. coli} contaminated with \textit{B. anthracis}.
+
+The quantitative accuracy of the method, linear regression - $R^2$?
+
+
+
+
+
+
+
 \section*{Discussion}
-* Methods presented here represent an initial step in the development of whole genome sequencing based methods for detecting genomic contaminants microbial materials such as cell cultures or DNA extracts.
-  * General conclusions regarding method performance
-  * General statements regarding method limitations
-    * Characterization of limit of detection, ability to differentiate between closely related strains.
-* How would this method be applied to different applications
-  * Culture collections
-    * how the results from the study support (or not) the use of the method
-      * able to identify contaminants unrelated above the species level
-    * limitation in ability to identify species or strain level contaminants
-  * Isolate characterization
-    * how the results from the study support (or not) the use of the method
-      * validate non-mixed culture (to species level)
-    * what additional work is needed to validate the method for the specific application
-      * to validate single isolate additional analysis required
-  * Reference materials
-    * how the results from the study support (or not) the use of the method
-      * able to identify contaminants
-    * what additional work is needed to validate the method for the specific application
-      * unable to detect species level contaminants
-      * for reference materials and quantitative detection assays
-        * characterization of limits of detection
-* articulate where the current methods for purity assessment have fallen short and where this work would advance capabilities
-  * Current methods such as traditional micro culture techniques and PCR
-    * limitations regarding a priori
-    * culturable
-    * WGS - less a priori assumptions
-    * theoretically higher limits of detection (only need more sequence data)
-    * Using common whole genome sequencing methods
-      * data can be used for other applications (REF pepr)
+- taxonomic ambiguites, need to perform a baseline assessment for your material
+-contaminants from DNA extraction
+The plasmids and vectors \textbf{Need to make clear from molecular biology}, false positives are likely either due to errors in the genome assemblies where artifacts of the sequencing process were not properly removed from the sequencing data prior to assembly. 
+Alternatively, the misclassification could be due to high similarity between the genome sequence the reads were simulated from and the plasmid and vector sequence which is not unexpected as most plasmid and vectors have microbial origins (REF).
+The eukaryotic false positive contaminants are likely either due to similarities between the genome sequences or errors in the assembly \textbf{reference eukaryote microbial genome assembly contaminants}. 
+Validation of material purity prior to performing whole genome sequencing for assembly may help to prevent this type of assembly errors.
+- Types of false positive contaminants will be database and classification algorithm specific.
+
+
+- limitations of the method and false positive rate
+    - how limitations might be addressed
+        - different taxonomic assignment algorithm
+        - database issues
+        - defining the baseline for your material
+    - taxonomic resolution of the method
+        - strain level vs. genus level resolution
+- Detection limits
+    - how detection limits vary by contaminant and organism
+    - how these may vary by classification methods and sequencing depth
+    - Quantitative nature of the method
+        - is this relevant to the application
+- How the method can be applied - big picture conclusion
 
 \section*{Conclusions}
-Reference materials and strains are commonly used in basic and applied research settings.
-To ensure the validity of the conclusions drawn from the results of experiments using these materials the material genomic purity should be evaluated.
-We have demonstrated that whole genome sequencing paired with taxonomic read classification methods are able to detect genomic contaminants at levels down to \textbf{NEED TO FILL IN} when evaluating contaminants as the genus level.
-While the methods used in this study produced high specificity at the genus level, other classification algorithms may result in higher specificity.
-Additionally, long read sequencing methods such as Pac Bio and Oxford Nanopore, have the potential to increase method specificity.
-The method sensitivity was dependent on the contaminant and not the target material.
-This is due to the method used to generate the simulated contaminant datasets as the number of reads used in the contaminated dataset is dependent on the genome size.
-Increasing sequencing depth is likely to result in increased sensitivity.
-We have presented a proof of concept study for a novel method for evaluating test material purity.
-With the decreasing cost of whole genome sequencing this method provides a viable alternative to other commonly used methods for evaluating test material purity.
-When using whole genome sequencing in combination with metagenomic taxonomic read classifiers users should make sure to validate and optimize the methods for their specific use case.
-Validation and optimization would include selection of the appropriate database, evaluation of method sensitivity and specificity in a manner similar to what was presented here, as well as evaluation of different taxonomic classification algorithms.
+
 \newpage
 
 \section*{Acknowledgments}
