@@ -2,7 +2,7 @@
 \usepackage{hyperref}
 % \documentclass[fleqn,10pt]{wlpeerj} % for preprint submissions
 
-\title{An \textit{in silico} assessment of using taxonomic classification algorithm and whole genome sequencing data to detect organismal contaminants in microbial materials.}
+\title{Using metagenomic methods to detect organismal contaminants in microbial materials.}
 
 \author[1]{Nathan D. Olson}
 \author[1]{Justin Zook}
@@ -13,6 +13,7 @@
 \keywords{Biodetection, Microbial Material, Reference Material, Purity, Bioinformatics}
 
 \begin{abstract}
+\textbf{TODO}
 % - basic introduction
 % - more detailed background
 % - general problem
@@ -107,16 +108,16 @@ Pathoscope results were processed using the statistical programing language R \c
 
 \subsection*{Single Genome - Baselines Assessment}
 We first assessed baseline performance of the proposed method for detecting organismal contaminants in microbial materials. 
-Our analysis included taxonomic classification results for sequencing data simulated from \Sexpr{length(spec_prop)} genomes, representing 9 different genera (Table \ref{tab:single_org}). 
+Our analysis included taxonomic classification results for simulated sequencing data  from \Sexpr{length(spec_prop)} genomes, representing 9 different genera (Table \ref{tab:single_org}). 
 For \Sexpr{spec_0.99} out of \Sexpr{length(spec_prop)} genomes, Pathoscope estimated that 99\% of the material was the same species as the genome the sequencing data was simulated from (Fig. \ref{fig:species_prop}). 
-The estimated proportion of the material identified as the correct species varies by genus, with none of the \textit{Shigella} genomes five of the 49 \textit{Staphylococcus} genomes having proportions greater than 99\%. \textit{Shigella} and \textit{Staphlyococcus} along with \textit{Escherichia} represent 87 of the 105 genomes with a less than 99\% estimated match proportions at the species level. Excluding \textit{Shigella}, \textit{Escherichia}, and \textit{Staphylococcus} the median estimated proportion matching at the species level or higher is  \Sexpr{non_ec_shig_st_med_spec}. The low species level match proportions were due to false positive contaminants as the input sequencing data were simulated from individual genome sequences.
+The estimated proportion of the material identified as the correct species varied by genus, with none of the \textit{Shigella} genomes and five of the 49 \textit{Staphylococcus} genomes having proportions greater than 0.9. \textit{Shigella} and \textit{Staphlyococcus} along with \textit{Escherichia} represent 87 of the 105 genomes with a less than 0.99 estimated match proportions at the species level. Excluding \textit{Shigella}, \textit{Escherichia}, and \textit{Staphylococcus} the median estimated proportion matching at the species level or higher is  \Sexpr{round(non_ec_shig_st_med_spec,4)}. The low species level match proportions were due to false positive contaminants as the input sequencing data were simulated from individual genome sequences.
 
 <<single_org, results='asis', echo=FALSE, message=FALSE>>=
 single_tbl_df %>% xtable::xtable(label = "tab:single_org", digits = 2, caption = "Breakdown of the number of genomes by genus used to generate single genome simulated datasets. N indicates the number of genomes, and Genome Size is presented as the median and range (minimum to maximum) genome size") %>%
        print(include.rownames=FALSE, sanitize.text.function = identity)
 @
 
-<<species_prop, fig.cap = "Species level estimated match proportion varies by material genus. The proportion of the material, simulated sequence data from individual genomes, was estimated by Pathoscope. The estimated match proportion is the total proportion of the material with taxonomic assignments to the genome species, subspecies, strain, or isolate levels. The vertical dashed line indicates the 99\\% match proportion. Orange points are genomes with species level match proportions less than 90\\% and blue points greater than 90\\%", echo=FALSE>>=
+<<species_prop, fig.cap = "Species level estimated match proportion varies by material genus. The proportion of the material, simulated sequence data from individual genomes, was estimated by Pathoscope. The estimated match proportion is the total proportion of the material with taxonomic assignments to the genome species, subspecies, strain, or isolate levels. The vertical dashed line indicates the 0.99 match proportion. Orange points are genomes with species level match proportions less than 0.90 and blue points greater than 0.90", echo=FALSE>>=
 ggplot(single_species_match) + 
       geom_jitter(aes(x= query_genus_reorder, y = cum_prop,color = match_thresh), 
                   alpha = 0.5, width = 0.25) + 
@@ -126,17 +127,17 @@ ggplot(single_species_match) +
       scale_color_manual(values = c("darkblue","darkorange"),guide = FALSE)
 @
 
-We characterized the false postive contaminants responsible for the observed low match proportions for the \textit{Shigella}, \textit{Escherichia}, and \textit{Staphylococcus} genus, as well as genomes of other genera with species match proportions less than 90\%. 
-The false positive contmainants were split into three types, taxonomic ambiguities, phage, and method artifacts.  
-Taxonomic ambiguities were defined as contaminants with highly similar genome sequences to the material genome sequence but taxonomic classified as different species. 
+We characterized the false postive contaminants responsible for the genera \textit{Shigella}, \textit{Escherichia}, and \textit{Staphylococcus}, as well as genomes of other genera with species match proportions less than 0.9. 
+The false positive contmainants were grouped into three types, taxonomic ambiguities, phage, and method artifacts.  
+Taxonomic ambiguities were defined as contaminants with highly similar genome sequences to the material genome sequence but taxonomically classified as different species. 
 For example the low match percentage for \textit{Clostridium autoethanogenum} strain DSM10061 was due to  \textit{Clostridium ljungdahlii} strain DSM13528 assigned the top proportion (\textbf{VALUE}) instead of \textit{C. autoenthanogenum}. 
 Similarly, \textit{Escherichia coli} strain UMNK88 low match, due to two bacteria in the same family as \textit{E. coli}, 
 Enterobacteriaceae, \textit{Providencia stuartii} and \textit{Salmonella enterica} subsp. enterica serovar Heidelberg with estimated proportions of \textbf{VALUE} and \textbf{VALUE} respectively. 
 Taxonomic ambiguities can be due to a species being incorrectly assigned to the wrong taxonomic group for example the \textit{Bacillus} genome with species match proportion close to zero, \textit{Bacillus infantis} string NRRL B 14911. 
-While the \textit{B. infantis} strain was originally classified as \textit{Bacillus} the species is phylogenetically distinct from other members of the genus \citep{ko2006bacillus}. 
+While the \textit{B. infantis} strain was originally classified as \textit{Bacillus}, the species is phylogenetically distinct from other members of the genus \citep{ko2006bacillus}. 
 Taxonomic ambiguities are at least partially responsible for the low species level match proportions for  \textit{Shigella} and \textit{Escherichia}, as \textit{Shigella} is not phylogenetically distinct from \textit{E. coli}(\textbf{REF}).
-When including matches to \textit{E. coli} as species level matches, the median match proprtions increases from \Sexpr{round(shig_match_change[2],2)} to \Sexpr{round(shig_match_change[1],2)}. 
-Though considerably higher, this match proportion is still low relative to the other genera.  
+When including matches to \textit{E. coli} as species level matches, the median match proportions increase from \Sexpr{round(shig_match_change[2],2)} to \Sexpr{round(shig_match_change[1],2)}. 
+Though considerably higher, this match proportion is still low relative to the other genera \textbf{INCLUDE VALUE DIFFERENCE}.  
 
 %%\textbf{NOTE Table with median species level match proportions}. 
 
@@ -151,18 +152,21 @@ ggplot(phage_total) +
 Phage, the second type of false positive contaminant, were reported by Pathoscope as present in varing proportions for genomes from all 9 genera investigated (Fig. \ref{fig:phage_prop}). 
 Most noteably, low proportions of species level matches for \textit{E. coli} and \textit{Staphylococcus} is partly due to relatively higher proportions of matches to phage, compared to the other genera investigated (Fig. \ref{fig:phage_prop}). 
 All of the false postive phage contmaninants were specific to the taxonomy of the genome the sequence data was simulated from. 
-The phage contaminants may represent errors in the database, where sequence data from the host organisms genome is missassembled into the phage genome, or genomic sequence between the phage and the host, such as CRISPR, and lysogenic phage (REF).  
+The phage contaminants may represent errors in the database, where sequence data from the host organisms genome is missassembled into the phage genome, or genomic sequence is shared between the phage and the host, such as CRISPR, and lysogenic phage (REF).  
 
 \textbf{Method Artifacts}
-
-% - Errors in database, assembly errors - contaminants in genome assmeblies,....
-% - \textit{Bacillus} genome with low species level match proportion is \textit{Bacillus subtilis} BEST7613. Pathoscope reported that 47\% of the material was \textit{Synechocystis} sp. PCC 6803 substr. PCC-P \citep{kanesaki2012identification}. \textit{Synechocystis} is in a different phylum compared to \textit{Bacillus}, cyanobacteria versus firmicutes, therefore the high match proportion is not due to taxonomic ambuguities but rather ....
-%  - Low match Pseudomonas_FGI182_uid173784: Matches to unclassified bacteria - bacterium_142412 and unclassified Pseudomonas species Pseudomonas_sp._HF-1  
-% - low match Pseudomonas_VLB120_uid178195: Final guess matches 2.6x10^-3 matches to Xanthomonas_sp._W17
-% Only ~9kb seq data for strain in genbank https://www.ncbi.nlm.nih.gov/nuccore/710572
-% - low matches Pseudomonas_TKP_uid225946: top hits include Triticum_aestivum (Wheat - http://plants.ensembl.org/Triticum_aestivum/Info/Index, final guess 0.087) Thioalkalivibrio_sulfidophilus_HL-EbGr7 (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3072093/, final guess 0.0648). Genome Publication https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3907731/
-
-
+The third type of false positive contaminant, are method artifacts. Method artifact false positive contaminants are defined as false positives due to missclassified or unclassified sequences in the database, genome assemblies in the database including sequence data from organismal or reagent contaminants, and errors associated with the classification algorithm. 
+\textit{Bacillus subtilis} BEST7613 genome had low estimated species level match proportion due to \textit{Synechocystis} sp. PCC 6803 substr. PCC-P being estimated as comprising 47\% of the material  \citep{kanesaki2012identification}. \textit{Synechocystis} is in a different phylum compared to \textit{Bacillus}, cyanobacteria versus firmicutes. 
+The high match proportion is not due to taxonomic ambuguities but potentially an error in the database. 
+Low species level match proportions can also be due to the database containing unclassified sequence data for organisms highly similar to the material genome. 
+For example the low match proportion for \textit{Pseudomonas} strain FGI182 was due to matches to unclassified bacteria, bacterium 142412, and unclassified $Pseudomonas$ species, $Pseudomonas$ sp. HF-1.  
+The eukaryotic false positive contaminants are likely either due to similarities between the genome sequences or errors in the assembly \textbf{REF}. 
+Plasmids and vectors are common used molecular biology tools and well known contmainants of sequencing data (REF).
+The plasmids and vectors identified as false positive contaminants due to errors in the genome assemblies where artifacts of the sequencing process were not properly removed from the sequencing data prior to assembly. 
+Alternatively, the misclassification could be due to high similarity between the genome sequence the reads were simulated from and the plasmid and vector sequence which is not unexpected as most plasmid and vectors have microbial origins (REF). 
+The low species proportion of species level matches for \textit{Pseudomonas} strain TKP was likely due to both missclassified sequences (\textit{Thioalkalivibrio sulfidophilus} strain HL-EbGr7 match proportion 0.0648), and contminanted genome sequences in the database (wheat - \textit{Triticum aestivum} match proportion 0.087).
+Errors associated with the classification algorithm are likely resposible for low species level match path proportion for \textit{Pseudomonas} strain VLB120 is likely due to errors in the database as $2.6x10^{-3}$ of the matches assigned to the unrelated species \textit{Xanthomonas} sp. W17. 
+The representative database sequence is ~9 kb (https://www.ncbi.nlm.nih.gov/nuccore/710572), the Pathoscope expectation maximization step include a length normalization step which is likely responsible for the classification error. 
 
 \subsection*{Simulated Contaminants - Detection Assessment}
 <<contam_table, results='asis', echo=FALSE, message=FALSE>>=
@@ -173,8 +177,8 @@ contam_tbl_df %>% xtable(label = "tab:contam_table", digits = 2,
 
 %%TODO%% Italicize species names in table caption above
 
-Next we evaluated how well contaminants are detected.
-Again using simulated sequencing data from individual genomes we generated contaminant datasets by mixing subsets of datasets from two organisms at defined proportions,
+Next we evaluated how well contaminants were detected.
+Using simulated sequencing data from individual genomes we generated contaminant datasets by combining subsets of simulatd data from two organisms at defined proportions,
 with the larger proportion representing the microbial material and smaller proportion the contaminant.
 We simulated contaminant datasets as pairwise combinations of representative genomes from 8 of the genera used in the baseline assessment section of the study (Table \ref{tab:contam_table}).
 For all of the genomes selected for the detection assessment study, the estimated proportion of material assigned to the correct species was 0.98 (Table \ref{tab:contam_table}).
@@ -188,6 +192,7 @@ contam_min_df %>% xtable(label = "tab:contam_min_table", digits=-1, caption = "L
 The minimum contaminant proportion detected was $10 \times 10^{-3}$ and  $10 \times 10^{-4}$ for most pairwise comparisons with a few notable exceptions. 
 When \textit{Yersina} was the simulated contaminant the minimum detected proportion was 0.1 for all material strains (Table \ref{tab:contam_min_table}).
 Conversely, contaminants were detected at lower proportions, $10 \times 10^{-8}$, when \textit{Yersinia} was contaminated with \textit{E. coli} as well as when \textit{S. enterica} and \textit{E. coli} contaminated with \textit{B. anthracis}.  
+
 %%TODO%% Statement about reasoning for why consistency and outliers
 
 
@@ -238,42 +243,44 @@ The quantitative accuracy of contaminant proportions estimated by Pathoscope var
 The Pearson's correlation coeficient was used to measure the correlation between the estimated contaminant and true contaminant proportions. 
 The estimated and true proportions were strongly correlated for all pairwise comparisons, with an overall median and 95\% confidence interval of \Sexpr{round(contam_corr_quant[2],5)} (\Sexpr{round(contam_corr_quant[1],5)} - \Sexpr{round(contam_corr_quant[3],5)} (Fig. \ref{fig:contam_fig}). 
 Eight of the pairwise comparisons have correlation coefficients below 0.99, all of which have \textit{S. aureus} as either the contaminant or the material strain. 
-Two coefficients were below 0.98,  \textit{P. aeruginosa} and \textit{S. enterica} contaminants in \textit{S. aureus}, 0.952 and 0.969 respectively. 
+Two coefficients were below 0.98, \textit{S. aureus} contaminated with \textit{P. aeruginosa} and \textit{S. enterica}, 0.952 and 0.969 respectively. 
 Normalized contamiant proportion residuals, $(estimated-true)/true$, was used to assess the accuracy of the Pathoscope contaminant proportion estimates (Fig. \ref{fig:contam_resid}). 
 The material genome strongly influenced the total normalized residuals with \textit{E. coli} and \textit{S. aureus} having consistently higher total normalized residuals compared to the other genomes. 
 
 
 \section*{Discussion}
 
-Here we demonstrated the potential for using the taxonomic sequence classification algorithm \textit{Pathoscope} can be used to detect genomic contaminants in microbial materials using whole genome sequencing data. 
-Using simulated sequencing data generated from individual genomes we first provided a baseline assemement of the method inorder to characterize the types of false postive contaminants that may be identified by \textit{Pathoscope}. 
+We demonstrated the potential for using the taxonomic sequence classification algorithm \textit{Pathoscope} to detect genomic contaminants in microbial materials using whole genome sequencing data. 
+Using simulated sequencing data generated from individual genomes we provided a baseline assemement of the method to characterize the types of false postive contaminants identified the method. 
+The false positive contaminants were split into three types; taxonomic ambiguities, phage, and method artifacts. 
 We then characterized how contaminant detection veried by the material organism, the contaminant strain, and level of contamination. 
+Overall the method was able to identify contaminant proportions at $10 \times 10^-3$ for most pairwise contaminant/material combinations. 
+However, the accuracy of the estimated proportion of the contaminant in the simulated contaminated material varied by contaminant and material strain. 
 
+The primary limitation of the proposed method are the observed false positive contamiants for single genome simulated sequencing data. 
+Performing a baseline assement of false positive contaminant using simulated sequence data from the microbial material's genome sequence, and choosing the appropriate database and taxonomic assignment algorithm can help reduce the impact of false positive on the method's ability to identify organismal contmainants. 
+Additionally, false positive contaminants are likely database and taxonomic assignment algorithm dependent. 
+Removing sequences from the database for irrelevant contaminants, such as phage, plasmids, vectors, and multicellular eukaryotes can help reduce the proportion of false positives. 
+Though the relevance of these contaminants is application specific. 
+Similarly, using a curated database free of missclassified and unclassified sequence data would further help to reduce the proportion of false positive contaminants. 
+Differentiating between two organisms with highly similar sequences will vary by taxonomic classification algorithm. 
+Pathoscope was used for this proof of concept study as the method uses the full reads and paired end information for taxonomic classification rather then shorter sequence fragment, $k$-mers. 
+Our assumption is that the longer sequence allows for better discrimination between highly simillar sequences. 
+As there are numerous taxonomic classification algorithms, evaluating multiple methods using sequence data simulated from the material genome of interest can help to determine the optimal comtainant detection method for a specific microbial material. 
 
-% - taxonomic ambiguites, need to perform a baseline assessment for your material
-% -contaminants from DNA extraction
-% The plasmids and vectors \textbf{Need to make clear from molecular biology}, false positives are likely either due to errors in the genome assemblies where artifacts of the sequencing process were not properly removed from the sequencing data prior to assembly. 
-% Alternatively, the misclassification could be due to high similarity between the genome sequence the reads were simulated from and the plasmid and vector sequence which is not unexpected as most plasmid and vectors have microbial origins (REF).
-% The eukaryotic false positive contaminants are likely either due to similarities between the genome sequences or errors in the assembly \textbf{reference eukaryote microbial genome assembly contaminants}. 
-% Validation of material purity prior to performing whole genome sequencing for assembly may help to prevent this type of assembly errors.
-% - Types of false positive contaminants will be database and classification algorithm specific.
-% 
-% 
-% - limitations of the method and false positive rate
-%     - how limitations might be addressed
-%         - different taxonomic assignment algorithm
-%         - database issues
-%         - defining the baseline for your material
-%     - taxonomic resolution of the method
-%         - strain level vs. genus level resolution
-% - Detection limits
-%     - how detection limits vary by contaminant and organism
-%     - how these may vary by classification methods and sequencing depth
-%     - Quantitative nature of the method
-%         - is this relevant to the application
-% - How the method can be applied - big picture conclusion
+The ability to identify contaminants present at low concentrations is critical for when the material will be used for high sensitivity assays such as PCR. 
+The minimum contaminant proportion was consistent for most simulated contaminant datasets, \textit{Yersinia} was only detected at a proportion of 0.1. 
+The quantitative accuracy of the method varied by material and contaminant, but for all material-contaminant pairs, the Pathoscope estimated and true contaminant proportions were highly correlated. 
+While not necessarily relevant to organismal contaminant detection, quantitative accuracy is relevant if the contaminant proportion is included in the report of analysis characterizing a material \citep{olson2016pepr}.  
+Similar to the false positive contaminant baseline assessment. 
+Similated data can be used to evaluate the minimal detectable contamiant proportion for specific contaminants of interest using different taxonomic assignment algorithms and databases. 
+Additionally, sequencing at a higher depth would theoretically result in lower minimum detectable contaminant proportions and potentially increased quantitative accuracy due to the larger sample size (number of sequences).
 
 \section*{Conclusions}
+With the constant decline in the cost of sequencing, advances in sequence analysis methods, whole genome sequencing combined with a taxonomic assignment algorithm provide a viable alternative to commonly used organismal contaminant dection methods such as culturing, microscopy, and PCR. 
+The method is suitable for detecting organismal contaminants in both genomic DNA and whole cell microbial materials without requiring any \textit{a priori} assumptions about the contaminant. 
+Furthermore, the method was shown to detect contaminants making up $10 \times 10^{-3}$ proportion of cells in a high-throughput manner. 
+Finally, the sequence data generated for organismal contaminant detection can be used to further characterize the material's genome and potentially identify other characteristics of interest such as the presence of virulence or antibotic resistence genes. 
 
 \newpage
 
