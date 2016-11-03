@@ -1,7 +1,5 @@
 ## Genomic Purity Publication Variables, tables, and plots
-library(knitr)
 library(xtable)
-library(forcats)
 library(ProjectTemplate)
 
 # load project
@@ -139,7 +137,20 @@ phage_total <- singleOrgResults %>% filter(grepl("phage",Genome)) %>% group_by(Q
       mutate(query_genus = fct_reorder(query_genus, total_phage_guess)) %>% 
       filter(query_genus != "Peptoclostridium")
 
-## Contam Table ---------------------------------------------------------------
+# Individual contams -----------------------------------------------------------
+clos_auto_top <- singleOrgResults %>% 
+      filter(Query == "Clostridium_autoethanogenum_DSM_10061_uid219420") %>% top_n(1)
+clos_auto_top_value <- clos_auto_top$`Final Guess`
+
+ecoli_UMNK88 <- singleOrgResults %>% 
+      filter(Query == "Escherichia_coli_UMNK88_uid42137")
+ecoli_UMNK88_prov_value <- ecoli_UMNK88 %>% 
+      filter(Genome == "ti|588|org|Providencia_stuartii") %>% .$`Final Guess`
+ecoli_UMNK88_sal_value <- ecoli_UMNK88 %>% 
+      filter(Genome == "ti|454169|org|Salmonella_enterica_subsp._enterica_serovar_Heidelberg_str._SL476" ) %>% 
+            .$`Final Guess`
+
+### Contam Table ---------------------------------------------------------------
 contam_tbl_df <- contamSingleOrgMatchResults %>%
       mutate(lca_rank = if_else(lca_rank %in% species_lvls,
                                 "species",lca_rank)) %>%
