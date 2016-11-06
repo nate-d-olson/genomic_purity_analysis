@@ -324,23 +324,6 @@ year = {2012}
   publisher={BioMed Central}
 }
 
-@article{menzel2016fast,
-abstract = {The constantly decreasing cost and increasing out-put of current sequencing technologies enable large scale metagenomic studies of microbial commu-nities from diverse habitats. Therefore, fast and accurate methods for taxonomic classification are needed, which can operate on increasingly larger datasets and reference databases. Recently, sev-eral fast metagenomic classifiers have been de-veloped, which are based on comparison of ge-nomic k-mers. However, nucleotide comparison using a fixed k-mer length often lacks the sensi-tivity to overcome the evolutionary distance be-tween sampled species and genomes in the ref-erence database. Here, we present the novel metagenome classifier Kaiju for fast assignment of reads to taxa. Kaiju finds maximum exact matches on the protein-level using the Borrows-Wheeler transform, and can optionally allow amino acid substitutions in the search using a greedy heuris-tic. We show in a genome exclusion study that Kaiju can classify more reads with higher sensi-tivity and similar precision compared to fast k-mer based classifiers, especially in genera that are underrepresented in reference databases. We also demonstrate that Kaiju classifies more than twice as many reads in ten real metagenomes compared to programs based on genomic k-mers. Kaiju can process up to millions of reads per minute, and its memory footprint is below 5 GB of RAM, allow-ing the analysis on a standard PC. The program is available under the GPL3 license at:},
-author = {Menzel, Peter and Krogh, Anders},
-doi = {10.1038/ncomms11257},
-file = {:Users/nolson/Documents/Mendeley Desktop/Menzel, Krogh - 2015 - Kaiju Fast and sensitive taxonomic classification for metagenomics(2).pdf:pdf},
-issn = {2041-1723},
-journal = {Nature communications},
-number = {11257},
-pages = {1--9},
-pmid = {27071849},
-title = {{Kaiju : Fast and sensitive taxonomic classification for metagenomics}},
-url = {http://dx.doi.org/10.1038/ncomms11257},
-volume = {7},
-year = {2016}
-}
-
-
 @article{wood2014kraken,
   title={Kraken: ultrafast metagenomic sequence classification using exact alignments},
   author={Wood, Derrick E and Salzberg, Steven L},
@@ -526,4 +509,82 @@ year = {2012}
   pages={2975--2983},
   year={2016},
   publisher={Springer}
+}
+
+@article{woyke2011decontamination,
+  title={Decontamination of MDA reagents for single cell whole genome amplification},
+  author={Woyke, Tanja and Sczyrba, Alexander and Lee, Janey and Rinke, Christian and Tighe, Damon and Clingenpeel, Scott and Malmstrom, Rex and Stepanauskas, Ramunas and Cheng, Jan-Fang},
+  journal={PloS one},
+  volume={6},
+  number={10},
+  pages={e26161},
+  year={2011},
+  publisher={Public Library of Science}
+}
+
+@article{motley2014improved,
+  title={Improved multiple displacement amplification (iMDA) and ultraclean reagents},
+  author={Motley, S Timothy and Picuri, John M and Crowder, Chris D and Minich, Jeremiah J and Hofstadler, Steven A and Eshoo, Mark W},
+  journal={BMC genomics},
+  volume={15},
+  number={1},
+  pages={1},
+  year={2014},
+  publisher={BioMed Central}
+}
+
+@article{jervis2015deriving,
+  title={Deriving accurate microbiota profiles from human samples with low bacterial content through post-sequencing processing of Illumina MiSeq data},
+  author={Jervis-Bardy, Jake and Leong, Lex EX and Marri, Shashikanth and Smith, Renee J and Choo, Jocelyn M and Smith-Vaughan, Heidi C and Nosworthy, Elizabeth and Morris, Peter S and O’Leary, Stephen and Rogers, Geraint B and others},
+  journal={Microbiome},
+  volume={3},
+  number={1},
+  pages={1},
+  year={2015},
+  publisher={BioMed Central}
+}
+
+@article{mukherjee2015large,
+  title={Large-scale contamination of microbial isolate genomes by Illumina PhiX control},
+  author={Mukherjee, Supratim and Huntemann, Marcel and Ivanova, Natalia and Kyrpides, Nikos C and Pati, Amrita},
+  journal={Standards in genomic sciences},
+  volume={10},
+  number={1},
+  pages={1},
+  year={2015},
+  publisher={BioMed Central}
+}
+
+@article{tennessen2015prodege,
+  title={ProDeGe: a computational protocol for fully automated decontamination of genomes},
+  author={Tennessen, Kristin and Andersen, Evan and Clingenpeel, Scott and Rinke, Christian and Lundberg, Derek S and Han, James and Dangl, Jeff L and Ivanova, Natalia and Woyke, Tanja and Kyrpides, Nikos and others},
+  journal={The ISME journal},
+  year={2015},
+  publisher={Nature Publishing Group}
+}
+
+@article{parks2015checkm,
+  title={CheckM: assessing the quality of microbial genomes recovered from isolates, single cells, and metagenomes},
+  author={Parks, Donovan H and Imelfort, Michael and Skennerton, Connor T and Hugenholtz, Philip and Tyson, Gene W},
+  journal={Genome research},
+  volume={25},
+  number={7},
+  pages={1043--1055},
+  year={2015},
+  publisher={Cold Spring Harbor Lab}
+}
+
+@article {bokulich2016mockrobiota,
+	author = {Bokulich, Nicholas A. and Rideout, Jai Ram and Mercurio, William G. and Shiffer, Arron and Wolfe, Benjamin and Maurice, Corinne F. and Dutton, Rachel J. and Turnbaugh, Peter J. and Knight, Rob and Caporaso, J. Gregory},
+	editor = {Neufeld, Josh D.},
+	title = {mockrobiota: a Public Resource for Microbiome Bioinformatics Benchmarking},
+	volume = {1},
+	number = {5},
+	year = {2016},
+	doi = {10.1128/mSystems.00062-16},
+	publisher = {American Society for Microbiology Journals},
+	abstract = {Mock communities are an important tool for validating, optimizing, and comparing bioinformatics methods for microbial community analysis. We present mockrobiota, a public resource for sharing, validating, and documenting mock community data resources, available at http://caporaso-lab.github.io/mockrobiota/. The materials contained in mockrobiota include data set and sample metadata, expected composition data (taxonomy or gene annotations or reference sequences for mock community members), and links to raw data (e.g., raw sequence data) for each mock community data set. mockrobiota does not supply physical sample materials directly, but the data set metadata included for each mock community indicate whether physical sample materials are available. At the time of this writing, mockrobiota contains 11 mock community data sets with known species compositions, including bacterial, archaeal, and eukaryotic mock communities, analyzed by high-throughput marker gene sequencing.IMPORTANCE The availability of standard and public mock community data will facilitate ongoing method optimizations, comparisons across studies that share source data, and greater transparency and access and eliminate redundancy. These are also valuable resources for bioinformatics teaching and training. This dynamic resource is intended to expand and evolve to meet the changing needs of the omics community.},
+	URL = {http://msystems.asm.org/content/1/5/e00062-16},
+	eprint = {http://msystems.asm.org/content/1/5/e00062-16.full.pdf},
+	journal = {mSystems}
 }

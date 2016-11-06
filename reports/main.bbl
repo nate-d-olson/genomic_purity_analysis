@@ -5,6 +5,14 @@ Bazinet, A.~L. and Cummings, M.~P. (2012).
 \newblock {A comparative evaluation of sequence classification programs}.
 \newblock {\em BMC Bioinformatics}, 13(1):92.
 
+\bibitem[Bokulich et~al., 2016]{bokulich2016mockrobiota}
+Bokulich, N.~A., Rideout, J.~R., Mercurio, W.~G., Shiffer, A., Wolfe, B.,
+  Maurice, C.~F., Dutton, R.~J., Turnbaugh, P.~J., Knight, R., and Caporaso,
+  J.~G. (2016).
+\newblock mockrobiota: a public resource for microbiome bioinformatics
+  benchmarking.
+\newblock {\em mSystems}, 1(5).
+
 \bibitem[Chamberlain et~al., 2016]{TaxizeManual}
 Chamberlain, S., Szocs, E., Boettiger, C., Ram, K., Bartomeus, I., Baumgartner,
   J., Foster, Z., and O'Donnell, J. (2016).
@@ -44,20 +52,20 @@ Ieven, M., Finch, R., and van Belkum, a. (2013).
   of the European Society of Clinical Microbiology and Infectious Diseases},
   19(1):29--38.
 
+\bibitem[Jervis-Bardy et~al., 2015]{jervis2015deriving}
+Jervis-Bardy, J., Leong, L.~E., Marri, S., Smith, R.~J., Choo, J.~M.,
+  Smith-Vaughan, H.~C., Nosworthy, E., Morris, P.~S., O’Leary, S., Rogers,
+  G.~B., et~al. (2015).
+\newblock Deriving accurate microbiota profiles from human samples with low
+  bacterial content through post-sequencing processing of illumina miseq data.
+\newblock {\em Microbiome}, 3(1):1.
+
 \bibitem[Kanesaki et~al., 2012]{kanesaki2012identification}
 Kanesaki, Y., Shiwa, Y., Tajima, N., Suzuki, M., Watanabe, S., Sato, N.,
   Ikeuchi, M., and Yoshikawa, H. (2012).
 \newblock Identification of substrain-specific mutations by massively parallel
   whole-genome resequencing of synechocystis sp. pcc 6803.
 \newblock {\em DNA research}, 19(1):67--79.
-
-\bibitem[Ko et~al., 2006]{ko2006bacillus}
-Ko, K.~S., Oh, W.~S., Lee, M.~Y., Lee, J.~H., Lee, H., Peck, K.~R., Lee, N.~Y.,
-  and Song, J.-H. (2006).
-\newblock Bacillus infantis sp. nov. and bacillus idriensis sp. nov., isolated
-  from a patient with neonatal sepsis.
-\newblock {\em International journal of systematic and evolutionary
-  microbiology}, 56(11):2541--2544.
 
 \bibitem[Lan and Reeves, 2002]{lan2002escherichia}
 Lan, R. and Reeves, P.~R. (2002).
@@ -76,17 +84,38 @@ Marron, A.~O., Akam, M., and Walker, G. (2013).
   Protists.}
 \newblock {\em PloS one}, 8(4):e61732.
 
-\bibitem[Menzel and Krogh, 2016]{menzel2016fast}
-Menzel, P. and Krogh, A. (2016).
-\newblock {Kaiju : Fast and sensitive taxonomic classification for
-  metagenomics}.
-\newblock {\em Nature communications}, 7(11257):1--9.
+\bibitem[Menzel et~al., 2016]{menzel2016fast}
+Menzel, P., Ng, K.~L., and Krogh, A. (2016).
+\newblock Fast and sensitive taxonomic classification for metagenomics with
+  kaiju.
+\newblock {\em Nature communications}, 7.
+
+\bibitem[Motley et~al., 2014]{motley2014improved}
+Motley, S.~T., Picuri, J.~M., Crowder, C.~D., Minich, J.~J., Hofstadler, S.~A.,
+  and Eshoo, M.~W. (2014).
+\newblock Improved multiple displacement amplification (imda) and ultraclean
+  reagents.
+\newblock {\em BMC genomics}, 15(1):1.
+
+\bibitem[Mukherjee et~al., 2015]{mukherjee2015large}
+Mukherjee, S., Huntemann, M., Ivanova, N., Kyrpides, N.~C., and Pati, A.
+  (2015).
+\newblock Large-scale contamination of microbial isolate genomes by illumina
+  phix control.
+\newblock {\em Standards in genomic sciences}, 10(1):1.
 
 \bibitem[Olson et~al., 2016]{olson2016pepr}
 Olson, N.~D., Zook, J.~M., Samarov, D.~V., Jackson, S.~A., and Salit, M.~L.
   (2016).
 \newblock Pepr: pipelines for evaluating prokaryotic references.
 \newblock {\em Analytical and bioanalytical chemistry}, 408(11):2975--2983.
+
+\bibitem[Parks et~al., 2015]{parks2015checkm}
+Parks, D.~H., Imelfort, M., Skennerton, C.~T., Hugenholtz, P., and Tyson, G.~W.
+  (2015).
+\newblock Checkm: assessing the quality of microbial genomes recovered from
+  isolates, single cells, and metagenomes.
+\newblock {\em Genome research}, 25(7):1043--1055.
 
 \bibitem[{R Core Team}, 2016]{R}
 {R Core Team} (2016).
@@ -108,6 +137,13 @@ Shrestha, P.~M., Nevin, K.~P., Shrestha, M., and Lovley, D.~R. (2013).
 \newblock {When Is a Microbial Culture “ Pure ”? Persistent Cryptic
   Contaminant Escapes Detection Even with Deep Genome Sequencing}.
 
+\bibitem[Tennessen et~al., 2015]{tennessen2015prodege}
+Tennessen, K., Andersen, E., Clingenpeel, S., Rinke, C., Lundberg, D.~S., Han,
+  J., Dangl, J.~L., Ivanova, N., Woyke, T., Kyrpides, N., et~al. (2015).
+\newblock Prodege: a computational protocol for fully automated decontamination
+  of genomes.
+\newblock {\em The ISME journal}.
+
 \bibitem[Thomas et~al., 2012]{Thomas2012}
 Thomas, T., Gilbert, J., and Meyer, F. (2012).
 \newblock {Metagenomics - a guide from sampling to data analysis}.
@@ -118,5 +154,12 @@ White, J.~M. (2014).
 \newblock {\em ProjectTemplate: Automates the creation of new statistical
   analysis projects.}
 \newblock R package version 0.6.
+
+\bibitem[Woyke et~al., 2011]{woyke2011decontamination}
+Woyke, T., Sczyrba, A., Lee, J., Rinke, C., Tighe, D., Clingenpeel, S.,
+  Malmstrom, R., Stepanauskas, R., and Cheng, J.-F. (2011).
+\newblock Decontamination of mda reagents for single cell whole genome
+  amplification.
+\newblock {\em PloS one}, 6(10):e26161.
 
 \end{thebibliography}
