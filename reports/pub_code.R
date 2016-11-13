@@ -57,7 +57,8 @@ single_org_cum <- singleOrgMatchResults %>%
 #### Shigella EC Merge -------------------------------------------------------- 
 shigella_class <- singleOrgMatchResults  %>%
       filter(query_genus == "Shigella", lca_name == "Enterobacteriaceae")  %>%
-      .$match_taxid %>% unique()  %>% classification(db = 'ncbi')
+      .$match_taxid %>% unique() %>%
+      {taxidClassification[names(taxidClassification) %in% .]}
 
 e_coli_matches <- shigella_class  %>%
       map_df(bind_rows, .id = "query_id") %>%
@@ -221,3 +222,26 @@ contam_resid_summary <- contam_resid %>%
 contam_resid_quant <- contam_resid_summary$prop_resid_total %>% 
       quantile(c(0.025,0.5, 0.975),na.rm = TRUE)
 
+
+## Contam Mix False Positives
+contam_fp <- contamMixMatchResults %>% 
+      filter(mix == "1.0", lca_contam_rank %in% c("genus","species", species_lvls))
+contam_esch_df <- contam_fp %>% filter(target == "27739")
+contam_esch_prop <- contam_esch_df$`Final Guess`
+contam_esch_org <- taxidClassification[contam_esch_df$match_taxid][[1]]
+contam_esch_species <- contam_esch_org$name[9]
+
+contam_yers_sal_df <- contam_fp %>% filter(target == "34", contaminant == "40625")
+contam_yers_sal_prop <- contam_yers_sal_df$`Final Guess`
+contam_yers_sal_org <- taxidClassification[contam_yers_sal_df$match_taxid][[1]]
+contam_yers_sal_species <- contam_yers_sal_org$name[11]
+
+contam_yers_esch_df <- contam_fp %>% filter(target == "34", contaminant == "27739")
+contam_yers_esch_prop <- contam_yers_esch_df$`Final Guess`
+contam_yers_esch_org <- taxidClassification[contam_yers_esch_df$match_taxid][[1]]
+contam_yers_esch_species <- contam_yers_esch_org$name[11]
+
+
+## Contam Single Org Read Counts
+contam_single_read_count <- contamSingleOrgResults %>% group_by(Query) %>% 
+      summarise(total_reads = sum(`Initial Best Hit Read Numbers`))
