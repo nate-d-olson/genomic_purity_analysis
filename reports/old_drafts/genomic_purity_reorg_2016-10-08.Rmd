@@ -1,0 +1,87 @@
+---
+title: "Genomic Purity V3?"
+author: "Nate Olson"
+date: "October 8, 2016"
+output: html_document
+---
+
+Introduction
+Shotgun metagenomic sequencing is used to characterize environmental samples and detect pathogens in complex samples, the same shogun metagenomic sequencing and data analysis methods can also be used to detect contaminants in microbial material such as cell cultures and genomic DNA from clinical or environmental isolates.
+Microbial materials free of contaminants are needed for biodetection assay validation (SPADA), culture collections (REF), and basic research using model systems \citep{Shrestha2013}.
+Current methods for detecting contaminants in microbial materials are use traditional microbiology methods such as culture and microscopy or polymerase chain reaction (PCR) (REF). 
+Culture and microscopy based methods are not appropriate for genomic DNA materials and assumes that the contaminants are phenotypically distinct from the isolate. 
+PCR based methods can be used to detect contaminants in genomic DNA, the method is limited as contaminant detection assays are contaminant specific and therefore not ammenable to highthoughput \citep{heck2016evaluating}\citep{Marron2013}. Whereas, shotgun metagenomic methods can be used to detect contaminants in both cell cultures and genomic DNA materials and only require that the contaminant is genotypically differntiable from the material strain. 
+
+Shotgun metagenomics consist of two main steps, whole genome sequencing on genomic DNA, and analyzing the resulting sequencing data most commonly using a taxonommic assignment algorithm.
+For genomic DNA material, the material itself can be sequenced, whereas the genomic DNA must be extracted from from cell cultures prior to sequencing. 
+After sequencing a taxonomic assignment algorithm is used to taxonomically characterize the sequencing data. 
+There are a number of different types of classification algorithms with varying classification accuracy and computational performance (for review see). 
+All methods require a reference database for classification.
+Inorder for a contaminant to be detectable within a microbial material, the contaminant or an organism more closely related to the contaminant than the material must be present in the database. 
+As taxonomic classification algorithms are constantly improving, reference databases are expanding, and the cost of sequencing drops, shotgun metagenomic sequencing provides an alternative method for detecting contaminants in microbial materials over current methods.
+
+In this work, we present the results of a proof of concept study evaluating the suitability of whole genome sequencing data combined with a metagenomic read classification algorithm for detecting organismal contaminants in microbial materials.
+We used \textit{Pathoscope}, a taxonomic classification algorithm orginally developed for strain level pathogen detection. 
+We will first provide a baseline assessment of the method using simulated sequencing data for single organisms to characterize the types of false positive contaminants the method may report.
+Then, we evaluate the methods ability to detect organismal contaminants in microbial material strains using sequence data simulated to replicate microbial materials with different organismal contaminant strains and concentrations.
+
+Methods
+
+Results
+We first assessed baseline performance of the method the method inorder to characterize the type of false positive contaminants we can expect. 
+Our Analysis included taxonomic classification results for sequencing data simulated from XYZ genomes, representing 9 different genera. 
+For __XYZ__ of the genomes, Pathoscope estimated that __XX%__ of the material was the same species as the genome the sequencing data was simulated from. 
+Statements about overall performance trends....
+
+
+
+
+A number of false postitive contaminants were detected, with estimated proportions of the material being less than __XX%__ for __XY__ genomes. The observed false positive contaminants fall into one of three groups, taxonomic ambiguities, phage, and unrelated seqeunces. 
+Taxonomic ambiguities include _Shigella_ and _Escherichia coli_ being improperly assigned to the other taxonomic group. ...
+Another example of low genus level matches is the \textit{Bacillus} genome with genus match proportion close to zero, \textit{Bacillus infantis} string NRRL B 14911. While the \textit{B. infantis} strain was originally classified as \textit{Bacillus} the species is phylogenetically distinct from other members of the genus \citep{ko2006bacillus}.
+Other examples...
+
+Phage were another type of false positive contamiants (Fig. Phage). 
+The estimated proportion of phage was high especially for _Staphlyococcus_ where the estimated proportion of the material assigned to prokaryotes is less than __XX%__. 
+All of the phage false postive contmaninants were specific to the taxonomy of the genome the sequence data was simulated from (Table, Figure?). 
+The phage contaminants may represent errors in the database, where seqeunce data from the host organisms genome is missassembled into the phage genome, or where sequence data is shared between the phage and the host, such as CRISPR, and lytic phage __[NOTE - Maybe lysogenic]__(REF).
+
+The third type of false positive contaminant are unrelated sequences, including plasmids, vectors, and eukaryotes. 
+__[NOTE- Discussion??]
+The plasmids and vectors __[NOTE - Need to make clear from molecular biology]__ false positives are likely either due to errors in the genome assemblies where artifacts of the sequencing process were not properly removed from the sequencing data prior to assembly. 
+Alternatively, the misclassification could be due to high similarity between the genome sequence the reads were simulated from and the plasmid and vector sequence which is not unexpected as most plasmid and vectors have microbial origins (REF).
+The eukaryotic false positive contaminants are likely either due to similarities between the genome sequences or errors in the assembly __[NOTE- reference eukaryote microbial genome assembly contaminants]__. 
+Validation of material purity prior to performing whole genome sequencing for assembly may help to prevent this type of assembly errors.
+
+
+Next we evaluated how well contaminants are detected. 
+Again using simulated sequencing data....
+The minimum proportion of contaminant detected was 10^-3 - 10^-4 for most pairwise comparisons except for when _Yersina_ was the simulated contaminant (0.1 for all material strains) as well as _Yersinia_ contaminated with _E. coli_ and _S. enterica_ and _E. coli_ contaminated with B. anthracis which were detected at 1X10^-8 (the minimum level detected).
+__[NOTE: Discussion point about sequencing depth and detection limits]__
+
+- Quantitative accuracy of the method
+      - linear regression - R^2?
+
+Discussion
+- taxonomic ambiguites, need to perform a baseline assessment for your material
+ __[NOTE- contaminants from DNA extraction]__
+The plasmids and vectors __[NOTE - Need to make clear from molecular biology]__ false positives are likely either due to errors in the genome assemblies where artifacts of the sequencing process were not properly removed from the sequencing data prior to assembly. 
+Alternatively, the misclassification could be due to high similarity between the genome sequence the reads were simulated from and the plasmid and vector sequence which is not unexpected as most plasmid and vectors have microbial origins (REF).
+The eukaryotic false positive contaminants are likely either due to similarities between the genome sequences or errors in the assembly __[NOTE- reference eukaryote microbial genome assembly contaminants]__. 
+Validation of material purity prior to performing whole genome sequencing for assembly may help to prevent this type of assembly errors.
+- Types of false positive contaminants will be database and classification algorithm specific.
+
+
+- limitations of the method and false positive rate
+    - how limitations might be addressed
+        - different taxonomic assignment algorithm
+        - database issues
+        - defining the baseline for your material
+    - taxonomic resolution of the method
+        - strain level vs. genus level resolution
+- Detection limits
+    - how detection limits vary by contaminant and organism
+    - how these may vary by classification methods and sequencing depth
+    - Quantitative nature of the method
+        - is this relevant to the application
+- How the method can be applied - big picture conclusion

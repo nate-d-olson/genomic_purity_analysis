@@ -1,0 +1,133 @@
+https://www.overleaf.com/latex/templates/latex-template-for-peerj-journal-and-pre-print-submissions/ptdwfrqxqzbn#.VzybS5MrJTZ
+Might want to use either peerj template or paper-now depending on which is easier 
+
+
+* Will send weekly updates with a summary of the results/ progress for the results section.  
+* To facilitate revision process will send results and methods section complete drafts for review after second are completed.  
+* Potential WERB reviewers - Jason Krajl, ???  
+* Benefits - have text for introduction and methods (to some extent), current results and discussion sections are week, and will need to revisit.  
+* Potential challenges  
+    - Figuring out how to present contam results.  
+    - Taxonomic match analysis/ contam classifications  
+
+* Status update  
+    - Started working munging the data, still need to workout how to classify match results, a challenging issue but is something that I need to figure out for potential graduate research projects as well...
+
+__Time Line__  
+
+* 6/17 Complete Analysis  
+    - 6/3 Complete Single Org Analysis  
+        + 5/27 Munge Single Org  
+        + 6/3 Figures and Table
+    - 6/17 Complete Contam Analysis
+        + 6/10 Munge Data
+        + 6/17 Figures and Tables
+* 7/22 Complete Draft
+    - 6/24 Draft Results
+    - 7/1 Draft Methods
+    - 7/8 Draft Intro and Discussion
+    - 7/15 Review Nancy and Justin
+    - 7/22 Revisions
+* 7/22 Submit Draft to DHS and WERB  
+
+## Abstract
+Method validation for biodetection technologies requires high purity test materials. 
+Traditional methods for evaluating test material purity, e.g. polymerase chain reaction (PCR), 
+require prior knowledge of the contaminant identity and have a limited level of detection (LOD). 
+Whole genome sequencing using next generation sequencing (NGS) technology addresses these limitations by providing a non-target specific approach and a lower LOD due to the large number of reads generated in a sequencing run – ten thousand to over one million reads. 
+Here we present a novel application of the pathoscope sequence analysis program (http://sourceforge.net/projects/pathoscope/) coupled with an expanded reference dataset to evaluate test material purity and validate material identity using simulated whole genome sequencing datasets. 
+To evaluate the ability of pathoscope to identify contaminants in test materials, in silico generated datasets for __Number of Datasets__ organisms from __number of genera__ different genera, __genera list__. 
+First, the results from the analysis of the single organism datasets using __PathoScope__ served as a baseline for the simulated contaminat analysis. Simulated datasets of 250 bp paried end reads with reads classified at the genus level provided suitable levels of specificity to identify potential test material contaminants. 
+To determine the method LOD, simulated reads from __Mixutres__ were mixed at known proportions. __Conclusions Summary__. The approach presented here provides a sample independent, highly sensitive, and specific method for evaluating test material purity. 
+With the rapid decrease in NGS costs, this approach is a viable alternative to PCR based methods for evaluating test material purity and can be applied in a high throughput manner for screening panels of test materials.  
+
+## Introduction
+Rapid, sensitive and accurate assays for detecting bacterial pathogens in food, water, clinical samples, and  suspicious biothreats is critical to public health and safety (REF). 
+Biodetection assays must be evaluated for assay sensitivity and specificity prior to deployment as well in the hands of the user to instill confidence in the actions made based on the assay results __REF: Ieven2013,International2011,EPA2004,ISO/TS2010,Guide1998,Feldsine2002__. 
+Test materials are used to validate assay performance. 
+Test materials can be either purified cultures, genomic DNA or whole cells spiked into a matrix __REF: EPA2004,ISO/TS2010,CLSI2010__. 
+Before being used to evaluate a biodetection assay the test material itself must be validated in terms of purity and identity to eliminate false positive results due to test material contaminants or false negative due to the test material being the wrong strain __REF: CLSI2010__. 
+There are a number of potential sources of microbial contaminants  including the stock culture, the preservation medium, as well as airborne and laboratory contaminants __REF: Marron2013,Shrestha2013,Tanner1998__.  
+ 
+Current methods for evaluating test material purity include polymerase chain reaction (PCR) assays, metagenomics, and whole genome sequencing based approaches. 
+One PCR assay was developed to analyze protist cultures. 
+This PCR assay uses endpoint PCR for prokaryotes and eukaryotes with template dilutions __REF: Marron2013__. 
+The benefit to PCR-based approaches is that they can be cost effective and fast if an applicable protocol exists. 
+However, PCR assays can only target specific contaminants. 
+While PCR assays can detect contaminants, this approach does not scale effectively for multiple contaminants and test materials. The bioinformatics tools developed to identify contaminants in metagenomic datasets, 
+which include sequencing data from all organisms in a sample, can also be used to evaluate test material purity. 
+For example DeconSeq __REF: Schmieder2011__ and a similar method QC-Chain __REF: Zhou2013__ were developed to identify contaminants based on analysis of 16S ribosomal ribonucleic acid (rRNA) gene sequences or comparison of a subset of reads to a reference database using Basic local alignment search tool (BLAST). 
+Metagonomic-based methods are able to identify contaminants without any prior knowledge or assumptions regarding the identity of the organism(s). 
+However, methods based on 16S rRNA gene identification have limited resolution, as 16S rRNA sequences can only provide genus level taxonomic resolution at best. 
+Methods using BLAST-based searches represent a broader scale approach but are limited by the accuracy of the BLAST classification method. 
+The benefit to using metagenomic tools developed is that prior knowledge of the identity of the contaminant is not required; however this method is unable to identify contaminants to the strain level.  
+
+Another approach to evaluating test material purity is through shotgun whole genome sequencing, sequence all DNA in a single organism sample. 
+A recently published bioinformatics method, _PathoScope_, was developed to detect pathogens and identify strains using whole genome sequencing data __REF: Francis2013__. 
+This method benefits from the large sample size obtained using next generation sequencing for higher sensitivity and leverages algorithm advances for whole genome sequence mapping. 
+Mapping algorithms determine the optimal placement of reads relative to a reference sequence __REF: Schbath2012__. 
+Reads are either uniquely or ambiguously mapped. 
+For uniquely mapped reads only a single optimal mapping location is identified, whereas for ambiguously mapped reads multiple optimal mapping locations are identified. 
+Pathoscope uses the number of reads that uniquely map to different genomes in the reference database to assign ambiguously mapped reads, reads that align equally well to multiple reference sequences. 
+The primary benefits to shotgun whole genome sequencing and subsequent pathoscope analysis approach are that prior knowledge of the contaminant is not required and it has the potential for higher sensitivity compared to other methods. 
+However, the main limitation to this method is the size of the reference database, namely that the genome of the contaminant or a closely related organism must be present in the database for the contaminant to be detected. 
+In this work, we developed a novel method to measure the purity of single organism test materials built upon the pathoscope software for pathogen detection. 
+This method is based on whole genome sequencing and utilizes _PathoScope_ with an expanded reference database. 
+We will first present the specificity of the method using simulated data for single organisms. 
+Then, evaluate sensitivity of the method using simulated datasets generated to represent contaminated test material.  
+
+## Methods
+__ REVISE TO MATCH WHAT WAS DONE__
+This bioinformatics approach to measuring test material purity consists of three steps: 1. Sequencing reads are generated for the test material using shotgun sequencing. 
+2. The reads are mapped to a reference database.
+For this step individual reads are aligned to all possible locations in the genomes in the reference database. 
+We generated a more exhaustive database compared to the pathoscope database including all prokaryotic organisms in the Genbank database (http://www.ncbi.nlm.nih.gov/genbank/, accessed 10/18/2013). 
+3. The resulting mapping file is processed with pathoscope to assess dataset composition (__REF: Francis2013__). 
+For the mapping step the bwa mem mapping algorithm was used (http://bio-bwa.sourceforge.net, __REF: Li2013c__). 
+This algorithm is capable of mapping reads to reference databases greater than 4 Gb in size. 
+The reference dataset included the chromosomes and plasmids for 2,709 bacterial genomes, including the strains used to validate the procedure. 
+Additionally, bwa mem can output all possible alignments for ambiguously mapped reads.  
+ 
+To evaluate the specificity and sensitivity of the approach, simulated pure test material (single organism) as well as contaminated test material (mixtures of two organisms) were generated. 
+The organisms used in the study included common foodborne human pathogens and biothreat agents (Table __Org Names__). 
+Simulated datasets were generated using the ART sequencing read simulator __REF: Huang2012__. 
+The datasets were generated using the Illumina error models with paired end 75 and 250 base pair reads and 20 X mean coverage for each of the strains.
+
+Simulated whole genome sequencing datasets for __unique orgs__ organisms from  __genera count__ different genera (Table Ref 1) were used to evaluate the method specificity. 
+Datasets from the individual organisms were mapped to the all-bacterial genomes database using _bowtie2_. 
+The resulting mapping file was processed using _PathoScope_.   
+   
+__DataSetSummaryTable__
+
+To evaluate method sensitivity, simulated datasets with a test material strain and a contaminant strain were generated. 
+Individual 250 bp paried end datasets for the test material and contaminant strains were generated as described in the specificity section with 20 X mean coverage. 
+The reads in the two datasets were subsampled in the following proportions: __proportions__ where the first number represents the proportion of reads randomly selected from the test material dataset and the second number represents the proportion of reads randomly selected from the contaminant dataset. 
+For example, a proportion of 0.5:0.5, the combined dataset included a random subsampling of 50 \% of the reads from the target organism dataset and 50 \% of the reads from the contaminant organism dataset. 
+This apporach simulates the proportions of cells in a test material and not the amount of DNA, assuming unbiased DNA extraction.  Datasets were generated for all pairwise comparisons so that each of the __mixstrain count__  strains was both a contaminant and test material for all __proportions__ proportions combinations, for a total of __number of contam__  datasets. 
+The individual organism datasets vary in the number of reads in the due to differences in genome size (__Table Contam Orgs__), such that 50 \% of one dataset may be different from the absolute number of reads than 50 \% of another dataset.   
+
+To generate the simulated datasets, the single strain datasets were first mapped to the expanded reference database. 
+The full mapping files for the individual organisms were merged using samtools (http://samtools.sourceforge.net). 
+The resulting merged data files were downsampled to obtain the appropriate proportions of reads for each of the __contam org count__ combinations using an in-house python script. 
+The resulting simulated contaminated datasets were processed using _PathoScope_, and the output files were analyzed to determine the limit of detection of the methods using the statistical programing language R __REF: R__. 
+All of the scripts used in the study are available at https://github.com/nate-d-olson/genomic\_purity. 
+
+## Results
+### Single Strain
+* Strain Table
+* Single Org figure: y - cummulative match, x - taxa level, facet by genus  
+* Identification of taxa match threshold  
+
+### Pairwise Contaminants
+* Stain Table  
+* Pair Contam figure:  
+    * facet org - contam, target?
+    * contam match, target match, contam mismatch, target mismatch
+
+## Acknowledgements
+The authors would like to thanks Dr. Steven Lund for his assistance in developing the study. 
+The Department of Homeland Security (DHS) Science and Technology Directorate supported this work under the Interagency Agreement HSHQPM-14-X-00078 with the National Institute of Standards and Technology (NIST). 
+Opinions expressed in this paper are the authors’ and do not necessarily reflect the policies and views of DHS, NIST, or affiliated venues. 
+Certain commercial equipment, instruments, or materials are identified in this paper in order to specify the experimental procedure adequately. 
+Such identification is not intended to imply recommendations or endorsement by NIST, nor is it intended to imply that the materials or equipment identified are necessarily the best available for the purpose. 
+Official contribution of NIST; not subject to copyrights in USA.
