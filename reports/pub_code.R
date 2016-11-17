@@ -9,7 +9,7 @@ load.project()
 setwd(wd)
 
 ##
-## single genome data ---------------------------------------------------------
+## single genome data --------------------------------------------------------
 ##
 
 single_tbl_df <- singleOrgMatchResults %>%
@@ -159,18 +159,19 @@ contam_tbl_df <- contamSingleOrgMatchResults %>%
       group_by(Query, lca_rank) %>%
       summarize(total_prop = sum(`Final Guess`)) %>%
       spread(lca_rank,total_prop) %>%
-      left_join(queryMeta) %>%
+      left_join(queryMeta) %>% 
+      left_join(contamSingleOrgMapResults) %>% 
       mutate(`DNA length` = as.numeric(`DNA  length`),
              `DNA type` = if_else(`DNA length` < 1000000, "P","C")) %>%
       select(-GI, -Taxid) %>%
-      group_by(Taxname, `DNA type`, species) %>%
+      group_by(Taxname, `DNA type`, species, aligned_reads) %>%
       summarise(Acc = str_c(Accession, collapse = ", "),
                 Mb = round(sum(`DNA length`)/1e6,digits = 2)) %>%
-      gather("key","value", -Taxname, -`DNA type`, -species) %>%
+      gather("key","value", -Taxname, -`DNA type`, -species, -aligned_reads) %>%
       mutate(key = paste(`DNA type`, key)) %>%
       ungroup() %>% select(-`DNA type`) %>% spread(key,value) %>%
-      rename(`Representative Strain` = Taxname, Species = species) %>%
-      select(`Representative Strain`, Species ,
+      rename(`Representative Strain` = Taxname, Species = species, `Aligned Reads` = aligned_reads) %>%
+      select(`Representative Strain`, Species , `Aligned Reads`,
              `C Mb`, `C Acc`, `P Mb`, `P Acc`)
 
 
@@ -206,7 +207,24 @@ contam_correlation <- contam_prop_df %>%
       group_by(contam_facet, target_facet) %>% 
       summarise(prop_cor = cor(mix_contam, contam_prop))
 
-contam_corr_quant <- contam_correlation$prop_cor %>% quantile(c(0.025,0.5, 0.975),na.rm = TRUE)
+contam_corr_quant <- contam_correlation$prop_cor %>% 
+      quantile(c(0.025,0.5, 0.975),na.rm = TRUE)
+
+# ### Comparison of contaminant correlation in log and non-log space
+# corr_comp <- contam_prop_df %>%
+#       group_by(contam_facet, target_facet) %>%
+#       summarise(logprop_cor = cor(log10(mix_contam + 1e-20), 
+#                                   log10(contam_prop+ 1e-20))) %>%
+#       left_join(contam_correlation) %>%
+#       mutate(corr_diff = prop_cor - logprop_cor)
+# 
+# # Log space correlations slightly lower than non-log space correlations
+# corr_comp$prop_cor %>% quantile(c(0.025,0.5, 0.975),na.rm = TRUE)
+# corr_comp$logprop_cor %>% quantile(c(0.025,0.5, 0.975),na.rm = TRUE)
+# corr_comp$corr_diff %>% quantile(c(0.025,0.5, 0.975),na.rm = TRUE)
+# t.test(corr_comp$prop_cor, corr_comp$logprop_cor,
+#        paired = TRUE,alternative = "greater")
+
 
 contam_resid <- contam_prop_df %>% 
       mutate(prop_resid = (contam_prop - mix_contam)/mix_contam) %>% 

@@ -6,36 +6,36 @@ Database file #1: genomic_purity.bib
 Warning--empty journal in Shrestha2013
 You've used 26 entries,
             1935 wiz_defined-function locations,
-            631 strings with 9798 characters,
-and the built_in function-call counts, 11473 in all, are:
-= -- 1043
-> -- 726
+            633 strings with 9768 characters,
+and the built_in function-call counts, 11385 in all, are:
+= -- 1039
+> -- 706
 < -- 7
-+ -- 260
-- -- 260
-* -- 1095
-:= -- 2096
++ -- 252
+- -- 252
+* -- 1083
+:= -- 2076
 add.period$ -- 77
 call.type$ -- 26
-change.case$ -- 255
+change.case$ -- 251
 chr.to.int$ -- 26
 cite$ -- 27
 duplicate$ -- 354
-empty$ -- 649
-format.name$ -- 296
-if$ -- 2118
+empty$ -- 653
+format.name$ -- 288
+if$ -- 2106
 int.to.chr$ -- 1
 int.to.str$ -- 0
 missing$ -- 23
 newline$ -- 132
 num.names$ -- 78
-pop$ -- 217
+pop$ -- 213
 preamble$ -- 1
-purify$ -- 258
+purify$ -- 254
 quote$ -- 0
 skip$ -- 270
 stack$ -- 0
-substring$ -- 585
+substring$ -- 597
 swap$ -- 28
 text.length$ -- 0
 text.prefix$ -- 0
