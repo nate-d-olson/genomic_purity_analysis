@@ -38,7 +38,7 @@ single_tbl_df <- singleOrgMatchResults %>%
 species_lvls <- c("species group", "species subgroup", "subspecies")
 single_org_cum <- singleOrgMatchResults %>%
       filter(query_genus %in% c("Bacillus","Clostridium","Escherichia",
-                                "Francisela","Listeria","Pseudomonas",
+                                "Francisella","Listeria","Pseudomonas",
                                 "Salmonella","Shigella","Staphylococcus","Yersinia")) %>%
       mutate(lca_rank = if_else(lca_rank %in% species_lvls,
                                 "species", lca_rank)) %>%
@@ -239,7 +239,7 @@ contam_yers_sal_species <- contam_yers_sal_org$name[11]
 contam_yers_esch_df <- contam_fp %>% filter(target == "34", contaminant == "27739")
 contam_yers_esch_prop <- contam_yers_esch_df$`Final Guess`
 contam_yers_esch_org <- taxidClassification[contam_yers_esch_df$match_taxid][[1]]
-contam_yers_esch_species <- contam_yers_esch_org$name[11]
+contam_yers_esch_species <- contam_yers_esch_org$name[length(contam_yers_esch_org$name)]
 
 
 ## Contam Single Org Read Counts
