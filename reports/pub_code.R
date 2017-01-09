@@ -143,6 +143,10 @@ clos_auto_top <- singleOrgResults %>%
       filter(Query == "Clostridium_autoethanogenum_DSM_10061_uid219420") %>% top_n(1)
 clos_auto_top_value <- clos_auto_top$`Final Guess`
 
+## Check C. ljungdahlii also low
+# singleOrgResults %>% filter(grepl("ljungdahlii", Query))
+
+
 ecoli_UMNK88 <- singleOrgResults %>% 
       filter(Query == "Escherichia_coli_UMNK88_uid42137")
 ecoli_UMNK88_prov_value <- ecoli_UMNK88 %>% 
@@ -152,6 +156,17 @@ ecoli_UMNK88_sal_value <- ecoli_UMNK88 %>%
             .$`Final Guess`
 
 ### Contam Table ---------------------------------------------------------------
+rep_strains <- c(
+      "\\textit{Bacillus anthracis} str. Ames",                                       
+      "\\textit{Clostridium botulinum} A str. Hall",                                  
+      "\\textit{Escherichia coli} O157:H7 str. EC4115",                               
+      "\\textit{Francisella tularensis} subsp. \\textit{tularensis} SCHU S4",                   
+      "\\textit{Pseudomonas aeruginosa} PAO1",                                        
+      "\\textit{Salmonella enterica} subsp. \\textit{enterica} serovar Typhimurium str. D23580",
+      "\\textit{Staphylococcus aureus} subsp. \\textit{aureus} ED133",                          
+      "\\textit{Yersinia pestis} CO92"
+)
+
 contam_tbl_df <- contamSingleOrgMatchResults %>%
       mutate(lca_rank = if_else(lca_rank %in% species_lvls,
                                 "species",lca_rank)) %>%
@@ -170,7 +185,10 @@ contam_tbl_df <- contamSingleOrgMatchResults %>%
       gather("key","value", -Taxname, -`DNA type`, -species, -aligned_reads) %>%
       mutate(key = paste(`DNA type`, key)) %>%
       ungroup() %>% select(-`DNA type`) %>% spread(key,value) %>%
-      rename(`Representative Strain` = Taxname, Species = species, `Aligned Reads` = aligned_reads) %>%
+      select(-Taxname) %>% add_column(Taxname = rep_strains) %>% 
+      rename(`Representative Strain` = Taxname, 
+             Species = species, 
+             `Aligned Reads` = aligned_reads) %>%
       select(`Representative Strain`, Species , `Aligned Reads`,
              `C Mb`, `C Acc`, `P Mb`, `P Acc`)
 
