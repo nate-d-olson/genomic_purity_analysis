@@ -117,15 +117,15 @@ Reads were simulated with the Illumina MiSeq error model for 2 $\times$ 230 base
 The insert size parameters were defined based on the observed average and standard deviation insert size of the NIST RM8375-MG002 MiSeq sequencing data \citep{olson2016pepr} (NCBI Biosample accession SAMN02854573).
 
 \subsection*{Assessing Taxonomic Composition}
-The taxonomic composition of simulated datasets was determined using the Pathoscope sequence taxonomic classifier \citep{Francis2013}.
-Pathoscope was selected for two reasons: (1) it uses a large reference database reducing potential biases due to contaminants not represented in the database, and (2) it leverages efficient whole genome read mapping algorithms.
+The taxonomic composition of simulated datasets was determined using the PathoScope sequence taxonomic classifier \citep{Francis2013}.
+PathoScope was selected for two reasons: (1) it uses a large reference database reducing potential biases due to contaminants not represented in the database, and (2) it leverages efficient whole genome read mapping algorithms.
 This method uses an expectation maximization algorithm where the sequence data are first mapped to a database comprised of all sequence data in the Genbank nt database.
 Then, through an iterative process, it re-assigns ambiguously mapped reads based on the proportion of reads mapped unambiguously to individual taxa in the database.
-The Pathoscope 2.0 taxonomic read classification pipeline has three steps; (1) PathoQC - read quality filtering and trimming using the PRINSEQ algorithm \citep{schmieder2011quality}, (2) PathoMap - mapping reads to a reference database using the bowtie2 algorithm \citep{Langmead2012}, and (3) PathoID - expectation-maximization classification algorithm.
+The PathoScope 2.0 taxonomic read classification pipeline has three steps; (1) PathoQC - read quality filtering and trimming using the PRINSEQ algorithm \citep{schmieder2011quality}, (2) PathoMap - mapping reads to a reference database using the bowtie2 algorithm \citep{Langmead2012}, and (3) PathoID - expectation-maximization classification algorithm.
 The annotated Genbank nt database provided by the PathoScope developers was used as the reference database (\url{ftp://pathoscope.bumc.bu.edu/data/nt\_ti.fa.gz}).
 
 \subsection*{Baseline Assessment Using Individual Genomes}
-Simulated sequencing data from individual genomes was used to characterize the false positive contaminants reported by Pathoscope.
+Simulated sequencing data from individual genomes was used to characterize the false positive contaminants reported by PathoScope.
 Sequence data was simulated for 406 strains, from 9 genera (Table \ref{tab:single_org}).
 These genera were select based on relevance to public health and biothreat detection.
 We will refer to the genome used to generate the reads as the material genome.
@@ -155,10 +155,10 @@ Organisms with larger genomes therefore have more simulated reads.
 
 
 To generate the simulated contaminant datasets single organism simulated datasets were first generated for the 8 representative genomes using the same methods as used in the baseline assessment (Fig. \ref{fig:contam_simulation}).
-The resulting simulated sequencing data was first processed using the PathoQC and PathoMap steps in the Pathoscope pipeline.
+The resulting simulated sequencing data was first processed using the PathoQC and PathoMap steps in the PathoScope pipeline.
 The output from the PathoMap step (SAM file, sequence alignment file \url{https://samtools.github.io/hts-specs/SAMv1.pdf}) for the material and contaminant datasets were subsampled as described above then combined.
-The resulting SAM file was processed by PathoID, the third step in the Pathoscope pipeline.
-Subsampling the sam files instead of the simulated sequence files greatly reduces the computational cost of the analysis, as the simulated reads were only processed by the first two steps in Pathoscope pipeline once rather than for every simulated contaminant dataset.
+The resulting SAM file was processed by PathoID, the third step in the PathoScope pipeline.
+Subsampling the sam files instead of the simulated sequence files greatly reduces the computational cost of the analysis, as the simulated reads were only processed by the first two steps in PathoScope pipeline once rather than for every simulated contaminant dataset.
 
 
 \subsection*{Bioinformatics Pipeline}
@@ -171,7 +171,7 @@ To facilitate repeatability and transparency, a Docker (\url{www.docker.com}) co
 with pre-installed pipeline dependencies (\url{www.registry.hub.docker.com/u/natedolson/docker-pathoscope/}).
 The scripts used to run the simulations are available at \url{https://github.com/nate-d-olson/genomic_purity}.
 Additionally, seed numbers for the random number generator were randomly assigned and recorded for each dataset so the simulated datasets used in the study could be regenerated.
-Pathoscope results were processed using the statistical programming language R \citep{R}, and intermediate analysis and data summaries were organized using ProjectTemplate \citep{ProjectTemplate} and archived in a GitHub repository (\url{https://github.com/nate-d-olson/genomic_purity_analysis}) along with the source files for this manuscript.
+PathoScope results were processed using the statistical programming language R \citep{R}, and intermediate analysis and data summaries were organized using ProjectTemplate \citep{ProjectTemplate} and archived in a GitHub repository (\url{https://github.com/nate-d-olson/genomic_purity_analysis}) along with the source files for this manuscript.
 
 \section*{Results}
 
@@ -183,8 +183,8 @@ All read assigned to a different taxa than the genome the reads were simulated f
 this assumes the genome sequence is contaminant free. 
 Our analysis included taxonomic classification results for simulated sequencing data  from 406 genomes, representing 10 different genera (Table \ref{tab:single_org}).
 The method was evaluated using estimated proportion of species level matches.
-The estimated match proportion is the sum of the Final Guess values in the Pathoscope output for all correct species level matches.
-For 105 of the 406 genomes, Pathoscope estimated that less than 99\% of the material was the expected species (Fig. \ref{fig:species_prop}).
+The estimated match proportion is the sum of the Final Guess values in the PathoScope output for all correct species level matches.
+For 105 of the 406 genomes, PathoScope estimated that less than 99\% of the material was the expected species (Fig. \ref{fig:species_prop}).
 Of these 105 genomes, the estimated proportion of the sequencing data identified as the correct species varied by genus.
 None of the \textit{Shigella} genomes and only five of the 49 \textit{Staphylococcus} genomes had estimated proportions for the correct species greater than 0.9.
 87 of the 105 genomes with estimated species level match proportions less than 0.99 come from \textit{Shigella}, \textit{Staphylococcus}, or \textit{Escherichia}.
@@ -193,7 +193,7 @@ We characterized false positive contaminants detected in genomes from the genera
 Two types of false positive contaminants were identified: (1) contaminants that were genomically indistinguishable from the material and (2) contaminants due to errors in the reference database.
 
 % latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Tue Jan  3 14:58:27 2017
+% Fri Jan 13 11:58:11 2017
 \begin{table}[ht]
 \centering
 \begin{tabular}{lrl}
@@ -201,15 +201,15 @@ Two types of false positive contaminants were identified: (1) contaminants that 
 Genus & N & Genome Size (Mb) \\ 
   \hline
 \textit{Bacillus} &  76 & 5.05 (3.07-7.59) \\ 
-  \textit{Escherichia} &  62 & 5.11 (3.98-5.86) \\ 
-  \textit{Pseudomonas} &  57 & 6.18 (4.17-7.01) \\ 
-  \textit{Staphylococcus} &  49 & 2.82 (2.69-3.08) \\ 
-  \textit{Salmonella} &  44 & 4.88 (4.46-5.27) \\ 
-  \textit{Listeria} &  39 & 2.97 (2.78-3.11) \\ 
   \textit{Clostridium} &  32 & 4.02 (2.55-6.67) \\ 
-  \textit{Yersinia} &  19 & 4.73 (4.62-4.94) \\ 
+  \textit{Escherichia} &  62 & 5.11 (3.98-5.86) \\ 
   \textit{Francisella} &  18 & 1.89 (1.85-2.05) \\ 
+  \textit{Listeria} &  39 & 2.97 (2.78-3.11) \\ 
+  \textit{Pseudomonas} &  57 & 6.18 (4.17-7.01) \\ 
+  \textit{Salmonella} &  44 & 4.88 (4.46-5.27) \\ 
   \textit{Shigella} &  10 & 4.74 (4.48-5.22) \\ 
+  \textit{Staphylococcus} &  49 & 2.82 (2.69-3.08) \\ 
+  \textit{Yersinia} &  19 & 4.73 (4.62-4.94) \\ 
    \hline
 \end{tabular}
 \caption{Breakdown of the number of genomes by genus used to generate single genome simulated datasets. N indicates the number of genomes, and Genome Size is presented as the median and range (minimum to maximum).} 
@@ -219,7 +219,7 @@ Genus & N & Genome Size (Mb) \\
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}
-\includegraphics[width=\maxwidth]{figure/species_prop-1} \caption[Species level or higher estimated match proportion varies by material genus]{Species level or higher estimated match proportion varies by material genus. The estimated match proportion is the total proportion of the material with correct taxonomic assignments to the genome species, subspecies, strain, or isolate level. The proportions used are the Final Guess values in the Pathoscope results table. The vertical dashed line indicates the 0.99 match proportion. Orange points are genomes with species level match proportions less than 0.90 and blue points greater than or equal to 0.90}\label{fig:species_prop}
+\includegraphics[width=\maxwidth]{figure/species_prop-1} \caption[Species level or higher estimated match proportion varies by material genus]{Species level or higher estimated match proportion varies by material genus. The estimated match proportion is the total proportion of the material with correct taxonomic assignments to the genome species, subspecies, strain, or isolate level. The proportions used are the Final Guess values in the PathoScope results table. The vertical dashed line indicates the 0.99 match proportion. Orange points are genomes with species level match proportions less than 0.90 and blue points greater than or equal to 0.90}\label{fig:species_prop}
 \end{figure}
 
 
@@ -240,7 +240,7 @@ Based on phage names all of the false positive phage contaminants were specific 
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}
-\includegraphics[width=\maxwidth]{figure/phage_prop-1} \caption[Estimated total proportion of phage in the simulated single genome datasets by genera]{Estimated total proportion of phage in the simulated single genome datasets by genera. Final Guess values reported by pathoscope used to calculate estimated total proportions.}\label{fig:phage_prop}
+\includegraphics[width=\maxwidth]{figure/phage_prop-1} \caption[Estimated total proportion of phage in the simulated single genome datasets by genera]{Estimated total proportion of phage in the simulated single genome datasets by genera. Final Guess values reported by PathoScope used to calculate estimated total proportions. No phage were reported by PathoScope in any of the \textit{Francisella} genomes.}\label{fig:phage_prop}
 \end{figure}
 
 
@@ -263,7 +263,7 @@ The eukaryotic false positive contaminants are likely due to contaminants in the
 \subsection*{Contaminant Detection Assessment}
 
 % latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Tue Jan  3 14:58:28 2017
+% Fri Jan 13 11:58:12 2017
 \begin{table}[ht]
 \centering
 \begin{tabular}{lrrllll}
@@ -292,17 +292,16 @@ with the larger proportion representing the microbial material and smaller propo
 We simulated contaminant datasets as pairwise combinations of representative genomes from 8 of the genera used in the baseline assessment section of the study (Table \ref{tab:contam_table}).
 For all of the genomes selected for the detection assessment study, the estimated proportion of material assigned to the correct species was greater than 0.98 (Table \ref{tab:contam_table}, Species column).
 
-The minimum contaminant proportion detected was $1 \times 10^{-3}$ and  $1 \times 10^{-4}$ for most pairwise comparisons with a few exceptions.
+The minimum contaminant proportion detected was $10^{-3}$ and  $10^{-4}$ for most pairwise comparisons with a few exceptions.
 When \textit{Y. pestis} was the simulated contaminant, the minimum detected proportion was 0.1 for all material strains.
 For all simulated datasets where \textit{F. tularensis} was the contaminant, the contaminant was not detected.
-A few contaminants were detected at proportions as low as $1 \times 10^{-8}$, such as when \textit{Yersinia} contaminated with \textit{E. coli} or \textit{S. enterica} and \textit{E. coli} contaminated with \textit{B. anthracis}.
+A few contaminants were detected at proportions as low as $10^{-8}$, such as when \textit{Yersinia} contaminated with \textit{E. coli} or \textit{S. enterica}.
 However, contaminants detected at lower proportions were due to reads simulated from the material genome incorrectly assigned to the contaminant.
-For the \textit{E. coli} material dataset with no simulated contaminants, Bacillus sp. SXB had an estimated proportion of \ensuremath{9.2\times 10^{-6}} resulted in an artificially low contaminant detection proportion in the simulated contaminated dataset.
 The simulated contaminant-free \textit{Y. pestis} material dataset had reads assigned to two of the contaminants resulting in artificially low contaminant detection proportions for \textit{Salmonella enterica} subsp. {enterica} serovar Typhi str. CT18 with an estimated proportion of \ensuremath{1.76\times 10^{-5}} and \textit{Escherichia coli} O104:H4 str. 2011C-3493 with an estimated proportion of \ensuremath{3.77\times 10^{-8}}.
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}
-\includegraphics[width=\maxwidth]{figure/contam_fig-1} \caption[The relationship between the proportion of reads matching the contaminant genus and the proportion of simulated contaminant reads]{The relationship between the proportion of reads matching the contaminant genus and the proportion of simulated contaminant reads. Plots are split by the material genus with line and point color indicating contaminant genus. Dashed line indicate a 1:1 correlation between matched and expected contaminant reads. The contaminant proportion was underestimated for points below the dashed line and overestimated for points above the dashed line.}\label{fig:contam_fig}
+\includegraphics[width=\maxwidth]{figure/contam_fig-1} \caption[The relationship between the proportion of reads matching the contaminant species and the proportion of simulated contaminant reads]{The relationship between the proportion of reads matching the contaminant species and the proportion of simulated contaminant reads. Plots are split by the material species with line and point color indicating contaminant species. Dashed line indicate a 1:1 correlation between matched and expected contaminant reads. The contaminant proportion was underestimated for points below the dashed line and overestimated for points above the dashed line.}\label{fig:contam_fig}
 \end{figure}
 
 
@@ -317,12 +316,22 @@ The simulated contaminant-free \textit{Y. pestis} material dataset had reads ass
 
 \end{knitrout}
 
+The minimum detected contaminant proportion ranged from $10^{-3}$ to $10^{-4}$ for most simulated contaminant datasets.
+As the individual datasets were simulated at 20X coverage, \textless 300,000 reads were simulated for each dataset, and on average \textless 3 reads were spiked into the material datasets for simulated contaminant proportions less than $10^{-4}$ (Table \ref{tab:contam_table}).
+Unexpectedly low contaminant proportions, $10^{-8}$, were detected for \textit{Y. pestis} contaminated with \textit{S. enterica} and \textit{E. coli}.
+The low detection proportions were due to false positive contaminants present in the simulated material single genome dataset used to generate the contaminant mixtures.
+For datasets with \textit{Y. pestis} as the simulated contaminant the minimum detected contaminant proportion was 0.1 and \textit{F. tularensis} was not detected in any simulated contaminant datasets.
+It is unclear why \textit{Y. pestis} was detected at a higher proportion relative to the other datasets, $10^{-1}$ versus $10^{-3}$, and \textit{F. tularensis} was not detected at all.
+One possible reason for the lower contaminant detect for these two organisms is that there are fewer genomes is the database for these two genera.
+Additionally, the \textit{F. tularensis} dataset is much smaller relative to the other genera, less than 90,000 reads.
+Therefore, with fewer reads in the dataset and genomes in the database, the probability that the randomly selected subset of reads spiked into the simulated material dataset contains reads allowing for contaminant detection is lower.
+In addition to the minimum detected contaminant proportion we also evaluated the quantitative accuracy the contaminant detection method.
 
-Pearson's correlation coefficient was used to determine the correlation between the estimated contaminant and true contaminant proportions for simulated contaminant proportions greater than $0.1 \times 10^{-5}$.
-The estimated and true proportions were strongly correlated for all pairwise comparisons, with an overall median and 95\% confidence interval of 0.99945 (0.96943 - 0.99999) (Fig. \ref{fig:contam_fig}).
+Pearson's correlation coefficient was used to determine the correlation between the estimated contaminant and true contaminant proportions for simulated contaminant proportions greater than $10^{-6}$.
+The estimated and true proportions were strongly correlated for all pairwise comparisons, with an overall median and 95\% confidence interval of 0.99945 (0.96945 - 1) (Fig. \ref{fig:contam_fig}).
 Eight of the pairwise comparisons have correlation coefficients below 0.99, all of which have \textit{S. aureus} as either the contaminant or the material.
 Two coefficients were below 0.98: \textit{S. aureus} contaminated with \textit{P. aeruginosa} and \textit{S. enterica}, 0.952 and 0.969 respectively.
-Normalized contaminant proportion residuals, $(estimated-true)/true$, were used to assess the accuracy of the Pathoscope contaminant proportion estimates (Fig. \ref{fig:contam_resid}).
+Normalized contaminant proportion residuals, $(estimated-true)/true$, were used to assess the accuracy of the PathoScope contaminant proportion estimates (Fig. \ref{fig:contam_resid}).
 The material genome strongly influenced the total normalized residuals with \textit{E. coli} and \textit{S. aureus} having consistently higher total normalized residuals compared to the other genomes.
 
 
@@ -334,12 +343,37 @@ Additionally, as whole genome sequencing can be performed on genomic DNA and cel
 A baseline assessment of the contaminant detection method using simulated sequencing data from individual genomes was performed to identify common types of classification errors that would result in false positive contaminants.
 The false positive contaminants were split into two categories (1) those due to an inability of the method to differentiate the material genome from the contaminant genome, and (2) errors in the reference database.
 Contaminant detection performance was characterized for different material, contaminants, and contamination level.
-Overall the method was able to identify contaminant proportions at $1 \times 10^{-3}$ for most pairwise contaminant-material combinations.
-A contaminant proportion of $1 \times 10^{-3}$ is equivalent to 1 contaminant cell per 1,000 cells in a microbial material, or 1,000 contaminant cells/mL in a $1 \times 10^{6}$ cells/mL culture.
+Overall the method was able to identify contaminant proportions at $10^{-3}$ for most pairwise contaminant-material combinations.
+A contaminant proportion of $10^{-3}$ is equivalent to 1 contaminant cell per 1,000 cells in a microbial material, or 1,000 contaminant cells/mL in a $10^{6}$ cells/mL culture.
 The estimated contaminant proportion accuracy for the simulated contaminated material varied by contaminant and material strain.
 
+There are three basic steps to using this method to detect contaminants in a microbial material. 
+Baseline assessment is the first step in the contaminant detection method. 
+For a baseline assessment, reads are simulated from the reference genome of the organism of interest and process the simulated reads using a taxonomic classification algorithm. 
+Performing a baseline assessment allows one to identify the false positive contaminants you can expect to observe due to limitations in the method
+Simulating data with similiar characteristics error profiles, read length, and fragment distribution is likely to yield results more representative of what one would expect from real sequencing data.
+Next process sequencing data generated from the microbial material using the same taxonomic classification algorithm as was used in the baseline assessment. 
+The last step is a critical evaluation of results, potential for false positives. 
+For all settings, research, clinical, regulatory, and attribution the contaminant detection method should be validated for the intended application.
+Appropriate validation methods may include experiments with simulated contaminants like thoes performed as part of this study and potentially sequencing of genomic DNA or cells spiked with varying concentrations of known contaminants.
 
-%% How to best discuss the baseline assessment results
+It is important to evaluate the results in the context of the intended application.
+Quantitative accuracy in contaminant proportions is important for applications where acceptable contaminant proportion thresholds are established.
+For example, a microbial material with a contaminant proportion of $10^{-5}$ may be acceptable for use in an assay where the contaminant adversely impacts an assay when present in proportions greater than $10^{-4}$.
+Quantitative accuracy is also relevant when performing a general characterization of the microbial material.
+General contaminant characterization is appropriate for reference materials with more than one use case such as the NIST microbial genomic reference materials (NIST RM8375)\citep{olson2016pepr}.
+Similar to the false positive contaminant baseline assessment,
+simulated data can be used to evaluate the minimal detectable contaminant proportion for specific organisms using different taxonomic assignment algorithms and databases.
+
+
+Additional work/ next steps
+- Database and algorithm optimization
+      - A primary limitation of the proposed method is the observed false positive contaminants identified in the baseline assessment. 
+      The reference database and taxonomic assignment algorithm used to detect contaminants is likely to impact the number and types of false positives. 
+      - Evaluating multiple algorithms and databases using simulated data for the material genome of interest, similar to what was done in the baseline assessment part of this study, can help determine the optimal classification algorithm for a specific microbial material. 
+      - Different algorithms and performance ...
+      - Different databases and database curation ...
+
 % Paragraph on database curation???
 % Removing sequences from the database for irrelevant contaminants, such as phage, plasmids, vectors, and multicellular eukaryotes would reduce the proportion of false positives.
 % By excluding irrelevant contaminants from the database sequencing reads aligning to these irrelevant sequences would no longer result in false positive contaminants.
@@ -351,58 +385,13 @@ The estimated contaminant proportion accuracy for the simulated contaminated mat
 % The \textit{Bacillus subtilis}-\textit{Synechocystis} chimeric genome appeared to have a high false positive contaminant rate in the baseline assessment part of this study due to the genome being incorrectly classified as \textit{Bacillus subtilis} and not a chimeric genome.
 %% this is a challenging issue related to data archiving and metadata
 
-A primary limitation of the proposed method is the observed false positive contaminants identified in the baseline assessment.
-Baseline assessment was performed using simulated sequence data from the microbial material's genome sequence to characterize the types of false positive contaminants.
-The reference database and taxonomic assignment algorithm used to detect contaminants is likely to impact the number and types of false positives.
-Pathoscope was used for this proof of concept study as the method uses the full reads and paired-end information for taxonomic classification rather than shorter sequence fragments, $k$-mers.
-Evaluating multiple algorithms and databases using simulated data for the material genome of interest,
-similar to what was done in the baseline assessment part of this study,
-can help determine the optimal classification algorithm for a specific microbial material.
-Regardless of the method and database used, contaminants identified by the method should be evaluated considering the impact of the contaminant on the intended application or the likelihood the contaminant is a false positive.
-
-The minimum detected contaminant proportion ranged from $1 \time 10^{-3}$ to $1 \time 10^{-4}$ for most simulated contaminant datasets.
-As the individual datasets were simulated at 20X coverage, \textless 300,000 reads were simulated for each dataset, and on average \textless 3 reads were spiked into the material datasets for simulated contaminant proportions less than $1 \time 10^{-4}$ (Table \ref{tab:contam_table}).
-Unexpectedly low contaminant proportions, $1 \time 10^{-8}$, were detected for \textit{E. coli} contaminated with \textit{B. anthracis} and \textit{Y. pestis} contaminated with \textit{S. enterica} and \textit{E. coli}.
-The low detection proportions were due to false positive contaminants present in the simulated material single genome dataset used to generate the contaminant mixtures.
-For datasets with \textit{Y. pestis} as the simulated contaminant the minimum detected contaminant proportion was 0.1 and \textit{F. tularensis} was not detected in any simulated contaminant datasets.
-It is unclear why \textit{Y. pestis} was detected at a higher proportion relative to the other datasets, $1 \time 10^{-1}$ versus $1 \time 10^{-3}$, and \textit{F. tularensis} was not detected at all.
-One possible reason for the lower contaminant detect for these two organisms is that there are fewer genomes is the database for these two genera.
-Additionally, the \textit{F. tularensis} dataset is much smaller relative to the other genera, less than 90,000 reads.
-With fewer reads in the dataset and genomes in the database, the probability that the randomly selected subset of reads spiked into the simulated material dataset contains reads allowing for contaminant detection is lower.
-While the minimum detected contaminant proportion is important for assessing the suitability of microbial materials for specific applications, quantitative accuracy of the contaminant detection method is important for general material characterization.
-
-The quantitative accuracy of the method varied by material and contaminant.
-For all material-contaminant pairs, the Pathoscope estimate and true contaminant proportions were highly correlated.
-Quantitative accuracy in contaminant proportions is important for applications where acceptable contaminant proportion thresholds are established.
-For example, a microbial material with a contaminant proportion of $1 \time 10^{-5}$ may be acceptable for use in an assay where the contaminant adversely impact an assay when present in proportions greater than $1 \time 10^{-4}$.
-Quantitative accuracy is also relevant when performing a general characterization of the microbial material.
-General contaminant characterization is appropriate for reference materials with more than one use case such as the NIST microbial genomic reference materials (NIST RM8375)\citep{olson2016pepr}.
-Similar to the false positive contaminant baseline assessment,
-simulated data can be used to evaluate the minimal detectable contaminant proportion for specific organisms using different taxonomic assignment algorithms and databases.
-
-
-How would one go about using this method?
-Baseline assessment is the first step in determining the impact of false positives on the method's ability to detect contaminant DNA.
-Database and algorithm optimization
-Analyze sequence dataset generated from material
-Critical evaluation of results, potential for false positives
-
-For all settings, research, clinical, regulatory, and attribution the contaminant detection method should be validated for the intended application.
-Appropriate validation methods may include experiments with simulated like thoes performed as part of this study and potentially sequencing of genomic DNA or cells spiked with varying concentrations of known contaminants.
-
 \section*{Conclusions}
-% As false positive contaminants are database and taxonomic assignment algorithm dependent, additional work is needed to improve database curation and data authentication efforts as well as characterization of taxonomic assignment algorithm performance.
-
-% Identification and characterization of low abundance contaminants in a non-targeted manner is critical for a material used in high sensitivity assays such as PCR.
-
-% The presence of contaminants that are known to interfere with an assay can be tested using specific assays for thoes contaminants.
-
-%However, specific assays cannot be developed or used to detect unexpectd contaminants that may or may not adversely impact an assay.
-
-
+Identification and characterization of low abundance contaminants in a non-targeted manner is critical for a material used in high sensitivity assays such as PCR.
 With the continual decline in the cost of sequencing and the advances in sequence analysis methods, whole genome sequencing combined with taxonomic assignment algorithms provides a viable alternative to commonly used organismal contaminant detection methods such as culturing, microscopy, and PCR.
-The method presented here is suitable for detecting organismal contaminants in both genomic DNA and whole cell microbial materials, with the only \textit{a priori} assumptions about the contaminants is that they are present in the reference database.
-Furthermore, the method was shown to detect most contaminants when present at $1 \times 10^{-3}$ proportion of cells in a high-throughput manner.
+The method presented here is suitable for detecting organismal contaminants in both genomic DNA and whole cell microbial materials, with the only \textit{a priori} assumptions about the contaminants is that they are present in the reference database. 
+Furthermore, the method was shown to detect most contaminants when present at $10^{-3}$ proportion of cells in a high-throughput manner.
+The false positive contaminant detection is a primary limitation of the proposed method. 
+As false positive contaminants are database and taxonomic assignment algorithm dependent, additional work is needed to improve database curation and data authentication efforts as well as characterization of taxonomic assignment algorithm performance.
 With the rapid decrease in sequencing cost and ability to detect unknown contaminants at low concentrations, whole genome sequencing is a viable alternative to culture and PCR-based contaminant detection methods.
 
 \newpage

@@ -32,7 +32,7 @@ single_tbl_df <- singleOrgMatchResults %>%
                                          round(size_max, 2), ")"),
              query_genus = paste0("\\textit{",query_genus,"}")) %>%
       select(-size_min, -size_max, -size_median) %>%
-      rename(Genus = query_genus, N = count) %>% arrange(desc(N))
+      rename(Genus = query_genus, N = count) %>% arrange(Genus)
 
 
 species_lvls <- c("species group", "species subgroup", "subspecies")
@@ -196,8 +196,9 @@ contam_tbl_df <- contamSingleOrgMatchResults %>%
 contamMixMatchResultsMin <- contamMixMatchResults %>%
       mutate(mix = as.numeric(mix), mix_contam = 1 - mix) %>%
       filter(lca_contam_rank %in%
-                   c("genus","species","species group","subspecies")) %>%
-      group_by(contam_name, target_name) %>% summarise(contam_min = min(mix_contam)) %>%
+                   c("species","species group","subspecies")) %>%
+      group_by(contam_name, target_name) %>% 
+      summarise(contam_min = min(mix_contam)) %>%
       mutate(contam_label = str_replace_all(contam_name, "_", " "),
              contam_label = str_replace(contam_label, " uid.*",""),
              contam_facet = str_sub(contam_name,1,4),
@@ -210,7 +211,7 @@ contam_min_df <- contamMixMatchResultsMin %>% ungroup() %>%
 
 contam_prop_df <- contamMixMatchResults %>% mutate(mix = as.numeric(mix), mix_contam = 1 - mix) %>%
       filter(lca_contam_rank %in%
-                   c("genus","species","species group","subspecies")) %>%
+                   c("species","species group","subspecies")) %>%
       mutate(lca_contam_rank = ifelse(lca_contam_rank == "genus", "genus","species")) %>%
       group_by(contam_ds, target_name, contam_name, mix_contam) %>%
       summarise(contam_prop = sum(`Final Guess`)) %>%
@@ -261,11 +262,12 @@ contam_resid_quant <- contam_resid_summary$prop_resid_total %>%
 
 ## Contam Mix False Positives
 contam_fp <- contamMixMatchResults %>% 
-      filter(mix == "1.0", lca_contam_rank %in% c("genus","species", species_lvls))
-contam_esch_df <- contam_fp %>% filter(target == "27739")
-contam_esch_prop <- contam_esch_df$`Final Guess`
-contam_esch_org <- taxidClassification[contam_esch_df$match_taxid][[1]]
-contam_esch_species <- contam_esch_org$name[9]
+      filter(mix == "1.0", lca_contam_rank %in% c("species", species_lvls))
+## No longer a false positive when looking for the contaminant at the species level
+# contam_esch_df <- contam_fp %>% filter(target == "27739")
+# contam_esch_prop <- contam_esch_df$`Final Guess`
+# contam_esch_org <- "NEED TO CHECK" #taxidClassification[contam_esch_df$match_taxid][[1]]
+# contam_esch_species <- "NEED TO CHECK" #contam_esch_org$name[9]
 
 contam_yers_sal_df <- contam_fp %>% filter(target == "34", contaminant == "40625")
 contam_yers_sal_prop <- contam_yers_sal_df$`Final Guess`
