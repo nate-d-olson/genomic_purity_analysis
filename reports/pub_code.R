@@ -283,3 +283,5 @@ contam_yers_esch_species <- contam_yers_esch_org$name[length(contam_yers_esch_or
 ## Contam Single Org Read Counts
 contam_single_read_count <- contamSingleOrgResults %>% group_by(Query) %>% 
       summarise(total_reads = sum(`Initial Best Hit Read Numbers`))
+
+
