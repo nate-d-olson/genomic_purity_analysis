@@ -60,6 +60,12 @@ Jervis-Bardy, J., Leong, L.~E., Marri, S., Smith, R.~J., Choo, J.~M.,
   bacterial content through post-sequencing processing of illumina miseq data.
 \newblock {\em Microbiome}, 3(1):1.
 
+\bibitem[Kim et~al., 2016]{Kim2016-ir}
+Kim, D., Song, L., Breitwieser, F.~P., and Salzberg, S.~L. (2016).
+\newblock Centrifuge: rapid and sensitive classification of metagenomic
+  sequences.
+\newblock {\em Genome Res.}, 26(12):1721--1729.
+
 \bibitem[Lan and Reeves, 2002]{lan2002escherichia}
 Lan, R. and Reeves, P.~R. (2002).
 \newblock Escherichia coli in disguise: molecular origins of shigella.
