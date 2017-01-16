@@ -209,7 +209,8 @@ contam_min_df <- contamMixMatchResultsMin %>% ungroup() %>%
       spread(target_facet, contam_min)
 
 
-contam_prop_df <- contamMixMatchResults %>% mutate(mix = as.numeric(mix), mix_contam = 1 - mix) %>%
+contam_prop_df <- contamMixMatchResults %>% 
+      mutate(mix = as.numeric(mix), mix_contam = 1 - mix) %>%
       filter(lca_contam_rank %in%
                    c("species","species group","subspecies")) %>%
       mutate(lca_contam_rank = ifelse(lca_contam_rank == "genus", "genus","species")) %>%
@@ -285,3 +286,18 @@ contam_single_read_count <- contamSingleOrgResults %>% group_by(Query) %>%
       summarise(total_reads = sum(`Initial Best Hit Read Numbers`))
 
 
+## Supplemental Table - List of genomes with metadata and accession numbers.
+## Table description:: 
+# Taxname - full organism name
+# Taxid - NCBI taxonomic identifier
+# GI - NCBI GenBank ID
+# Accession - NCBI GenBank Accession number
+# Length - size of DNA sequence in base pairs 
+# Random - random number used to generate simulated sequence data
+
+queryIdTbl %>% 
+      left_join(queryMeta) %>% 
+      left_join(singleOrgArt %>% rename(Query = org)) %>% 
+      select(Taxname, Taxid, GI, Accession, `DNA  length`, rand) %>% 
+      rename(Random = rand, Length = `DNA  length`) %>% 
+      write_csv("supplemental_table_baseline_genomes.csv")
