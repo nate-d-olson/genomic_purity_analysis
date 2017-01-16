@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016) (preloaded format=xelatex 2016.5.22)  15 JAN 2017 19:03
+This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016) (preloaded format=xelatex 2016.5.22)  16 JAN 2017 08:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -818,7 +818,7 @@ File: figure/species_prop-1.pdf Graphic file (type QTm)
 <use  "figure/species_prop-1.pdf" > [4] [5]
 File: figure/phage_prop-1.pdf Graphic file (type QTm)
  <use  "figure/phage_prop-1.pdf" >
-Overfull \hbox (299.39026pt too wide) in paragraph at lines 272--286
+Overfull \hbox (22.56075pt too wide) in paragraph at lines 272--286
  [][] 
  []
 
@@ -868,7 +868,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 413.
 Here is how much of TeX's memory you used:
  15112 strings out of 493591
  220296 string characters out of 6143546
- 437879 words of memory out of 5000000
+ 437850 words of memory out of 5000000
  18303 multiletter control sequences out of 15000+600000
  31739 words of font info for 80 fonts, out of 8000000 for 9000
  1347 hyphenation exceptions out of 8191

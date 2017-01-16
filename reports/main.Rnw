@@ -198,7 +198,7 @@ The eukaryotic false positive contaminants are likely due to contaminants in the
 
 <<contam_table, results='asis', echo=FALSE, message=FALSE>>=
 contam_tbl_df %>% xtable(label = "tab:contam_table", digits = 2,
-                         caption = "Representative strains used in simulated contaminant datasets. When available type strains were selected as the representative genome. Species indicates the proportion of the material assigned to the correct species. Aligned Reads is the number of simulated reads aligned to the database by PathoMap. DNA size (Mb) and Genbank accession numbers (Acc) are indicated for chromosomes (C) and plasmids (P).") %>%
+                         caption = "Representative strains used in simulated contaminant datasets. When available type strains were selected as the representative genome. Species indicates the proportion of the material assigned to the correct species. Aligned Reads is the number of simulated reads aligned to the database by PathoMap. DNA size is the total size of the genome, chromosome and plasmids in Mb.") %>%
       print(include.rownames=FALSE, sanitize.text.function = identity)
 @
 

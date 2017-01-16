@@ -167,7 +167,7 @@ rep_strains <- c(
       "\\textit{Yersinia pestis} CO92"
 )
 
-contam_tbl_df <- contamSingleOrgMatchResults %>%
+contam_tbl_raw_df <- contamSingleOrgMatchResults %>%
       mutate(lca_rank = if_else(lca_rank %in% species_lvls,
                                 "species",lca_rank)) %>%
       filter(lca_rank %in% c("species","genus")) %>%
@@ -177,20 +177,18 @@ contam_tbl_df <- contamSingleOrgMatchResults %>%
       left_join(queryMeta) %>% 
       left_join(contamSingleOrgMapResults) %>% 
       mutate(`DNA length` = as.numeric(`DNA  length`),
-             `DNA type` = if_else(`DNA length` < 1000000, "P","C")) %>%
-      select(-GI, -Taxid) %>%
-      group_by(Taxname, `DNA type`, species, aligned_reads) %>%
-      summarise(Acc = str_c(Accession, collapse = ", "),
-                Mb = round(sum(`DNA length`)/1e6,digits = 2)) %>%
-      gather("key","value", -Taxname, -`DNA type`, -species, -aligned_reads) %>%
-      mutate(key = paste(`DNA type`, key)) %>%
-      ungroup() %>% select(-`DNA type`) %>% spread(key,value) %>%
-      select(-Taxname) %>% add_column(Taxname = rep_strains) %>% 
+             `DNA type` = if_else(`DNA length` < 1000000, "P","C"))
+
+contam_tbl_df <- contam_tbl_raw_df%>%
+      select(-GI, -Taxid, -`DNA type`) %>%
+      group_by(Taxname, species, aligned_reads) %>%
+      summarise(Mb = round(sum(`DNA length`)/1e6,digits = 2)) %>% 
+      # gather("key","value", -Taxname, -species, -aligned_reads) %>%
+      ungroup() %>% select(-Taxname) %>% add_column(Taxname = rep_strains) %>% 
       rename(`Representative Strain` = Taxname, 
              Species = species, 
              `Aligned Reads` = aligned_reads) %>%
-      select(`Representative Strain`, Species , `Aligned Reads`,
-             `C Mb`, `C Acc`, `P Mb`, `P Acc`)
+      select(`Representative Strain`, Species , `Aligned Reads`,Mb)
 
 
 contamMixMatchResultsMin <- contamMixMatchResults %>%
@@ -286,7 +284,7 @@ contam_single_read_count <- contamSingleOrgResults %>% group_by(Query) %>%
       summarise(total_reads = sum(`Initial Best Hit Read Numbers`))
 
 
-## Supplemental Table - List of genomes with metadata and accession numbers.
+## Supplemental Table Baseline- List of genomes with metadata and accession numbers.
 ## Table description:: 
 # Taxname - full organism name
 # Taxid - NCBI taxonomic identifier
@@ -301,3 +299,16 @@ queryIdTbl %>%
       select(Taxname, Taxid, GI, Accession, `DNA  length`, rand) %>% 
       rename(Random = rand, Length = `DNA  length`) %>% 
       write_csv("supplemental_table_baseline_genomes.csv")
+
+## Supplemental Table Contam - List of genomes with metadata and accession numbers
+## Table description:: 
+# Taxname - full organism name
+# Taxid - NCBI taxonomic identifier
+# GI - NCBI GenBank ID
+# DNA type - C for chromosome and P for plasmid
+# Accession - NCBI GenBank Accession number
+# Length - size of DNA sequence in base pairs 
+contam_tbl_raw_df %>% ungroup() %>% 
+      select(Taxname, Taxid, GI, `DNA type`, Accession, `DNA length`) %>% 
+      rename(Length = `DNA length`) %>% 
+      write_csv("supplemental_table_contam_genomes.csv")
