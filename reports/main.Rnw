@@ -31,18 +31,23 @@ source("pub_code.R")
 \maketitle
 \thispagestyle{empty}
 
-\section*{Introduction}
-High sensitivity methods such as polymerase chain reaction (PCR) and next generation sequencing (NGS) require higher material and reagent purity than traditional microbiology methods such as culturing, biochemical tests, and microscopy. 
-Issues related to reagent contaminants have been well documented and addressed with negative controls \citep{jervis2015deriving}, improved methods for removing contaminants \citep{woyke2011decontamination,motley2014improved}, and post processing of sequence data \citep{mukherjee2015large}.
-However, contaminants in microbial materials such as non-axenic cellular materials and genomic materials with foreign DNA have only been addressed in data processing \citep{Shrestha2013,tennessen2015prodege}.
+\section*{Introduction} 
+Microbial materials such as cells and extracted genomic DNA from a presumably “pure” culture should ideally be free of organismal contaminants. 
+However, high sensitivity detection methods including polymerase chain reaction (PCR) and next generation sequencing (NGS) can detect organismal contaminants previously undetectable by traditional microbiology methods such as culturing, biochemical tests, and microscopy. 
+Characterizing and reducing the level of these contaminants is critical to ensuring high quality microbial materials are used to populate sequence databases \citep{parks2015checkm}, for mock communities used to validate metagenomic methods \citep{bokulich2016mockrobiota}, to validate biodetection assays  \citep{Ieven2013,International2011}, and for basic research using model systems \citep{Shrestha2013}. 
+General contaminant assessment is also needed for the characterization of microbial reference materials \citep{olson2016pepr}, where contaminant profiles allow users to properly determine whether the material is suitable for their application. 
+In addition to organismal contaminants in the material itself, PCR and NGS can also detect reagent impurities, highlighting the need to differentiate material and reagent contaminants. 
+Issues related to reagent contaminants have been well documented and addressed with negative controls \citep{jervis2015deriving}, improved methods for removing contaminants \citep{woyke2011decontamination,motley2014improved}, and post-processing of sequence data \citep{mukherjee2015large}. 
+However, contaminants in microbial materials, as found in non-axenic cellular materials or genomic materials with foreign DNA, have only been addressed in data processing \citep{Shrestha2013,tennessen2015prodege}.
 
-Microbial materials free of contaminants are needed; to populate sequence databases \citep{parks2015checkm}, for mock communities used to validate metagenomic methods \citep{bokulich2016mockrobiota}, to validate biodetection assays \citep{Ieven2013,International2011}, and for basic research using model systems \citep{Shrestha2013}.
-General contaminant assessment is also needed for the characterization of microbial reference materials \citep{olson2016pepr}.
-The inclusion of contaminant characterization results in a reference material report of analysis allows users to properly determine whether the material is suitable for their application.
-Current methods for detecting contaminants in microbial materials rely on traditional methods such as culture, microscopy, and PCR.
-Culture and microscopy-based methods lack the required sensitivity for NGS and PCR applications, are not appropriate for genomic DNA materials, and assume the contaminants are phenotypically distinct from the material they contaminate.
-While PCR-based methods can detect contaminants in genomic DNA, the methods are limited as they can only detect specificially targeted contaminants and are not amenable to high-throughput applications \citep{heck2016evaluating,Marron2013}.
-In contrast to these methods, shotgun metagenomic methods can be used to detect contaminants in both cell cultures and genomic DNA materials while only requiring the contaminant has sequencing reads that differentiate it from the material strain.
+\textbf{NEED TO ADDRESS NANCY'S COMMENT:}
+Not sure what this means – contaminants have only been addressed in data processing?  But the next paragraph says there are current methods for detecting contaminants.  So I think this sentence needs to be more specific in regard to what in particular related to contaminants in materials has only been addressed with data processing.   
+\textbf{END OF COMMENT}
+
+Current approaches for detecting contaminants in microbial materials typically rely on methods such as culture, microscopy, or PCR. 
+Culture and microscopy-based methods lack the required sensitivity for microbial materials being used in NGS and PCR applications, are not appropriate for genomic DNA materials, and assume the contaminants are phenotypically distinct from the material they contaminate. 
+While PCR-based methods can detect contaminants in genomic DNA, the methods are limited as they can only detect specifically targeted contaminants and are not amenable to highly multiplexed applications \citep{heck2016evaluating,Marron2013}. 
+In contrast to these methods, shotgun metagenomic methods can be used to detect contaminants in both cell cultures and genomic DNA materials while only requiring the contaminant has sequencing reads differentiating it from the material strain.
 
 Shotgun metagenomic sequencing is used to characterize environmental samples, detect pathogens in clinical samples, and is suitable for detecting contaminants in microbial materials.
 Shotgun metagenomics consists of two main steps, whole genome sequencing of all DNA in a sample, and analyzing the resulting sequencing data, most commonly using a taxonomic assignment algorithm \citep{Thomas2012}.
@@ -58,7 +63,7 @@ A baseline assessment of the methods using simulated sequencing data from single
 Then, the contaminant detection method was evaluated for its ability to detect organismal contaminants in microbial material strains using sequencing data simulated to replicate microbial materials contaminanted with different organismal contaminants at a range of concentrations.
 
 \section*{Methods}
-Simulated whole genome sequence data and metagenomic taxonomic classification methods were used to detect and identify foreign DNA in microbial materials.
+Simulated whole genome sequence data and metagenomic taxonomic classification methods were used to detect and identify foreign DNA in microbial materials (genomic DNA and cultures).
 Simulated data from individual prokaryotic genomes were used to characterize how well the method correctly classifies reads at the species level.
 To evaluate contaminant detection we used datasets comprised of pairwise combinations of simulated reads from individual genomes.
 
@@ -114,10 +119,6 @@ The normalized contaminant proportion residuals, $(estimated-true)/true$, were c
 
 \subsection*{Bioinformatics Pipeline}
 
-%% TODO %%
-% Better description for how use of Docker and github promotes repeatability.
-%% TODO %%
-
 To facilitate repeatability and transparency, a Docker (\url{www.docker.com}) container is available
 with pre-installed pipeline dependencies (\url{www.registry.hub.docker.com/u/natedolson/docker-pathoscope/}).
 The scripts used to run the simulations are available at \url{https://github.com/nate-d-olson/genomic_purity}.
@@ -149,7 +150,7 @@ single_tbl_df %>% xtable::xtable(label = "tab:single_org", digits = 2, caption =
        print(include.rownames=FALSE, sanitize.text.function = identity)
 @
 
-<<species_prop, fig.cap = "Species level or higher estimated match proportion varies by material genus. The estimated match proportion is the total proportion of the material with correct taxonomic assignments to the genome species, subspecies, strain, or isolate level. The proportions used are the Final Guess values in the PathoScope results table. The vertical dashed line indicates the 0.99 match proportion. Orange points are genomes with species level match proportions less than 0.90 and blue points greater than or equal to 0.90", echo=FALSE>>=
+<<species_prop, fig.cap = "Species level or higher estimated match proportion varies by material genus. The estimated match proportion is the total proportion of the material with correct taxonomic assignments to the genome species, subspecies, strain, or isolate level. The proportions used are the Final Guess values in the PathoScope results table. Each point is calculated for a genome from a different isolate within the genus. The vertical dashed line indicates the 0.99 match proportion. Orange points are genomes with species level match proportions less than 0.90 and blue points greater than or equal to 0.90.", echo=FALSE>>=
 ggplot(single_species_match) +
       geom_jitter(aes(x= query_genus_reorder, y = cum_prop,color = match_thresh),
                   alpha = 0.5, width = 0.25) +
@@ -215,7 +216,7 @@ A few contaminants were detected at proportions as low as $10^{-8}$, such as whe
 However, contaminants detected at lower proportions were due to reads simulated from the material genome incorrectly assigned to the contaminant.
 The simulated contaminant-free \textit{Y. pestis} material dataset had reads assigned to two of the contaminants resulting in artificially low contaminant detection proportions for \textit{Salmonella enterica} subsp. {enterica} serovar Typhi str. CT18 and \textit{Escherichia coli} O104:H4 str. 2011C-3493 with estimated proportions of \Sexpr{signif(contam_yers_sal_prop,3)}and \Sexpr{signif(contam_yers_esch_prop,3)}, respectively.
 
-<<contam_fig, echo = FALSE, message = FALSE, fig.cap = "The relationship between the proportion of reads matching the contaminant species and the proportion of simulated contaminant reads. Plots are split by the material species with line and point color indicating contaminant species. Dashed line indicate a 1:1 correlation between matched and expected contaminant reads. The contaminant proportion was underestimated for points below the dashed line and overestimated for points above the dashed line.", fig.lp="fig:">>=
+<<contam_fig, echo = FALSE, message = FALSE, fig.cap = "The relationship between the proportion of reads matching the contaminant species and the proportion of simulated contaminant reads. Plots are split by the material species with line and point color indicating contaminant species. Dashed line indicates the expected 1:1 correlation between the proportion of reads matching the expected contaminant and the proportion of reads simulated from the contaminant. The contaminant proportion was underestimated for points below the dashed line and overestimated for points above the dashed line.", fig.lp="fig:">>=
 contamMixMatchResults %>% mutate(mix = as.numeric(mix),
                                  mix_contam = if_else(mix != 1, 1 - mix, 0.1e-8)) %>%
       filter(lca_contam_rank %in%
@@ -236,19 +237,32 @@ contamMixMatchResults %>% mutate(mix = as.numeric(mix),
             theme_bw() +
             theme(axis.text.x = element_text(angle = 90), legend.position = "bottom") +
             guides(color = guide_legend(nrow = 2)) +
-            labs(x = "Contaminant Proportion",
+            labs(x = "Proportion of Reads Simulated from the Contaminant",
                  y = "Proportion of Matched Reads",
                  color = "Contaminant")
 @
 
 
-<<contam_resid, echo = FALSE, message = FALSE, fig.cap = "Total normalized residuals for pairwise combinations of material and contaminant.", fig.lp="fig:">>=
+<<contam_resid, echo = FALSE, message = FALSE, fig.cap = "Error rate [(estimated - true)/true] for pairwise combinations of material and contaminant. Point and error bars represent the median and range (minimum - maximum) error rate for each material and contaminant combination, and error bars indicate range of observed error.", fig.lp="fig:">>=
+# contam_resid_summary %>%
+#       ungroup() %>% 
+#       mutate(target_facet = fct_reorder(target_facet, prop_resid_total, median)) %>%
+#       ggplot() +
+#             geom_point(aes(x = target_facet, y = prop_resid_total, 
+#                            color = contam_facet)) + theme_bw() +
+#             labs(x = "Material", y = "Total Error Rate", color = "Contaminant") +
+#             theme(legend.position = "bottom")
+
 contam_resid_summary %>%
-      ungroup() %>% mutate(target_facet = fct_reorder(target_facet, prop_resid_total, median)) %>%
+      ungroup() %>% 
+      mutate(target_facet = fct_reorder(target_facet, prop_resid_total, median)) %>%
       ggplot() +
-            geom_point(aes(x = target_facet, y = prop_resid_total, color = contam_facet)) + theme_bw() +
-            labs(x = "Material", y = "Total Normalized Residual", color = "Contaminant") +
-            theme(legend.position = "bottom")
+            geom_errorbar(aes(x = contam_facet, ymin = prop_resid_min, ymax = prop_resid_max)) + 
+            geom_point(aes(x = contam_facet, y = prop_resid_med, 
+                           color = contam_facet)) + theme_bw() +
+            labs(x = "Material", y = "Error Rate", color = "Contaminant") +
+            facet_wrap(~target_facet, nrow = 1) + 
+            theme(legend.position = "bottom", axis.text.x = element_blank())
 @
 
 The minimum detected contaminant proportion ranged from $10^{-3}$ to $10^{-4}$ for most simulated contaminant datasets.
@@ -266,8 +280,8 @@ Pearson's correlation coefficient was used to determine the correlation between 
 The estimated and true proportions were strongly correlated for all pairwise comparisons, with an overall median and 95\% confidence interval of \Sexpr{round(contam_corr_quant[2],5)} (\Sexpr{round(contam_corr_quant[1],5)} - \Sexpr{round(contam_corr_quant[3],5)}) (Fig. \ref{fig:contam_fig}).
 Eight of the pairwise comparisons have correlation coefficients below 0.99, all of which have \textit{S. aureus} as either the contaminant or the material.
 Two coefficients were below 0.98: \textit{S. aureus} contaminated with \textit{P. aeruginosa} and \textit{S. enterica}, 0.952 and 0.969 respectively.
-Normalized contaminant proportion residuals, were used to assess the accuracy of the PathoScope contaminant proportion estimates (Fig. \ref{fig:contam_resid}).
-The material genome strongly influenced the total normalized residuals with \textit{E. coli} and \textit{S. aureus} having consistently higher total normalized residuals compared to the other genomes.
+The total error rate was used to assess the accuracy of the PathoScope contaminant proportion estimates (Fig. \ref{fig:contam_resid}).
+The material genome strongly influenced the total error rate with \textit{E. coli} and \textit{S. aureus} having consistently higher total error rates compared to the other genomes.
 
 
 \section*{Discussion}

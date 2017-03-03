@@ -112,7 +112,9 @@ thresh_summary <- single_org_cum %>% filter(lca_rank == "species") %>%
       mutate(thresh_0.99 = if_else(cum_prop < 0.99, 1,0),
              thresh_0.999 = if_else(cum_prop < 0.999, 1, 0)) %>% 
       group_by(query_genus) %>% 
-      summarise(N = n(), below_0.99 = sum(thresh_0.99), below_0.999 = sum(thresh_0.999), 
+      summarise(N = n(), 
+                below_0.99 = sum(thresh_0.99), 
+                below_0.999 = sum(thresh_0.999), 
                 med_cum_prop = median(cum_prop))
 
 non_ec_shig_st_med_spec <- single_org_cum %>% 
@@ -132,9 +134,10 @@ shig_match_change <- shig_and_esch %>% filter(lca_rank == "species") %>%
 
 ## Phage 
 genus_add <- singleOrgMatchResults %>% select(Query, query_genus) %>% unique()
-phage_total <- singleOrgResults %>% filter(grepl("phage",Genome)) %>% group_by(Query) %>% 
-      summarise(total_phage_guess = sum(`Final Guess`)) %>% left_join(genus_add) %>% 
-      ungroup() %>% 
+phage_total <- singleOrgResults %>% 
+      filter(grepl("phage",Genome)) %>% group_by(Query) %>% 
+      summarise(total_phage_guess = sum(`Final Guess`)) %>% 
+      left_join(genus_add) %>% ungroup() %>% 
       mutate(query_genus = fct_reorder(query_genus, total_phage_guess)) %>% 
       filter(query_genus != "Peptoclostridium")
 
@@ -211,7 +214,8 @@ contam_prop_df <- contamMixMatchResults %>%
       mutate(mix = as.numeric(mix), mix_contam = 1 - mix) %>%
       filter(lca_contam_rank %in%
                    c("species","species group","subspecies")) %>%
-      mutate(lca_contam_rank = ifelse(lca_contam_rank == "genus", "genus","species")) %>%
+      mutate(lca_contam_rank = ifelse(lca_contam_rank == "genus", 
+                                      "genus","species")) %>%
       group_by(contam_ds, target_name, contam_name, mix_contam) %>%
       summarise(contam_prop = sum(`Final Guess`)) %>%
       mutate(contam_facet = str_sub(contam_name,1,4),
@@ -268,12 +272,14 @@ contam_fp <- contamMixMatchResults %>%
 # contam_esch_org <- "NEED TO CHECK" #taxidClassification[contam_esch_df$match_taxid][[1]]
 # contam_esch_species <- "NEED TO CHECK" #contam_esch_org$name[9]
 
-contam_yers_sal_df <- contam_fp %>% filter(target == "34", contaminant == "40625")
+contam_yers_sal_df <- contam_fp %>% filter(target == "34", 
+                                           contaminant == "40625")
 contam_yers_sal_prop <- contam_yers_sal_df$`Final Guess`
 contam_yers_sal_org <- taxidClassification[contam_yers_sal_df$match_taxid][[1]]
 contam_yers_sal_species <- contam_yers_sal_org$name[11]
 
-contam_yers_esch_df <- contam_fp %>% filter(target == "34", contaminant == "27739")
+contam_yers_esch_df <- contam_fp %>% filter(target == "34", 
+                                            contaminant == "27739")
 contam_yers_esch_prop <- contam_yers_esch_df$`Final Guess`
 contam_yers_esch_org <- taxidClassification[contam_yers_esch_df$match_taxid][[1]]
 contam_yers_esch_species <- contam_yers_esch_org$name[length(contam_yers_esch_org$name)]
