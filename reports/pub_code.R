@@ -101,8 +101,9 @@ single_species_match <- single_org_cum %>% filter(lca_rank %in% c("species")) %>
 
 ## Species prop
 spec_prop <- single_org_cum %>% filter(lca_rank %in% c("species")) %>% .$cum_prop
-spec_0.999 <- sum(spec_prop <0.999)
-spec_0.99 <- sum(spec_prop <0.99)
+spec_lt_0.999 <- sum(spec_prop < 0.999)
+spec_gt_0.99 <- sum(spec_prop > 0.99)
+spec_lt_0.99 <- sum(spec_prop < 0.99)
 ec_st_shig_spec_prop <- single_org_cum %>% 
       filter(lca_rank %in% c("species"), 
              query_genus %in% c("Shigella","Escherichia","Staphlyococcus")) %>%
@@ -189,9 +190,9 @@ contam_tbl_df <- contam_tbl_raw_df%>%
       # gather("key","value", -Taxname, -species, -aligned_reads) %>%
       ungroup() %>% select(-Taxname) %>% add_column(Taxname = rep_strains) %>% 
       rename(`Representative Strain` = Taxname, 
-             Species = species, 
+             `Match Proportion` = species, 
              `Aligned Reads` = aligned_reads) %>%
-      select(`Representative Strain`, Species , `Aligned Reads`,Mb)
+      select(`Representative Strain`, `Match Proportion` , `Aligned Reads`,Mb)
 
 
 contamMixMatchResultsMin <- contamMixMatchResults %>%
