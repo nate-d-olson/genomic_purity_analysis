@@ -40,7 +40,7 @@ get_taxid_classification_contam <- function(queryIdTbl, contamResults, taxidClas
 
 
 taxidClassification <-  get_taxid_classification_contam(queryIdTbl, 
-                                                        contamResults, 
+                                                        contamMixResults, 
                                                         taxidClassification)
 
 

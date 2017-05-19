@@ -1,4 +1,54 @@
-\documentclass[fleqn,10pt,lineno]{wlpeerj} % for journal submissions
+\documentclass[fleqn,10pt,lineno]{wlpeerj}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt} % for journal submissions
 \usepackage{hyperref} % \documentclass[fleqn,10pt]{wlpeerj} % for preprint submissions
 
 \title{Using metagenomic methods to detect organismal contaminants in microbial materials.}
@@ -19,13 +69,10 @@ We demonstrate the use of whole genome sequencing (WGS) and a metagenomic taxono
 Using this proposed method we characterized the types of false positive contaminants reported and the dependence of detectable contaminant concentration on material and contaminant genome using simulated WGS data.
 Using the proposed method to characterize microbial material purity will help to ensure that the materials used to validate pathogen detection assays, generate genome assemblies for database submission, and benchmark sequencing methods are free of contaminants adversely impacting measurement results.
 \end{abstract}
-
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \begin{document}
 
-<<include=FALSE>>=
-opts_chunk$set(concordance=TRUE)
-source("pub_code.R")
-@
+
 
 \flushbottom
 \maketitle
@@ -79,7 +126,7 @@ The annotated Genbank nt database provided by the PathoScope developers was used
 
 \subsection*{Baseline Assessment Using Individual Genomes}
 Simulated sequencing data from individual genomes was used to characterize the false positive contaminants reported by PathoScope.
-Sequence data was simulated for \Sexpr{sum(single_tbl_df$N)} strains, from 9 genera (Table \ref{tab:single_org}, Supplemental Table 1).
+Sequence data was simulated for 406 strains, from 9 genera (Table \ref{tab:single_org}, Supplemental Table 1).
 These genera were selected based on relevance to public health and biothreat detection.
 We will refer to the genome used to generate the reads as the material genome.
 The genomes included in the simulation study were limited to the number of closed genomes in the Genbank database (\url{http://www.ncbi.nlm.nih.gov/genbank/}, accessed 10/18/2013) belonging to the genera of interest (Table \ref{tab:single_org}).
@@ -88,9 +135,13 @@ The taxonomic hierarchy for the material genome and simulated read assignment ma
 
 \subsection*{Contaminant Detection Assessment}
 
-<< contam_simulation, fig.cap = "Diagram of simulated contaminant dataset workflow for two individual genomes. Contaminant proportions (p) of 0.2 and 0.4 are used for demonstration purposes. The reads were initially simulated from individual genomes. The blue genome is twice the size of the orange genome, and twice as many reads are simulated for the blue genome compared to the orange in order to obtain the same coverage. The simulated reads were aligned to the reference database using PathoMap. The resulting alignment file, in SAM file format, was randomly subset based on the desired proportions. Complementary subsets of SAM files (e.g. 0.8 material and 0.2 contaminant) from the two genomes were merged to create individual simulated contaminant datasets.  Due to the different sized genomes, the simulated contaminant datasets have different numbers of reads. Taxonomic assignment summary tables were generated from simulated contaminant datasets using PathoID.", echo=FALSE>>=
-knitr::include_graphics("figure/contam_simulation.png")
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}
+\includegraphics[width=\maxwidth]{figure/contam_simulation} \caption[Diagram of simulated contaminant dataset workflow for two individual genomes]{Diagram of simulated contaminant dataset workflow for two individual genomes. Contaminant proportions (p) of 0.2 and 0.4 are used for demonstration purposes. The reads were initially simulated from individual genomes. The blue genome is twice the size of the orange genome, and twice as many reads are simulated for the blue genome compared to the orange in order to obtain the same coverage. The simulated reads were aligned to the reference database using PathoMap. The resulting alignment file, in SAM file format, was randomly subset based on the desired proportions. Complementary subsets of SAM files (e.g. 0.8 material and 0.2 contaminant) from the two genomes were merged to create individual simulated contaminant datasets.  Due to the different sized genomes, the simulated contaminant datasets have different numbers of reads. Taxonomic assignment summary tables were generated from simulated contaminant datasets using PathoID.}\label{fig:contam_simulation}
+\end{figure}
+
+
+\end{knitrout}
 
 
 Simulated contaminated datasets were used to evaluate how contaminant detection varied by material and contaminant genome over a range of contaminant concentrations.
@@ -130,53 +181,70 @@ First, we assessed the baseline performance of the proposed contaminant detectio
 We applied our method to simulated sequencing data from individual genomes. 
 All reads assigned to a different taxa than the genome the reads were simulated from were defined as false positive contaminants. 
 (This assumes the genome sequence is contaminant free.) 
-Our analysis included taxonomic classification results for simulated sequencing data  from \Sexpr{length(spec_prop)} genomes, representing 10 different genera (Table \ref{tab:single_org}, Supplemental Table 1).
+Our analysis included taxonomic classification results for simulated sequencing data  from 406 genomes, representing 10 different genera (Table \ref{tab:single_org}, Supplemental Table 1).
 The method was evaluated using the estimated proportion of species level matches.
 The estimated match proportion is the sum of the Final Guess values, proportions reported by PathoScope for a taxa, for all correct species level matches.
-For \Sexpr{spec_gt_0.99} of the \Sexpr{length(spec_prop)} genomes, PathoScope estimated that greater than 99\% of the material was the expected species (Fig. \ref{fig:species_prop}).
-Of the remaining \Sexpr{spec_lt_0.99} genomes, the estimated proportion identified as the correct species varied by material genus.
+For 301 of the 406 genomes, PathoScope estimated that greater than 99\% of the material was the expected species (Fig. \ref{fig:species_prop}).
+Of the remaining 105 genomes, the estimated proportion identified as the correct species varied by material genus.
 All of the \textit{Shigella} genomes and only 44 of the 49 \textit{Staphylococcus} genomes had estimated proportions for the correct species less than than 0.9.
 87 of those 105 genomes come from \textit{Shigella}, \textit{Staphylococcus}, or \textit{Escherichia}.
-Excluding \textit{Shigella}, \textit{Escherichia}, and \textit{Staphylococcus}, the median estimated proportion matching at the species level or higher is  \Sexpr{round(non_ec_shig_st_med_spec,4)}.
+Excluding \textit{Shigella}, \textit{Escherichia}, and \textit{Staphylococcus}, the median estimated proportion matching at the species level or higher is  0.9996.
 We characterized false positive contaminants detected in genomes from the genera \textit{Shigella}, \textit{Escherichia}, and \textit{Staphylococcus}, as well as genomes of other species with match proportions less than 0.9.
 Two types of false positive contaminants were identified: (1) contaminants that were genomically indistinguishable from the material and (2) contaminants due to errors in the reference database.
 
-<<single_org, results='asis', echo=FALSE, message=FALSE >>=
-single_tbl_df %>% xtable::xtable(label = "tab:single_org", digits = 2, caption = "Breakdown of the number of genomes by genus used to generate single genome simulated datasets. N indicates the number of genomes (406 total), and Genome Size is presented as the median and range (minimum to maximum).") %>%
-       print(include.rownames=FALSE, 
-             sanitize.text.function = identity)
-@
+% latex table generated in R 3.3.3 by xtable 1.8-2 package
+% Fri Mar 31 10:59:20 2017
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrl}
+  \hline
+Genus & N & Genome Size (Mb) \\ 
+  \hline
+\textit{Bacillus} &  76 & 5.05 (3.07-7.59) \\ 
+  \textit{Clostridium} &  32 & 4.02 (2.55-6.67) \\ 
+  \textit{Escherichia} &  62 & 5.11 (3.98-5.86) \\ 
+  \textit{Francisella} &  18 & 1.89 (1.85-2.05) \\ 
+  \textit{Listeria} &  39 & 2.97 (2.78-3.11) \\ 
+  \textit{Pseudomonas} &  57 & 6.18 (4.17-7.01) \\ 
+  \textit{Salmonella} &  44 & 4.88 (4.46-5.27) \\ 
+  \textit{Shigella} &  10 & 4.74 (4.48-5.22) \\ 
+  \textit{Staphylococcus} &  49 & 2.82 (2.69-3.08) \\ 
+  \textit{Yersinia} &  19 & 4.73 (4.62-4.94) \\ 
+   \hline
+\end{tabular}
+\caption{Breakdown of the number of genomes by genus used to generate single genome simulated datasets. N indicates the number of genomes (406 total), and Genome Size is presented as the median and range (minimum to maximum).} 
+\label{tab:single_org}
+\end{table}
 
-<<species_prop, fig.cap = "Species level or higher estimated match proportion varies by material genus. The estimated match proportion is the total proportion of the material with correct taxonomic assignments to the genome species, subspecies, strain, or isolate level. The Estimated Match Proportions shown are the Final Guess values in the PathoScope results table. Each point is calculated for a genome from a different isolate within the genus. The vertical dashed line indicates the 0.99 estimated match proportion. Orange points are genomes with species level estimated match proportions less than 0.90 and blue points greater than or equal to 0.90.", echo=FALSE>>=
-ggplot(single_species_match) +
-      geom_jitter(aes(x= query_genus_reorder, y = cum_prop,color = match_thresh),
-                  alpha = 0.5, width = 0.25) +
-      geom_hline(aes(yintercept = 0.99), linetype = 2) +
-      theme_bw() + theme(axis.text.y = element_text(face = "italic")) +
-      labs(x = "Material Genus", y = "Estimated Match Proportion") + coord_flip() +
-      scale_color_manual(values = c("darkblue","darkorange"),guide = FALSE)
-@
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}
+\includegraphics[width=\maxwidth]{figure/species_prop-1} \caption[Species level or higher estimated match proportion varies by material genus]{Species level or higher estimated match proportion varies by material genus. The estimated match proportion is the total proportion of the material with correct taxonomic assignments to the genome species, subspecies, strain, or isolate level. The Estimated Match Proportions shown are the Final Guess values in the PathoScope results table. Each point is calculated for a genome from a different isolate within the genus. The vertical dashed line indicates the 0.99 estimated match proportion. Orange points are genomes with species level estimated match proportions less than 0.90 and blue points greater than or equal to 0.90.}\label{fig:species_prop}
+\end{figure}
+
+
+\end{knitrout}
 
 Two genomes can be genomically indistinguishable if the majority of the two genome sequences are highly similar.
 Phylogenetically closely related organisms are expected to have large genomic regions with high levels of similarity.
 Phylogenetic similarity is at least partially responsible for the low species level estimated match proportion for  \textit{Shigella} and \textit{Escherichia}, as \textit{Shigella} is not phylogenetically distinct from \textit{E. coli} \citep{lan2002escherichia}.
-When including matches to \textit{E. coli} as species level matches, the median estimated match proportions for \textit{Shigella} genomes increases from \Sexpr{round(shig_match_change[2],2)} to \Sexpr{round(shig_match_change[1],2)}.
-Another example of false positives at the species level due to phylogenetic similarity was low match percentage for \textit{Clostridium autoethanogenum} strain DSM10061, where \textit{Clostridium ljungdahlii} strain DSM13528 was assigned the top proportion of reads (\Sexpr{ round(clos_auto_top_value,3)}) instead of \textit{C. autoenthanogenum}.
+When including matches to \textit{E. coli} as species level matches, the median estimated match proportions for \textit{Shigella} genomes increases from 0.66 to 0.92.
+Another example of false positives at the species level due to phylogenetic similarity was low match percentage for \textit{Clostridium autoethanogenum} strain DSM10061, where \textit{Clostridium ljungdahlii} strain DSM13528 was assigned the top proportion of reads (0.998) instead of \textit{C. autoenthanogenum}.
 False positive contaminants due to phylogenetic similarity are not limited to a closely related species or genus.
 \textit{Escherichia coli} strain UMNK88 low match proportions were due to two bacteria in the same family as \textit{E. coli}
-(Enterobacteriaceae): \textit{Providencia stuartii} and \textit{Salmonella enterica} subsp. \textit{enterica} serovar Heidelberg, which had estimated proportions of \Sexpr{ round(ecoli_UMNK88_prov_value, 2)} and \Sexpr{ round(ecoli_UMNK88_sal_value, 2)}, respectively.
+(Enterobacteriaceae): \textit{Providencia stuartii} and \textit{Salmonella enterica} subsp. \textit{enterica} serovar Heidelberg, which had estimated proportions of 0.11 and 0.03, respectively.
 False positives were also due to shared genetic material between bacteria and their phage.
 Phage were identified as false positive contaminants at varying proportions for genomes from all genera investigated, excluding \textit{Francisella} (Fig. \ref{fig:phage_prop}).
 The low proportions of species level matches for \textit{E. coli} and \textit{Staphylococcus} are partly due to relatively higher proportions of matches to phage, compared to the other genera investigated.
 Based on phage names, all of the false positive phage contaminants were specific to the taxonomy of the material genome.
 
-<<phage_prop, echo=FALSE, message=FALSE, fig.cap="Estimated proportion of phage in the simulated single genome datasets by genera. Final Guess values reported by PathoScope used to calculate estimated proportions. No phage were reported by PathoScope for any \\textit{Francisella} genomes.">>=
-ggplot(phage_total) +
-      geom_boxplot(aes(x = query_genus, y = total_phage_guess), color = "darkblue") +
-      labs(x = "Material Genus", y = "Proportion Phage") +
-      theme_bw() + theme(axis.text.y = element_text(face = "italic")) +
-      coord_flip()
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}
+\includegraphics[width=\maxwidth]{figure/phage_prop-1} \caption[Estimated proportion of phage in the simulated single genome datasets by genera]{Estimated proportion of phage in the simulated single genome datasets by genera. Final Guess values reported by PathoScope used to calculate estimated proportions. No phage were reported by PathoScope for any \textit{Francisella} genomes.}\label{fig:phage_prop}
+\end{figure}
+
+
+\end{knitrout}
 
 
 False positive contaminants were also due to potential errors in the database such as unclassified or misclassified sequences and the presence of genome assemblies in the database containing sequence data from organismal or reagent contaminants.
@@ -194,12 +262,30 @@ The eukaryotic false positive contaminants are likely due to contaminants in the
 
 \subsection*{Contaminant Detection Assessment}
 
-<<contam_table, results='asis', echo=FALSE, message=FALSE>>=
-contam_tbl_df %>% xtable(label = "tab:contam_table", digits = 2,
-                         caption = "Representative strains used in simulated contaminant datasets, based on available type strains. Match proportion indicates the estimated proportion of the material assigned to the correct species by PathoScope. Aligned Reads is the number of simulated reads aligned to the database by PathoMap. DNA size is the total size of the genome, chromosome and plasmids in Mb.") %>%
-      print(include.rownames=FALSE, sanitize.text.function = identity, 
-             scalebox='0.85')
-@
+% latex table generated in R 3.3.3 by xtable 1.8-2 package
+% Fri Mar 31 10:59:21 2017
+\begin{table}[ht]
+\centering
+\scalebox{0.85}{
+\begin{tabular}{lrrr}
+  \hline
+Representative Strain & Match Proportion & Aligned Reads & Mb \\ 
+  \hline
+\textit{Bacillus anthracis} str. Ames & 1.00 & 227270 & 5.23 \\ 
+  \textit{Clostridium botulinum} A str. Hall & 1.00 & 163500 & 3.76 \\ 
+  \textit{Escherichia coli} O157:H7 str. EC4115 & 0.98 & 247990 & 5.70 \\ 
+  \textit{Francisella tularensis} subsp. \textit{tularensis} SCHU S4 & 1.00 & 82290 & 1.89 \\ 
+  \textit{Pseudomonas aeruginosa} PAO1 & 1.00 & 272360 & 6.26 \\ 
+  \textit{Salmonella enterica} subsp. \textit{enterica} serovar Typhimurium str. D23580 & 1.00 & 212140 & 4.88 \\ 
+  \textit{Staphylococcus aureus} subsp. \textit{aureus} ED133 & 0.98 & 123150 & 2.83 \\ 
+  \textit{Yersinia pestis} CO92 & 1.00 & 209970 & 4.83 \\ 
+   \hline
+\end{tabular}
+}
+\caption{Representative strains used in simulated contaminant datasets, based on available type strains. Match proportion indicates the estimated proportion of the material assigned to the correct species by PathoScope. Aligned Reads is the number of simulated reads aligned to the database by PathoMap. DNA size is the total size of the genome, chromosome and plasmids in Mb.} 
+\label{tab:contam_table}
+\end{table}
+
 
 
 Finally, contaminant detection was assessed by combining subsets of simulated data from two organisms at defined proportions,
@@ -216,54 +302,30 @@ Additionally, the \textit{F. tularensis} dataset is much smaller relative to the
 Therefore, with fewer reads in the dataset and genomes in the database, the probability that the randomly selected subset of reads spiked into the simulated material dataset contains reads allowing for contaminant detection is lower. 
 A few contaminants were detected at proportions as low as $10^{-8}$, such as when \textit{Yersinia} contaminated with \textit{E. coli} or \textit{S. enterica}.
 However, contaminants detected at lower proportions were due to reads simulated from the material genome incorrectly assigned to the contaminant.
-The simulated contaminant-free \textit{Y. pestis} material dataset had false positive reads assigned to two of the contaminants resulting in artificially low contaminant detection proportions for \textit{Salmonella enterica} subsp. {enterica} serovar Typhi str. CT18 and \textit{Escherichia coli} O104:H4 str. 2011C-3493 with estimated proportions of \Sexpr{signif(contam_yers_sal_prop,3)}and \Sexpr{signif(contam_yers_esch_prop,3)}, respectively. 
+The simulated contaminant-free \textit{Y. pestis} material dataset had false positive reads assigned to two of the contaminants resulting in artificially low contaminant detection proportions for \textit{Salmonella enterica} subsp. {enterica} serovar Typhi str. CT18 and \textit{Escherichia coli} O104:H4 str. 2011C-3493 with estimated proportions of \ensuremath{1.76\times 10^{-5}}and \ensuremath{3.77\times 10^{-8}}, respectively. 
 The simulated dataset coverage accounts for the observed minimum dectected contaminant proportion.
 As the individual datasets were simulated at 20X coverage, \textless 300,000 reads were simulated for each dataset, and on average \textless 3 reads were spiked into the material datasets for simulated contaminant proportions $\leq$ $10^{-5}$ (Fig. \ref{fig:contam_fig}).
 
-<<contam_fig, echo = FALSE, message = FALSE, fig.cap = "The relationship between the proportion of reads matching the contaminant species and the proportion of simulated contaminant reads. Plots are split by the material species with line and point color indicating contaminant species. Dashed line indicates the expected 1:1 correlation between the proportion of reads matching the expected contaminant and the proportion of reads simulated from the contaminant. The contaminant proportion was underestimated for points below the dashed line and overestimated for points above the dashed line.", fig.lp="fig:">>=
-contamMixMatchResults %>% mutate(mix = as.numeric(mix),
-                                 mix_contam = if_else(mix != 1, 1 - mix, 0.1e-8)) %>%
-      filter(lca_contam_rank %in%
-                   c("species","species group","subspecies")) %>%
-      mutate(lca_contam_rank = ifelse(lca_contam_rank == "genus", "genus","species")) %>%
-      group_by(contam_ds, target_name, contam_name, mix_contam) %>%
-      summarise(contam_prop = sum(`Final Guess`)) %>%
-            mutate(contam_facet = str_sub(contam_name,1,4),
-                   target_facet = str_sub(target_name,1,4),
-                   contam_label = str_replace_all(contam_name, "_", " "),
-                   contam_label = str_replace(contam_label, " uid.*","")) %>%
-      ggplot(aes(x = mix_contam, y = contam_prop)) +
-            geom_abline(aes(slope = 1, intercept = 0), linetype = 2, color = "grey60") +
-            geom_line(aes(color = contam_facet), alpha = 0.5) +
-            geom_point(aes(color = contam_facet), alpha = 0.5) +
-            facet_wrap(~target_facet, ncol = 2) +
-            scale_x_log10() + scale_y_log10() +
-            theme_bw() +
-            theme(axis.text.x = element_text(angle = 90), legend.position = "bottom") +
-            guides(color = guide_legend(nrow = 2)) +
-            labs(x = "Proportion of Reads Simulated from the Contaminant",
-                 y = "Proportion of Matched Reads",
-                 color = "Contaminant")
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}
+\includegraphics[width=\maxwidth]{figure/contam_fig-1} \caption[The relationship between the proportion of reads matching the contaminant species and the proportion of simulated contaminant reads]{The relationship between the proportion of reads matching the contaminant species and the proportion of simulated contaminant reads. Plots are split by the material species with line and point color indicating contaminant species. Dashed line indicates the expected 1:1 correlation between the proportion of reads matching the expected contaminant and the proportion of reads simulated from the contaminant. The contaminant proportion was underestimated for points below the dashed line and overestimated for points above the dashed line.}\label{fig:contam_fig}
+\end{figure}
 
 
-<<contam_resid, echo = FALSE, message = FALSE, fig.cap = "Error rate, $(estimated - true)/true$, for pairwise combinations of material and contaminant. Points and error bars represent the median and range (minimum - maximum) error rate for each material and contaminant combination.", fig.lp="fig:">>=
+\end{knitrout}
 
-contam_resid_summary %>%
-      ungroup() %>% 
-      mutate(target_facet = fct_reorder(target_facet, prop_resid_total, median)) %>%
-      ggplot() +
-            geom_errorbar(aes(x = contam_facet, ymin = prop_resid_min, ymax = prop_resid_max)) + 
-            geom_point(aes(x = contam_facet, y = prop_resid_med, 
-                           color = contam_facet)) + theme_bw() +
-            labs(x = "Material", y = "Error Rate", color = "Contaminant") +
-            facet_wrap(~target_facet, nrow = 1) + 
-            theme(legend.position = "bottom", axis.text.x = element_blank())
-@
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}
+\includegraphics[width=\maxwidth]{figure/contam_resid-1} \caption[Error rate, $(estimated - true)/true$, for pairwise combinations of material and contaminant]{Error rate, $(estimated - true)/true$, for pairwise combinations of material and contaminant. Points and error bars represent the median and range (minimum - maximum) error rate for each material and contaminant combination.}\label{fig:contam_resid}
+\end{figure}
+
+
+\end{knitrout}
 
 In addition to the minimum detected contaminant proportion, we also evaluated the quantitative accuracy of the contaminant detection method.
 Pearson's correlation coefficient was used to determine the correlation between the estimated contaminant and true contaminant proportions for simulated contaminant proportions greater than $10^{-6}$.
-The estimated and true proportions were strongly correlated for all pairwise comparisons, with an overall median and 95\% confidence interval of \Sexpr{round(contam_corr_quant[2],5)} (\Sexpr{round(contam_corr_quant[1],5)} - \Sexpr{round(contam_corr_quant[3],5)}) (Fig. \ref{fig:contam_fig}).
+The estimated and true proportions were strongly correlated for all pairwise comparisons, with an overall median and 95\% confidence interval of 0.99945 (0.96945 - 1) (Fig. \ref{fig:contam_fig}).
 Eight of the pairwise comparisons have correlation coefficients below 0.99, all of which have \textit{S. aureus} as either the contaminant or the material.
 Two coefficients were below 0.98: \textit{S. aureus} contaminated with \textit{P. aeruginosa} and \textit{S. enterica}, 0.952 and 0.969 respectively.
 The total error rate was used to assess the accuracy of the PathoScope contaminant proportion estimates (Fig. \ref{fig:contam_resid}).

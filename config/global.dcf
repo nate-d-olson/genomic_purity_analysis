@@ -1,11 +1,11 @@
-version: 0.6
+version: 0.7
 data_loading: TRUE
 cache_loading: TRUE
 recursive_loading: FALSE
 munging: TRUE
 logging: FALSE
 load_libraries: TRUE
-libraries: tidyr, dplyr, ggplot2, stringr, purrr, readr, taxize, knitr
+libraries: tidyverse, stringr, forcats, taxize, knitr
 as_factors: FALSE
 data_tables: FALSE
 attach_internal_libraries: FALSE

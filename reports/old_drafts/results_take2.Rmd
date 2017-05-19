@@ -1,0 +1,606 @@
+---
+title: "Genomic Purity Results Revisions"
+author: "Nate Olson"
+date: "September 30, 2016"
+output: html_document
+---
+Need to think about how to divide up the single genome datasets to look at the individual types of issues.
+1. phage and odd balls - low max
+2. taxonomic ambiguities - low min
+```{r load_prj, echo = FALSE, warning=FALSE, message=FALSE}
+library(ProjectTemplate)
+wd <- getwd()
+setwd("../")
+load.project()
+setwd(wd)
+library(forcats)
+```
+
+```{r singleOrgTable}
+## single org specificity data munging
+single_tbl_df <- singleOrgMatchResults %>%
+      filter(query_genus %in% c("Bacillus", "Clostridium", "Escherichia",
+                                  "Francisella", "Listeria", "Pseudomonas",
+                                  "Salmonella", "Shigella", "Staphylococcus",
+                                  "Yersinia")) %>%
+      select(query_genus, Query, query_taxid) %>%
+      rename(Taxid = query_taxid) %>% left_join(queryMeta) %>%
+      distinct() %>%
+      group_by(query_genus, Query) %>%
+      mutate(`DNA  length` = as.numeric(`DNA  length`)) %>%
+      summarise(genome_size = sum(`DNA  length`)) %>%
+      group_by(query_genus) %>%
+      summarise(count = n(), size_median = median(genome_size, na.rm = T)/1e6,
+               size_min = min(genome_size, na.rm = T)/1e6,
+               size_max = max(genome_size, na.rm = T)/1e6) %>%
+      mutate(`Genome Size (Mb)` = paste0(round(size_median,2) ," (",
+                                         round(size_min,2), "-",
+                                         round(size_max, 2), ")"),
+             query_genus = paste0("\\textit{",query_genus,"}")) %>%
+      select(-size_min, -size_max, -size_median) %>%
+      rename(Genus = query_genus, N = count) %>% arrange(desc(N))
+```
+
+```{r single_cum_munge}
+species_lvls <- c("species group", "species subgroup", "subspecies")
+single_org_cum <- singleOrgMatchResults %>%
+      filter(query_genus %in% c("Bacillus","Clostridium","Escherichia",
+                                "Francisela","Listeria","Pseudomonas",
+                                "Salmonella","Shigella","Staphylococcus","Yersinia")) %>%
+      mutate(lca_rank = if_else(lca_rank %in% species_lvls,
+                               "species", lca_rank)) %>%
+      group_by(Query, lca_rank, query_genus) %>%
+      summarise(total_prop = sum(`Final Guess`)) %>%
+      spread(lca_rank, total_prop,fill = 0)  %>%
+      gather(lca_rank, total_prop, -Query, -query_genus)  %>%
+      group_by(Query) %>%
+       mutate(lca_rank = factor(lca_rank, levels = c("species", "genus",
+                                    "family", "order",
+                                    "class","phylum",
+                                    "superkingdom"))) %>%
+      arrange(lca_rank) %>%
+      mutate(cum_prop = cumsum(total_prop))
+```
+
+
+```{r shigella_ec_cum_munge}
+shigella_class <- singleOrgMatchResults  %>%
+      filter(query_genus == "Shigella", lca_name == "Enterobacteriaceae")  %>%
+      .$match_taxid %>% unique()  %>% classification(db = 'ncbi')
+
+e_coli_matches <- shigella_class  %>%
+      map_df(bind_rows, .id = "query_id") %>%
+      filter(name == "Escherichia coli")
+
+singleOrgMatchResults_shigella_ecoli <- singleOrgMatchResults  %>%
+      mutate(lca_name = if_else(match_taxid %in% e_coli_matches$query_id &
+                                      query_genus == "Shigella",
+                                "Echerichia coli", lca_name),
+             lca_rank = if_else(match_taxid %in% e_coli_matches$query_id &
+                                      query_genus == "Shigella",
+                                "species", lca_rank),
+             lca_id = if_else(match_taxid %in% e_coli_matches$query_id &
+                                    query_genus == "Shigella",
+                              "562", lca_id))
+
+species_lvls <- c("species group", "species subgroup", "subspecies")
+single_org_cum_ec <- singleOrgMatchResults_shigella_ecoli %>%
+      filter(query_genus == "Shigella") %>%
+      mutate(lca_rank = if_else(lca_rank %in% species_lvls,
+                                "species", lca_rank)) %>%
+      group_by(Query, lca_rank, query_genus) %>%
+      summarise(total_prop = sum(`Final Guess`)) %>%
+      spread(lca_rank, total_prop,fill = 0)  %>%
+      gather(lca_rank, total_prop, -Query, -query_genus)  %>%
+      group_by(Query) %>%
+      mutate(lca_rank = factor(lca_rank, levels = c("species", "genus",
+                                                    "family", "order",
+                                                    "class","phylum",
+                                                    "superkingdom"))) %>%
+      arrange(lca_rank) %>%
+      mutate(cum_prop = cumsum(total_prop))
+```
+
+```{r}
+## contam Table munging
+species_lvls <- c("species","species group","subspecies")
+contam_tbl_df <- contamSingleOrgMatchResults %>%
+      mutate(lca_rank = if_else(lca_rank %in% species_lvls,
+                                "species",lca_rank)) %>%
+      filter(lca_rank %in% c("species","genus")) %>%
+      group_by(Query, lca_rank) %>%
+      summarize(total_prop = sum(`Final Guess`)) %>%
+      spread(lca_rank,total_prop) %>%
+      left_join(queryMeta) %>%
+      mutate(`DNA length` = as.numeric(`DNA  length`),
+             `DNA type` = if_else(`DNA length` < 1000000, "P","C")) %>%
+      select(-GI, -Taxid) %>%
+      group_by(Taxname, `DNA type`, species) %>%
+      summarise(Acc = str_c(Accession, collapse = ", "),
+                Mb = round(sum(`DNA length`)/1e6,digits = 2)) %>%
+      gather("key","value", -Taxname, -`DNA type`, -species) %>%
+      mutate(key = paste(`DNA type`, key)) %>%
+      ungroup() %>% select(-`DNA type`) %>% spread(key,value) %>%
+      rename(`Representative Strain` = Taxname, Species = species) %>%
+      select(`Representative Strain`, Species ,
+             `C Mb`, `C Acc`, `P Mb`, `P Acc`)
+```
+
+```{r single_org, results='asis', echo=FALSE, message=FALSE}
+single_tbl_df %>% xtable::xtable(label = "tab:single_org", digits = 2,
+                         caption = "Breakdown of the number of genomes by genus used to generate single genome simulated datasets. N indicates the number of genomes, and Genome Size is presented as the median and range (minimum to maximum) genome size") %>%
+      print(include.rownames=FALSE, sanitize.text.function = identity)
+```
+```{r}
+spec_prop <- single_org_cum %>% filter(lca_rank %in% c("species")) %>% .$cum_prop
+spec_0.999 <- sum(spec_prop <0.999)
+spec_0.99 <- sum(spec_prop <0.99)
+ec_st_shig_spec_prop <- single_org_cum %>% 
+      filter(lca_rank %in% c("species"), 
+             query_genus %in% c("Shigella","Escherichia","Staphlyococcus")) %>%
+      .$cum_prop
+ec_st_shig_spec_0.99 <- sum(ec_st_shig_spec_prop <0.99)
+thresh_summary <- single_org_cum %>% filter(lca_rank == "species") %>% mutate(thresh_0.99 = if_else(cum_prop < 0.99, 1,0),
+                                                            thresh_0.999 = if_else(cum_prop < 0.999, 1, 0)) %>% 
+      group_by(query_genus) %>% 
+      summarise(N = n(), below_0.99 = sum(thresh_0.99), below_0.999 = sum(thresh_0.999), med_cum_prop = median(cum_prop))
+
+## Potentially add to table 1 or species_prop figure
+thresh_summary
+```
+
+```{r}
+colSums(thresh_summary[,-1])
+```
+
+
+```{r}
+non_ec_shig_st_med_spec <- single_org_cum %>% 
+      filter(lca_rank %in% c("species"), 
+             !query_genus %in% c("Shigella","Escherichia","Staphlyococcus")) %>%
+      .$cum_prop %>% median()
+```
+
+
+```{r}
+shig_only <- single_org_cum %>% filter(query_genus == "Shigella") %>% 
+      mutate(match_type = "shigella_only")
+
+shig_and_esch <- single_org_cum_ec %>% mutate(match_type = "esch_and_shig")
+shig_and_esch <- bind_rows(shig_only, shig_and_esch) %>% 
+      mutate(query_group = paste(Query,match_type))
+shig_match_change <- shig_and_esch %>% filter(lca_rank == "species") %>% 
+      group_by(match_type) %>% 
+      summarise(med_species = median(cum_prop))
+```
+
+```{r phage_match}
+genus_add <- singleOrgMatchResults %>% select(Query, query_genus) %>% unique()
+phage_total <- singleOrgResults %>% filter(grepl("phage",Genome)) %>% group_by(Query) %>% 
+      summarise(total_phage_guess = sum(`Final Guess`)) %>% left_join(genus_add) %>% 
+      ungroup() %>% 
+      mutate(query_genus = fct_reorder(query_genus, total_phage_guess))
+```
+
+
+# Single Genome - Baseline Assessment
+We first assessed baseline performance of the method proposed method for characterizing organismal contaminants of microbial materials. 
+Our analysis included taxonomic classification results for sequencing data simulated from \Sexpr{sum(single_tbl_df$N)} genomes, representing 9 different genera (Table \ref{tab:single_org}). 
+For \Sexpr{spec_0.99} out of \Sexpr{length(spec_prop)} genomes, Pathoscope estimated that 99% of the material was the same species as the genome the sequencing data was simulated from (Fig. \ref{fig:species_prop}). 
+The estimated proportion of the material identified as the correct species varies by genus, with none of the \textit{Shigella} genomes having estimated proportions greater than 99% and five of the 49 \textit{Staphylococcus} genomes having proportions greater than 99%. \textit{Shigella} and \textit{Staphlyococcus} along with \textit{Escherichia} represent 87 of the 105 genomes with less than 99% estimated match proportions at the species level. Excluding \textit{Shigella}, \texit{Escherichia}, and \textit{Staphylococcus} the median estimated proportion matching at the species level or higher is  \Sexpr{non_ec_shig_st_med_spec}. The low species level match proportions were due to false positive contaminants as the input sequencing data were simulated from individual genome sequences.
+
+```{r species_prop, fig.cap = "Species level estimated match proportion varies by material genus. The proportion of the material, simulated sequence data from individual genomes, was estimated by Pathoscope. The estimated match proportion is the total proportion of the material with taxonomic assigment to the genome species, subspecies, strain, or isolate levels. The vertical dashed line indicates the 99% match proportion. Orange points are genomes with species level match proportions less than 90% and blue points greater than 90%"}
+single_species_match <- single_org_cum %>% filter(lca_rank %in% c("species")) %>% 
+      ungroup() %>% 
+      mutate(query_genus = as.factor(query_genus), 
+             query_genus_reorder = fct_reorder(query_genus, cum_prop, .desc = TRUE),
+             match_thresh = if_else(cum_prop < 0.90,"darkorange","darkblue"))
+
+ggplot(single_species_match) + geom_jitter(aes(x= query_genus_reorder, y = cum_prop,color = match_thresh), 
+                             alpha = 0.5, width = 0.25) + #,outlier.color = "darkorange") + 
+      geom_hline(aes(yintercept = 0.99), linetype = 2) +
+      theme_bw() + theme(axis.text.y = element_text(face = "italic")) + 
+      labs(x = "Material Genus", y = "Estimated Match Proportion") + coord_flip() +
+      scale_color_manual(values = c("darkblue","darkorange"),guide = FALSE)
+```
+
+We characterized the false postive contaminants responsible for the observed low match proportions for the \textit{Shigella}, \textit{Escherichia}, and \textit{Staphylococcus} genus, as well as genomes of other genera with species match proportions less than 90%. 
+The false positive contmainants were split into three types, taxonomic ambiguities, phage, and __OTHERS__. 
+Taxonomic ambiguities were defined as contaminants with highly similar genome sequences but taxonomic classified as different species. 
+For example the low match percentage for \textit{Clostridium autoethanogenum} strain DSM10061 was due to  \textit{Clostridium ljungdahlii} strin DSM13528 had the top proportion instead of \textit{C. autoenthanogenum}. 
+Similarly, \textit{Escherichia coli} strain UMNK88 low match, due to two bacteria in the same family as \textit{E. coli}, Enterobacteriaceae. \texit{Providencia stuartii} and \textit{Salmonella enterica} subsp. enterica serovar Heidelberg had estimated proportions of 0.1 and 0.02 respectively. 
+Taxonomic ambiguities can be due to a species being incorrectly assigned to the wrong taxonomic group for example the \textit{Bacillus} genome with species match proportion close to zero, \textit{Bacillus infantis} string NRRL B 14911. 
+While the \textit{B. infantis} strain was originally classified as \textit{Bacillus} the species is phylogenetically distinct from other members of the genus \citep{ko2006bacillus}. 
+Taxonomic ambiguities are at least partially responsible for the low species level match proportions for  \textit{Shigella} and \textit{Escherichia}. When including matches to E. coli as species level matches, the median match proprtions increases from \Sexpr{shig_match_change[2,1] to \Sexpr{shig_match_change[2,2]. 
+Though considerably higher, this match proportion is still low relative to the other genera (__[NOTE Table with median species level match proportions]__. 
+
+Phage, the second type of false positive contaminant, were reported by Pathoscope as present at varing proportions for genomes from all 9 genera (Fig. \ref{phage_prop}). 
+Most noteably, low proportions of species level matches for \textit{E. coli} and \textit{Staphylococcus} can partially be attributed to relatively high proportions of matches to phage, compared to the other genera investigated . 
+All of the phage false postive contmaninants were specific to the taxonomy of the genome the sequence data was simulated from. 
+The phage contaminants may represent errors in the database, where sequence data from the host organisms genome is missassembled into the phage genome, or where sequence data is shared between the phage and the host, such as CRISPR, and lysogenic phage (REF).
+
+```{r phage_prop}
+ggplot(phage_total) + 
+      geom_boxplot(aes(x = query_genus, y = total_phage_guess), color = "darkblue") + 
+      labs(x = "Material Genus", y = "Proportion Phage") +
+      theme_bw() + theme(axis.text.y = element_text(face = "italic")) +
+      coord_flip()
+      
+```
+
+Method Artifacts
+- Errors in database, assembly errors - contaminants in genome assmeblies,....
+
+- \textit{Bacillus} genome with low species level match proportion is \textit{Bacillus subtilis} BEST7613. Pathoscope reported that 47% of the material was \textit{Synechocystis} sp. PCC 6803 substr. PCC-P \citep{kanesaki2012identification}. \textit{Synechocystis} is in a different phylum compared to \textit{Bacillus}, cyanobacteria versus firmicutes, therefore the high match proportion is not due to taxonomic ambuguities but rather ....
+ - Low match Pseudomonas_FGI182_uid173784: Matches to unclassified bacteria - bacterium_142412 and unclassified Pseudomonas species Pseudomonas_sp._HF-1  
+- low match Pseudomonas_VLB120_uid178195: Final guess matches 2.6x10^-3 matches to Xanthomonas_sp._W17
+Only ~9kb seq data for strain in genbank https://www.ncbi.nlm.nih.gov/nuccore/710572
+- low matches Pseudomonas_TKP_uid225946: top hits include Triticum_aestivum (Wheat - http://plants.ensembl.org/Triticum_aestivum/Info/Index, final guess 0.087) Thioalkalivibrio_sulfidophilus_HL-EbGr7 (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3072093/, final guess 0.0648). Genome Publication https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3907731/
+
+
+Next we evaluated how well contaminants are detected. 
+Again using simulated sequencing data from individual genomes we generated contaminant datasets by mixing subsets of datasets from two organisms at defined proportions, 
+with the larger proportion representing the microbial material and smaller proportion the contaminant. 
+The minimum proportion of contaminant detected was $10 \times 10^{-3}$ and  $10 \times 10^{-4}$ for most pairwise comparisons except for when \textit{Yersina} was the simulated contaminant (0.1 for all material strains) (Table \ref{contam_min_table}). Contaminants were also detected at lower proportions, $10 \times 10^{-8}, when \textit{Yersinia} was contaminated with \textit{E. coli} as well as when \textit{S. enterica} and \textit{E. coli} contaminated with \textit{B. anthracis}. 
+
+The quantitative accuracy of the method 
+- linear regression - R^2?
+
+=================================================================================================================
+
+## Overall Match Trends By Genus
+* The overall match proportions were high at the species level (Fig species_prop)
+
+* The median species level match proportions estimated by pathoscope was greater than 0.999 for six of the nine material genus (table species_prop_med)
+```{r species_prop_med}
+single_org_cum %>% filter(lca_rank %in% c("species")) %>% 
+      group_by(query_genus) %>% 
+      summarise(med_species_prop = median(cum_prop))
+```
+
+
+* Shigella had low species and genus level matches due to the taxonomic ambiguity of the Shigella genus relative to Eschericia coli. 
+When including matches to E. coli as species level matches, the median match proprtions increases from \Sexpr{shig_match_change[2,1] to \Sexpr{shig_match_change[2,2]. 
+...
+
+
+
+```{r shigella_ec_cum, echo=FALSE, fig.cap= "Cumulative taxonomic match results for genomic purity assessment for \\textit{Shigella} considering matches to \\textit{E. coli} as species level matches.  Each line represents the cumulative proportion of simulated reads with taxonomic assignments matching at or above the specified taxonomic level. Genomes are grouped by genus.", fig.width=6, fig.align='center', fig.lp="fig:"}
+shig_and_esch %>% ggplot() +
+      geom_path(aes(x = lca_rank, y = cum_prop, group = query_group, color = match_type)) +
+      theme_bw() + theme(axis.text.x = element_text(angle = 90, hjust=1,vjust=0.5),
+                         strip.text = element_text(face = "italic")) +
+      labs(x = "Taxonomic Level", y = "Cumulative Match Proportion")
+```
+
+* 
+
+
+* A number of genomes had species level matches <0.9  
+      * See below for notes on individual genus with low level matches
+```{r}
+low_match_query_genomes <- single_org_cum %>% 
+      filter(lca_rank == "species", cum_prop < 0.9) %>% .$Query
+```
+
+```{r}
+single_org_cum %>% filter(Query %in% low_match_query_genomes) %>% 
+      ggplot() +
+            geom_path(aes(x = lca_rank, y = cum_prop, group = Query), alpha = 0.5) +
+            facet_wrap(~query_genus) +
+            theme_bw() + theme(axis.text.x = element_text(angle = 90, hjust=1,vjust=0.5),
+                               strip.text = element_text(face = "italic")) +
+            labs(x = "Taxonomic Level", y = "Cumulative Match Proportion")
+```
+
+# Contaminant Dection Assessment
+```{r contam_table, results='asis', echo=FALSE, message=FALSE}
+contam_tbl_df %>% xtable::xtable(label = "tab:contam_table", digits = 2,
+                         caption = "Representative strains used in simulated contaminant datasets. Species indicates the proportion of simulated reads assigned to the correct taxa at the species level or higher. DNA size (Mb) and Genbank accession numbers (Acc) are indicated for chromosomes (C) and plasmids (P). \textit{Escherichia coli} O157:H7 str. EC4115 and \textit{Yersinia pestis} CO92 have two and three plasmids respectively.") %>%
+      print(include.rownames=FALSE, sanitize.text.function = identity, scalebox='0.65')
+```
+
+```{r}
+species_lvls <- c("species","species group","subspecies")
+contam_cum_sum <- contamSingleOrgMatchResults %>%
+      mutate(lca_rank = if_else(lca_rank %in% species_lvls,
+                                "species",lca_rank)) %>%
+      mutate(lca_rank = if_else(lca_rank %in% species_lvls,
+                               "species", lca_rank)) %>%
+      group_by(Query, lca_rank, query_genus) %>%
+      summarise(total_prop = sum(`Final Guess`)) %>%
+      spread(lca_rank, total_prop,fill = 0)  %>%
+      gather(lca_rank, total_prop, -Query, -query_genus)  %>%
+      group_by(Query) %>%
+       mutate(lca_rank = factor(lca_rank, levels = c("species", "genus",
+                                    "family", "order",
+                                    "class","phylum",
+                                    "superkingdom"))) %>%
+      arrange(lca_rank) %>%
+      mutate(cum_prop = cumsum(total_prop))
+```
+
+```{r}
+contam_cum_sum %>% filter(lca_rank == "species") %>% 
+      select(Query,cum_prop) %>% arrange(desc(cum_prop))
+```
+
+
+
+
+```{r}
+contamMixMatchResultsMin <- contamMixMatchResults %>%
+      mutate(mix = as.numeric(mix), mix_contam = 1 - mix) %>%
+      filter(lca_contam_rank %in%
+                   c("genus","species","species group","subspecies")) %>%
+      group_by(contam_name, target_name) %>% 
+      summarise(contam_min = min(mix_contam)) %>%
+      mutate(contam_label = str_replace_all(contam_name, "_", " "),
+             contam_label = str_replace(contam_label, " uid.*",""),
+             contam_facet = str_sub(contam_name,1,4),
+             target_facet = str_sub(target_name,1,4))
+```
+
+```{r}
+contamMixMatchResultsMin %>% 
+      ungroup() %>% 
+      select(contam_label, target_facet, contam_min) %>% 
+      spread(target_facet, contam_min)
+```
+
+
+Early Revisions
+===============
+
+%%TODO%% Figure out better labels for high and low match genomes
+
+```{r single_org_cum, echo=FALSE, fig.cap= "Cumulative taxonomic match results for genomic purity assessments of simulated sequence data from single genomes.  Each line represents the cumulative proportion of simulated reads with taxonomic assignments matching at or above the specified taxonomic level for an individual genome. Genomes are grouped by genus.", fig.width=6, fig.align='center', fig.lp="fig:"}
+low_match_query_genomes <- single_org_cum %>% 
+      filter(lca_rank == "species", cum_prop < 0.9) %>% .$Query
+single_org_cum <- single_org_cum %>% 
+      mutate(low_match = if_else(Query %in% low_match_query_genomes, "low","high"))
+
+ggplot(single_org_cum) +
+            geom_path(aes(x = lca_rank, y = cum_prop, color = low_match, group = Query)) +
+            facet_wrap(~query_genus) +
+            theme_bw() + theme(axis.text.x = element_text(angle = 90, hjust=1,vjust=0.5),
+                               strip.text = element_text(face = "italic")) +
+            labs(x = "Taxonomic Level", y = "Cumulative Match Proportion")
+```
+
+```{r}
+single_org_cum %>% filter(lca_rank %in% c("species", "genus","family")) %>% 
+      ggplot() +
+            geom_path(aes(x = lca_rank, y = cum_prop, color = low_match, group = Query)) +
+            facet_wrap(~query_genus) +
+            theme_bw() + theme(axis.text.x = element_text(angle = 90, hjust=1,vjust=0.5),
+                               strip.text = element_text(face = "italic")) +
+            labs(x = "Taxonomic Level", y = "Cumulative Match Proportion")
+```
+
+## Esimates Species level proportions
+Species level pathoscope estimated match proportions.
+```{r}
+single_org_phred <- single_org_cum %>% 
+     mutate(phred_cum_prop = if_else(cum_prop < 1.0, -1*log10(1-cum_prop), 10 ),
+           phred_cum_prop = if_else(phred_cum_prop > 10, 10,phred_cum_prop)) %>% 
+      group_by(Query) %>% 
+      mutate(phred_range = max(phred_cum_prop)-min(phred_cum_prop),
+             line_class = if_else(phred_range < 1, "flat","range"))
+single_org_phred %>% filter(lca_rank == "species") %>% 
+      ggplot() + 
+      geom_boxplot(aes(x = query_genus, y = phred_cum_prop),varwidth = TRUE) +
+      geom_jitter(aes(x = query_genus, y = phred_cum_prop), width = 0.25, alpha = 0.5) +
+      theme_bw() + theme(axis.text.x = element_text(angle = 90)) + 
+      scale_y_continuous(breaks = c(0,1,3,5,7,9), labels = c(0,0.9,0.999,0.99999,0.9999999,0.999999999)) +
+      labs(x = "Genus", y = "Estimated Proportion") + 
+      geom_hline(aes(yintercept = 1), color = "grey60", linetype = 2)
+```
+
+Proportion of genomes with less than 1 unit change in match levels to genomes with > 1 unit change.
+Compare flat prop with total phage
+```{r}
+single_org_phred %>% group_by(query_genus, line_class) %>% 
+      summarise(count = n()) %>% spread(line_class, count) %>% mutate(total = flat + range, prop_flat = flat/total) %>% 
+      arrange(desc(prop_flat))
+```
+
+
+
+```{r}
+single_org_phred %>% filter(line_class == "range") %>% 
+      ggplot() + 
+            geom_path(aes(x = lca_rank, y = phred_cum_prop, group = Query), alpha = 0.5) +
+            facet_wrap(~query_genus, nrow = 1) +
+            theme_bw() + theme(axis.text.x = element_text(angle = 90, hjust=1,vjust=0.5),
+                               strip.text = element_text(face = "italic")) +
+            labs(x = "Taxonomic Level", y = "Estimated Match Proportion")
+```
+
+```{r}
+single_org_phred %>% filter(line_class == "range") %>% 
+      ggplot() + 
+                  geom_path(aes(x = lca_rank, y = cum_prop, group = Query)) +
+                  facet_wrap(~query_genus) +
+                  theme_bw() + theme(axis.text.x = element_text(angle = 90, hjust=1,vjust=0.5),
+                                     strip.text = element_text(face = "italic")) +
+                  labs(x = "Taxonomic Level", y = "Cumulative Match Proportion") 
+```
+
+
+Genomes with low cum props
+```{r}
+low_match_query_genomes <- single_org_cum %>% 
+      filter(lca_rank == "species", cum_prop < 0.9) %>% .$Query
+```
+
+```{r}
+single_org_cum %>% #filter(!(Query %in% low_match_query_genomes)) %>% 
+     mutate(phred_cum_prop = if_else(cum_prop < 1.0, -1*log10(1-cum_prop), 10 ),
+           phred_cum_prop = if_else(phred_cum_prop > 10, 10,phred_cum_prop)) %>%
+      ggplot() +
+            geom_path(aes(x = lca_rank, y = phred_cum_prop, group = Query), alpha = 0.5) +
+            facet_wrap(~query_genus) +
+            theme_bw() + theme(axis.text.x = element_text(angle = 90, hjust=1,vjust=0.5),
+                               strip.text = element_text(face = "italic")) +
+            labs(x = "Taxonomic Level", y = "Cumulative Match Proportion") #+ ylim(0,100)
+```
+
+
+
+```{r}
+single_org_phred <- single_org_cum %>% 
+     mutate(phred_cum_prop = if_else(cum_prop < 1.0, -1*log10(1-cum_prop), 10 ),
+           phred_cum_prop = if_else(phred_cum_prop > 10, 10,phred_cum_prop)) %>% 
+      group_by(Query) %>% 
+      mutate(phred_range = max(phred_cum_prop)-min(phred_cum_prop),
+             line_class = if_else(phred_range < 1, "flat","range"))
+```
+
+
+```{r}
+single_org_cum %>% filter(Query %in% low_match_query_genomes) %>%
+      ggplot() +
+                  geom_path(aes(x = lca_rank, y = cum_prop, group = Query)) +
+                  facet_wrap(~query_genus) +
+                  theme_bw() + theme(axis.text.x = element_text(angle = 90, hjust=1,vjust=0.5),
+                                     strip.text = element_text(face = "italic")) +
+                  labs(x = "Taxonomic Level", y = "Cumulative Match Proportion") 
+```
+
+Genomes with low match proportions
+```{r}
+single_org_cum %>% filter(Query %in% low_match_query_genomes, lca_rank == "genus") %>% arrange(query_genus, desc(cum_prop))
+```
+
+Escherichia_coli_UMNK88_uid4213 E. coli low match: Final guess to Providencia stuartii (http://bacdive.dsmz.de/index.php?search=5084&submit=Search, ~0.1 Final Guess) and Salmonella enterica subsp. enterica serovar Heidelberg (http://bacdive.dsmz.de/index.php?site=search&rd=5117, ~0.02 Final Guess).
+Down to 10^-8 Plasmid, Vectors, Mouse
+```{r}
+singleOrgResults %>% filter(Query == "Escherichia_coli_UMNK88_uid42137")
+```
+
+Clostridium_autoethanogenum_DSM_10061_uid219420 low match: Top match Clostridium_ljungdahlii_DSM_13528 instead of C. autoenthanogenum
+```{r}
+singleOrgResults %>% filter(Query == "Clostridium_autoethanogenum_DSM_10061_uid219420")
+```
+
+Bacillus subtilis BEST7613 low match: 0.47 Final guess match Synechocystis sp. PCC 6803 substr. PCC-P
+Kanesaki Y et al., "Identification of substrain-specific mutations by massively parallel whole-genome resequencing of Synechocystis sp. PCC 6803.", DNA Res, 2011 Dec 22;19(1):67-79
+ Cloning vector matches are also high, potentially indicating a bad assembly....
+Plasmids ect.
+```{r}
+singleOrgResults %>% filter(Query == "Bacillus_subtilis_BEST7613_uid183920")
+```
+
+Bacillus infantis low match: top hit Planococcus 
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3768542/ reference stating that Planococcus could be moved into the Bacillus species
+```{r}
+singleOrgResults %>% filter(Query == "Bacillus_infantis_NRRL_B_14911_uid212797")
+```
+
+Low match Pseudomonas_FGI182_uid173784: Matches to unclassified bacteria - bacterium_142412 and unclassified Pseudomonas species Pseudomonas_sp._HF-1  
+
+```{r}
+singleOrgResults %>% filter(Query == "Pseudomonas_FGI182_uid173784")
+```
+
+low match Pseudomonas_VLB120_uid178195: Final guess matches 2.6x10^-3 matches to Xanthomonas_sp._W17
+Only ~9kb seq data for strain in genbank https://www.ncbi.nlm.nih.gov/nuccore/710572
+```{r}
+singleOrgResults %>% filter(Query == "Pseudomonas_VLB120_uid178195")
+```
+
+low matches Pseudomonas_TKP_uid225946: top hits include Triticum_aestivum (Wheat - http://plants.ensembl.org/Triticum_aestivum/Info/Index, final guess 0.087) Thioalkalivibrio_sulfidophilus_HL-EbGr7 (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3072093/, final guess 0.0648). Genome Publication https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3907731/ 
+
+```{r}
+singleOrgResults %>% filter(Query == "Pseudomonas_TKP_uid225946")
+```
+low match Staphylococcus_aureus_uid71279: staph phage matches Staphylococcus_phage_phi13
+```{r}
+singleOrgResults %>% filter(Query == "Staphylococcus_aureus_uid71279")
+```
+
+```{r}
+singleOrgResults %>% filter(Query == "Staphylococcus_aureus_uid71279")
+```
+
+```{r}
+singleOrgResults %>% filter(Query == "Staphylococcus_aureus_uid71279", grepl("phage",Genome))
+```
+
+```{r}
+singleOrgResults %>% filter(Query == "Staphylococcus_aureus_uid71279", grepl("phage",Genome)) %>% .$`Final Guess` %>% sum()
+```
+
+```{r}
+genus_add <- singleOrgMatchResults %>% select(Query, query_genus) %>% unique()
+phage_total <- singleOrgResults %>% filter(grepl("phage",Genome)) %>% group_by(Query) %>% 
+      summarise(total_phage_guess = sum(`Final Guess`)) %>% left_join(genus_add)
+```
+
+Proportion of matches to phage in datasets 
+```{r}
+ggplot(phage_total) + geom_boxplot(aes(x = query_genus, y = total_phage_guess)) + coord_flip()
+```
+
+```{r}
+phage_total %>% group_by(query_genus) %>% 
+      summarise(med_total = median(total_phage_guess), min_total = min(total_phage_guess), max_total = max(total_phage_guess)) %>% 
+      arrange(desc(med_total))
+```
+
+Non phage genus matches
+Bacillus_thuringiensis_serovar_kurstaki_HD73_uid185468 - ti|1118063|org|Staphylococcus_phage_SpaA1
+Escherichia_coli_0127_H6_E2348_69_uid32571 -  ti|1125653|org|Salmonella_phage_SPN1S 
+Escherichia_coli_042_uid40647 - ti|10761|org|Shigella_phage_Sf6
+Escherichia_coli_APEC_O78_uid184588 - ti|929814|org|Salmonella_phage_RE-2010 
+Escherichia_coli_ED1a_uid33409 - ti|929814|org|Salmonella_phage_RE-2010
+Escherichia_coli_HS_uid13959 - ti|1168548|org|Salmonella_phage_vB_SemP_Emek
+Escherichia_coli_IHE3034_uid43693 - ti|155148|org|Salmonella_phage_HK620
+
+Most Escherichia coli phage are Enterobacteria phage
+All pseudomonas, staphylococcus, and listeria phage are genus specific - at least named as such
+Salmonella Enterobacteria, Salmonella, and Shigella as well as Stx2 converting phage 
+Yersinia - all Salmonella_phage_SSU5, publications liking the phage and yersinia, http://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0146929 http://aem.asm.org/content/early/2013/11/18/AEM.03494-13.full.pdf http://jb.asm.org/content/193/18/4963.full https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3911222/
+
+
+
+
+```{r contam_min, echo = FALSE, message = FALSE, fig.cap = "Relationship between the proportion of contaminant reads simulated per dataset and the proportion of reads matched to the contaminant genus.", fig.lp="fig:"}
+contamMixMatchResultsMin <- contamMixMatchResults %>%
+      mutate(mix = as.numeric(mix), mix_contam = 1 - mix) %>%
+      filter(lca_contam_rank %in%
+                   c("genus","species","species group","subspecies")) %>%
+      group_by(contam_name, target_name) %>% summarise(contam_min = min(mix_contam)) %>%
+      mutate(contam_label = str_replace_all(contam_name, "_", " "),
+             contam_label = str_replace(contam_label, " uid.*",""),
+             contam_facet = str_sub(contam_name,1,4),
+                   target_facet = str_sub(target_name,1,4))
+
+contamMixMatchResults %>% mutate(mix = as.numeric(mix), mix_contam = 1 - mix) %>%
+      filter(lca_contam_rank %in%
+                   c("genus","species","species group","subspecies")) %>%
+      mutate(lca_contam_rank = ifelse(lca_contam_rank == "genus", "genus","species")) %>%
+      group_by(contam_ds, target_name, contam_name, mix_contam) %>%
+      summarise(contam_prop = sum(`Final Guess`)) %>%
+            mutate(contam_facet = str_sub(contam_name,1,4),
+                   target_facet = str_sub(target_name,1,4),
+                   contam_label = str_replace_all(contam_name, "_", " "),
+                   contam_label = str_replace(contam_label, " uid.*","")) %>%
+      ggplot(aes(x = mix_contam, y = contam_prop)) +
+            geom_abline(aes(slope = 1, intercept = 0), linetype = 2, color = "grey60") +
+            geom_vline(data = contamMixMatchResultsMin,
+                       aes(xintercept = contam_min, color = contam_label), linetype = 3) +
+            geom_path(aes(color = contam_label), alpha = 0.5) +
+            geom_point(aes(color = contam_label)) +
+            facet_grid(contam_facet~target_facet) + scale_x_log10() + scale_y_log10() +
+            theme_bw() +
+            theme(axis.text.x = element_text(angle = 90), legend.position = "bottom") +
+            guides(color = guide_legend(ncol = 2)) +
+            labs(x = "Contaminant Proportion",
+                 y = "Proportion of Matched Reads",
+                 color = "Contaminant")
+```
+
+
+
