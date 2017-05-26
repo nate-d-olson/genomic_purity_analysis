@@ -290,8 +290,8 @@ contam_yers_esch_species <- contam_yers_esch_org$name[length(contam_yers_esch_or
 contam_single_read_count <- contamSingleOrgResults %>% group_by(Query) %>% 
       summarise(total_reads = sum(`Initial Best Hit Read Numbers`))
 
-
-## Supplemental Table Baseline- List of genomes with metadata and accession numbers.
+########################### Supplemental Tables ################################
+##### Baseline- List of genomes with metadata
 ## Table description:: 
 # Taxname - full organism name
 # Taxid - NCBI taxonomic identifier
@@ -299,11 +299,26 @@ contam_single_read_count <- contamSingleOrgResults %>% group_by(Query) %>%
 # Accession - NCBI GenBank Accession number
 # Length - size of DNA sequence in base pairs 
 # Random - random number used to generate simulated sequence data
+# DNA type- Sequence type genome, plasmid, contig, or phage
+seq_info <- singleOrgRef %>% 
+      mutate(id = str_replace_all(seq_id, "\\|"," "),
+             id = str_trim(id,"both")) %>% 
+      separate(id, c("id_type","GI","db", "Accession"),sep = " ") %>% 
+      ## Classifying sequence types based on description, used sequence length as sanity check
+      mutate(Seq = if_else(grepl("plasmid", description,ignore.case = T),
+                           "Plasmid", "Genome")) %>%  
+      ## Incomplete description in version of database used
+      mutate(Seq = if_else(Accession == 'CP004857.1', "Plasmid", Seq)) %>% 
+      mutate(Seq = if_else(Accession == 'CP000315.1', "Phage", Seq)) %>% 
+      mutate(Seq = if_else(grepl("contig", description), "Contig",Seq)) %>% 
+      rename(`DNA type` = Seq) %>% 
+      select(Accession, GI, Accession, GC, `DNA type`)
 
 queryIdTbl %>% 
       left_join(queryMeta) %>% 
       left_join(singleOrgArt %>% rename(Query = org)) %>% 
-      select(Taxname, Taxid, GI, Accession, `DNA  length`, rand) %>% 
+      left_join(seq_info) %>% 
+      select(Taxname, Taxid, GI, Accession, `DNA type`, `DNA  length`, GC, rand) %>% 
       rename(Random = rand, Length = `DNA  length`) %>% 
       write_csv("supplemental_table_baseline_genomes.csv")
 
@@ -319,3 +334,4 @@ contam_tbl_raw_df %>% ungroup() %>%
       select(Taxname, Taxid, GI, `DNA type`, Accession, `DNA length`) %>% 
       rename(Length = `DNA length`) %>% 
       write_csv("supplemental_table_contam_genomes.csv")
+
