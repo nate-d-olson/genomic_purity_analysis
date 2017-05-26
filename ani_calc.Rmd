@@ -1,0 +1,182 @@
+---
+title: "Genomic Purity Pairwise ANI calculations"
+output: html_document
+---
+
+```{r}
+library(ProjectTemplate)
+load.project()
+# library(tidyverse)
+# library(stringr)
+```
+
+```{r}
+# sim_orgs_dir <- list.dirs("data/simdir", recursive = FALSE)
+# db_dir <- "/media/nolson/genomic_purity/databases/Bacteria/"
+# sim_db_dir <- sim_orgs_dir %>% str_replace("data/simdir", db_dir) 
+# sim_orgs <- sim_orgs_dir %>% str_replace("data/simdir/","")
+# sim_dat <- list(org_name = sim_orgs, sim_dir = sim_orgs_dir, db_dir = sim_db_dir) %>% 
+#   transpose() %>% set_names(sim_orgs)
+```
+
+```{r}
+# concat_fasta <- function(org_name, sim_dir, db_dir){
+#   fns <- list.files(db_dir, pattern = "*fna",full.names = TRUE)
+#   out_fasta <- paste0(sim_dir, "/", org_name, ".fna")
+# 
+#   system2(cmd)
+#   
+#   out_fasta
+# }
+# 
+# fasta_file <- concat_fasta(sim_dat[[1]]$org_name, sim_dat[[1]]$sim_dir, sim_dat[[1]]$db_dir)
+```
+
+```{r message=FALSE}
+cat_column <- c(
+      rep("Sequences",3),
+      rep("Bases",3),
+      rep("Align:1-to-1",4),
+      rep("Align:M-to-M",4)
+)
+
+parse_dnadiff_report <- function(dnadiff_report, cat_column){
+      read_table(dnadiff_report, skip = 5, 
+                 col_names = c("metric","REF","QRY"), 
+                 col_types = list( 
+                       metric = col_character(),
+                       REF = col_character(),
+                       QRY = col_character()),
+                 n_max = 19) %>% 
+            filter(!is.na(REF)) %>% 
+            add_column(cat_column)
+}
+
+dnadiff_report_files <- list.files("data/pair_diff/", pattern = "*report")
+dnadiff_reports <- set_names(dnadiff_report_files) %>% map(~paste0("data/pair_diff/", .))
+dnadiff_df <- dnadiff_reports %>% map_df(parse_dnadiff_report, cat_column, .id = "diff_pair")
+
+## Pairnames
+diff_pairs <- str_extract_all(dnadiff_report_files, "uid[0-9]{1,10}",simplify = TRUE)
+
+colnames(diff_pairs) <- c("ref_uid","qry_uid")
+
+diffpair_df <- as_data_frame(diff_pairs) %>% 
+      mutate(ref_uid = str_replace(ref_uid, "uid", ""),
+             qry_uid = str_replace(qry_uid, "uid", "")) %>% 
+      add_column(diff_pair = names(dnadiff_reports))
+
+dnadiff_df <- left_join(dnadiff_df, diffpair_df)
+
+## Adding genus and taxid
+id_tbl <- queryIdTbl %>% separate(Query, c("Genus"), extra = "drop") 
+qry_idtbl <- id_tbl %>% rename(qry_genus = Genus, qry_uid = query_uid, qry_taxid = query_taxid)
+ref_idtbl <- id_tbl %>% rename(ref_genus = Genus, ref_uid = query_uid, ref_taxid = query_taxid)
+
+dnadiff_tidy <- diffpair_df %>% 
+      left_join(qry_idtbl) %>% 
+      left_join(ref_idtbl) %>% 
+      right_join(dnadiff_df)
+```
+
+```{r}
+saveRDS(dnadiff_tidy, "dnadiff_tidy.RDS")
+```
+
+
+```{r}
+dnadiff_tidy %>% 
+      filter(metric == "AvgIdentity", 
+             cat_column == "Align:1-to-1",
+             !is.na(qry_genus),
+             !is.na(ref_genus)) %>% 
+      mutate(REF = as.numeric(REF)) %>% 
+      ggplot() + geom_density(aes(x = REF), trim=TRUE) + facet_grid(ref_genus~ qry_genus)
+```
+
+Organisms not in queryIdTbl
+```{r}
+dnadiff_tidy %>% filter(is.na(qry_genus)) %>% .$diff_pair %>% unique()
+```
+
+```{r}
+queryIdTbl %>% filter(grepl(x = Query, "^Bacillus_pumilus"))
+```
+
+```{r}
+ani_diff <- dnadiff_tidy %>% 
+      filter(metric == "AvgIdentity", 
+             cat_column == "Align:1-to-1",
+             !is.na(qry_genus),
+             !is.na(ref_genus)) %>% 
+      mutate(REF = as.numeric(REF))
+```
+
+```{r}
+ani_diff %>% filter(ref_genus == qry_genus) %>% 
+      ggplot() + geom_boxplot(aes(x = ref_genus,y = REF))
+```
+
+```{r}
+dnadiff_tidy %>% filter(metric == "AlignedBases") %>% 
+      mutate(aligned_ref = str_replace_all(REF, ".*\\(|%\\)","")) %>% 
+      mutate(aligned_ref = as.numeric(aligned_ref)) %>% 
+      filter(ref_genus == qry_genus) %>% 
+      ggplot() + geom_boxplot(aes(x = ref_genus, y = aligned_ref))
+
+```
+
+
+```{r}
+rep_strains <- c(
+      "\\textit{Bacillus anthracis} str. Ames",                                       
+      "\\textit{Clostridium botulinum} A str. Hall",                                  
+      "\\textit{Escherichia coli} O157:H7 str. EC4115",                               
+      "\\textit{Francisella tularensis} subsp. \\textit{tularensis} SCHU S4",                   
+      "\\textit{Pseudomonas aeruginosa} PAO1",                                        
+      "\\textit{Salmonella enterica} subsp. \\textit{enterica} serovar Typhimurium str. D23580",
+      "\\textit{Staphylococcus aureus} subsp. \\textit{aureus} ED133",                          
+      "\\textit{Yersinia pestis} CO92"
+)
+
+species_lvls <- c("species group", "species subgroup", "subspecies")
+
+contam_tbl_raw_df <- contamSingleOrgMatchResults %>%
+      mutate(lca_rank = if_else(lca_rank %in% species_lvls,
+                                "species",lca_rank)) %>%
+      filter(lca_rank %in% c("species","genus")) %>%
+      group_by(Query, lca_rank) %>%
+      summarize(total_prop = sum(`Final Guess`)) %>%
+      spread(lca_rank,total_prop) %>%
+      left_join(queryMeta) %>% 
+      left_join(contamSingleOrgMapResults) %>% 
+      mutate(`DNA length` = as.numeric(`DNA  length`),
+             `DNA type` = if_else(`DNA length` < 1000000, "P","C"))
+```
+
+```{r}
+contam_rep <- contamSingleOrgMatchResults %>% select(Query, query_genus, query_uid) %>% unique()
+```
+
+```{r}
+ani_diff
+ref_df <- contam_rep %>% rename(Ref = Query, ref_genus = query_genus, ref_uid = query_uid)
+
+contam_rep %>% 
+      rename(Qry = Query, qry_genus = query_genus, qry_uid = query_uid)
+
+uid_pairs <- ref_df$ref_uid %>% combn(2) %>% t() %>% 
+      as.data.frame() %>% rename(ref_uid = V1, qry_uid = V2)
+``` 
+
+Not a large difference in Average Identity between the representative genomes. Likely a larger difference when accounting for the porportion of the genome used to calculate the identity
+```{r}
+uid_pairs %>% left_join(ani_diff) %>% 
+      ggplot() + 
+      geom_raster(aes(x = qry_genus, y = ref_genus, fill = REF)) +
+      geom_text(aes(x = ref_genus, y = qry_genus, label = round(REF, 2))) +
+      theme_bw() +
+      theme(axis.text.x = element_text(angle = 90))
+```
+
+
