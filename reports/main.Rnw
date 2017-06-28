@@ -71,7 +71,8 @@ The insert size parameters were defined based on the observed average and standa
 
 \subsection*{Assessment of Taxonomic Composition}
 The taxonomic composition of simulated datasets was determined using the PathoScope sequence taxonomic classifier \citep{Francis2013}.
-PathoScope was selected for two reasons: (1) it uses a large reference database reducing potential biases due to contaminants not represented in the database, and (2) it leverages efficient whole genome read mapping algorithms.
+PathoScope was selected for two reasons: (1) it uses a large reference database reducing potential biases due to contaminants not represented in the database, and (2) it leverages efficient whole genome read mapping algorithms. 
+Additionally, PathoScope was successfully used in our pilot study (ASM Poster REF) and as part of a pipeline we developed to characterize the NIST microbial genomic DNA reference material \citep{olson2016pepr}.
 This method uses an expectation maximization algorithm where the sequence data are first mapped to a database comprised of all sequence data in the Genbank nt database.
 Then, through an iterative process, it re-assigns ambiguously mapped reads based on the proportion of reads mapped unambiguously to individual taxa in the database.
 The PathoScope 2.0 taxonomic read classification pipeline has three steps; (1) PathoQC - read quality filtering and trimming using the PRINSEQ algorithm \citep{schmieder2011quality}, (2) PathoMap - mapping reads to a reference database using the bowtie2 algorithm \citep{Langmead2012}, and (3) PathoID - expectation-maximization classification algorithm.
