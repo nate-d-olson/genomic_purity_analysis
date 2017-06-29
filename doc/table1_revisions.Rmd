@@ -6,23 +6,33 @@ output: html_document
 ---
 
 Information to add to table 1
+## Full taxonomic classification
 - complete taxonomic classification of each considered bacterial genus: use taxid classification info? or taxize
 ```{r}
 library(tidyverse)
 library(taxize)
-e_coli <- taxize::get_ids("Escherichia coli", db = "ncbi")
-taxize::classification(e_coli)
-classification_list <- list("Escherichia coli", "Clostridium","Salmonella enterica","Bacillus","Francisella") %>% 
-      map(taxize::get_ids, db = "ncbi") %>% 
-      map(taxize::classification())
-
-
+genus_names <- c("Bacillus", "Clostridium", "Escherichia",
+                                "Francisella", "Listeria", "Pseudomonas",
+                                "Salmonella", "Shigella", "Staphylococcus",
+                                "Yersinia")
+genus_tree <- classification(genus_names, db = "ncbi") %>% class2tree()
 ```
 
 ```{r}
-classification_list
-taxize::class2tree(classification_list,check = TRUE)
+genus_tree$classification %>% arrange(phylum, class, order, family)
+```
+
+
+```{r}
+plot(genus_tree, no.margin = TRUE)
+tree_df <- fortify(genus_tree$phylo) %>% add_column(tip = .$label) %>% 
+
+      left_join(genus_tree$classification)
+library(ggtree)
+ggtree(tree_df) + geom_tiplab()
+ggsave("genus_tree.pdf")
 ```   
+
 
 
 - An indication of the genus content and diversity

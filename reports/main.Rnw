@@ -137,7 +137,7 @@ First, we assessed the baseline performance of the proposed contaminant detectio
 We applied our method to simulated sequencing data from individual genomes. 
 All reads assigned to a different taxa than the genome the reads were simulated from were defined as false positive contaminants. 
 (This assumes the genome sequence is contaminant free.) 
-Our analysis included taxonomic classification results for simulated sequencing data  from \Sexpr{length(spec_prop)} genomes, representing 10 different genera (Table \ref{tab:single_org}, Supplemental Table 1).
+Our analysis included taxonomic classification results for simulated sequencing data  from \Sexpr{length(spec_prop)} genomes, representing 10 different genera (Table \ref{tab:single_org}, \ref{fig:single_org_tree}, Supplemental Table 1).
 The method was evaluated using the estimated proportion of species level matches.
 The estimated match proportion is the sum of the Final Guess values, proportions reported by PathoScope for a taxa, for all correct species level matches.
 For \Sexpr{spec_gt_0.99} of the \Sexpr{length(spec_prop)} genomes, PathoScope estimated that greater than 99\% of the material was the expected species (Fig. \ref{fig:species_prop}).
@@ -152,6 +152,10 @@ Two types of false positive contaminants were identified: (1) contaminants that 
 single_tbl_df %>% xtable::xtable(label = "tab:single_org", digits = 2, caption = "Breakdown of the number of genomes by genus used to generate single genome simulated datasets. N indicates the number of genomes (406 total), and Genome Size is presented as the median and range (minimum to maximum).") %>%
        print(include.rownames=FALSE, 
              sanitize.text.function = identity)
+@
+
+<<single_org_tree, fig.cap = "Taxonomic lineage of genera used in baseline assessment.", echo=FALSE>>=
+knitr::include_graphics("figure/genus_tree.png")
 @
 
 <<species_prop, fig.cap = "Species level or higher estimated match proportion varies by material genus. The estimated match proportion is the total proportion of the material with correct taxonomic assignments to the genome species, subspecies, strain, or isolate level. The Estimated Match Proportions shown are the Final Guess values in the PathoScope results table. Each point is calculated for a genome from a different isolate within the genus. The vertical dashed line indicates the 0.99 estimated match proportion. Orange points are genomes with species level estimated match proportions less than 0.90 and blue points greater than or equal to 0.90.", echo=FALSE>>=
