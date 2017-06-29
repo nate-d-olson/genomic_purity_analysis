@@ -7,4 +7,5 @@
 *.html 
 
 ## Reference Genomes
-data/simdir/*/*fna
+data/simdir/*/*fna*
+data/pair_diff/*
