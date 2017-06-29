@@ -1,0 +1,86 @@
+---
+title: "Modifying supplemental table"
+output: html_document
+---
+
+```{r}
+library(ProjectTemplate)
+
+# load project
+wd <- getwd()
+setwd("../")
+load.project()
+setwd(wd)
+```
+
+Modifying single organism supplemental table to include sequence type category and GC content information. 
+```{r}
+supp_tbl <- queryIdTbl %>% 
+      left_join(queryMeta) %>%
+      left_join(singleOrgArt %>% rename(Query = org)) %>%
+      select(Taxname, Taxid, GI, Accession, `DNA  length`, rand) %>%
+      rename(Random = rand, Length = `DNA  length`)
+```
+
+```{r}
+raw_ref_seq <- read_csv(file = "../data/singleOrgRef.csv")
+ref_seq <- raw_ref_seq %>% 
+      mutate(description = str_replace_all(description, pattern = seq_id,replacement = "")) %>% 
+      mutate(Molecule = if_else(grepl("plasmid", description,ignore.case = T), "Plasmid", "Genome")) %>%  
+      mutate(id = str_replace_all(seq_id, "\\|"," "),
+             id = str_trim(id,"both")) %>% 
+      separate(id, c("id_type","GI","db", "Accession"),sep = " ") %>% 
+      ## Incomplete description in version of database used
+      mutate(Molecule = if_else(Accession == 'CP004857.1', "Plasmid", Molecule)) %>% 
+      mutate(Molecule = if_else(Accession == 'CP000315.1', "Phage", Molecule)) %>% 
+      mutate(Molecule = if_else(grepl("contig", description), "Contig",Molecule)) 
+```
+
+
+
+
+```{r}
+ref_meta <- queryMeta %>% right_join(ref_seq) %>% 
+      mutate(Length = as.numeric(`DNA  length`)) %>% 
+      separate(Taxname, c("Genus"), sep = " ", extra = "drop",remove = FALSE) %>%
+      filter(Genus != "[Clostridium]", Genus != "Kyrpidia")
+```
+
+```{r}
+ref_meta %>% filter(Molecule == "Genome") %>% 
+      ggplot() + 
+      geom_density(aes(x = Length/1000000, fill = Genus)) + theme_bw() + labs(x = "Length (Mb)")
+```
+
+Only one Francisella plasmid, removing from Plasmid size distribution plot so better view plasmid size distribution for other Genera.
+```{r}
+ref_meta %>% group_by(Genus, Molecule) %>% summarise(count = n())
+```
+
+```{r}
+ref_meta %>% filter(Genus == "Francisella", Molecule == "Plasmid")
+```
+
+
+```{r}
+ref_meta %>% filter(Molecule == "Plasmid", Genus != "Francisella") %>%
+      ggplot() + 
+      geom_density(aes(x = Length/1000, fill = Genus), alpha = 0.25) + theme_bw() + labs(x = "Length (kb)")
+```
+
+```{r}
+ref_meta %>% group_by(Molecule) %>% summarise(min_lenght = min(Length), max_length = max(Length))
+```
+
+
+Distribution in the number of plasmids per Genome by Genus
+```{r}
+ref_meta_count <- ref_meta %>% group_by(Genus, Query, Molecule) %>% filter(Molecule %in% c("Genome","Plasmid")) %>% 
+      summarise(count = n())
+
+ref_meta_count %>% filter(Molecule == "Plasmid") %>% 
+      ggplot() + geom_bar(aes(x = count)) + facet_wrap(~Genus, scales = "free_x")
+```
+
+
+

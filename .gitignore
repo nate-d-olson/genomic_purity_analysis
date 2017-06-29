@@ -4,4 +4,7 @@
 .Ruserdata
 
 ## compiled rmarkdown
-*.html
+*.html 
+
+## Reference Genomes
+data/simdir/*/*fna
