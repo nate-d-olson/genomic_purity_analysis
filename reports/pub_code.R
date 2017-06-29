@@ -11,6 +11,26 @@ setwd(wd)
 ##
 ## single genome data --------------------------------------------------------
 ##
+## Number of species per genus
+baseline_tbl <- singleOrgMatchResults %>%
+      filter(query_genus %in% c("Bacillus", "Clostridium", "Escherichia",
+                                "Francisella", "Listeria", "Pseudomonas",
+                                "Salmonella", "Shigella", "Staphylococcus",
+                                "Yersinia")) %>%
+      select(query_genus, Query, query_taxid) %>%
+      rename(Taxid = query_taxid) %>% left_join(queryMeta) %>%
+      distinct() 
+
+baseline_taxid <- baseline_tbl %>% select(query_genus, Query, Taxid) %>% unique() %>% .$Taxid %>% as.numeric()
+
+baseline_lineage <- taxidClassification[names(taxidClassification) %in% baseline_taxid] %>% 
+      bind_rows(.id = "Taxid") %>% 
+      filter(rank %in% c("genus", "species")) %>% 
+      select(-id) %>% unique() %>% spread(rank, name)
+
+species_count <- baseline_lineage %>% select(genus, species) %>% 
+      unique() %>% group_by(genus) %>% summarise(Species = n()) %>% 
+      rename(query_genus = genus)
 
 single_tbl_df <- singleOrgMatchResults %>%
       filter(query_genus %in% c("Bacillus", "Clostridium", "Escherichia",
@@ -27,12 +47,14 @@ single_tbl_df <- singleOrgMatchResults %>%
       summarise(count = n(), size_median = median(genome_size, na.rm = T)/1e6,
                 size_min = min(genome_size, na.rm = T)/1e6,
                 size_max = max(genome_size, na.rm = T)/1e6) %>%
+      left_join(species_count) %>% 
       mutate(`Genome Size (Mb)` = paste0(round(size_median,2) ," (",
                                          round(size_min,2), "-",
                                          round(size_max, 2), ")"),
              query_genus = paste0("\\textit{",query_genus,"}")) %>%
       select(-size_min, -size_max, -size_median) %>%
       rename(Genus = query_genus, N = count) %>% arrange(Genus)
+
 
 
 species_lvls <- c("species group", "species subgroup", "subspecies")

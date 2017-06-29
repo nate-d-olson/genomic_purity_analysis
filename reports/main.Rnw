@@ -149,7 +149,7 @@ We characterized false positive contaminants detected in genomes from the genera
 Two types of false positive contaminants were identified: (1) contaminants that were genomically indistinguishable from the material and (2) contaminants due to errors in the reference database.
 
 <<single_org, results='asis', echo=FALSE, message=FALSE >>=
-single_tbl_df %>% xtable::xtable(label = "tab:single_org", digits = 2, caption = "Breakdown of the number of genomes by genus used to generate single genome simulated datasets. N indicates the number of genomes (406 total), and Genome Size is presented as the median and range (minimum to maximum).") %>%
+single_tbl_df %>% xtable::xtable(label = "tab:single_org", digits = 2, caption = "Breakdown of the number of genomes by genus used to generate single genome simulated datasets. N indicates the number of genomes (406 total), and Genome Size is presented as the median and range (minimum to maximum). Species indicates the number of different species for each genus included in the baseline assessment.") %>%
        print(include.rownames=FALSE, 
              sanitize.text.function = identity)
 @

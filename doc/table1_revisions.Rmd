@@ -34,9 +34,36 @@ ggsave("genus_tree.pdf")
 ```   
 
 
+## Number of species
+```{r}
+baseline_tbl <- singleOrgMatchResults %>%
+      filter(query_genus %in% c("Bacillus", "Clostridium", "Escherichia",
+                                "Francisella", "Listeria", "Pseudomonas",
+                                "Salmonella", "Shigella", "Staphylococcus",
+                                "Yersinia")) %>%
+      select(query_genus, Query, query_taxid) %>%
+      rename(Taxid = query_taxid) %>% left_join(queryMeta) %>%
+      distinct() 
+baseline_taxid <- baseline_tbl %>% select(query_genus, Query, Taxid) %>% unique() %>% .$Taxid %>% as.numeric()
 
-- An indication of the genus content and diversity
-      - number of distinct species: use species taxid for each entry
-      - number of complete sequenced genomes: I think this is the total number of genomes used?
-      - an indication of genome diversity: ANI plots with percent aligned and ANI
+baseline_lineage <- taxidClassification[names(taxidClassification) %in% baseline_taxid] %>% 
+      bind_rows(.id = "Taxid")
+```
 
+```{r}
+lineage_df <- baseline_lineage %>% 
+      filter(rank %in% c("family", "genus", "species")) %>% 
+      select(-id) %>% unique() %>% spread(rank, name)
+
+subspecies_counts <- lineage_df %>% 
+      group_by(genus, species) %>% summarise(subspecies_count = n())
+species_count <- lineage_df %>% select(genus, species) %>% unique() %>% group_by(genus) %>% summarise(count = n())
+species_count
+```
+
+
+## Number of complete sequenced genomes
+all but one
+
+## Indication of genome diversity 
+- an indication of genome diversity: ANI plots with percent aligned and ANI
