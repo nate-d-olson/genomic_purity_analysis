@@ -65,15 +65,15 @@ To evaluate contaminant detection we used datasets comprised of pairwise combina
 
 \subsection*{Simulation of Sequencing Data}
 To approximate real sequencing data, reads were simulated using an empirical error model and insert size distribution.
-whole genome sequence data were simulated using the ART sequencing read simulator \citep{Huang2012}.
+whole genome sequence data were simulated using the ART sequencing read simulator \citep{Huang2012}. 
 Reads were simulated with the Illumina MiSeq error model for 2 $\times$ 230 base pair (bp) paired-end reads with an insert size of 690 $\pm$ 10 bp (average $\pm$ standard deviation) and 20 X mean coverage.
 The insert size parameters were defined based on the observed average and standard deviation insert size of the NIST RM8375-MG002 MiSeq sequencing data \citep{olson2016pepr} (NCBI Biosample accession SAMN02854573).
 
 \subsection*{Assessment of Taxonomic Composition}
 The taxonomic composition of simulated datasets was determined using the PathoScope sequence taxonomic classifier \citep{Francis2013}.
-PathoScope was selected for two reasons: (1) it uses a large reference database reducing potential biases due to contaminants not represented in the database, and (2) it leverages efficient whole genome read mapping algorithms. 
-Additionally, PathoScope was successfully used in our pilot study (ASM Poster REF) and as part of a pipeline we developed to characterize the NIST microbial genomic DNA reference material \citep{olson2016pepr}.
+PathoScope was selected for two reasons: (1) it uses a large reference database reducing potential biases due to contaminants not represented in the database, and (2) it leverages efficient whole genome read mapping algorithms.
 This method uses an expectation maximization algorithm where the sequence data are first mapped to a database comprised of all sequence data in the Genbank nt database.
+Additionally, PathoScope was successfully used in our pilot study (ASM Poster REF) and as part of a pipeline we developed to characterize the NIST microbial genomic DNA reference material \citep{olson2016pepr}.
 Then, through an iterative process, it re-assigns ambiguously mapped reads based on the proportion of reads mapped unambiguously to individual taxa in the database.
 The PathoScope 2.0 taxonomic read classification pipeline has three steps; (1) PathoQC - read quality filtering and trimming using the PRINSEQ algorithm \citep{schmieder2011quality}, (2) PathoMap - mapping reads to a reference database using the bowtie2 algorithm \citep{Langmead2012}, and (3) PathoID - expectation-maximization classification algorithm.
 The annotated Genbank nt database provided by the PathoScope developers was used as the reference database (\url{ftp://pathoscope.bumc.bu.edu/data/nt\_ti.fa.gz}).
