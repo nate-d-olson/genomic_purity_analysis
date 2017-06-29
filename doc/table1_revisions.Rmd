@@ -1,0 +1,32 @@
+---
+title: "Table 1 Revisions"
+author: "Nate Olson"
+date: "6/28/2017"
+output: html_document
+---
+
+Information to add to table 1
+- complete taxonomic classification of each considered bacterial genus: use taxid classification info? or taxize
+```{r}
+library(tidyverse)
+library(taxize)
+e_coli <- taxize::get_ids("Escherichia coli", db = "ncbi")
+taxize::classification(e_coli)
+classification_list <- list("Escherichia coli", "Clostridium","Salmonella enterica","Bacillus","Francisella") %>% 
+      map(taxize::get_ids, db = "ncbi") %>% 
+      map(taxize::classification())
+
+
+```
+
+```{r}
+classification_list
+taxize::class2tree(classification_list,check = TRUE)
+```   
+
+
+- An indication of the genus content and diversity
+      - number of distinct species: use species taxid for each entry
+      - number of complete sequenced genomes: I think this is the total number of genomes used?
+      - an indication of genome diversity: ANI plots with percent aligned and ANI
+
