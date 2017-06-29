@@ -1,7 +1,7 @@
 \documentclass[fleqn,10pt,lineno]{wlpeerj} % for journal submissions
 \usepackage{hyperref} % \documentclass[fleqn,10pt]{wlpeerj} % for preprint submissions
 
-\title{Using metagenomic methods to detect organismal contaminants in microbial materials.}
+\title{Using in-silico whole genome sequencing  datasets to challenge the ability of an existing bioinformatic tool to detect contaminants in microbial materials.}
 
 \author[1]{Nathan D. Olson}
 \author[1]{Justin M. Zook}
@@ -12,12 +12,14 @@
 \keywords{Genomic Purity, Whole Genome Sequencing, Bioinformatics, Biodetection, Microbial Material, Reference Material}
 
 \begin{abstract}
-High sensitivity methods such as next generation sequencing and polymerase chain reaction (PCR) are adversely impacted by organismal and DNA contaminants.
-Current methods for detecting contaminants in microbial materials (genomic DNA and cultures) are not sensitive enough and require either a known or culturable contaminant.
-Therefore, high sensitivity methods not requiring \textit{a priori} assumptions about the contaminant are needed.
-We demonstrate the use of whole genome sequencing (WGS) and a metagenomic taxonomic classification algorithm for assessing the organismal purity of a microbial material.
-Using this proposed method we characterized the types of false positive contaminants reported and the dependence of detectable contaminant concentration on material and contaminant genome using simulated WGS data.
-Using the proposed method to characterize microbial material purity will help to ensure that the materials used to validate pathogen detection assays, generate genome assemblies for database submission, and benchmark sequencing methods are free of contaminants adversely impacting measurement results.
+High sensitivity methods such as next generation sequencing and polymerase chain reaction (PCR) are adversely impacted by organismal and DNA contaminants. 
+Current methods for detecting contaminants in microbial materials (genomic DNA and cultures) are not sensitive enough and require either a known or culturable contaminant,
+high sensitivity methods not requiring \textit{a priori} assumptions about the contaminant. 
+Herein we demonstrate and characterize a WGS-based approach to detect organismal contaminants using an existing metagenomic taxonomic classification algorithm. 
+datasets from ten organisms as individuals and binary mixtures at varying ratiosparticularly as related to contaminant concentration and taxonomy.
+Using this proposed method we characterized the types of false positive contaminants reported and the dependence of detectable contaminant concentration on material and contaminant genome using simulated WGS data. 
+Using the proposed method to characterize microbial material purity will help to ensure that the materials used to validate pathogen detection assays, generate genome assemblies for database submission, 
+and benchmark sequencing methods are free of contaminants adversely impacting measurement results.
 \end{abstract}
 
 \begin{document}
