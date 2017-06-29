@@ -25,6 +25,12 @@ Coates, S.~G., Brunelle, S.~L., and Davenport, M.~G. (2011).
   biological threat agent detection methods.}
 \newblock {\em Journal of AOAC International}, 94(4):1328--37.
 
+\bibitem[Delmont and Eren, 2016]{delmont2016identifying}
+Delmont, T.~O. and Eren, A.~M. (2016).
+\newblock Identifying contamination with advanced visualization and analysis
+  practices: metagenomic approaches for eukaryotic genome assemblies.
+\newblock {\em PeerJ}, 4:e1839.
+
 \bibitem[Francis et~al., 2013]{Francis2013}
 Francis, O.~E., Bendall, M., Manimaran, S., Hong, C., Clement, N.~L.,
   Castro-Nallar, E., Snell, Q., Schaalje, G.~B., Clement, M.~J., Crandall,
@@ -66,6 +72,12 @@ Kim, D., Song, L., Breitwieser, F.~P., and Salzberg, S.~L. (2016).
   sequences.
 \newblock {\em Genome Res.}, 26(12):1721--1729.
 
+\bibitem[Kumar et~al., 2013]{kumar2013blobology}
+Kumar, S., Jones, M., Koutsovoulos, G., Clarke, M., and Blaxter, M. (2013).
+\newblock Blobology: exploring raw genome data for contaminants, symbionts and
+  parasites using taxon-annotated gc-coverage plots.
+\newblock {\em Frontiers in genetics}, 4:237.
+
 \bibitem[Lan and Reeves, 2002]{lan2002escherichia}
 Lan, R. and Reeves, P.~R. (2002).
 \newblock Escherichia coli in disguise: molecular origins of shigella.
@@ -75,6 +87,11 @@ Lan, R. and Reeves, P.~R. (2002).
 Langmead, B. and Salzberg, S.~L. (2012).
 \newblock {Fast gapped-read alignment with Bowtie 2.}
 \newblock {\em Nature methods}, 9(4):357--9.
+
+\bibitem[Lindner and Renard, 2015]{lindner2015metagenomic}
+Lindner, M.~S. and Renard, B.~Y. (2015).
+\newblock Metagenomic profiling of known and unknown microbes with microbegps.
+\newblock {\em PloS one}, 10(2):e0117711.
 
 \bibitem[Marron et~al., 2013]{Marron2013}
 Marron, A.~O., Akam, M., and Walker, G. (2013).
@@ -115,6 +132,11 @@ Parks, D.~H., Imelfort, M., Skennerton, C.~T., Hugenholtz, P., and Tyson, G.~W.
 \newblock Checkm: assessing the quality of microbial genomes recovered from
   isolates, single cells, and metagenomes.
 \newblock {\em Genome research}, 25(7):1043--1055.
+
+\bibitem[Piro et~al., 2016]{piro2016dudes}
+Piro, V.~C., Lindner, M.~S., and Renard, B.~Y. (2016).
+\newblock Dudes: a top-down taxonomic profiler for metagenomics.
+\newblock {\em Bioinformatics}, 32(15):2272--2280.
 
 \bibitem[{R Core Team}, 2016]{R}
 {R Core Team} (2016).
