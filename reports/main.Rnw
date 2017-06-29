@@ -227,7 +227,7 @@ The simulated contaminant-free \textit{Y. pestis} material dataset had false pos
 The simulated dataset coverage accounts for the observed minimum dectected contaminant proportion.
 As the individual datasets were simulated at 20X coverage, \textless 300,000 reads were simulated for each dataset, and on average \textless 3 reads were spiked into the material datasets for simulated contaminant proportions $\leq$ $10^{-5}$ (Fig. \ref{fig:contam_fig}).
 
-<<contam_fig, echo = FALSE, message = FALSE, fig.cap = "The relationship between the proportion of reads matching the contaminant species and the proportion of simulated contaminant reads. Plots are split by the material species with line and point color indicating contaminant species. Dashed line indicates the expected 1:1 correlation between the proportion of reads matching the expected contaminant and the proportion of reads simulated from the contaminant. The contaminant proportion was underestimated for points below the dashed line and overestimated for points above the dashed line.", fig.lp="fig:">>=
+<<contam_fig, echo = FALSE, message = FALSE, fig.cap = "The relationship between the proportion of reads matching the contaminant species and the proportion of simulated contaminant reads. Plots are facted on the x-axis by material species and y-axis by contaminant species. Point color indicates contaminant species and line color indicates material species. Dashed line indicates the expected 1:1 correlation between the proportion of reads matching the expected contaminant and the proportion of reads simulated from the contaminant. The contaminant proportion was underestimated for points below the dashed line and overestimated for points above the dashed line.", fig.lp="fig:">>=
 contamMixMatchResults %>% mutate(mix = as.numeric(mix),
                                  mix_contam = if_else(mix != 1, 1 - mix, 0.1e-8)) %>%
       filter(lca_contam_rank %in%
@@ -241,16 +241,16 @@ contamMixMatchResults %>% mutate(mix = as.numeric(mix),
                    contam_label = str_replace(contam_label, " uid.*","")) %>%
       ggplot(aes(x = mix_contam, y = contam_prop)) +
             geom_abline(aes(slope = 1, intercept = 0), linetype = 2, color = "grey60") +
-            geom_line(aes(color = contam_facet), alpha = 0.5) +
             geom_point(aes(color = contam_facet), alpha = 0.5) +
-            facet_wrap(~target_facet, ncol = 2) +
+            geom_line(aes(color = target_facet)) +
+            facet_grid(contam_facet~target_facet) +
             scale_x_log10() + scale_y_log10() +
             theme_bw() +
             theme(axis.text.x = element_text(angle = 90), legend.position = "bottom") +
             guides(color = guide_legend(nrow = 2)) +
             labs(x = "Proportion of Reads Simulated from the Contaminant",
                  y = "Proportion of Matched Reads",
-                 color = "Contaminant")
+                 color = "Organism")
 @
 
 
