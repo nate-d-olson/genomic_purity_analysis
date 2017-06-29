@@ -158,6 +158,15 @@ single_tbl_df %>% xtable::xtable(label = "tab:single_org", digits = 2, caption =
 knitr::include_graphics("figure/genus_tree.png")
 @
 
+<<baseline_ani, fig.cap = "Genomic diversity of strains used in baseline study by genus. The percent of the genome aligned represented on the x-axis and average nucleotide identity (similarity of aligned regions) on the y-axis. More similar genomes will have percent aligned and average nucleotide identity close to 1.", echo=FALSE>>=
+dnadiff_pair %>% filter(ref_genus == qry_genus) %>%
+      ggplot(aes(x = AlignedREF, y = AvgIdentity, color = ref_genus)) + 
+      geom_density2d() + 
+      facet_wrap(~ref_genus, nrow = 2) + 
+      theme_bw() +
+      labs(x = "Percent Aligned", y = "Average Nucleotide Identity", color = "Genus")
+@
+
 <<species_prop, fig.cap = "Species level or higher estimated match proportion varies by material genus. The estimated match proportion is the total proportion of the material with correct taxonomic assignments to the genome species, subspecies, strain, or isolate level. The Estimated Match Proportions shown are the Final Guess values in the PathoScope results table. Each point is calculated for a genome from a different isolate within the genus. The vertical dashed line indicates the 0.99 estimated match proportion. Orange points are genomes with species level estimated match proportions less than 0.90 and blue points greater than or equal to 0.90.", echo=FALSE>>=
 ggplot(single_species_match) +
       geom_jitter(aes(x= query_genus_reorder, y = cum_prop,color = match_thresh),

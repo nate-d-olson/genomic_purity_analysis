@@ -56,6 +56,18 @@ single_tbl_df <- singleOrgMatchResults %>%
       rename(Genus = query_genus, N = count) %>% arrange(Genus)
 
 
+### Baseline ANI pairwise plot
+dnadiff_tidy <- readRDS("../data/dnaDiffTidy.RDS")
+dnadiff_ani <- dnadiff_tidy %>% 
+      filter(cat_column == "Align:1-to-1" & metric == "AvgIdentity") %>% 
+      select(qry_uid, ref_uid, REF) %>% rename(AvgIdentity = REF) %>% 
+      mutate(AvgIdentity = as.numeric(AvgIdentity))
+dnadiff_aligned <- dnadiff_tidy  %>% filter(metric == "AlignedBases") %>% 
+      mutate(AlignedREF = str_extract(REF, "\\(.*%") %>% str_sub(2,5) %>% as.numeric(),
+             AlignedQRY = str_extract(QRY, "\\(.*%") %>% str_sub(2,5) %>% as.numeric()) %>% 
+      select(ref_genus, qry_genus, qry_uid, ref_uid, AlignedREF, AlignedQRY)
+dnadiff_pair <- dnadiff_aligned %>% left_join(dnadiff_ani)
+
 
 species_lvls <- c("species group", "species subgroup", "subspecies")
 single_org_cum <- singleOrgMatchResults %>%

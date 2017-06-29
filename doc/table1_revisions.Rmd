@@ -67,3 +67,29 @@ all but one
 
 ## Indication of genome diversity 
 - an indication of genome diversity: ANI plots with percent aligned and ANI
+
+Show pairwise ani for within and between genus
+
+```{r}
+dnadiff_tidy <- readRDS("../data/dnaDiffTidy.RDS")
+dnadiff_ani <- dnadiff_tidy %>% 
+      filter(cat_column == "Align:1-to-1" & metric == "AvgIdentity") %>% 
+      select(qry_uid, ref_uid, REF) %>% rename(AvgIdentity = REF) %>% 
+      mutate(AvgIdentity = as.numeric(AvgIdentity))
+dnadiff_aligned <- dnadiff_tidy  %>% filter(metric == "AlignedBases") %>% 
+      mutate(AlignedREF = str_extract(REF, "\\(.*%") %>% str_sub(2,5) %>% as.numeric(),
+             AlignedQRY = str_extract(QRY, "\\(.*%") %>% str_sub(2,5) %>% as.numeric()) %>% 
+      select(ref_genus, qry_genus, qry_uid, ref_uid, AlignedREF, AlignedQRY)
+dnadiff_pair <- dnadiff_aligned %>% left_join(dnadiff_ani)
+```
+
+
+Potential separation based on species - not sure relevance to project
+```{r}
+dnadiff_pair %>% filter(ref_genus == qry_genus) %>%
+      ggplot(aes(x = AlignedREF, y = AvgIdentity, color = ref_genus)) + 
+      geom_density2d() + 
+      facet_wrap(~ref_genus, nrow = 2) + 
+      theme_bw() +
+      labs(x = "Percent Aligned", y = "Average Nucleotide Identity", color = "Genus")
+```
