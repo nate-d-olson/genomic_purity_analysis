@@ -153,6 +153,13 @@ Schmieder, R. and Edwards, R. (2011).
 \newblock taxize - taxonomic search and retrieval in r.
 \newblock {\em F1000Research}.
 
+\bibitem[Sczyrba et~al., 2017]{sczyrba2017critical}
+Sczyrba, A., Hofmann, P., Belmann, P., Koslicki, D., Janssen, S., Droege, J.,
+  Gregor, I., Majda, S., Fiedler, J., Dahms, E., et~al. (2017).
+\newblock Critical assessment of metagenome interpretation- a benchmark of
+  computational metagenomics software.
+\newblock {\em Biorxiv}, page 099127.
+
 \bibitem[Shrestha et~al., 2013]{Shrestha2013}
 Shrestha, P.~M., Nevin, K.~P., Shrestha, M., and Lovley, D.~R. (2013).
 \newblock {When Is a Microbial Culture “ Pure ”? Persistent Cryptic

@@ -1,7 +1,7 @@
 \documentclass[fleqn,10pt,lineno]{wlpeerj} % for journal submissions
 \usepackage{hyperref} % \documentclass[fleqn,10pt]{wlpeerj} % for preprint submissions
 
-\title{Using in-silico whole genome sequencing  datasets to challenge the ability of an existing bioinformatic tool to detect contaminants in microbial materials.}
+\title{Using \textit{in-silico} whole genome sequencing  datasets to challenge the ability of an existing bioinformatic tool to detect contaminants in microbial materials.}
 
 \author[1]{Nathan D. Olson}
 \author[1]{Justin M. Zook}
@@ -14,11 +14,11 @@
 \begin{abstract}
 High sensitivity methods such as next generation sequencing and polymerase chain reaction (PCR) are adversely impacted by organismal and DNA contaminants. 
 Current methods for detecting contaminants in microbial materials (genomic DNA and cultures) are not sensitive enough and require either a known or culturable contaminant. 
-Whole genome sequencing (WGS) is a promising approach for detecting contaminants due to its sensitivity and lack of need for \textit{a priori} assumptions about the contaminant. Prior to applying WGS, we must first understand its limitations for detecting contaminants and its potential for false positives. 
+Whole genome sequencing (WGS) is a promising approach for detecting contaminants due to its sensitivity and lack of need for \textit{a priori} assumptions about the contaminant. Prior to applying WGS, we must first understand its limitations for detecting contaminants and potential for false positives. 
 Herein we demonstrate and characterize a WGS-based approach to detect organismal contaminants using an existing metagenomic taxonomic classification algorithm. 
-Simulated WGS datasets from ten organisms as individuals and binary mixtures of nine organisms at varying ratios were analyzed to evaluate the role of contaminant concentration and taxonomy on detection. 
+Simulated WGS datasets from ten genera as individuals and binary mixtures of eight organisms at varying ratios were analyzed to evaluate the role of contaminant concentration and taxonomy on detection. 
 The types of false positive contaminants reported depended on the …  (PUT IN SOME RESULTS STATEMENTS HERE - maybe one statement for concentration and one for taxonomy? Something about false positives?). 
-Once a WGS method for detecting contaminants is characterized, it can then be applied to evaluate microbial material purity, in efforts to ensure that contaminants in microbial materials used to validate pathogen detection assays, generate genome assemblies for database submission, and benchmark sequencing methods are are well characterized.
+Once a WGS method for detecting contaminants is characterized, it can be applied to evaluate microbial material purity, in effort to ensure that contaminants in microbial materials used to validate pathogen detection assays, generate genome assemblies for database submission, and benchmark sequencing methods.
 \end{abstract}
 
 \begin{document}
@@ -33,7 +33,7 @@ source("pub_code.R")
 \thispagestyle{empty}
 
 \section*{Introduction} 
-Microbial materials such as cells and extracted genomic DNA from a presumably “pure” culture should ideally be free of organismal contaminants, yet they rarely are. 
+Microbial materials such as cells and extracted genomic DNA from a presumably “pure” culture should ideally be free of organismal contaminants, yet rarely are. 
 High sensitivity detection methods including polymerase chain reaction (PCR) and next generation sequencing (NGS) can detect organismal contaminants previously undetectable by traditional microbiology methods such as culturing, biochemical tests, and microscopy. 
 Characterizing these contaminants in order to focus efforts on reducing their level is critical to ensuring high quality microbial materials are used to populate sequence databases \citep{parks2015checkm}, for mock communities used to validate metagenomic methods \citep{bokulich2016mockrobiota}, to validate biodetection assays  \citep{Ieven2013,International2011}, and for basic research using model systems \citep{Shrestha2013}. 
 Furthermore, tools to assess general contaminants are also needed for the characterization of microbial genomic reference materials \citep{olson2016pepr}, where contaminant profiles allow users to properly determine whether the material is suitable for their application. 
@@ -45,16 +45,16 @@ Reagent contaminants are assessed by producing   negative controls \citep{jervis
 Current approaches for detecting contaminants in microbial materials such as culture, microscopy, or PCR typically fail to meet all the requirements to characterize materials for routine applications. 
 Culture- and microscopy-based methods lack the required sensitivity for detecting contaminants in microbial materials being used in NGS and PCR applications, are not appropriate for genomic DNA materials, and assume the contaminants are phenotypically distinct from the material they contaminate. 
 While PCR-based methods can detect contaminants in genomic DNA, the methods are limited to specifically targeted contaminants and are not amenable to highly multiplexed applications \citep{heck2016evaluating,Marron2013}. 
-In contrast to these methods, shotgun metagenomic methods, though unable to assess contaminant viability , can be used to detect contaminants in both cell cultures and genomic DNA materials while only requiring the contaminant has sequencing reads differentiating it from the material strain. 
+In contrast to these methods, shotgun metagenomic methods, though unable to assess contaminant viability, can be used to detect contaminants in both cell cultures and genomic DNA materials while only requiring the contaminant has sequencing reads differentiating it from the material strain. 
 As whole genome sequencing can be performed on genomic DNA and cell cultures (after DNA extraction), the method is appropriate for both types of microbial materials.  
-Bioinformatic methods have been developed and used to detect contaminant reads in a whole genome sequencing dataset but to our knowledge have not been used to detect contaminants in a microbial material \citep{kumar2013blobology,delmont2016identifying}.
 
 Shotgun metagenomic sequencing is used to characterize environmental samples, detect pathogens in clinical samples, and is suitable for detecting contaminants in microbial materials.
 Shotgun metagenomics consists of two main steps, whole genome sequencing of all DNA in a sample, and analysis of the resulting sequencing data, most commonly using a taxonomic assignment algorithm \citep{Thomas2012}.
 For genomic DNA materials, the material itself is sequenced, whereas for cells the genomic DNA must first be extracted from cell cultures prior to sequencing.
 After sequencing, a taxonomic assignment algorithm is used to characterize the sequencing data.
-Currently, researchers use a variety of classification algorithms with varying accuracy and computational performance \citep{Bazinet2012,menzel2016fast}.
-Nearly all methods require a reference database, where the contaminating organism (or an organism more closely related to the contaminant than the material) must be in the database for it to be detected.t.
+Currently, researchers use a variety of classification algorithms with varying accuracy and computational performance \citep{Bazinet2012,menzel2016fast,sczyrba2017critical}.
+Nearly all methods require a reference database, where the contaminating organism (or an organism more closely related to the contaminant than the material) must be in the database for it to be detected. 
+Bioinformatic methods have been developed and used to detect contaminant reads in a whole genome sequencing dataset but to our knowledge have not been used to detect contaminants in a microbial material \citep{kumar2013blobology,delmont2016identifying}. 
 
 In order to confidently use metagenomics to detect contaminants in microbial materials, one must first understand its limitations in doing so.  We have developed a metagenomics-based approach to evaluate contaminant detection capabilities.  In this work, we present results from an \textit{in-silico} study demonstrating our approach using an existing taxonomic assignment algorithm for detecting contaminant DNA in simulated microbial whole genome sequence data.
 First, a baseline assessment of the method was performed using simulated sequencing data from single microorganisms to characterize the types of false positive contaminants the algorithm may report.
@@ -71,16 +71,16 @@ To evaluate contaminant detection we used datasets comprised of pairwise combina
 
 \subsection*{Simulation of Sequencing Data}
 To approximate real sequencing data, reads were simulated using an empirical error model and insert size distribution.
-whole genome sequence data were simulated using the ART sequencing read simulator \citep{Huang2012}. 
+Whole genome sequence data were simulated using the ART sequencing read simulator \citep{Huang2012}. 
 Reads were simulated with the Illumina MiSeq error model for 2 $\times$ 230 base pair (bp) paired-end reads with an insert size of 690 $\pm$ 10 bp (average $\pm$ standard deviation) and 20 X mean coverage.
 The insert size parameters were defined based on the observed average and standard deviation insert size of the NIST RM8375-MG002 MiSeq sequencing data \citep{olson2016pepr} (NCBI Biosample accession SAMN02854573).
 
 \subsection*{Assessment of Taxonomic Composition}
 The taxonomic composition of simulated datasets was determined using the PathoScope sequence taxonomic classifier \citep{Francis2013}.
-PathoScope was selected for two reasons: (1) it uses a large reference database reducing potential biases due to contaminants not represented in the database, and (2) it leverages efficient whole genome read mapping algorithms.
-This method uses an expectation maximization algorithm where the sequence data are first mapped to a database comprised of all sequence data in the Genbank nt database.
-Additionally, PathoScope was successfully used in our pilot study (ASM Poster REF) and as part of a pipeline we developed to characterize the NIST microbial genomic DNA reference material \citep{olson2016pepr}.
-Then, through an iterative process, it re-assigns ambiguously mapped reads based on the proportion of reads mapped unambiguously to individual taxa in the database.
+PathoScope was selected for two reasons: (1) it uses a large reference database reducing potential biases due to contaminants not represented in the database, and (2) it leverages efficient whole genome read mapping algorithms. 
+Additionally, PathoScope was successfully used in our pilot study (https://doi.org/10.6084/m9.figshare.1200090.v1) and as part of a pipeline we developed to characterize the NIST microbial genomic DNA reference material \citep{olson2016pepr}. 
+This method uses an expectation maximization algorithm where the sequence data are first mapped to a database comprised of all sequence data in the Genbank nt database. 
+Then, through an iterative process, it re-assigns ambiguously mapped reads based on the proportion of reads mapped unambiguously to individual taxa in the database. 
 The PathoScope 2.0 taxonomic read classification pipeline has three steps; (1) PathoQC - read quality filtering and trimming using the PRINSEQ algorithm \citep{schmieder2011quality}, (2) PathoMap - mapping reads to a reference database using the bowtie2 algorithm \citep{Langmead2012}, and (3) PathoID - expectation-maximization classification algorithm.
 The annotated Genbank nt database provided by the PathoScope developers was used as the reference database (\url{ftp://pathoscope.bumc.bu.edu/data/nt\_ti.fa.gz}).
 
@@ -89,7 +89,7 @@ Simulated sequencing data from individual genomes was used to characterize the f
 Sequence data was simulated for \Sexpr{sum(single_tbl_df$N)} strains, from 10 genera (Table \ref{tab:single_org}, Supplemental Table 1).
 These genera were selected based on relevance to public health and biothreat detection.
 We will refer to the genome used to generate the reads as the material genome.
-The genomes included in the simulation study were limited to the number of closed genomes in the Genbank database (\url{http://www.ncbi.nlm.nih.gov/genbank/}, accessed 10/18/2013) belonging to the genera of interest (Table \ref{tab:single_org}).
+The genomes included in the simulation study were limited to closed genomes in the Genbank database (\url{http://www.ncbi.nlm.nih.gov/genbank/}, accessed 10/18/2013) belonging to the genera of interest (Table \ref{tab:single_org}).
 Due to the large number of \textit{Bacillus}, \textit{Escherichia}, and \textit{Salmonella} genomes, genomes from these genera were limited to the species \textit{Bacillus cereus}, \textit{Escherichia coli}, and \textit{Salmonella enterica} respectively.
 The taxonomic hierarchy for the material genome and simulated read assignment match levels were determined using the R package, Taxize \citep{TaxizeArticle,TaxizeManual}.
 
@@ -111,7 +111,7 @@ This approach simulates the proportion of cells in a contaminated material and n
 Organisms with larger genomes therefore have more simulated reads.
 
 
-To generate the simulated contaminant datasets, single organism simulated datasets were first generated for the 8 representative genomes using the same methods as baseline assessment (Fig. \ref{fig:contam_simulation}).
+To generate the simulated contaminant datasets, single organism simulated datasets were first generated for the 8 representative genomes using the same methods as baseline assessment (Fig. \ref{fig:contam_simulation}, Table \ref{tab:contam_table}).
 The resulting simulated sequencing data was first processed using the PathoQC and PathoMap steps in the PathoScope pipeline.
 The output from the PathoMap step (SAM file, sequence alignment file \url{https://samtools.github.io/hts-specs/SAMv1.pdf}) for the material and contaminant datasets were subsampled as described above then combined.
 The resulting SAM file was processed by PathoID, the third step in the PathoScope pipeline.
@@ -137,7 +137,7 @@ First, we assessed the baseline performance of the proposed contaminant detectio
 We applied our method to simulated sequencing data from individual genomes. 
 All reads assigned to a different taxa than the genome the reads were simulated from were defined as false positive contaminants. 
 (This assumes the genome sequence is contaminant free.) 
-Our analysis included taxonomic classification results for simulated sequencing data  from \Sexpr{length(spec_prop)} genomes, representing 10 different genera (Table \ref{tab:single_org}, \ref{fig:single_org_tree}, Supplemental Table 1).
+Our analysis included taxonomic classification results for simulated sequencing data  from \Sexpr{length(spec_prop)} genomes, representing 10 different genera (Table \ref{tab:single_org}, Fig. \ref{fig:single_org_tree}, Supplemental Table 1).
 The method was evaluated using the estimated proportion of species level matches.
 The estimated match proportion is the sum of the Final Guess values, proportions reported by PathoScope for a taxa, for all correct species level matches.
 For \Sexpr{spec_gt_0.99} of the \Sexpr{length(spec_prop)} genomes, PathoScope estimated that greater than 99\% of the material was the expected species (Fig. \ref{fig:species_prop}).
@@ -301,7 +301,11 @@ The material genome strongly influenced the total error rate with \textit{E. col
 
 \section*{Discussion}
 
-We have developed an in silico approach to evaluate a taxonomic sequence classification algorithm of interest for its ability to detect contaminant DNA in whole genome sequence datasets from microbial materials. The use of in silico data allows for a “known” contaminant taxonomy and concentration to challenge the algorithm.  Here we used single and binary mixtures of organisms.  While binary mixtures of organisms do not necessarily capture the complexity of real-world samples, they do serve as an appropriate model system to evaluate the algorithm and our approach to detecting contaminants.   This approach could easily be adapted  for in silico datasets with multiple contaminants.  
+We have developed an \textit{in-silico} approach to evaluate the ability of an existing taxonomic sequence classification algorithm to detect contaminant DNA in whole genome sequence datasets from microbial materials. 
+The use of \textit{in-silico} data allows for a “known” contaminant taxonomy and concentration to challenge the algorithm. 
+Here we used single and binary mixtures of organisms. 
+While binary mixtures of organisms do not necessarily capture the complexity of real-world samples, they do serve as an appropriate model system to evaluate the algorithm and our approach to detecting contaminants. 
+This approach could easily be adapted  for \textit{in-silico} datasets with multiple contaminants.  
 
 
 There are three basic steps to using this method to detect contaminants in a microbial material. 
@@ -309,9 +313,9 @@ Baseline assessment is the first step.
 For a baseline assessment, reads are simulated from the reference genome of the organism of interest and processed using a taxonomic classification algorithm. 
 Performing a baseline assessment allows one to identify the false positive contaminants you can expect to observe due to limitations in the method. 
 Simulating data with realistic error profiles, read length, and fragment distribution is likely to yield results more representative of what one would expect from real sequencing data.
-Next, sequencing data generated for binary mixtures of the  microbial materials is processed using the same taxonomic classification algorithm.
+Next, sequencing data generated for binary mixtures of the  microbial materials is processed using the same taxonomic classification algorithm as used in the baseline assessment.
 The last step is a critical evaluation of results for potential false positives. 
-For all settings including research, clinical, regulatory, and attribution, the contaminant detection method should be validated for the intended application.  
+For all settings including basic research, clinical, regulatory, and attribution, the contaminant detection method should be validated for the intended application.  
 Appropriate validation approaches may include experiments with simulated contaminants like those performed as part of this study and sequencing genomic DNA or cells spiked with varying contaminant concentrations. It is important to note that the method if routinely deployed cannot determine if the contaminants are viable and/or culturable as only the DNA is evaluated.  Separate culture techniques would have to be performed in parallel to determine if the contamination was viable. 
 
 False positive contaminants identified in steps 1 and 2 were split into two categories (1) those due to an inability of the method to differentiate the material genome from the contaminant genome, and (2) errors in the reference database.
@@ -356,11 +360,15 @@ For example, the \textit{Bacillus subtilis}-\textit{Synechocystis} chimeric geno
 
 \section*{Conclusions}
 Identification and characterization of low abundance contaminants in a non-targeted manner is critical for a microbial material used in high sensitivity assays such as PCR.
-Whole genome sequencing combined with taxonomic assignment algorithms provides a viable alternative to commonly used organismal contaminant detection methods such as culturing, microscopy, and PCR.  WGS requires no \textit{a priori} information about the contaminant and can identify common as well as unexpected contaminants.
+Whole genome sequencing combined with taxonomic assignment algorithms provides a viable alternative to commonly used organismal contaminant detection methods such as culturing, microscopy, and PCR. 
+WGS requires no \textit{a priori} information about the contaminant and can identify common as well as unexpected contaminants.
 
-The approach presented here is suitable for characterizing an algorithm’s ability to detect organismal contaminants and could be used to compare algorithms, identify sources of false positives for organisms of interest.  Further, the algorithm could then be used to detect contaminants in actual DNA sequences from both genomic DNA and whole cell microbial materials, with the only \textit{a priori} assumption that the contaminant is in the reference database. 
+The approach presented here is suitable for characterizing an algorithm’s ability to detect organismal contaminants and could be used to compare algorithms and identify sources of false positives for organisms of interest.  Further, the algorithm could then be used to detect contaminants in actual DNA sequences from both genomic DNA and whole cell microbial materials, with the only \textit{a priori} assumption that the contaminant is in the reference database. 
 False positive contaminants were a primary limitation of the example system and method used herein. 
-As false positive contaminants are database and taxonomic assignment algorithm dependent, additional work is needed to improve database curation and data authentication efforts as well as characterize taxonomic assignment algorithm performance.  In summary, we have provided a straight-forward in silico approach using existing datasets to to challenge and evaluate the use of WGS for contaminant detection.   Once a given WGS-based method is well-characterized and sources of false positives better characterized, the method could then be applied with confidence to examine microbial reference materials and real-world samples.   With the continued improvement of taxonomic classification algorithms, the expansion of reference databases, and the decline of the cost of sequencing, shotgun metagenomic sequencing provides an alternative to current methods for detecting contaminants.
+As false positive contaminants are database and taxonomic assignment algorithm dependent, additional work is needed to improve database curation and data authentication efforts as well as characterize taxonomic assignment algorithm performance. 
+In summary, we have provided a straight-forward \textit{in-silico} approach using existing datasets to to challenge and evaluate the use of WGS for contaminant detection. 
+Once a given WGS-based method is well-characterized and sources of false positives better characterized, the method could then be applied with confidence to examine microbial reference materials and real-world samples. 
+With the continued improvement of taxonomic classification algorithms, the expansion of reference databases, and the decline of the cost of sequencing, shotgun metagenomic sequencing provides an alternative to current methods for detecting contaminants.
 
 
 \newpage
