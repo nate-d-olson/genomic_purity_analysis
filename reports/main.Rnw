@@ -37,7 +37,7 @@ Microbial materials such as cells and extracted genomic DNA from a presumably â€
 High sensitivity detection methods including polymerase chain reaction (PCR) and next generation sequencing (NGS) can detect organismal contaminants previously undetectable by traditional microbiology methods such as culturing, biochemical tests, and microscopy. 
 Characterizing these contaminants in order to focus efforts on reducing their level is critical to ensuring high quality microbial materials are used to populate sequence databases \citep{parks2015checkm}, for mock communities used to validate metagenomic methods \citep{bokulich2016mockrobiota}, to validate biodetection assays  \citep{Ieven2013,International2011}, and for basic research using model systems \citep{Shrestha2013}. 
 Furthermore, tools to assess general contaminants are also needed for the characterization of microbial genomic reference materials \citep{olson2016pepr}, where contaminant profiles allow users to properly determine whether the material is suitable for their application. 
-Contaminants in microbial materials, as found in non-axenic cellular materials or genomic materials with foreign DNA, haves only been addressed when processing the sequencing data and not for general material characterization \citep{Shrestha2013,tennessen2015prodege}.
+Contaminants in microbial materials, as found in non-axenic cellular materials or genomic materials with foreign DNA, has only been addressed when processing the sequencing data and not for general material characterization \citep{Shrestha2013,tennessen2015prodege}.
 PCR and NGS can also be used to detect reagent impurities. 
 Reagent contaminants are assessed by producing   negative controls \citep{jervis2015deriving}, improved methods for removing contaminants \citep{woyke2011decontamination,motley2014improved}, and post-processing of sequence data \citep{mukherjee2015large}. 
 
@@ -57,7 +57,7 @@ Currently, researchers use a variety of classification algorithms with varying a
 Nearly all methods require a reference database, where the contaminating organism (or an organism more closely related to the contaminant than the material) must be in the database for it to be detected.t.
 
 In order to confidently use metagenomics to detect contaminants in microbial materials, one must first understand its limitations in doing so.  We have developed a metagenomics-based approach to evaluate contaminant detection capabilities.  In this work, we present results from an \textit{in-silico} study demonstrating our approach using an existing taxonomic assignment algorithm for detecting contaminant DNA in simulated microbial whole genome sequence data.
-First, a baseline assessment of the method was performed using simulated sequencing data from single microorganisms to characterize the types of false positive contaminants the method may report.
+First, a baseline assessment of the method was performed using simulated sequencing data from single microorganisms to characterize the types of false positive contaminants the algorithm may report.
 The contaminant detection method was then evaluated for its ability to detect organismal contaminants in microbial material strains using sequencing data simulated to replicate microbial materials contaminated with different organismal contaminants at a range of concentrations.   
 
 The intended audience for this manuscript are users and maintainers of microbial material stocks who are interested in validating the purity of the material. A secondary audience is taxonomic classification algorithm developers as this work presents a novel approach to evaluating taxonomic classification methods as well as an additional use case for their methods that the developers may not have previously considered.
@@ -86,7 +86,7 @@ The annotated Genbank nt database provided by the PathoScope developers was used
 
 \subsection*{Baseline Assessment Using Individual Genomes}
 Simulated sequencing data from individual genomes was used to characterize the false positive contaminants reported by PathoScope.
-Sequence data was simulated for \Sexpr{sum(single_tbl_df$N)} strains, from 9 genera (Table \ref{tab:single_org}, Supplemental Table 1).
+Sequence data was simulated for \Sexpr{sum(single_tbl_df$N)} strains, from 10 genera (Table \ref{tab:single_org}, Supplemental Table 1).
 These genera were selected based on relevance to public health and biothreat detection.
 We will refer to the genome used to generate the reads as the material genome.
 The genomes included in the simulation study were limited to the number of closed genomes in the Genbank database (\url{http://www.ncbi.nlm.nih.gov/genbank/}, accessed 10/18/2013) belonging to the genera of interest (Table \ref{tab:single_org}).
@@ -221,10 +221,19 @@ contam_tbl_df %>% xtable(label = "tab:contam_table", digits = 2,
              scalebox='0.85')
 @
 
+<<contam_ani, echo = FALSE, message = FALSE, fig.cap = "Genomic similarity, percent of genome aligned and average nucleotide identity, between pairs of representative strains used in contaminant detection assessment.", fig.lp="fig:">>=
+contam_pairs %>% 
+      ggplot() + 
+      geom_point(aes(x = AlignedREF, y = AvgIdentity, color = qry_genus)) + 
+      facet_wrap(~ref_genus, nrow = 2) + scale_x_log10() + theme_bw() +
+      theme(legend.position = "bottom") + 
+      labs(x = "Percent Aligned", y = "Average Nucleotide Identity", color = "Genus")
+@
+
 
 Finally, contaminant detection was assessed by combining subsets of simulated data from two organisms at defined proportions,
 with the larger proportion representing the microbial material and smaller proportion the contaminant (Fig. \ref{fig:contam_simulation}).
-We simulated contaminant datasets as pairwise combinations of representative genomes from 8 of the genera used in the baseline assessment section of the study (Table \ref{tab:contam_table}).
+We simulated contaminant datasets as pairwise combinations of representative genomes from 8 of the genera used in the baseline assessment section of the study (Table \ref{tab:contam_table}, Fig. \ref{fig:contam_ani}).
 All of the genomes selected have a species level estimated match proportion greater than 0.98 (Table \ref{tab:contam_table}).
 
 The minimum contaminant proportion detected was $10^{-3}$ and  $10^{-4}$ for most pairwise comparisons with a few exceptions (Fig. \ref{fig:contam_fig}).

@@ -283,6 +283,30 @@ contam_corr_quant <- contam_correlation$prop_cor %>%
 #        paired = TRUE,alternative = "greater")
 
 
+## Contam ANI
+contam_taxid <- contamSingleOrgMatch %>% .$query_taxid %>% unique()
+contam_diff <- dnadiff_tidy %>% filter(ref_taxid %in% contam_taxid, qry_taxid %in% contam_taxid)
+
+contam_ani <- contam_diff %>% 
+      filter(cat_column == "Align:1-to-1" & metric == "AvgIdentity") %>% 
+      select(qry_uid, ref_uid, REF) %>% rename(AvgIdentity = REF) %>% 
+      mutate(AvgIdentity = as.numeric(AvgIdentity))
+
+contam_aligned <- contam_diff  %>% filter(metric == "AlignedBases") %>% 
+      mutate(AlignedREF = str_extract(REF, "\\(.*%") %>% str_sub(2,5) %>% as.numeric(),
+             AlignedQRY = str_extract(QRY, "\\(.*%") %>% str_sub(2,5) %>% as.numeric()) %>% 
+      select(ref_genus, qry_genus, qry_uid, ref_uid, AlignedREF, AlignedQRY)
+
+contam_plot <- contam_aligned %>% left_join(contam_ani)
+
+contam_qry <- contam_plot %>% 
+      rename(AlignedQRY = AlignedREF, AlignedREF = AlignedQRY,
+             ref_genus = qry_genus, qry_genus = ref_genus,
+             ref_uid = qry_uid, qry_uid = ref_uid)
+contam_pairs <- bind_rows(contam_plot, contam_qry)
+
+
+## Contam Residual
 contam_resid <- contam_prop_df %>% 
       mutate(prop_resid = (contam_prop - mix_contam)/mix_contam) %>% 
       filter(mix_contam > 10^-5)

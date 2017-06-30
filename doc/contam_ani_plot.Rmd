@@ -1,0 +1,75 @@
+---
+title: "ANI Contam Plot"
+author: "Nate Olson"
+date: "6/30/2017"
+output: html_document
+---
+
+```{r}
+library(ProjectTemplate)
+wd <- getwd()
+setwd("../")
+load.project()
+setwd(wd)
+dnadiff_tidy <- readRDS("../data/dnaDiffTidy.RDS")
+```
+
+```{r}
+contam_taxid <- contamSingleOrgMatch %>% .$query_taxid %>% unique()
+contam_diff <- dnadiff_tidy %>% filter(ref_taxid %in% contam_taxid, qry_taxid %in% contam_taxid)
+```
+
+```{r}
+contam_ani <- contam_diff %>% 
+      filter(cat_column == "Align:1-to-1" & metric == "AvgIdentity") %>% 
+      select(qry_uid, ref_uid, REF) %>% rename(AvgIdentity = REF) %>% 
+      mutate(AvgIdentity = as.numeric(AvgIdentity))
+contam_aligned <- contam_diff  %>% filter(metric == "AlignedBases") %>% 
+      mutate(AlignedREF = str_extract(REF, "\\(.*%") %>% str_sub(2,5) %>% as.numeric(),
+             AlignedQRY = str_extract(QRY, "\\(.*%") %>% str_sub(2,5) %>% as.numeric()) %>% 
+      select(ref_genus, qry_genus, qry_uid, ref_uid, AlignedREF, AlignedQRY)
+contam_plot <- contam_aligned %>% left_join(contam_ani)
+```
+
+```{r}
+contam_plot %>% ggplot() + 
+      geom_raster(aes(x = ref_genus, y = qry_genus, fill = AvgIdentity)) + 
+      geom_text(aes(x = ref_genus, y = qry_genus, label = AlignedREF), color = "white") + 
+      geom_text(aes(x = qry_genus, y = ref_genus, label = AlignedQRY)) +
+      theme_bw() 
+```
+
+```{r}
+contam_plot %>% 
+      mutate(AlignedAve = (AlignedREF + AlignedQRY) / 2, 
+             genus_pair = paste0(str_sub(ref_genus, 1, 2), "-", str_sub(qry_genus, 1, 2))) %>% 
+      ggplot() + 
+      geom_text(aes( x = AvgIdentity, y = AlignedAve, label = genus_pair, color = qry_genus)) +
+      scale_y_log10()
+```
+
+```{r}
+contam_plot %>% 
+      mutate(AlignedAve = (AlignedREF + AlignedQRY) / 2, 
+             genus_pair = paste0(str_sub(ref_genus, 1, 2), "-", str_sub(qry_genus, 1, 2))) %>% 
+      ggplot() + 
+      geom_point(aes( x = AlignedREF, y = AlignedQRY, color = qry_genus)) +
+      scale_y_log10() + scale_x_log10()
+```
+
+
+```{r}
+contam_qry <- contam_plot %>% 
+      rename(AlignedQRY = AlignedREF, AlignedREF = AlignedQRY,
+             ref_genus = qry_genus, qry_genus = ref_genus,
+            ref_uid = qry_uid, qry_uid = ref_uid)
+contam_pairs <- bind_rows(contam_plot, contam_qry)
+
+contam_pairs %>% 
+      ggplot() + 
+      geom_point(aes(x = AlignedREF, y = AvgIdentity, color = qry_genus)) + 
+      facet_wrap(~ref_genus, nrow = 2) + scale_x_log10() + theme_bw() +
+      theme(legend.position = "bottom") + 
+      labs(x = "Percent Aligned", y = "Average Nucleotide Identity", color = "Genus")
+```
+
