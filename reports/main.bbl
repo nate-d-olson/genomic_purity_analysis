@@ -78,6 +78,18 @@ Kumar, S., Jones, M., Koutsovoulos, G., Clarke, M., and Blaxter, M. (2013).
   parasites using taxon-annotated gc-coverage plots.
 \newblock {\em Frontiers in genetics}, 4:237.
 
+\bibitem[Kunin et~al., 2008]{kunin2008bioinformatician}
+Kunin, V., Copeland, A., Lapidus, A., Mavromatis, K., and Hugenholtz, P.
+  (2008).
+\newblock A bioinformatician's guide to metagenomics.
+\newblock {\em Microbiology and molecular biology reviews}, 72(4):557--578.
+
+\bibitem[Kurtz et~al., 2004]{kurtz2004versatile}
+Kurtz, S., Phillippy, A., Delcher, A.~L., Smoot, M., Shumway, M., Antonescu,
+  C., and Salzberg, S.~L. (2004).
+\newblock Versatile and open software for comparing large genomes.
+\newblock {\em Genome biology}, 5(2):R12.
+
 \bibitem[Lan and Reeves, 2002]{lan2002escherichia}
 Lan, R. and Reeves, P.~R. (2002).
 \newblock Escherichia coli in disguise: molecular origins of shigella.
@@ -138,6 +150,12 @@ Piro, V.~C., Lindner, M.~S., and Renard, B.~Y. (2016).
 \newblock Dudes: a top-down taxonomic profiler for metagenomics.
 \newblock {\em Bioinformatics}, 32(15):2272--2280.
 
+\bibitem[Polz et~al., 2013]{polz2013horizontal}
+Polz, M.~F., Alm, E.~J., and Hanage, W.~P. (2013).
+\newblock Horizontal gene transfer and the evolution of bacterial and archaeal
+  population structure.
+\newblock {\em Trends in Genetics}, 29(3):170--175.
+
 \bibitem[{R Core Team}, 2016]{R}
 {R Core Team} (2016).
 \newblock {\em R: A Language and Environment for Statistical Computing}.
@@ -160,6 +178,12 @@ Sczyrba, A., Hofmann, P., Belmann, P., Koslicki, D., Janssen, S., Droege, J.,
   computational metagenomics software.
 \newblock {\em Biorxiv}, page 099127.
 
+\bibitem[Shintani et~al., 2015]{shintani2015genomics}
+Shintani, M., Sanchez, Z.~K., and Kimbara, K. (2015).
+\newblock Genomics of microbial plasmids: classification and identification
+  based on replication and transfer systems and host taxonomy.
+\newblock {\em Frontiers in microbiology}, 6.
+
 \bibitem[Shrestha et~al., 2013]{Shrestha2013}
 Shrestha, P.~M., Nevin, K.~P., Shrestha, M., and Lovley, D.~R. (2013).
 \newblock {When Is a Microbial Culture “ Pure ”? Persistent Cryptic
@@ -177,12 +201,29 @@ Thomas, T., Gilbert, J., and Meyer, F. (2012).
 \newblock {Metagenomics - a guide from sampling to data analysis}.
 \newblock {\em Microbial informatics and experimentation}, 2(1):3.
 
+\bibitem[Tong et~al., 2015]{tong2015novel}
+Tong, S.~Y., Schaumburg, F., Ellington, M.~J., Corander, J., Pichon, B.,
+  Leendertz, F., Bentley, S.~D., Parkhill, J., Holt, D.~C., Peters, G., et~al.
+  (2015).
+\newblock Novel staphylococcal species that form part of a staphylococcus
+  aureus-related complex: the non-pigmented staphylococcus argenteus sp. nov.
+  and the non-human primate-associated staphylococcus schweitzeri sp. nov.
+\newblock {\em International journal of systematic and evolutionary
+  microbiology}, 65(1):15--22.
+
 \bibitem[Watanabe et~al., 2012]{watanabe2012complete}
 Watanabe, S., Shiwa, Y., Itaya, M., and Yoshikawa, H. (2012).
 \newblock Complete sequence of the first chimera genome constructed by cloning
   the whole genome of synechocystis strain pcc6803 into the bacillus subtilis
   168 genome.
 \newblock {\em Journal of bacteriology}, 194(24):7007--7007.
+
+\bibitem[Weng et~al., 2010]{weng2010reanalyze}
+Weng, F.~C., Su, C.-H., Hsu, M.-T., Wang, T.-Y., Tsai, H.-K., and Wang, D.
+  (2010).
+\newblock Reanalyze unassigned reads in sanger based metagenomic data using
+  conserved gene adjacency.
+\newblock {\em BMC bioinformatics}, 11(1):565.
 
 \bibitem[White, 2014]{ProjectTemplate}
 White, J.~M. (2014).
