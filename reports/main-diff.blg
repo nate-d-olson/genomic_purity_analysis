@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main-diff.aux
+The style file: apalike.bst
+Database file #1: genomic_purity.bib
+Warning--empty journal in Shrestha2013
+You've used 38 entries,
+            1935 wiz_defined-function locations,
+            706 strings with 12745 characters,
+and the built_in function-call counts, 17138 in all, are:
+= -- 1574
+> -- 1052
+< -- 10
++ -- 378
+- -- 376
+* -- 1631
+:= -- 3094
+add.period$ -- 113
+call.type$ -- 38
+change.case$ -- 371
+chr.to.int$ -- 38
+cite$ -- 39
+duplicate$ -- 534
+empty$ -- 989
+format.name$ -- 428
+if$ -- 3195
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 35
+newline$ -- 192
+num.names$ -- 114
+pop$ -- 310
+preamble$ -- 1
+purify$ -- 374
+quote$ -- 0
+skip$ -- 412
+stack$ -- 0
+substring$ -- 952
+swap$ -- 53
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 228
+warning$ -- 1
+while$ -- 117
+width$ -- 0
+write$ -- 487
+(There was 1 warning)
