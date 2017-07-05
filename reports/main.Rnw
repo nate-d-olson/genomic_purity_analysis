@@ -151,7 +151,8 @@ All of the \textit{Shigella} genomes and only 44 of the 49 \textit{Staphylococcu
 87 of those 105 genomes come from \textit{Shigella}, \textit{Staphylococcus}, or \textit{Escherichia}.
 Excluding \textit{Shigella}, \textit{Escherichia}, and \textit{Staphylococcus}, the median estimated proportion matching at the species level or higher is  \Sexpr{round(non_ec_shig_st_med_spec,4)}.
 We characterized false positive contaminants detected in genomes from the genera \textit{Shigella}, \textit{Escherichia}, and \textit{Staphylococcus}, as well as genomes of other species with match proportions less than 0.9.
-Two types of false positive contaminants were identified: (1) contaminants that were genomically indistinguishable from the material and (2) contaminants due to errors in the reference database.
+Two types of false positive contaminants were identified: (1) contaminants that were genomically indistinguishable from the material and (2) contaminants due to errors in the reference database. 
+Sequences can be genomically indistinguiable due to phylogenetic relatedness of the organisms as well as the transfer of sequences such as plasmids and genes involved in horizontal gene transfer events \citep{shintani2015genomics,polz2013horizontal}.
 
 <<single_org, results='asis', echo=FALSE, message=FALSE >>=
 single_tbl_df %>% xtable::xtable(label = "tab:single_org", digits = 2, caption = "Breakdown of the number of genomes by genus used to generate single genome simulated datasets. N indicates the number of genomes (406 total), and Genome Size is presented as the median and range (minimum to maximum). Species indicates the number of different species for each genus included in the baseline assessment.") %>%
@@ -182,7 +183,7 @@ ggplot(single_species_match) +
       scale_color_manual(values = c("darkblue","darkorange"),guide = FALSE)
 @
 
-Two genomes can be genomically indistinguishable if the majority of the two genome sequences are highly similar.
+Two genomes can be genomically indistinguishable if the majority of the two genome sequences are highly similar. 
 Phylogenetically closely related organisms are expected to have large genomic regions with high levels of similarity.
 Phylogenetic similarity is at least partially responsible for the low species level estimated match proportion for  \textit{Shigella} and \textit{Escherichia}, as \textit{Shigella} is not phylogenetically distinct from \textit{E. coli} \citep{lan2002escherichia}.
 When including matches to \textit{E. coli} as species level matches, the median estimated match proportions for \textit{Shigella} genomes increases from \Sexpr{round(shig_match_change[2],2)} to \Sexpr{round(shig_match_change[1],2)}.
@@ -335,14 +336,12 @@ Therefore a lower detection proportion is expected for increased coverage.
 A contaminant proportion of $10^{-3}$ is equivalent to 1 contaminant cell per 1,000 cells in a microbial material, or 1,000 contaminant cells in 1 mL of a $10^{6}$ cells/mL culture.
 The estimated contaminant proportion accuracy for the simulated contaminated material varied by contaminant and material strain.
 
-
 Quantitative accuracy in contaminant proportions is important for applications where acceptable contaminant proportion thresholds are established.
 For example, a microbial material with a contaminant proportion of $10^{-5}$ may be acceptable for use in an assay where the contaminant adversely impacts an assay when present in proportions greater than $10^{-4}$.
 Quantitative accuracy is also relevant when performing a general characterization of the microbial material.
 General contaminant characterization is appropriate for reference materials with more than one use case such as the microbial genomic reference materials (NIST RM8375) \citep{olson2016pepr}.
 Similar to the false positive contaminant baseline assessment,
 simulated data can be used to evaluate the minimal detectable contaminant proportion for specific organisms using different taxonomic assignment algorithms and databases.
-
 A primary limitation of the proposed method is the observed false positive contaminants identified in the baseline assessment. 
 The reference database and taxonomic assignment algorithm are likely to impact the number and types of false positives. 
 There are three primary types of taxonomic read classification algorithms: sequence similarity search, sequence composition methods, and phylogenetic methods \citep{Bazinet2012}. 
@@ -350,15 +349,17 @@ The example algorithm used in this study, PathoScope, is a type of sequence simi
 Evaluating different types of algorithms using simulated data for the material genome of interest, similar to what was done in the baseline assessment part of this study, would help determine the optimal classification algorithm for a specific microbial material. 
 Furthermore, recent advances in taxonomic classification algorithms have led to the development of faster methods, including Kaiju, a sequence composition type method, and Centrifuge, a sequence similarity search type method \citep{menzel2016fast,Kim2016-ir}. 
 Application of these new methods would lower the computational cost of the method. 
+Similarity based taxonomic classifications methods are not robust to horizontal gene transfer events and therefore alternative classification algorithms may be more suitable for contaminant detection than PathoScope \citep{kunin2008bioinformatician,weng2010reanalyze}.
 Other methods such as MicrobeGPS and DUDes are alternative similarity based taxonomic classification methods developed to better handle organisms not in a reference database are also suitable alternatives to PathoScope \citep{lindner2015metagenomic,piro2016dudes}. 
 Previous work for detecting contaminants in whole genome sequencing datasets calculate summary statistics including coverage, nucleotide composition (e.g \%GC), and taxonomic classification of scaffolds \citep{kumar2013blobology,delmont2016identifying}. 
 These methods while computationally more expensive than taxonomic classification algorithms may be better able to detect and identify microbial material contaminants. 
 Similar studies to the one presented here are warranted to evaluate the suitability of alternative taxonomic classification methods for contaminant detection. 
-Incorporating baseline assessments using simulated data from single genomes into large benchmarking challenges such as the Critical Assessment of Metagenomic Interpretation could help improve our understanding of the limitations of taxonomic classification methods (http://www.cami-challenge.org/)\citep{sczyrba2017critical}.
+Incorporating baseline assessments using simulated data from single genomes into large benchmarking challenges such as the Critical Assessment of Metagenomic Interpretation could help improve our understanding of the limitations of taxonomic classification methods (http://www.cami-challenge.org/)\citep{sczyrba2017critical}. 
+This type of large scale benchmarking challenge would help identify and characterizing common causes of false positive classification errors such as plasmids and horizontal gene transfer events.
 
 A number of the observed false positives were due to errors in the database and inability of the taxonomic classification algorithm to correctly identify the source of the sequence when it matches multiple organisms in the database. 
-Users can generate application specific databases by removing sequences from the database for irrelevant contaminants, such as phage, plasmids, vectors, and multicellular eukaryotes, would reduce the proportion of false positives. 
-By excluding irrelevant contaminants from the database, sequencing reads aligning to these irrelevant sequences would no longer result in false positive contaminants.
+Users can generate application specific databases by removing sequences from the database for irrelevant contaminants, such as phage, plasmids, vectors, multicellular eukaryotes, and genes known to undergo horizontal gene transfer eould reduce the proportion of false positives. 
+By excluding irrelevant contaminants from the database and genes involved in horizontal gene transfer, sequencing reads aligning to these irrelevant sequences would no longer result in false positive contaminants.
 Methods for excluding sequence data from a reference database are dependent on the classification algorithm used.
 For example, user-specified sequence data could be removed from the reference database by PathoScope using the PathoDB function.
 Similarly, the developers of the taxonomic classification algorithm Centrifuge provide multiple databases; only Prokaryotes; Prokaryotes and viruses; Prokaryotes, viruses, and human; as well as NCBI nucleotide non-redundant sequences. 
