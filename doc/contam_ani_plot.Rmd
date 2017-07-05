@@ -19,6 +19,8 @@ contam_taxid <- contamSingleOrgMatch %>% .$query_taxid %>% unique()
 contam_diff <- dnadiff_tidy %>% filter(ref_taxid %in% contam_taxid, qry_taxid %in% contam_taxid)
 ```
 
+
+
 ```{r}
 contam_ani <- contam_diff %>% 
       filter(cat_column == "Align:1-to-1" & metric == "AvgIdentity") %>% 
@@ -30,6 +32,15 @@ contam_aligned <- contam_diff  %>% filter(metric == "AlignedBases") %>%
       select(ref_genus, qry_genus, qry_uid, ref_uid, AlignedREF, AlignedQRY)
 contam_plot <- contam_aligned %>% left_join(contam_ani)
 ```
+```{r}
+nrow(contam_aligned)
+```
+
+
+```{r}
+contam_aligned %>% filter(AlignedREF > 1 | AlignedQRY > 1)
+```
+
 
 ```{r}
 contam_plot %>% ggplot() + 

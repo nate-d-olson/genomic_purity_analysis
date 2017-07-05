@@ -24,13 +24,13 @@ genus_tree$classification %>% arrange(phylum, class, order, family)
 
 
 ```{r}
-plot(genus_tree, no.margin = TRUE)
-tree_df <- fortify(genus_tree$phylo) %>% add_column(tip = .$label) %>% 
-
-      left_join(genus_tree$classification)
+# plot(genus_tree, no.margin = TRUE)
 library(ggtree)
+tree_df <- fortify(genus_tree$phylo) %>% add_column(tip = .$label) %>% 
+      left_join(genus_tree$classification)
+
 ggtree(tree_df) + geom_tiplab()
-ggsave("genus_tree.pdf")
+ggsave("genus_tree.pdf",width = 7, height = 3.5)
 ```   
 
 
@@ -59,6 +59,32 @@ subspecies_counts <- lineage_df %>%
       group_by(genus, species) %>% summarise(subspecies_count = n())
 species_count <- lineage_df %>% select(genus, species) %>% unique() %>% group_by(genus) %>% summarise(count = n())
 species_count
+```
+
+```{r}
+lineage_df %>% select(genus, species) %>% unique() %>% group_by(genus) %>% filter(genus == "Bacillus")
+```
+
+```{r}
+lineage_df %>% filter(genus == "Bacillus")
+```
+
+```{r}
+singleOrgRef %>% filter(grepl("Bacillus", file))
+```
+
+
+```{r}
+lineage_df %>% select(genus, species) %>% unique() %>% group_by(genus) %>% filter(genus == "Salmonella")
+```
+
+
+```{r}
+lineage_df %>% unique() %>% group_by(genus) %>% filter(genus == "Staphylococcus")
+```
+
+```{r}
+singleOrgRef %>% filter(grepl("argenteus", file))
 ```
 
 

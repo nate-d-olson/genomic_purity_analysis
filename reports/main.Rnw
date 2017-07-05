@@ -90,12 +90,14 @@ Sequence data was simulated for \Sexpr{sum(single_tbl_df$N)} strains, from 10 ge
 These genera were selected based on relevance to public health and biothreat detection.
 We will refer to the genome used to generate the reads as the material genome.
 The genomes included in the simulation study were limited to closed genomes in the Genbank database (\url{http://www.ncbi.nlm.nih.gov/genbank/}, accessed 10/18/2013) belonging to the genera of interest (Table \ref{tab:single_org}).
-Due to the large number of \textit{Bacillus}, \textit{Escherichia}, and \textit{Salmonella} genomes, genomes from these genera were limited to the species \textit{Bacillus cereus}, \textit{Escherichia coli}, and \textit{Salmonella enterica} respectively.
+Due to the large number of \textit{Bacillus}, \textit{Escherichia}, and \textit{Salmonella} genomes, genomes from these genera were limited to the species \textit{Escherichia coli}, and \textit{Staphylococcus aureus} respectively. 
+Since the genomes were selected one of the \textit{Staphylocuccus aureus} genomes was renamed \textit{S. argenteus}, Genbank taxid 985002 \citep{tong2015novel}. 
+Average nucleotide identity for all pair-wise comparisons was calculated using MUMMER3 and the \texttt{ani_pairs.R} script in the project github repository \citep{kurtz2004versatile}.
 The taxonomic hierarchy for the material genome and simulated read assignment match levels were determined using the R package, Taxize \citep{TaxizeArticle,TaxizeManual}.
 
 \subsection*{Contaminant Detection Assessment}
 
-<< contam_simulation, fig.cap = "Diagram of simulated contaminant dataset workflow for two individual genomes. Contaminant proportions (p) of 0.2 and 0.4 are used for demonstration purposes. The reads were initially simulated from individual genomes. The blue genome is twice the size of the orange genome, and twice as many reads are simulated for the blue genome compared to the orange in order to obtain the same coverage. The simulated reads were aligned to the reference database using PathoMap. The resulting alignment file, in SAM file format, was randomly subset based on the desired proportions. Complementary subsets of SAM files (e.g. 0.8 material and 0.2 contaminant) from the two genomes were merged to create individual simulated contaminant datasets.  Due to the different sized genomes, the simulated contaminant datasets have different numbers of reads. Taxonomic assignment summary tables were generated from simulated contaminant datasets using PathoID.", echo=FALSE>>=
+<<contam_simulation, fig.cap = "Diagram of simulated contaminant dataset workflow for two individual genomes. Contaminant proportions (p) of 0.2 and 0.4 are used for demonstration purposes. The reads were initially simulated from individual genomes. The blue genome is twice the size of the orange genome, and twice as many reads are simulated for the blue genome compared to the orange in order to obtain the same coverage. The simulated reads were aligned to the reference database using PathoMap. The resulting alignment file, in SAM file format, was randomly subset based on the desired proportions. Complementary subsets of SAM files (e.g. 0.8 material and 0.2 contaminant) from the two genomes were merged to create individual simulated contaminant datasets.  Due to the different sized genomes, the simulated contaminant datasets have different numbers of reads. Taxonomic assignment summary tables were generated from simulated contaminant datasets using PathoID.", echo=FALSE>>=
 knitr::include_graphics("figure/contam_simulation.png")
 @
 
@@ -137,8 +139,11 @@ First, we assessed the baseline performance of the proposed contaminant detectio
 We applied our method to simulated sequencing data from individual genomes. 
 All reads assigned to a different taxa than the genome the reads were simulated from were defined as false positive contaminants. 
 (This assumes the genome sequence is contaminant free.) 
-Our analysis included taxonomic classification results for simulated sequencing data  from \Sexpr{length(spec_prop)} genomes, representing 10 different genera (Table \ref{tab:single_org}, Fig. \ref{fig:single_org_tree}, Supplemental Table 1).
-The method was evaluated using the estimated proportion of species level matches.
+Our analysis included taxonomic classification results for simulated sequencing data  from \Sexpr{length(spec_prop)} genomes, representing 10 different genera (Table \ref{tab:single_org}, Fig. \ref{fig:single_org_tree}, Supplemental Table 1). 
+The 10 genera were from the Gamma proteobacteria Class and Firmicutes phylum with 1 to 21 species representing a range of genomic similarity within the genera (Fig. \ref{baseline_ani}). 
+For the genomes included in the study \textit{Escherichia}, \textit{Shigella}, \textit{Salmonella}, and \texit{Staphylococcus} tended to have higher within genus similarity whereas \textit{Clostridium} and \textit{Pseudomonas} had lower within genus similarity. 
+
+The taxonomic classification method was evaluated using the estimated proportion of species level matches.
 The estimated match proportion is the sum of the Final Guess values, proportions reported by PathoScope for a taxa, for all correct species level matches.
 For \Sexpr{spec_gt_0.99} of the \Sexpr{length(spec_prop)} genomes, PathoScope estimated that greater than 99\% of the material was the expected species (Fig. \ref{fig:species_prop}).
 Of the remaining \Sexpr{spec_lt_0.99} genomes, the estimated proportion identified as the correct species varied by material genus.
@@ -234,9 +239,13 @@ contam_pairs %>%
 Finally, contaminant detection was assessed by combining subsets of simulated data from two organisms at defined proportions,
 with the larger proportion representing the microbial material and smaller proportion the contaminant (Fig. \ref{fig:contam_simulation}).
 We simulated contaminant datasets as pairwise combinations of representative genomes from 8 of the genera used in the baseline assessment section of the study (Table \ref{tab:contam_table}, Fig. \ref{fig:contam_ani}).
-All of the genomes selected have a species level estimated match proportion greater than 0.98 (Table \ref{tab:contam_table}).
+All of the genomes selected have a species level estimated match proportion greater than 0.98 (Table \ref{tab:contam_table}). 
+The representive genomes had low pairwise similarity based on the average nucleotide identity analysis (Fig. \ref{fig:contam_ani}) with average identity between 82 and 86\% with less than 1\% of the genomes algined for only 4 of the 28 organism pairs. 
+The \textit{Salmonella} and \textit{E. coli} had the highest percent of their genomes aligned to each other 36\% and 30\% respectively. 
 
-The minimum contaminant proportion detected was $10^{-3}$ and  $10^{-4}$ for most pairwise comparisons with a few exceptions (Fig. \ref{fig:contam_fig}).
+The minimum contaminant proportion detected was $10^{-3}$ and  $10^{-4}$ for most pairwise comparisons with a few exceptions (Fig. \ref{fig:contam_fig}). 
+Similarity between the material and contaminant genomes did not appear to impact the minimum contaminant proportion detected. 
+However, this is likely due to the overall low level of similarity between the representative genomes (Fig. \ref{fig:contam_ani}). 
 When \textit{Y. pestis} was the simulated contaminant, the minimum detected proportion was 0.1 for all material strains.
 For all simulated datasets where \textit{F. tularensis} was the contaminant, the contaminant was not detected. 
 It is unclear why \textit{Y. pestis} was only detected at a higher proportion relative to the other datasets, $10^{-1}$ versus $10^{-3}$, and \textit{F. tularensis} was not detected at all.
@@ -277,7 +286,6 @@ contamMixMatchResults %>% mutate(mix = as.numeric(mix),
 
 
 <<contam_resid, echo = FALSE, message = FALSE, fig.cap = "Error rate, $(estimated - true)/true$, for pairwise combinations of material and contaminant. Points and error bars represent the median and range (minimum - maximum) error rate for each material and contaminant combination.", fig.lp="fig:">>=
-
 contam_resid_summary %>%
       ungroup() %>% 
       mutate(target_facet = fct_reorder(target_facet, prop_resid_total, median)) %>%
@@ -297,7 +305,8 @@ Eight of the pairwise comparisons have correlation coefficients below 0.99, all 
 Two coefficients were below 0.98: \textit{S. aureus} contaminated with \textit{P. aeruginosa} and \textit{S. enterica}, 0.952 and 0.969 respectively.
 The total error rate was used to assess the accuracy of the PathoScope contaminant proportion estimates (Fig. \ref{fig:contam_resid}).
 The material genome strongly influenced the total error rate with \textit{E. coli} and \textit{S. aureus} having consistently higher total error rates compared to the other genomes, indicating a reduced accuracy for the two species.
-
+In this study the similarity between the material and contaminant genome did not impact the quantitative accuracy of the method. 
+However, one would expect significantly lower quantitative accuracy for highly similar genomes. 
 
 \section*{Discussion}
 
@@ -340,17 +349,19 @@ There are three primary types of taxonomic read classification algorithms: seque
 The example algorithm used in this study, PathoScope, is a type of sequence similarity search algorithm. 
 Evaluating different types of algorithms using simulated data for the material genome of interest, similar to what was done in the baseline assessment part of this study, would help determine the optimal classification algorithm for a specific microbial material. 
 Furthermore, recent advances in taxonomic classification algorithms have led to the development of faster methods, including Kaiju, a sequence composition type method, and Centrifuge, a sequence similarity search type method \citep{menzel2016fast,Kim2016-ir}. 
-Application of these new methods would lower the computational cost of the baseline assessment. 
+Application of these new methods would lower the computational cost of the method. 
 Other methods such as MicrobeGPS and DUDes are alternative similarity based taxonomic classification methods developed to better handle organisms not in a reference database are also suitable alternatives to PathoScope \citep{lindner2015metagenomic,piro2016dudes}. 
 Previous work for detecting contaminants in whole genome sequencing datasets calculate summary statistics including coverage, nucleotide composition (e.g \%GC), and taxonomic classification of scaffolds \citep{kumar2013blobology,delmont2016identifying}. 
 These methods while computationally more expensive than taxonomic classification algorithms may be better able to detect and identify microbial material contaminants. 
 Similar studies to the one presented here are warranted to evaluate the suitability of alternative taxonomic classification methods for contaminant detection. 
+Incorporating baseline assessments using simulated data from single genomes into large benchmarking challenges such as the Critical Assessment of Metagenomic Interpretation could help improve our understanding of the limitations of taxonomic classification methods (http://www.cami-challenge.org/)\citep{sczyrba2017critical}.
 
 A number of the observed false positives were due to errors in the database and inability of the taxonomic classification algorithm to correctly identify the source of the sequence when it matches multiple organisms in the database. 
-Users can generate application specific databases by removing sequences from the database for irrelevant contaminants, such as phage, plasmids, vectors, and multicellular eukaryotes, would reduce the proportion of false positives.
+Users can generate application specific databases by removing sequences from the database for irrelevant contaminants, such as phage, plasmids, vectors, and multicellular eukaryotes, would reduce the proportion of false positives. 
 By excluding irrelevant contaminants from the database, sequencing reads aligning to these irrelevant sequences would no longer result in false positive contaminants.
 Methods for excluding sequence data from a reference database are dependent on the classification algorithm used.
 For example, user-specified sequence data could be removed from the reference database by PathoScope using the PathoDB function.
+Similarly, the developers of the taxonomic classification algorithm Centrifuge provide multiple databases; only Prokaryotes; Prokaryotes and viruses; Prokaryotes, viruses, and human; as well as NCBI nucleotide non-redundant sequences. 
 Caution should be used when removing sequences from a reference database.
 For example, vector sequences from contaminants in sequencing reagents, if excluded from the database may be incorrectly classified as an organismal contaminant.
 Similarly, using a curated database free of misclassified and unclassified sequence data would further reduce the proportion of false positive contaminants \citep{tennessen2015prodege}.
