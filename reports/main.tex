@@ -51,7 +51,7 @@
 \usepackage{alltt} % for journal submissions
 \usepackage{hyperref} % \documentclass[fleqn,10pt]{wlpeerj} % for preprint submissions
 
-\title{Using \textit{in-silico} whole genome sequencing  datasets to challenge the ability of an existing bioinformatic tool to detect contaminants in microbial materials.}
+\title{Challenging a bioinformatic tool's ability to detect microbial contaminants using \textit{in silico} whole genome sequencing data.}
 
 \author[1]{Nathan D. Olson}
 \author[1]{Justin M. Zook}
@@ -108,7 +108,7 @@ In order to confidently use metagenomics to detect contaminants in microbial mat
 First, a baseline assessment of the method was performed using simulated sequencing data from single microorganisms to characterize the types of false positive contaminants the algorithm may report.
 The contaminant detection method was then evaluated for its ability to detect organismal contaminants in microbial material strains using sequencing data simulated to replicate microbial materials contaminated with different organismal contaminants at a range of concentrations.   
 
-The intended audience for this manuscript are users and maintainers of microbial material stocks who are interested in validating the material purity. A secondary audience is taxonomic classification algorithm developers as this work presents a novel approach to evaluating taxonomic classification methods as well as an additional use case for their methods that developers may not have previously considered.
+This manuscript is intended for users and maintainers of microbial material stocks who are interested in validating material purity and understanding the limitions of their validation method. A secondary audience is taxonomic classification algorithm developers, as this work presents a novel approach to evaluating taxonomic classification methods and an additional use case that developers may not have previously considered.
 
 \section*{Methods}
 Simulated whole genome sequence data and metagenomic taxonomic classification methods were used to detect and identify foreign DNA in microbial materials (genomic DNA and cultures).
@@ -204,8 +204,8 @@ We characterized false positive contaminants detected in genomes from the genera
 Two types of false positive contaminants were identified: (1) contaminants that were genomically indistinguishable from the material and (2) contaminants due to errors in the reference database. 
 Sequences can be genomically indistinguishable due to phylogenetic relatedness of the organisms as well as the transfer of sequences horizontally transferred between organisms such as plasmids and genes involved in horizontal gene transfer events \citep{shintani2015genomics,polz2013horizontal}.
 
-% latex table generated in R 3.4.0 by xtable 1.8-2 package
-% Wed Jul  5 12:36:23 2017
+% latex table generated in R 3.4.1 by xtable 1.8-2 package
+% Fri Jul  7 15:36:31 2017
 \begin{table}[ht]
 \centering
 \begin{tabular}{lrrl}
@@ -290,8 +290,8 @@ The eukaryotic false positive contaminants are likely due to contaminants in the
 
 \subsection*{Contaminant Detection Assessment}
 
-% latex table generated in R 3.4.0 by xtable 1.8-2 package
-% Wed Jul  5 12:36:27 2017
+% latex table generated in R 3.4.1 by xtable 1.8-2 package
+% Fri Jul  7 15:36:35 2017
 \begin{table}[ht]
 \centering
 \scalebox{0.85}{
@@ -337,8 +337,10 @@ However, this is likely due to the overall low level of similarity between the r
 When \textit{Y. pestis} was the simulated contaminant, the minimum detected proportion was 0.1 for all material strains.
 For all simulated datasets where \textit{F. tularensis} was the contaminant, the contaminant was not detected. 
 It is unclear why \textit{Y. pestis} was only detected at a higher proportion relative to the other datasets, $10^{-1}$ versus $10^{-3}$, and \textit{F. tularensis} was not detected at all.
-One possible reason for the lower contaminant detection for these two organisms is that there are fewer genomes in the database for these two genera.
-Additionally, the \textit{F. tularensis} dataset is much smaller relative to the other genera, less than 90,000 reads.
+One possible reason for the lower contaminant detection for these two organisms is that there are fewer genomes in the database for these two genera. 
+Another potential reason is that both \textit{Y. pestis} and \textit{F. tularensis} genomes have high insertion sequence content and readily undergo intragenomic recombination \citep{larsson2005complete,chain2004insights}. 
+These genomic rearrangements have been attributed to these organisms highly pathogenic nature and challenge taxonomic classification methods due to relatively high levels of sequence similarity between seemingly unrelated organisms. 
+Additionally, the \textit{F. tularensis} dataset is much smaller relative to the other genera, less than 90,000 reads. 
 Therefore, with fewer reads in the dataset and genomes in the database, the probability that the randomly selected subset of reads spiked into the simulated material dataset contains reads allowing for contaminant detection is lower. 
 A few contaminants were detected at proportions as low as $10^{-8}$, such as when \textit{Yersinia} contaminated with \textit{E. coli} or \textit{S. enterica}.
 However, contaminants detected at lower proportions were due to reads simulated from the material genome incorrectly assigned to the contaminant.
@@ -369,7 +371,10 @@ The estimated and true proportions were strongly correlated for all pairwise com
 Eight of the pairwise comparisons have correlation coefficients below 0.99, all of which have \textit{S. aureus} as either the contaminant or the material.
 Two coefficients were below 0.98: \textit{S. aureus} contaminated with \textit{P. aeruginosa} and \textit{S. enterica}, 0.952 and 0.969 respectively.
 The total error rate was used to assess the accuracy of the PathoScope contaminant proportion estimates (Fig. \ref{fig:contam_resid}).
-The material genome strongly influenced the total error rate with \textit{E. coli} and \textit{S. aureus} having consistently higher total error rates compared to the other genomes, indicating a reduced accuracy for the two species.
+The material genome strongly influenced the total error rate with \textit{E. coli} and \textit{S. aureus} having consistently higher total error rates compared to the other genomes, indicating a reduced accuracy for the two species. 
+The proportion of reads from \textit{E. coli} and \textit{S. aureus} in the simulated contaminant datasets is consistently overestimated by PathoScope (Fig. \ref{fig:contam_fig}). 
+Both genera had higher proportion of false positives due to phage relative to the other genera analyzed in this study (Fig. \ref{fig:phage_prop}). 
+Higher phage content or mobile elements such as HGT and plasmids are potentially responsible for the overestimated proportions.
 In this study, the similarity between the material and contaminant genome did not impact the quantitative accuracy of the method. 
 However, one would expect significantly lower quantitative accuracy for highly similar genomes. 
 
@@ -419,7 +424,9 @@ Previous work for detecting contaminants in whole genome sequencing datasets cal
 These methods while computationally more expensive than taxonomic classification algorithms may be better able to detect and identify microbial material contaminants. 
 Similar studies to the one presented here are warranted to evaluate the suitability of alternative taxonomic classification methods for contaminant detection. 
 Incorporating baseline assessments using simulated data from single genomes into large benchmarking challenges such as the Critical Assessment of Metagenomic Interpretation could help improve our understanding of the limitations of taxonomic classification methods (http://www.cami-challenge.org/)\citep{sczyrba2017critical}. 
-This type of large-scale benchmarking challenge would help identify and characterizing common causes of false positive classification errors such as plasmids and horizontal gene transfer events.
+This type of large-scale benchmarking challenge would help identify and characterizing common causes of false positive classification errors. 
+Though not investigated in this study plasmids and horizontal gene transfer as likely a significant source of false positive classification errors. 
+A results from such large-scale benchmarking challenge could be used to better characterize the extent to which mobile elements are responsible for false positive classification errors. 
 
 A number of the observed false positives were due to errors in the database and inability of the taxonomic classification algorithm to correctly identify the source of the sequence when it matches multiple organisms in the database. 
 Users can generate application specific databases by removing sequences from the database for irrelevant contaminants, such as phage, plasmids, vectors, multicellular eukaryotes, and genes known to undergo horizontal gene transfer could reduce the proportion of false positives. 

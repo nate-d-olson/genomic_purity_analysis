@@ -13,6 +13,14 @@ Bokulich, N.~A., Rideout, J.~R., Mercurio, W.~G., Shiffer, A., Wolfe, B.,
   benchmarking.
 \newblock {\em mSystems}, 1(5).
 
+\bibitem[Chain et~al., 2004]{chain2004insights}
+Chain, P.~S., Carniel, E., Larimer, F.~W., Lamerdin, J., Stoutland, P., Regala,
+  W., Georgescu, A., Vergez, L., Land, M., Motin, V., et~al. (2004).
+\newblock Insights into the evolution of yersinia pestis through whole-genome
+  comparison with yersinia pseudotuberculosis.
+\newblock {\em Proceedings of the National Academy of Sciences of the United
+  States of America}, 101(38):13826--13831.
+
 \bibitem[Chamberlain et~al., 2016]{TaxizeManual}
 Chamberlain, S., Szocs, E., Boettiger, C., Ram, K., Bartomeus, I., Baumgartner,
   J., Foster, Z., and O'Donnell, J. (2016).
@@ -99,6 +107,14 @@ Lan, R. and Reeves, P.~R. (2002).
 Langmead, B. and Salzberg, S.~L. (2012).
 \newblock {Fast gapped-read alignment with Bowtie 2.}
 \newblock {\em Nature methods}, 9(4):357--9.
+
+\bibitem[Larsson et~al., 2005]{larsson2005complete}
+Larsson, P., Oyston, P.~C., Chain, P., Chu, M.~C., Duffield, M., Fuxelius,
+  H.-H., Garcia, E., H{\"a}lltorp, G., Johansson, D., Isherwood, K.~E., et~al.
+  (2005).
+\newblock The complete genome sequence of francisella tularensis, the causative
+  agent of tularemia.
+\newblock {\em Nature genetics}, 37(2):153--159.
 
 \bibitem[Lindner and Renard, 2015]{lindner2015metagenomic}
 Lindner, M.~S. and Renard, B.~Y. (2015).

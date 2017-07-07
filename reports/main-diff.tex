@@ -1,7 +1,7 @@
 \documentclass[fleqn,10pt,lineno]{wlpeerj}\usepackage[]{graphicx}\usepackage[]{color}
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL peerj-17196-main.tex   Wed Jul  5 10:56:46 2017
-%DIF ADD main.tex               Wed Jul  5 12:36:32 2017
+%DIF ADD main.tex               Fri Jul  7 15:36:40 2017
 %% maxwidth is the original width if it is less than linewidth
 %% otherwise use linewidth (to make sure the graphics do not exceed the margin)
 \makeatletter
@@ -57,7 +57,7 @@
 %DIF 54c54
 %DIF < \title{Using metagenomic methods to detect organismal contaminants in microbial materials.}
 %DIF -------
-\title{Using \textit{in-silico} whole genome sequencing  datasets to challenge the ability of an existing bioinformatic tool to detect contaminants in microbial materials.} %DIF > 
+\title{Challenging a bioinformatic tool's ability to detect microbial contaminants using \textit{in silico} whole genome sequencing data.} %DIF > 
 %DIF -------
 
 \author[1]{Nathan D. Olson}
@@ -176,7 +176,7 @@ A }\DIFdelend \DIFaddbegin \DIFadd{simulated microbial whole genome sequence dat
 First, a }\DIFaddend baseline assessment of the method \DIFaddbegin \DIFadd{was performed }\DIFaddend using simulated sequencing data from single microorganisms \DIFdelbegin \DIFdel{was performed }\DIFdelend to characterize the types of false positive contaminants the \DIFdelbegin \DIFdel{method }\DIFdelend \DIFaddbegin \DIFadd{algorithm }\DIFaddend may report.
 \DIFdelbegin \DIFdel{Then, the }\DIFdelend \DIFaddbegin \DIFadd{The }\DIFaddend contaminant detection method was \DIFaddbegin \DIFadd{then }\DIFaddend evaluated for its ability to detect organismal contaminants in microbial material strains using sequencing data simulated to replicate microbial materials contaminated with different organismal contaminants at a range of concentrations.   
 
-\DIFaddbegin \DIFadd{The intended audience for this manuscript are users and maintainers of microbial material stocks who are interested in validating the material purity. A secondary audience is taxonomic classification algorithm developers as this work presents a novel approach to evaluating taxonomic classification methods as well as an additional use case for their methods that developers may not have previously considered.
+\DIFaddbegin \DIFadd{This manuscript is intended for users and maintainers of microbial material stocks who are interested in validating material purity and understanding the limitions of their validation method. A secondary audience is taxonomic classification algorithm developers, as this work presents a novel approach to evaluating taxonomic classification methods and an additional use case that developers may not have previously considered.
 }
 
 \DIFaddend \section*{Methods}
@@ -286,8 +286,8 @@ Two types of false positive contaminants were identified: (1) contaminants that 
 
 %DIF <  latex table generated in R 3.3.3 by xtable 1.8-2 package
 %DIF <  Fri Mar 31 10:59:20 2017
-%DIF >  latex table generated in R 3.4.0 by xtable 1.8-2 package
-%DIF >  Wed Jul  5 12:36:23 2017
+%DIF >  latex table generated in R 3.4.1 by xtable 1.8-2 package
+%DIF >  Fri Jul  7 15:36:31 2017
 \begin{table}[ht]
 \centering
 \DIFdelbeginFL %DIFDELCMD < \begin{tabular}{lrl}
@@ -376,8 +376,8 @@ The eukaryotic false positive contaminants are likely due to contaminants in the
 
 %DIF <  latex table generated in R 3.3.3 by xtable 1.8-2 package
 %DIF <  Fri Mar 31 10:59:21 2017
-%DIF >  latex table generated in R 3.4.0 by xtable 1.8-2 package
-%DIF >  Wed Jul  5 12:36:27 2017
+%DIF >  latex table generated in R 3.4.1 by xtable 1.8-2 package
+%DIF >  Fri Jul  7 15:36:35 2017
 \begin{table}[ht]
 \centering
 \scalebox{0.85}{
@@ -424,8 +424,12 @@ However, this is likely due to the overall low level of similarity between the r
 }\DIFaddend When \textit{Y. pestis} was the simulated contaminant, the minimum detected proportion was 0.1 for all material strains.
 For all simulated datasets where \textit{F. tularensis} was the contaminant, the contaminant was not detected. 
 It is unclear why \textit{Y. pestis} was only detected at a higher proportion relative to the other datasets, $10^{-1}$ versus $10^{-3}$, and \textit{F. tularensis} was not detected at all.
-One possible reason for the lower contaminant detection for these two organisms is that there are fewer genomes in the database for these two genera.
-Additionally, the \textit{F. tularensis} dataset is much smaller relative to the other genera, less than 90,000 reads.
+One possible reason for the lower contaminant detection for these two organisms is that there are fewer genomes in the database for these two genera. 
+\DIFaddbegin \DIFadd{Another potential reason is that both }\textit{\DIFadd{Y. pestis}} \DIFadd{and }\textit{\DIFadd{F. tularensis}} \DIFadd{genomes have high insertion sequence content and readily undergo intragenomic recombination \mbox{%DIFAUXCMD
+\citep{larsson2005complete,chain2004insights}}%DIFAUXCMD
+. 
+These genomic rearrangements have been attributed to these organisms highly pathogenic nature and challenge taxonomic classification methods due to relatively high levels of sequence similarity between seemingly unrelated organisms. 
+}\DIFaddend Additionally, the \textit{F. tularensis} dataset is much smaller relative to the other genera, less than 90,000 reads. 
 Therefore, with fewer reads in the dataset and genomes in the database, the probability that the randomly selected subset of reads spiked into the simulated material dataset contains reads allowing for contaminant detection is lower. 
 A few contaminants were detected at proportions as low as $10^{-8}$, such as when \textit{Yersinia} contaminated with \textit{E. coli} or \textit{S. enterica}.
 However, contaminants detected at lower proportions were due to reads simulated from the material genome incorrectly assigned to the contaminant.
@@ -456,33 +460,41 @@ The estimated and true proportions were strongly correlated for all pairwise com
 Eight of the pairwise comparisons have correlation coefficients below 0.99, all of which have \textit{S. aureus} as either the contaminant or the material.
 Two coefficients were below 0.98: \textit{S. aureus} contaminated with \textit{P. aeruginosa} and \textit{S. enterica}, 0.952 and 0.969 respectively.
 The total error rate was used to assess the accuracy of the PathoScope contaminant proportion estimates (Fig. \ref{fig:contam_resid}).
-The material genome strongly influenced the total error rate with \textit{E. coli} and \textit{S. aureus} having consistently higher total error rates compared to the other genomes, indicating a reduced accuracy for the two species.
-\DIFaddbegin \DIFadd{In this study, the similarity between the material and contaminant genome did not impact the quantitative accuracy of the method. 
+The material genome strongly influenced the total error rate with \textit{E. coli} and \textit{S. aureus} having consistently higher total error rates compared to the other genomes, indicating a reduced accuracy for the two species. 
+\DIFaddbegin \DIFadd{The proportion of reads from }\textit{\DIFadd{E. coli}} \DIFadd{and }\textit{\DIFadd{S. aureus}} \DIFadd{in the simulated contaminant datasets is consistently overestimated by PathoScope (Fig. \ref{fig:contam_fig}). 
+Both genera had higher proportion of false positives due to phage relative to the other genera analyzed in this study (Fig. \ref{fig:phage_prop}). 
+Higher phage content or mobile elements such as HGT and plasmids are potentially responsible for the overestimated proportions.
+In this study, the similarity between the material and contaminant genome did not impact the quantitative accuracy of the method. 
 However, one would expect significantly lower quantitative accuracy for highly similar genomes. 
 }\DIFaddend 
 
 \section*{Discussion}
+\DIFdelbegin %DIFDELCMD < 
 
-\DIFdelbegin \DIFdel{The potential for using whole genome sequence data and }\DIFdelend \DIFaddbegin \DIFadd{We have developed an }\textit{\DIFadd{in-silico}} \DIFadd{approach to evaluate the ability of an existing }\DIFaddend taxonomic sequence classification \DIFdelbegin \DIFdel{algorithms }\DIFdelend \DIFaddbegin \DIFadd{algorithm }\DIFaddend to detect contaminant DNA in \DIFdelbegin \DIFdel{microbial materials was evaluated. 
-The method requires no }\DIFdelend \DIFaddbegin \DIFadd{whole genome sequence datasets from microbial materials. 
-The use of }\DIFaddend \textit{\DIFdelbegin \DIFdel{a priori}\DIFdelend \DIFaddbegin \DIFadd{in-silico}\DIFaddend } \DIFdelbegin \DIFdel{information about the contaminant and can identify common as well as unexpected contaminants. 
+%DIFDELCMD < %%%
+\DIFdel{The potential for using whole genome sequence data and taxonomic sequence classification algorithms to detect contaminant DNA in microbial materials was evaluated.
+The method requires no }\textit{\DIFdel{a priori}} %DIFAUXCMD
+\DIFdel{information about the contaminant and can identify common as well as unexpected contaminants.
 Additionally, as whole genome sequencing can be performed on genomic DNA and cell cultures (after DNA extraction), the method is appropriate for both types of microbial materials. 
 A baseline assessment of the contaminant detection method using simulated sequencing data from individual genomes was performed to identify common types of classification errors that would result in false positive contaminants.
-The false positive contaminants were split into two categories (1) those due to an inability of the method to differentiate the material genome from the contaminant genome, and (2) errors in the reference database.
-Contaminant detection performance was characterized for different material, contaminants, and contamination level. 
-Overall the method was able to identify contaminant proportions at $10^{-3}$ for most contaminant-material combinations. 
+The false positive contaminants were split into two categories (1) those due to an inability of the method to differentiate the material genome from the contaminant genome, and (2)errors in the reference database. 
+Contaminant detection performance was characterized for different material, contaminants, and contamination level.
+Overall the method was able to identify contaminant proportionsat $10^{-3}$ for most contaminant-material combinations.
 This level of detection is dependent on not just the classification method but also the simulated coverage. 
-Therefore a lower detection proportion is expected for increased coverage.  
-A contaminant proportion of $10^{-3}$ is equivalent to 1 contaminant cell per 1,000 cells in a microbial material, or 1,000 contaminant cells in 1 mL of a $10^{6}$ cells/mL culture.
-The estimated contaminant proportion accuracy for the simulated contaminated material varied by contaminant and material strain.
-}\DIFdelend \DIFaddbegin \DIFadd{data allows for a “known” contaminant taxonomy and concentration to challenge the algorithm. 
+Therefore a lower detection proportion is expected for increased coverage. 
+A contaminant proportion of $10^{-3}$ is equivalent to 1 contaminant cell per 1,000 cells in a microbial material, or 1,000 contaminant cells in 1 mL of a $10^{6}$ cells/mL culture. 
+The estimated contaminant proportion accuracy for the simulated contaminated material varied by contaminant and material strain. 
+}\DIFdelend 
+
+\DIFaddbegin \DIFadd{We have developed an }\textit{\DIFadd{in-silico}} \DIFadd{approach to evaluate the ability of an existing taxonomic sequence classification algorithm to detect contaminant DNA in whole genome sequence datasets from microbial materials. 
+The use of }\textit{\DIFadd{in-silico}} \DIFadd{data allows for a “known” contaminant taxonomy and concentration to challenge the algorithm. 
 Here we used single and binary mixtures of organisms. 
 While binary mixtures of organisms do not necessarily capture the complexity of real-world samples, they do serve as an appropriate model system to evaluate the algorithm and our approach to detecting contaminants. 
 This approach could easily be adapted for }\textit{\DIFadd{in-silico}} \DIFadd{datasets with multiple contaminants.  
-}\DIFaddend 
+}
 
 
-There are three basic steps to using this method to detect contaminants in a microbial material. 
+\DIFaddend There are three basic steps to using this method to detect contaminants in a microbial material. 
 Baseline assessment is the first step. 
 For a baseline assessment, reads are simulated from the reference genome of the organism of interest and processed using a taxonomic classification algorithm. 
 Performing a baseline assessment allows one to identify the false positive contaminants you can expect to observe due to limitations in the method. 
@@ -536,7 +548,9 @@ Similar studies to the one presented here are warranted to evaluate the suitabil
 Incorporating baseline assessments using simulated data from single genomes into large benchmarking challenges such as the Critical Assessment of Metagenomic Interpretation could help improve our understanding of the limitations of taxonomic classification methods (http://www.cami-challenge.org/)\mbox{%DIFAUXCMD
 \citep{sczyrba2017critical}}%DIFAUXCMD
 . 
-This type of large-scale benchmarking challenge would help identify and characterizing common causes of false positive classification errors such as plasmids and horizontal gene transfer events.
+This type of large-scale benchmarking challenge would help identify and characterizing common causes of false positive classification errors. 
+Though not investigated in this study plasmids and horizontal gene transfer as likely a significant source of false positive classification errors. 
+A results from such large-scale benchmarking challenge could be used to better characterize the extent to which mobile elements are responsible for false positive classification errors. 
 }\DIFaddend 
 
 A number of the observed false positives were due to errors in the database and inability of the taxonomic classification algorithm to correctly identify the source of the sequence when it matches multiple organisms in the database. 
