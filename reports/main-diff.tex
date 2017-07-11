@@ -1,7 +1,7 @@
 \documentclass[fleqn,10pt,lineno]{wlpeerj}\usepackage[]{graphicx}\usepackage[]{color}
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL peerj-17196-main.tex   Wed Jul  5 10:56:46 2017
-%DIF ADD main.tex               Fri Jul  7 15:36:40 2017
+%DIF ADD main.tex               Mon Jul 10 21:37:54 2017
 %% maxwidth is the original width if it is less than linewidth
 %% otherwise use linewidth (to make sure the graphics do not exceed the margin)
 \makeatletter
@@ -80,9 +80,9 @@ Current methods for detecting contaminants in microbial materials (genomic DNA a
 Whole genome sequencing (WGS) is a promising approach for detecting contaminants due to its sensitivity and lack of need for \textit{a priori} assumptions about the contaminant. Prior to applying WGS, we must first understand its limitations for detecting contaminants and potential for false positives.  %DIF > 
 Herein we demonstrate and characterize a WGS-based approach to detect organismal contaminants using an existing metagenomic taxonomic classification algorithm.  %DIF > 
 Simulated WGS datasets from ten genera as individuals and binary mixtures of eight organisms at varying ratios were analyzed to evaluate the role of contaminant concentration and taxonomy on detection.  %DIF > 
-For the individual genomes the false positive contaminants reported depended on the genus with \textit{Staphylococcus}, \textit{Escherichia}, and \textit{Shigella} having the highest proportion of false positives.  %DIF > 
-For nearly all binary mixtures the contaminant was detected in the \textit{in-silico} datasets at the equivalent of 1 in 1,000 cells. Though \textit{F. tularensis} was not detected in any of the simulated contaminant mixtures and \textit{Y. pestis} was only detected at the equivlent of 1 in 10 cells.  %DIF > 
-Once a WGS method for detecting contaminants is characterized, it can be applied to evaluate microbial material purity, in effort to ensure that contaminants in microbial materials used to validate pathogen detection assays, generate genome assemblies for database submission, and benchmark sequencing methods. %DIF > 
+For the individual genomes the false positive contaminants depended on the genus with \textit{Staphylococcus}, \textit{Escherichia}, and \textit{Shigella} having the highest proportion of false positives.  %DIF > 
+For nearly all binary mixtures the contaminant was detected in the \textit{in-silico} datasets at the equivalent of 1 in 1,000 cells, with the exceptions of \textit{F. tularensis}, which was not detected in any of the simulated contaminant mixtures, and \textit{Y. pestis}, which was only detected at the equivalent of 1 in 10 cells.  %DIF > 
+Once a WGS method for detecting contaminants is characterized, it can be applied to evaluate microbial material purity, in efforts to ensure that contaminants are characterized and minimized in microbial materials used to validate pathogen detection assays, generate genome assemblies for database submission, and benchmark sequencing methods. %DIF > 
 %DIF -------
 \end{abstract}
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -122,31 +122,27 @@ Once a WGS method for detecting contaminants is characterized, it can be applied
 \section*{Introduction} 
 Microbial materials such as cells and extracted genomic DNA from a presumably “pure” culture should ideally be free of organismal contaminants\DIFdelbegin \DIFdel{. 
 However, high }\DIFdelend \DIFaddbegin \DIFadd{, yet rarely are. 
-High }\DIFaddend sensitivity detection methods including polymerase chain reaction (PCR) and next generation sequencing (NGS) can detect organismal contaminants previously undetectable by traditional microbiology methods such as culturing, biochemical tests, and microscopy. 
-Characterizing \DIFdelbegin \DIFdel{and reducing the level of these contaminants }\DIFdelend \DIFaddbegin \DIFadd{these contaminants in order to focus efforts on reducing their level }\DIFaddend is critical to ensuring \DIFdelbegin \DIFdel{high quality }\DIFdelend \DIFaddbegin \DIFadd{high-quality }\DIFaddend microbial materials are used to populate sequence databases \citep{parks2015checkm}, for mock communities used to validate metagenomic methods \citep{bokulich2016mockrobiota}, to validate biodetection assays  \citep{Ieven2013,International2011}, and for basic research using model systems \citep{Shrestha2013}. 
+High }\DIFaddend sensitivity detection methods including polymerase chain reaction (PCR) and next generation sequencing (NGS) can detect organismal contaminants previously undetectable by traditional \DIFdelbegin \DIFdel{microbiology methodssuch as culturing, biochemical tests, and microscopy. 
+Characterizing and reducing the level of these contaminants }\DIFdelend \DIFaddbegin \DIFadd{microbiological methods. 
+Characterizing these contaminants in order to focus efforts on reducing their level }\DIFaddend is critical to ensuring \DIFdelbegin \DIFdel{high quality }\DIFdelend \DIFaddbegin \DIFadd{high-quality }\DIFaddend microbial materials are used to populate sequence databases \citep{parks2015checkm}, for mock communities \DIFdelbegin \DIFdel{used }\DIFdelend to validate metagenomic methods \citep{bokulich2016mockrobiota}, to validate biodetection assays  \citep{Ieven2013,International2011}, and for basic research using model systems \citep{Shrestha2013}. 
 \DIFdelbegin \DIFdel{General contaminant assessment is }\DIFdelend \DIFaddbegin \DIFadd{Furthermore, tools to assess general contaminants are }\DIFaddend also needed for the characterization of microbial \DIFaddbegin \DIFadd{genomic }\DIFaddend reference materials \citep{olson2016pepr}, where contaminant profiles allow users to properly determine whether the material is suitable for their application. 
-\DIFdelbegin \DIFdel{In addition to organismal contaminants in the material itself, PCR and NGS can also detect reagent impurities, highlighting the need to differentiate material and reagent contaminants. 
-Issues related to reagent contaminants are well documented and addressed with negative controls \mbox{%DIFAUXCMD
-\citep{jervis2015deriving}}%DIFAUXCMD
-, improved methods for removing contaminants \mbox{%DIFAUXCMD
-\citep{woyke2011decontamination,motley2014improved}}%DIFAUXCMD
-, and post-processing of sequence data \mbox{%DIFAUXCMD
+\DIFdelbegin \DIFdel{In addition to organismal contaminants in the material itself, }\DIFdelend \DIFaddbegin \DIFadd{Contaminants in microbial materials, as found in non-axenic cellular materials or genomic materials with foreign DNA, have been addressed when processing the sequencing data but not for general material characterization \mbox{%DIFAUXCMD
+\citep{Shrestha2013,tennessen2015prodege}}%DIFAUXCMD
+.
+}\DIFaddend PCR and NGS can also detect reagent impurities\DIFdelbegin \DIFdel{, highlighting the need to differentiate material and reagent contaminants. 
+Issues related to reagent contaminants are well documented and addressed with }\DIFdelend \DIFaddbegin \DIFadd{. 
+Reagent contaminants can be addressed by producing }\DIFaddend negative controls \citep{jervis2015deriving}, improved methods for removing contaminants \citep{woyke2011decontamination,motley2014improved}, and post-processing of sequence data \DIFdelbegin \DIFdel{\mbox{%DIFAUXCMD
 \citep{mukherjee2015large}}%DIFAUXCMD
 . 
-However, contaminants in }\DIFdelend \DIFaddbegin \DIFadd{Contaminants in }\DIFaddend microbial materials, as found in non-axenic cellular materials or genomic materials with foreign DNA, has only been addressed when processing the sequencing data and not \DIFaddbegin \DIFadd{for general }\DIFaddend material characterization \citep{Shrestha2013,tennessen2015prodege}.
-\DIFaddbegin \DIFadd{PCR and NGS can also be used to detect reagent impurities. 
-Reagent contaminants are assessed by producing   negative controls \mbox{%DIFAUXCMD
-\citep{jervis2015deriving}}%DIFAUXCMD
-, improved methods for removing contaminants \mbox{%DIFAUXCMD
-\citep{woyke2011decontamination,motley2014improved}}%DIFAUXCMD
-, and post-processing of sequence data \mbox{%DIFAUXCMD
+However, contaminants in microbial materials, as found in non-axenic cellular materials or genomic materials with foreign DNA, has only been addressed when processing the sequencing data and not material characterization \mbox{%DIFAUXCMD
+\citep{Shrestha2013,tennessen2015prodege}}%DIFAUXCMD
+}\DIFdelend \DIFaddbegin \DIFadd{in effort to distinguish these impurities from true organismal contaminant in the microbial material \mbox{%DIFAUXCMD
 \citep{mukherjee2015large}}%DIFAUXCMD
-. 
-}\DIFaddend 
+}\DIFaddend . 
 
 
 Current approaches for detecting contaminants in microbial materials \DIFdelbegin \DIFdel{typically rely on methods }\DIFdelend such as culture, microscopy, or PCR \DIFdelbegin \DIFdel{. 
-Culture }\DIFdelend \DIFaddbegin \DIFadd{typically fail to meet all the requirements to characterize materials for routine applications. 
+Culture }\DIFdelend \DIFaddbegin \DIFadd{typically fail to meet all the requirements to characterize microbial materials for routine applications. 
 Culture- }\DIFaddend and microscopy-based methods lack the required sensitivity for \DIFaddbegin \DIFadd{detecting contaminants in }\DIFaddend microbial materials being used in NGS and PCR applications, are not appropriate for genomic DNA materials, and assume the contaminants are phenotypically distinct from the material they contaminate. 
 While PCR-based methods can detect contaminants in genomic DNA, the methods are limited \DIFdelbegin \DIFdel{as they can only detect }\DIFdelend \DIFaddbegin \DIFadd{to }\DIFaddend specifically targeted contaminants and are not amenable to highly multiplexed applications \citep{heck2016evaluating,Marron2013}. 
 In contrast to these methods, shotgun metagenomic methods\DIFaddbegin \DIFadd{, though unable to assess contaminant viability, }\DIFaddend can be used to detect contaminants in both cell cultures and genomic DNA materials while only requiring the contaminant has sequencing reads differentiating it from the material strain. 
@@ -171,12 +167,14 @@ Bioinformatic methods have been developed and used to detect contaminant reads i
 \DIFdelbegin \DIFdel{As taxonomic classification algorithms are constantly improving, reference databases are expanding, and the cost of sequencing is decreasing, shotgun metagenomic sequencing provides an alternative to current methods for detecting contaminants in microbial materials.
 }\DIFdelend 
 
-In \DIFaddbegin \DIFadd{order to confidently use metagenomics to detect contaminants in microbial materials, one must first understand its limitations in doing so.  We have developed a metagenomics-based approach to evaluate contaminant detection capabilities.  In }\DIFaddend this work, we present results from an \textit{in-silico} study demonstrating \DIFdelbegin \DIFdel{the use of whole genome sequence data combined with a }\DIFdelend \DIFaddbegin \DIFadd{our approach using an existing }\DIFaddend taxonomic assignment algorithm for detecting contaminant DNA in \DIFdelbegin \DIFdel{microbial materials.
+In \DIFaddbegin \DIFadd{order to confidently use metagenomics to detect contaminants in microbial materials, one must first understand its limitations in doing so. 
+We have developed a metagenomics-based approach to evaluate contaminant detection capabilities. 
+In }\DIFaddend this work, we present results from an \textit{in-silico} study demonstrating \DIFdelbegin \DIFdel{the use of whole genome sequence data combined with a }\DIFdelend \DIFaddbegin \DIFadd{our approach using an existing }\DIFaddend taxonomic assignment algorithm for detecting contaminant DNA in \DIFdelbegin \DIFdel{microbial materials.
 A }\DIFdelend \DIFaddbegin \DIFadd{simulated microbial whole genome sequence data.
 First, a }\DIFaddend baseline assessment of the method \DIFaddbegin \DIFadd{was performed }\DIFaddend using simulated sequencing data from single microorganisms \DIFdelbegin \DIFdel{was performed }\DIFdelend to characterize the types of false positive contaminants the \DIFdelbegin \DIFdel{method }\DIFdelend \DIFaddbegin \DIFadd{algorithm }\DIFaddend may report.
 \DIFdelbegin \DIFdel{Then, the }\DIFdelend \DIFaddbegin \DIFadd{The }\DIFaddend contaminant detection method was \DIFaddbegin \DIFadd{then }\DIFaddend evaluated for its ability to detect organismal contaminants in microbial material strains using sequencing data simulated to replicate microbial materials contaminated with different organismal contaminants at a range of concentrations.   
 
-\DIFaddbegin \DIFadd{This manuscript is intended for users and maintainers of microbial material stocks who are interested in validating material purity and understanding the limitions of their validation method. A secondary audience is taxonomic classification algorithm developers, as this work presents a novel approach to evaluating taxonomic classification methods and an additional use case that developers may not have previously considered.
+\DIFaddbegin \DIFadd{This manuscript is intended for users and maintainers of microbial material stocks who are interested in validating material purity and understanding the limitations of their validation method. A secondary audience is taxonomic classification algorithm developers, as this work presents a novel approach to evaluating taxonomic classification methods and an additional use case that developers may not have previously considered.
 }
 
 \DIFaddend \section*{Methods}
@@ -203,13 +201,14 @@ The annotated Genbank nt database provided by the PathoScope developers was used
 
 \subsection*{Baseline Assessment Using Individual Genomes}
 Simulated sequencing data from individual genomes was used to characterize the false positive contaminants reported by PathoScope.
-Sequence data was simulated for 406 strains, from \DIFdelbegin \DIFdel{9 }\DIFdelend \DIFaddbegin \DIFadd{10 }\DIFaddend genera (Table \ref{tab:single_org}, Supplemental Table 1).
+Sequence data was simulated for 406 strains, from \DIFdelbegin \DIFdel{9 }\DIFdelend \DIFaddbegin \DIFadd{ten }\DIFaddend genera (Table \ref{tab:single_org}, Supplemental Table 1).
 These genera were selected based on relevance to public health and biothreat detection.
 We will refer to the genome used to generate the reads as the material genome.
 The genomes included in the simulation study were limited to \DIFdelbegin \DIFdel{the number of }\DIFdelend closed genomes in the Genbank database (\url{http://www.ncbi.nlm.nih.gov/genbank/}, accessed 10/18/2013) belonging to the genera of interest (Table \ref{tab:single_org}).
-Due to the large number of \textit{Bacillus}, \textit{Escherichia}, and \textit{Salmonella} genomes, genomes from these genera were limited to the species \DIFdelbegin \textit{\DIFdel{Bacillus cereus}}%DIFAUXCMD
+Due to the large number of \DIFdelbegin \textit{\DIFdel{Bacillus}}%DIFAUXCMD
+\DIFdel{, }\DIFdelend \textit{Escherichia} \DIFdelbegin \DIFdel{, and }\DIFdelend \DIFaddbegin \DIFadd{and }\DIFaddend \textit{\DIFdelbegin \DIFdel{Salmonella}\DIFdelend \DIFaddbegin \DIFadd{Staphylococcus}\DIFaddend } genomes, genomes from these genera were limited to the species \DIFdelbegin \textit{\DIFdel{Bacillus cereus}}%DIFAUXCMD
 \DIFdel{, }\DIFdelend \textit{Escherichia coli}, and \textit{\DIFdelbegin \DIFdel{Salmonella enterica}\DIFdelend \DIFaddbegin \DIFadd{Staphylococcus aureus}\DIFaddend } respectively. 
-\DIFaddbegin \DIFadd{Since the genomes were selected one of the }\textit{\DIFadd{Staphylocuccus aureus}} \DIFadd{genomes was renamed }\textit{\DIFadd{S. argenteus}}\DIFadd{, Genbank taxid 985002 \mbox{%DIFAUXCMD
+\DIFaddbegin \DIFadd{We note that after the genomes were selected one of the }\textit{\DIFadd{Staphylocuccus aureus}} \DIFadd{genomes was renamed }\textit{\DIFadd{S. argenteus}}\DIFadd{, Genbank taxid 985002 \mbox{%DIFAUXCMD
 \citep{tong2015novel}}%DIFAUXCMD
 . 
 Average nucleotide identity for all pair-wise comparisons was calculated using MUMMER3 and the }\verb|ani_pairs.R| \DIFadd{script in the project github repository \mbox{%DIFAUXCMD
@@ -267,7 +266,7 @@ All reads assigned to a different taxa than the genome the reads were simulated 
 (This assumes the genome sequence is contaminant free.) 
 Our analysis included taxonomic classification results for simulated sequencing data  from 406 genomes, representing 10 different genera (Table \ref{tab:single_org}, \DIFaddbegin \DIFadd{Fig. \ref{fig:single_org_tree}, }\DIFaddend Supplemental Table 1). 
 The \DIFaddbegin \DIFadd{10 genera were from the Gammaproteobacteria Class and Firmicutes phylum with 1 to 21 species from each genera representing a range of genomic similarity within the genus (Fig. \ref{fig:baseline_ani}). 
-For the genomes included in the study }\textit{\DIFadd{Escherichia}}\DIFadd{, }\textit{\DIFadd{Shigella}}\DIFadd{, }\textit{\DIFadd{Salmonella}}\DIFadd{, and }\textit{\DIFadd{Staphylococcus}} \DIFadd{have higher within genus similarity whereas }\textit{\DIFadd{Clostridium}} \DIFadd{and }\textit{\DIFadd{Pseudomonas}} \DIFadd{had lower within genus similarity. 
+For the genomes included in the study, }\textit{\DIFadd{Escherichia}}\DIFadd{, }\textit{\DIFadd{Shigella}}\DIFadd{, }\textit{\DIFadd{Salmonella}}\DIFadd{, and }\textit{\DIFadd{Staphylococcus}} \DIFadd{have higher within genus similarity whereas }\textit{\DIFadd{Clostridium}} \DIFadd{and }\textit{\DIFadd{Pseudomonas}} \DIFadd{had lower within genus similarity. 
 }
 
 \DIFadd{The taxonomic classification }\DIFaddend method was evaluated using the estimated proportion of species level matches.
@@ -287,7 +286,7 @@ Two types of false positive contaminants were identified: (1) contaminants that 
 %DIF <  latex table generated in R 3.3.3 by xtable 1.8-2 package
 %DIF <  Fri Mar 31 10:59:20 2017
 %DIF >  latex table generated in R 3.4.1 by xtable 1.8-2 package
-%DIF >  Fri Jul  7 15:36:31 2017
+%DIF >  Mon Jul 10 21:37:44 2017
 \begin{table}[ht]
 \centering
 \DIFdelbeginFL %DIFDELCMD < \begin{tabular}{lrl}
@@ -323,7 +322,7 @@ Genus & N & \DIFaddbeginFL \DIFaddFL{Species }& \DIFaddendFL Genome Size (Mb) \\
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}
-\includegraphics[width=\maxwidth]{figure/baseline_ani-1} \caption[Genomic diversity of strains used in baseline study by genus]{\DIFaddFL{Genomic diversity of strains used in baseline study by genus. The percent of the genome aligned represented on the x-axis and average nucleotide identity (similarity of aligned regions) on the y-axis. More similar genomes will have higher percent aligned and average nucleotide identity.}}\label{fig:baseline_ani}
+\includegraphics[width=\maxwidth]{figure/baseline_ani-1} \caption[Genomic diversity of strains used in baseline study by genus]{\DIFaddFL{Genomic diversity of strains used in baseline study by genus. The percent of the genome aligned is represented on the x-axis with average nucleotide identity (similarity of aligned regions) on the y-axis. More similar genomes will have a higher percent aligned and average nucleotide identity.}}\label{fig:baseline_ani}
 \end{figure}
 
 
@@ -377,7 +376,7 @@ The eukaryotic false positive contaminants are likely due to contaminants in the
 %DIF <  latex table generated in R 3.3.3 by xtable 1.8-2 package
 %DIF <  Fri Mar 31 10:59:21 2017
 %DIF >  latex table generated in R 3.4.1 by xtable 1.8-2 package
-%DIF >  Fri Jul  7 15:36:35 2017
+%DIF >  Mon Jul 10 21:37:49 2017
 \begin{table}[ht]
 \centering
 \scalebox{0.85}{
@@ -414,8 +413,8 @@ Representative Strain & Match Proportion & Aligned Reads & Mb \\
 with the larger proportion representing the microbial material and smaller proportion the contaminant (Fig. \ref{fig:contam_simulation}).
 We simulated contaminant datasets as pairwise combinations of representative genomes from 8 of the genera used in the baseline assessment section of the study (Table \ref{tab:contam_table}\DIFaddbegin \DIFadd{, Fig. \ref{fig:contam_ani}}\DIFaddend ).
 All of the genomes selected have a species level estimated match proportion greater than 0.98 (Table \ref{tab:contam_table}). 
-\DIFaddbegin \DIFadd{The representative genomes had low pairwise similarity based on the average nucleotide identity analysis (Fig. \ref{fig:contam_ani}) with average identity between 82\% and 86\% with greater than 1\% of the genomes aligned for 4 of the 28 organism pairs. 
-The }\textit{\DIFadd{Salmonella}} \DIFadd{and }\textit{\DIFadd{E. coli}} \DIFadd{had the highest percent of their genomes aligned to each other 36\% and 30\% respectively. 
+\DIFaddbegin \DIFadd{The representative genomes had low pairwise similarity based on the average nucleotide identity analysis (Fig. \ref{fig:contam_ani}) with average identity between 82 \% and 86 \% with greater than 1 \% of the genomes aligned for 4 of the 28 organism pairs. 
+The }\textit{\DIFadd{Salmonella}} \DIFadd{and }\textit{\DIFadd{E. coli}} \DIFadd{had the highest percent of their genomes aligned to each other at 36 \% and 30 \%, respectively. 
 }\DIFaddend 
 
 The minimum contaminant proportion detected was $10^{-3}$ and  $10^{-4}$ for most pairwise comparisons with a few exceptions (Fig. \ref{fig:contam_fig}). 
@@ -425,10 +424,10 @@ However, this is likely due to the overall low level of similarity between the r
 For all simulated datasets where \textit{F. tularensis} was the contaminant, the contaminant was not detected. 
 It is unclear why \textit{Y. pestis} was only detected at a higher proportion relative to the other datasets, $10^{-1}$ versus $10^{-3}$, and \textit{F. tularensis} was not detected at all.
 One possible reason for the lower contaminant detection for these two organisms is that there are fewer genomes in the database for these two genera. 
-\DIFaddbegin \DIFadd{Another potential reason is that both }\textit{\DIFadd{Y. pestis}} \DIFadd{and }\textit{\DIFadd{F. tularensis}} \DIFadd{genomes have high insertion sequence content and readily undergo intragenomic recombination \mbox{%DIFAUXCMD
+\DIFaddbegin \DIFadd{Another potential reason is that genomes from both }\textit{\DIFadd{Y. pestis}} \DIFadd{and }\textit{\DIFadd{F. tularensis}} \DIFadd{have high insertion sequence content and readily undergo intragenomic recombination \mbox{%DIFAUXCMD
 \citep{larsson2005complete,chain2004insights}}%DIFAUXCMD
 . 
-These genomic rearrangements have been attributed to these organisms highly pathogenic nature and challenge taxonomic classification methods due to relatively high levels of sequence similarity between seemingly unrelated organisms. 
+These genomic rearrangements have been attributed to these organisms' highly pathogenic nature and challenge taxonomic classification methods due to relatively high levels of sequence similarity between seemingly unrelated organisms. 
 }\DIFaddend Additionally, the \textit{F. tularensis} dataset is much smaller relative to the other genera, less than 90,000 reads. 
 Therefore, with fewer reads in the dataset and genomes in the database, the probability that the randomly selected subset of reads spiked into the simulated material dataset contains reads allowing for contaminant detection is lower. 
 A few contaminants were detected at proportions as low as $10^{-8}$, such as when \textit{Yersinia} contaminated with \textit{E. coli} or \textit{S. enterica}.
@@ -439,7 +438,7 @@ As the individual datasets were simulated at 20X coverage, \textless 300,000 rea
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}
-\includegraphics[width=\maxwidth]{figure/contam_fig-1} \caption[The relationship between the proportion of reads matching the contaminant species and the proportion of simulated contaminant reads]{The relationship between the proportion of reads matching the contaminant species and the proportion of simulated contaminant reads. Plots are \DIFdelbeginFL \DIFdelFL{split by }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{facted on }\DIFaddendFL the \DIFaddbeginFL \DIFaddFL{x-axis by }\DIFaddendFL material species \DIFdelbeginFL \DIFdelFL{with line }\DIFdelendFL and \DIFdelbeginFL \DIFdelFL{point }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{y-axis by contaminant species. Point }\DIFaddendFL color \DIFdelbeginFL \DIFdelFL{indicating }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{indicates }\DIFaddendFL contaminant species \DIFaddbeginFL \DIFaddFL{and line color indicates material species}\DIFaddendFL . Dashed line indicates the expected 1:1 correlation between the proportion of reads matching the expected contaminant and the proportion of reads simulated from the contaminant. The contaminant proportion was underestimated for points below the dashed line and overestimated for points above the dashed line.}\label{fig:contam_fig}
+\includegraphics[width=\maxwidth]{figure/contam_fig-1} \caption[The relationship between the proportion of reads matching the contaminant species and the proportion of simulated contaminant reads]{The relationship between the proportion of reads matching the contaminant species and the proportion of simulated contaminant reads. Plots are \DIFdelbeginFL \DIFdelFL{split by }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{faceted on }\DIFaddendFL the \DIFaddbeginFL \DIFaddFL{x-axis by }\DIFaddendFL material species \DIFdelbeginFL \DIFdelFL{with line }\DIFdelendFL and \DIFdelbeginFL \DIFdelFL{point }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{on the y-axis by contaminant species. Point }\DIFaddendFL color \DIFdelbeginFL \DIFdelFL{indicating }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{indicates }\DIFaddendFL contaminant species \DIFaddbeginFL \DIFaddFL{and line color indicates material species}\DIFaddendFL . Dashed line indicates the expected 1:1 correlation between the proportion of reads matching the expected contaminant and the proportion of reads simulated from the contaminant. The contaminant proportion was underestimated for points below the dashed line and overestimated for points above the dashed line.}\label{fig:contam_fig}
 \end{figure}
 
 
@@ -462,8 +461,8 @@ Two coefficients were below 0.98: \textit{S. aureus} contaminated with \textit{P
 The total error rate was used to assess the accuracy of the PathoScope contaminant proportion estimates (Fig. \ref{fig:contam_resid}).
 The material genome strongly influenced the total error rate with \textit{E. coli} and \textit{S. aureus} having consistently higher total error rates compared to the other genomes, indicating a reduced accuracy for the two species. 
 \DIFaddbegin \DIFadd{The proportion of reads from }\textit{\DIFadd{E. coli}} \DIFadd{and }\textit{\DIFadd{S. aureus}} \DIFadd{in the simulated contaminant datasets is consistently overestimated by PathoScope (Fig. \ref{fig:contam_fig}). 
-Both genera had higher proportion of false positives due to phage relative to the other genera analyzed in this study (Fig. \ref{fig:phage_prop}). 
-Higher phage content or mobile elements such as HGT and plasmids are potentially responsible for the overestimated proportions.
+Both genera had a higher proportion of false positives due to phage relative to the other genera analyzed in this study (Fig. \ref{fig:phage_prop}). 
+Higher phage content or mobile elements due to HGT and plasmids are potentially responsible for the overestimated proportions.
 In this study, the similarity between the material and contaminant genome did not impact the quantitative accuracy of the method. 
 However, one would expect significantly lower quantitative accuracy for highly similar genomes. 
 }\DIFaddend 
@@ -509,7 +508,7 @@ Appropriate validation approaches may include experiments with simulated contami
 }\DIFdelend \DIFaddbegin \DIFadd{note that the method if routinely deployed cannot determine if the contaminants are viable and/or culturable as only the DNA is evaluated.  Separate culture techniques would have to be performed in parallel to determine if the contamination was viable. 
 }
 
-\DIFadd{False positive contaminants identified in steps 1 and 2 were split into two categories (1) those due to an inability of the method to differentiate the material genome from the contaminant genome, and (2) errors in the reference database.
+\DIFadd{False positive contaminants identified in steps 1 and 2 were split into two categories: (1) those due to an inability of the method to differentiate the material genome from the contaminant genome, and (2) errors in the reference database.
 Contaminant detection performance was characterized for different materials, contaminants, and contamination levels.
 Overall the method was able to identify contaminant proportions at $10^{-3}$ for most contaminant-material combinations. 
 This level of detection is dependent on not just the classification method but also the simulated coverage. 
@@ -527,8 +526,10 @@ simulated data can be used to evaluate the minimal detectable contaminant propor
 \DIFdelbegin %DIFDELCMD < 
 
 %DIFDELCMD < %%%
-\DIFdelend A primary limitation of the proposed method is the observed false positive contaminants identified in the baseline assessment. 
-The reference database and taxonomic assignment algorithm are likely to impact the number and types of false positives. 
+\DIFdelend A primary limitation of the proposed method is the observed false positive contaminants identified in the baseline assessment.  
+\DIFaddbegin 
+
+\DIFaddend The reference database and taxonomic assignment algorithm are likely to impact the number and types of false positives. 
 There are three primary types of taxonomic read classification algorithms: sequence similarity search, sequence composition methods, and phylogenetic methods \citep{Bazinet2012}. 
 The \DIFaddbegin \DIFadd{example }\DIFaddend algorithm used in this study, PathoScope, is a type of sequence similarity search algorithm. 
 Evaluating different types of algorithms using simulated data for the material genome of interest, similar to what was done in the baseline assessment part of this study, would help determine the optimal classification algorithm for a specific microbial material. 
@@ -537,7 +538,7 @@ Application of these new methods would lower the computational cost of the \DIFd
 Similarity-based taxonomic classifications methods are not robust to horizontal gene transfer events and therefore alternative classification algorithms may be more suitable for contaminant detection than PathoScope \mbox{%DIFAUXCMD
 \citep{kunin2008bioinformatician,weng2010reanalyze}}%DIFAUXCMD
 .
-Other methods such as MicrobeGPS and DUDes are alternative similarity based taxonomic classification methods developed to better handle organisms not in a reference database are also suitable alternatives to PathoScope \mbox{%DIFAUXCMD
+Other methods such as MicrobeGPS and DUDes are alternative similarity based taxonomic classification methods developed to better handle organisms not in a reference database and are also suitable alternatives to PathoScope \mbox{%DIFAUXCMD
 \citep{lindner2015metagenomic,piro2016dudes}}%DIFAUXCMD
 . 
 Previous work for detecting contaminants in whole genome sequencing datasets calculate summary statistics including coverage, nucleotide composition (e.g \%GC), and taxonomic classification of scaffolds \mbox{%DIFAUXCMD
@@ -548,19 +549,19 @@ Similar studies to the one presented here are warranted to evaluate the suitabil
 Incorporating baseline assessments using simulated data from single genomes into large benchmarking challenges such as the Critical Assessment of Metagenomic Interpretation could help improve our understanding of the limitations of taxonomic classification methods (http://www.cami-challenge.org/)\mbox{%DIFAUXCMD
 \citep{sczyrba2017critical}}%DIFAUXCMD
 . 
-This type of large-scale benchmarking challenge would help identify and characterizing common causes of false positive classification errors. 
-Though not investigated in this study plasmids and horizontal gene transfer as likely a significant source of false positive classification errors. 
-A results from such large-scale benchmarking challenge could be used to better characterize the extent to which mobile elements are responsible for false positive classification errors. 
+This type of large-scale benchmarking challenge would help identify and characterize common causes of false positive classification errors. 
+Though not investigated in this study, plasmids and horizontal gene transfer are likely a significant source of false positive classification errors. 
+Results from such large-scale benchmarking challenges could be used to better characterize the extent to which mobile elements are responsible for false positive classification errors. 
 }\DIFaddend 
 
 A number of the observed false positives were due to errors in the database and inability of the taxonomic classification algorithm to correctly identify the source of the sequence when it matches multiple organisms in the database. 
-\DIFdelbegin \DIFdel{Removing }\DIFdelend \DIFaddbegin \DIFadd{Users can generate application specific databases by removing }\DIFaddend sequences from the database for irrelevant contaminants, such as phage, plasmids, vectors, \DIFdelbegin \DIFdel{and }\DIFdelend multicellular eukaryotes, \DIFdelbegin \DIFdel{would }\DIFdelend \DIFaddbegin \DIFadd{and genes known to undergo horizontal gene transfer could }\DIFaddend reduce the proportion of false positives. 
-By excluding irrelevant contaminants from the database \DIFaddbegin \DIFadd{and genes involved in horizontal gene transfer}\DIFaddend , sequencing reads aligning to these irrelevant sequences would no longer result in false positive contaminants.
+\DIFdelbegin \DIFdel{Removing sequences from the database }\DIFdelend \DIFaddbegin \DIFadd{Users can generate application specific databases by preparing a custom database without sequences }\DIFaddend for irrelevant contaminants, such as phage, plasmids, vectors, \DIFdelbegin \DIFdel{and }\DIFdelend multicellular eukaryotes, \DIFdelbegin \DIFdel{would }\DIFdelend \DIFaddbegin \DIFadd{and genes known to undergo horizontal gene transfer in order to }\DIFaddend reduce the proportion of false positives. 
+By excluding irrelevant contaminants \DIFdelbegin \DIFdel{from the database}\DIFdelend \DIFaddbegin \DIFadd{and genes involved in horizontal gene transfer}\DIFaddend , sequencing reads aligning to \DIFdelbegin \DIFdel{these irrelevant }\DIFdelend \DIFaddbegin \DIFadd{the omitted }\DIFaddend sequences would no longer result in false positive contaminants.
 Methods for excluding sequence data from a reference database are dependent on the classification algorithm used.
 For example, user-specified sequence data could be removed from the reference database by PathoScope using the PathoDB function.
-\DIFaddbegin \DIFadd{Similarly, the developers of the taxonomic classification algorithm Centrifuge provide multiple databases; Prokaryotic genomes only; Prokaryotes and Viruses; Prokaryotes, Viruses, and human; as well as NCBI nucleotide non-redundant sequences. 
+\DIFaddbegin \DIFadd{Similarly, the developers of the taxonomic classification algorithm Centrifuge provide multiple databases: Prokaryotic genomes only; Prokaryotes and Viruses; Prokaryotes, Viruses, and human; as well as NCBI nucleotide non-redundant sequences. 
 }\DIFaddend Caution should be used when removing sequences from a reference database.
-For example, vector sequences from contaminants in sequencing reagents, if excluded from the database may be incorrectly classified as an organismal contaminant.
+For example, vector sequences from contaminants in sequencing reagents, if excluded from the database\DIFaddbegin \DIFadd{, }\DIFaddend may be incorrectly classified as an organismal contaminant.
 Similarly, using a curated database free of misclassified and unclassified sequence data would further reduce the proportion of false positive contaminants \citep{tennessen2015prodege}.
 For example, the \textit{Bacillus subtilis}-\textit{Synechocystis} chimeric genome appeared to have a high false positive contaminant rate in the baseline assessment part of this study due to the genome being incorrectly classified as \textit{Bacillus subtilis} and not a chimeric genome.
 
@@ -576,8 +577,8 @@ Identification and characterization of low abundance contaminants in a non-targe
 \DIFdelbegin \DIFdel{The false positive contaminant detection is }\DIFdelend \DIFaddbegin \DIFadd{False positive contaminants were }\DIFaddend a primary limitation of the \DIFdelbegin \DIFdel{proposed method }\DIFdelend \DIFaddbegin \DIFadd{example system and method used herein}\DIFaddend . 
 As false positive contaminants are database and taxonomic assignment algorithm dependent, additional work is needed to improve database curation and data authentication efforts as well as characterize taxonomic assignment algorithm performance. 
 \DIFaddbegin \DIFadd{In summary, we have provided a straight-forward }\textit{\DIFadd{in-silico}} \DIFadd{approach using existing datasets to challenge and evaluate the use of WGS for contaminant detection. 
-Once a given WGS-based method is well-characterized and sources of false positives better characterized, the method could then be applied with confidence to examine microbial reference materials and real-world samples. 
-With the continued improvement of taxonomic classification algorithms, the expansion of reference databases, and the decline of the cost of sequencing, shotgun metagenomic sequencing provides an alternative to current methods for detecting contaminants.
+Once a given WGS-based method and its sources of false positives are well-characterized, the method could then be applied with confidence to examine microbial reference materials and real-world samples. 
+With the continued improvement of taxonomic classification algorithms, the expansion of reference databases, and the decline in the cost of sequencing, shotgun metagenomic sequencing provides an alternative to current methods for detecting contaminants.
 }\DIFaddend 
 
 
@@ -588,8 +589,8 @@ With the continued improvement of taxonomic classification algorithms, the expan
 \DIFdelend \section*{Acknowledgments}
 
 The authors would like to thank Dr. Steven Lund for his assistance in developing the study\DIFaddbegin \DIFadd{. 
-We also thank Mihai Pop, Todd Treangen, Scott Jackson, Jason Kralj, for the feedback on the manuscript. 
-Additionally, we appreciate the comments and suggestions of the Academic Editor A. Murat Eren the reviewers, which greatly improved the manuscript}\DIFaddend .
+We also thank Mihai Pop, Todd Treangen, Scott Jackson, and Jason Kralj for feedback on the manuscript. 
+Additionally, we appreciate the comments and suggestions of the Academic Editor A. Murat Eren and the peer reviewers, which greatly improved the manuscript}\DIFaddend .
 The Department of Homeland Security (DHS) Science and Technology Directorate supported this work under the Interagency Agreement HSHQPM-15-T-00019 with the NIST.
 Opinions expressed in this paper are the authors’ and do not necessarily reflect the policies and views of DHS,  NIST, or affiliated venues.
 Certain commercial equipment, instruments, or materials are identified in this paper in order to specify the experimental procedure adequately.
