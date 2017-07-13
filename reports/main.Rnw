@@ -166,12 +166,23 @@ knitr::include_graphics("figure/genus_tree.png")
 @
 
 <<baseline_ani, fig.cap = "Genomic diversity of strains used in baseline study by genus. The percent of the genome aligned is represented on the x-axis with average nucleotide identity (similarity of aligned regions) on the y-axis. More similar genomes will have a higher percent aligned and average nucleotide identity.", echo=FALSE>>=
-dnadiff_pair %>% filter(ref_genus == qry_genus) %>%
+ref_genus_ids <- dnadiff_pair$ref_genus %>% 
+      unique() %>% .[!is.na(.)]
+ref_genus_labels <- ref_genus_ids %>% 
+      {paste0(LETTERS[0:length(.)],": ",.)}
+
+dnadiff_pair %>% filter(ref_genus == qry_genus) %>% 
+      mutate(genus_lab = factor(ref_genus, 
+                                levels = ref_genus_ids, 
+                                labels = ref_genus_labels)) %>% 
       ggplot(aes(x = AlignedREF, y = AvgIdentity, color = ref_genus)) + 
       geom_density2d() + 
-      facet_wrap(~ref_genus, nrow = 2) + 
+      facet_wrap(~genus_lab, nrow = 2) + 
       theme_bw() +
-      labs(x = "Percent Aligned", y = "Average Nucleotide Identity", color = "Genus")
+      labs(x = "Percent Aligned", 
+           y = "Average Nucleotide Identity", 
+           color = "Genus") +
+      theme(legend.position = "bottom")
 @
 
 <<species_prop, fig.cap = "Species level or higher estimated match proportion varies by material genus. The estimated match proportion is the total proportion of the material with correct taxonomic assignments to the genome species, subspecies, strain, or isolate level. The Estimated Match Proportions shown are the Final Guess values in the PathoScope results table. Each point is calculated for a genome from a different isolate within the genus. The vertical dashed line indicates the 0.99 estimated match proportion. Orange points are genomes with species level estimated match proportions less than 0.90 and blue points greater than or equal to 0.90.", echo=FALSE>>=
@@ -228,11 +239,18 @@ contam_tbl_df %>% xtable(label = "tab:contam_table", digits = 2,
              scalebox='0.85')
 @
 
-<<contam_ani, echo = FALSE, message = FALSE, fig.cap = "Genomic similarity as percent of genome aligned and average nucleotide identity, between pairs of representative strains used in contaminant detection assessment.", fig.lp="fig:">>=
+<<contam_ani, echo = FALSE, message = FALSE, fig.cap = "Genomic similarity as percent of genome aligned and average nucleotide identity, between pairs of representative strains used in contaminant detection assessment.", fig.lp="fig:">>= 
+ref_genus_ids <- contam_pairs$ref_genus %>% 
+      unique() %>% .[!is.na(.)]
+ref_genus_labels <- ref_genus_ids %>% 
+      {paste0(LETTERS[0:length(.)],": ",.)}
 contam_pairs %>% 
+      mutate(genus_lab = factor(ref_genus,
+                                levels = ref_genus_ids,
+                                labels = ref_genus_labels)) %>%
       ggplot() + 
       geom_point(aes(x = AlignedREF, y = AvgIdentity, color = qry_genus)) + 
-      facet_wrap(~ref_genus, nrow = 2) + scale_x_log10() + theme_bw() +
+      facet_wrap(~genus_lab, nrow = 2) + scale_x_log10() + theme_bw() +
       theme(legend.position = "bottom") + 
       labs(x = "Percent Aligned", y = "Average Nucleotide Identity", color = "Genus")
 @
@@ -289,16 +307,25 @@ contamMixMatchResults %>% mutate(mix = as.numeric(mix),
 @
 
 
-<<contam_resid, echo = FALSE, message = FALSE, fig.cap = "Error rate, $(estimated - true)/true$, for pairwise combinations of material and contaminant. Points and error bars represent the median and range (minimum - maximum) error rate for each material and contaminant combination.", fig.lp="fig:">>=
-contam_resid_summary %>%
+<<contam_resid, echo = FALSE, message = FALSE, fig.cap = "Error rate, $(estimated - true)/true$, for pairwise combinations of material and contaminant. Points and error bars represent the median and range (minimum - maximum) error rate for each material and contaminant combination.", fig.lp="fig:">>= 
+contam_resid_summary <- contam_resid_summary %>%
       ungroup() %>% 
-      mutate(target_facet = fct_reorder(target_facet, prop_resid_total, median)) %>%
+      mutate(target_facet = fct_reorder(target_facet, 
+                                        prop_resid_total, median)) 
+
+target_ids <- levels(contam_resid_summary$target_facet)
+target_labels <- target_ids %>% {paste0(LETTERS[0:length(.)],": ",.)}
+
+contam_resid_summary %>%
+      mutate(target_labels = factor(target_facet, 
+                                levels = target_ids, 
+                                labels = target_labels)) %>%
       ggplot() +
             geom_errorbar(aes(x = contam_facet, ymin = prop_resid_min, ymax = prop_resid_max)) + 
             geom_point(aes(x = contam_facet, y = prop_resid_med, 
                            color = contam_facet)) + theme_bw() +
             labs(x = "Material", y = "Error Rate", color = "Contaminant") +
-            facet_wrap(~target_facet, nrow = 1) + 
+            facet_wrap(~target_labels, nrow = 1) + 
             theme(legend.position = "bottom", axis.text.x = element_blank())
 @
 
@@ -397,7 +424,6 @@ With the continued improvement of taxonomic classification algorithms, the expan
 The authors would like to thank Dr. Steven Lund for his assistance in developing the study. 
 We also thank Mihai Pop, Todd Treangen, Scott Jackson, and Jason Kralj for feedback on the manuscript. 
 Additionally, we appreciate the comments and suggestions of the Academic Editor A. Murat Eren and the peer reviewers, which greatly improved the manuscript.
-The Department of Homeland Security (DHS) Science and Technology Directorate supported this work under the Interagency Agreement HSHQPM-15-T-00019 with the NIST.
 Opinions expressed in this paper are the authors’ and do not necessarily reflect the policies and views of DHS,  NIST, or affiliated venues.
 Certain commercial equipment, instruments, or materials are identified in this paper in order to specify the experimental procedure adequately.
 Such identification is not intended to imply recommendations or endorsement by NIST,
