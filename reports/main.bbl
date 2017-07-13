@@ -14,8 +14,11 @@ Bokulich, N.~A., Rideout, J.~R., Mercurio, W.~G., Shiffer, A., Wolfe, B.,
 \newblock {\em mSystems}, 1(5).
 
 \bibitem[Chain et~al., 2004]{chain2004insights}
-Chain, P.~S., Carniel, E., Larimer, F.~W., Lamerdin, J., Stoutland, P., Regala,
-  W., Georgescu, A., Vergez, L., Land, M., Motin, V., et~al. (2004).
+Chain, P. S.~G., Carniel, E., Larimer, F.~W., Lamerdin, J., Stoutland, P.~O.,
+  Regala, W.~M., Georgescu, A.~M., Vergez, L.~M., Land, M.~L., Motin, V.~L.,
+  Brubaker, R.~R., Fowler, J., Hinnebusch, J., Marceau, M., Medigue, C.,
+  Simonet, M., Chenal-Francisque, V., Souza, B., Dacheux, D., Elliott, J.~M.,
+  Derbise, A., Hauser, L.~J., and Garcia, E. (2004).
 \newblock Insights into the evolution of yersinia pestis through whole-genome
   comparison with yersinia pseudotuberculosis.
 \newblock {\em Proceedings of the National Academy of Sciences of the United
@@ -69,7 +72,7 @@ Ieven, M., Finch, R., and van Belkum, a. (2013).
 \bibitem[Jervis-Bardy et~al., 2015]{jervis2015deriving}
 Jervis-Bardy, J., Leong, L.~E., Marri, S., Smith, R.~J., Choo, J.~M.,
   Smith-Vaughan, H.~C., Nosworthy, E., Morris, P.~S., O’Leary, S., Rogers,
-  G.~B., et~al. (2015).
+  G.~B., and Marsh, R.~L. (2015).
 \newblock Deriving accurate microbiota profiles from human samples with low
   bacterial content through post-sequencing processing of illumina miseq data.
 \newblock {\em Microbiome}, 3(1):1.
@@ -110,8 +113,11 @@ Langmead, B. and Salzberg, S.~L. (2012).
 
 \bibitem[Larsson et~al., 2005]{larsson2005complete}
 Larsson, P., Oyston, P.~C., Chain, P., Chu, M.~C., Duffield, M., Fuxelius,
-  H.-H., Garcia, E., H{\"a}lltorp, G., Johansson, D., Isherwood, K.~E., et~al.
-  (2005).
+  H.-H., Garcia, E., H{\"a}lltorp, G., Johansson, D., Isherwood, Isherwood,
+  K.~E., Karp, P.~D., Larsson, E., Liu, Y., Michell, S., Prior, J., Prior, R.,
+  Malfatti, S., Sj{\"o}stedt, A., Svensson, K., Thompson, N., Vergez, L., Wagg,
+  J.~K., Wren, B.~W., Lindler, L.~E., Andersson, S. G.~E., Forsman, M., and
+  Titball, R.~W. (2005).
 \newblock The complete genome sequence of francisella tularensis, the causative
   agent of tularemia.
 \newblock {\em Nature genetics}, 37(2):153--159.
@@ -189,10 +195,21 @@ Schmieder, R. and Edwards, R. (2011).
 
 \bibitem[Sczyrba et~al., 2017]{sczyrba2017critical}
 Sczyrba, A., Hofmann, P., Belmann, P., Koslicki, D., Janssen, S., Droege, J.,
-  Gregor, I., Majda, S., Fiedler, J., Dahms, E., et~al. (2017).
-\newblock Critical assessment of metagenome interpretation- a benchmark of
+  Gregor, I., Majda, S., Fiedler, J., Dahms, E., Bremges, A., Fritz, A.,
+  Garrido-Oter, R., Sparholt~Jorgensen, T., Shapiro, N., Blood, P.~D.,
+  Gurevich, A., Bai, Y., Turaev, D., DeMaere, M.~Z., Chikhi, R., Nagarajan, N.,
+  Quince, C., Hestbjerg~Hansen, L., Sorensen, S.~J., Chia, B. K.~H., Denis, B.,
+  Froula, J.~L., Wang, Z., Egan, R., Kang, D.~D., Cook, J.~J., Deltel, C.,
+  Beckstette, M., Lemaitre, C., Peterlongo, P., Rizk, G., Lavenier, D., Wu,
+  Y.-W., Singer, S.~W., Jain, C., Strous, M., Klingenberg, H., Meinicke, P.,
+  Barton, M., Lingner, T., Lin, H.-H., Liao, Y.-C., Gueiros Z.~Silva, G.,
+  Cuevas, D.~A., Edwards, R.~A., Saha, S., Piro, V.~C., Renard, B.~Y., Pop, M.,
+  Klenk, H.-P., Goeker, M., Kyrpides, N., Woyke, T., Vorholt, J.~A.,
+  Schulze-Lefert, P., Rubin, E.~M., Darling, A.~E., Rattei, T., and McHardy,
+  A.~C. (2017).
+\newblock Critical assessment of metagenome interpretation - a benchmark of
   computational metagenomics software.
-\newblock {\em Biorxiv}, page 099127.
+\newblock {\em bioRxiv}.
 
 \bibitem[Shintani et~al., 2015]{shintani2015genomics}
 Shintani, M., Sanchez, Z.~K., and Kimbara, K. (2015).
@@ -207,7 +224,7 @@ Shrestha, P.~M., Nevin, K.~P., Shrestha, M., and Lovley, D.~R. (2013).
 
 \bibitem[Tennessen et~al., 2015]{tennessen2015prodege}
 Tennessen, K., Andersen, E., Clingenpeel, S., Rinke, C., Lundberg, D.~S., Han,
-  J., Dangl, J.~L., Ivanova, N., Woyke, T., Kyrpides, N., et~al. (2015).
+  J., Dangl, J.~L., Ivanova, N., Woyke, T., Kyrpides, N., and Pati, A. (2015).
 \newblock Prodege: a computational protocol for fully automated decontamination
   of genomes.
 \newblock {\em The ISME journal}.
@@ -219,8 +236,8 @@ Thomas, T., Gilbert, J., and Meyer, F. (2012).
 
 \bibitem[Tong et~al., 2015]{tong2015novel}
 Tong, S.~Y., Schaumburg, F., Ellington, M.~J., Corander, J., Pichon, B.,
-  Leendertz, F., Bentley, S.~D., Parkhill, J., Holt, D.~C., Peters, G., et~al.
-  (2015).
+  Leendertz, F., Bentley, S.~D., Parkhill, J., Holt, D.~C., Peters, G., and
+  Giffard, P.~M. (2015).
 \newblock Novel staphylococcal species that form part of a staphylococcus
   aureus-related complex: the non-pigmented staphylococcus argenteus sp. nov.
   and the non-human primate-associated staphylococcus schweitzeri sp. nov.

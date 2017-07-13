@@ -3,46 +3,50 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main-diff.aux
 The style file: apalike.bst
 Database file #1: genomic_purity.bib
+Name 26 in "Larsson, P{\"a}r and Oyston, Petra CF and Chain, Patrick and Chu, May C and Duffield, Melanie and Fuxelius, Hans-Henrik and Garcia, Emilio and H{\"a}lltorp, Greger and Johansson, Daniel and Isherwood, Isherwood, Karen E and Karp, Peter D and Larsson, Eva and Liu, Ying and Michell, Stephen and Prior, Joann and Prior, Richard and Malfatti, Stephanie and Sj{\"o}stedt, Anders and Svensson, Kerstin and Thompson, Nick and Vergez, Lisa and Wagg, Jonathan K and Wren, Brenda W and Lindler, Luther E and Andersson, Siv G E and Forsman, Mats, and Titball, Richard W" has a comma at the end for entry larsson2005complete
+while executing---line 1023 of file apalike.bst
+Name 26 in "Larsson, P{\"a}r and Oyston, Petra CF and Chain, Patrick and Chu, May C and Duffield, Melanie and Fuxelius, Hans-Henrik and Garcia, Emilio and H{\"a}lltorp, Greger and Johansson, Daniel and Isherwood, Isherwood, Karen E and Karp, Peter D and Larsson, Eva and Liu, Ying and Michell, Stephen and Prior, Joann and Prior, Richard and Malfatti, Stephanie and Sj{\"o}stedt, Anders and Svensson, Kerstin and Thompson, Nick and Vergez, Lisa and Wagg, Jonathan K and Wren, Brenda W and Lindler, Luther E and Andersson, Siv G E and Forsman, Mats, and Titball, Richard W" has a comma at the end for entry larsson2005complete
+while executing---line 1098 of file apalike.bst
 Warning--empty journal in Shrestha2013
 You've used 40 entries,
             1935 wiz_defined-function locations,
-            721 strings with 13522 characters,
-and the built_in function-call counts, 18526 in all, are:
-= -- 1696
-> -- 1168
-< -- 10
-+ -- 424
-- -- 420
-* -- 1779
-:= -- 3342
+            720 strings with 15234 characters,
+and the built_in function-call counts, 20941 in all, are:
+= -- 1841
+> -- 1578
+< -- 9
++ -- 588
+- -- 584
+* -- 2110
+:= -- 3825
 add.period$ -- 119
 call.type$ -- 40
-change.case$ -- 401
+change.case$ -- 489
 chr.to.int$ -- 40
 cite$ -- 41
-duplicate$ -- 562
-empty$ -- 1053
-format.name$ -- 474
-if$ -- 3447
+duplicate$ -- 548
+empty$ -- 1044
+format.name$ -- 638
+if$ -- 3813
 int.to.chr$ -- 1
 int.to.str$ -- 0
 missing$ -- 37
 newline$ -- 202
 num.names$ -- 120
-pop$ -- 336
+pop$ -- 423
 preamble$ -- 1
-purify$ -- 404
+purify$ -- 492
 quote$ -- 0
-skip$ -- 434
+skip$ -- 411
 stack$ -- 0
-substring$ -- 1040
-swap$ -- 55
-text.length$ -- 1
+substring$ -- 1028
+swap$ -- 42
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 240
 warning$ -- 1
-while$ -- 125
+while$ -- 124
 width$ -- 0
-write$ -- 513
-(There was 1 warning)
+write$ -- 512
+(There were 2 error messages)
